@@ -10,18 +10,28 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
-import { FiMail, FiUser } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
 import { MdPhone } from "react-icons/md";
+import { BiMenu, BiX } from "react-icons/bi";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // for mobile
+  const [sidePanelOpen, setSidePanelOpen] = useState(false); // for desktop
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Property", path: "/property" },
+    { name: "Blogs", path: "/blogs" },
+    { name: "Contact Us", path: "/contact-us" },
+  ];
 
   return (
-    <header className="w-full  text-white">
+    <header className="w-full sticky top-0 z-50 bg-white shadow-md">
       {/* ===== Top Bar ===== */}
-      <div className="hidden bg-[#0a2342] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm">
+      <div className="hidden bg-[#0a2342] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
         {/* Social Icons */}
         <div className="flex items-center gap-4">
           <FaFacebookF className="cursor-pointer hover:text-blue-400" />
@@ -44,82 +54,151 @@ const Navbar = () => {
       </div>
 
       {/* ===== Main Navbar ===== */}
-      <nav className="flex items-center justify-between px-6 py-2 relative">
+      <nav className="flex items-center justify-between px-6 py-1 relative">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Image src={logo} alt="Logo" width={100} height={40} priority />
-        </div>
+        <Link href="/" className="flex items-center gap-2">
+          <Image src={logo} alt="Logo" width={120} height={45} priority />
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 font-medium">
-          {[
-            "Home",
-            "Demos",
-            "Lists",
-            "Property",
-            "Pages",
-            "Elements",
-            "Search",
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="hover:text-blue-400 transition cursor-pointer text-black"
-            >
-              <Link href={`/${item.toLowerCase()}`}>{item}</Link>
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <Link
+                href={item.path}
+                className="hover:text-blue-500 transition text-black"
+              >
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Contact + Add Listing */}
+        {/* Right Icons */}
         <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-2 text-black">
-            <MdPhone size={20} />
-            <span>800-555-6789</span>
-          </div>
-          <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white font-semibold">
-            Add Listing
+          {/* Desktop Slide Menu Button */}
+          <button
+            onClick={() => setSidePanelOpen(true)}
+            className="text-black hover:text-blue-600 transition"
+          >
+            <BiMenu size={32} />
           </button>
         </div>
 
-        {/* Hamburger Icon */}
+        {/* Hamburger Icon (Mobile) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col justify-center items-center gap-1"
+          className="md:hidden flex justify-center items-center text-black"
         >
-          <span className="w-6 h-0.5 bg-white"></span>
-          <span className="w-6 h-0.5 bg-white"></span>
-          <span className="w-6 h-0.5 bg-white"></span>
+          <BiMenu size={36} />
         </button>
-
-        {/* ===== Mobile Menu ===== */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#0a2342] flex flex-col items-center py-4 gap-4 md:hidden border-t border-gray-700 z-50">
-            <ul className="flex flex-col items-center gap-4 text-lg">
-              {[
-                "Home",
-                "Demos",
-                "Lists",
-                "Property",
-                "Pages",
-                "Elements",
-                "Search",
-              ].map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={`/${item.toLowerCase()}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <button className="bg-blue-500 px-4 py-2 rounded text-white font-semibold">
-              Add Listing
-            </button>
-          </div>
-        )}
       </nav>
+
+      {/* ===== Mobile Menu (Full View) ===== */}
+      {menuOpen && (
+        <div className="fixed inset-0 bg-[#0a2342]/95 flex flex-col items-center justify-center gap-6 text-white z-50">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-5 right-5 text-white"
+          >
+            <BiX size={40} />
+          </button>
+          <ul className="flex flex-col items-center gap-6 text-xl">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.path}
+                  onClick={() => setMenuOpen(false)}
+                  className="hover:text-blue-400 transition flex items-center gap-2"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex gap-4 mt-8">
+            <FaFacebookF />
+            <FaInstagram />
+            <FaLinkedinIn />
+          </div>
+        </div>
+      )}
+
+      {/* ===== Desktop Side Panel ===== */}
+      {sidePanelOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
+          {/* Create right gap using margin */}
+          <div className="relative h-full w-80 md:w-96 bg-white shadow-2xl animate-slideIn">
+            <button
+              onClick={() => setSidePanelOpen(false)}
+              className="absolute top-6 right-4 text-black"
+            >
+              <BiX size={32} />
+            </button>
+
+            <div className="p-6 pt-12 flex flex-col gap-4 overflow-y-auto h-full">
+              <div>
+                <h3 className="text-2xl font-semibold mb-3 text-[#0a2342]">
+                  About Us
+                </h3>
+                <p className="text-gray-600 text-md leading-relaxed">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+                  dolorem quaerat libero optio fuga dolores dicta neque nesciunt
+                  culpa aspernatur ipsa harum quae, rem dolorum temporibus
+                  excepturi reprehenderit quas, consectetur officiis ut impedit
+                  esse tenetur animi qui! Earum, delectus sapiente?
+                </p>
+              </div>
+
+              <hr />
+
+              <div>
+                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                  We are social
+                </h3>
+                <div className="flex gap-3  text-xl text-gray-600 mb-5">
+                  <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+                  <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+                  <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
+                  <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+                </div>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                  Connect with us
+                </h3>
+                <div className="text-gray-700 text-md">
+                  <p className="flex items-center gap-2">
+                    <FiMail /> contact@mail.com
+                  </p>
+                  <p className="flex items-center gap-2 mt-2">
+                    <MdPhone /> +1 408 167 1234
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== Simple Animation ===== */}
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .animate-slideIn {
+          animation: slideIn 0.4s ease forwards;
+        }
+      `}</style>
     </header>
   );
 };

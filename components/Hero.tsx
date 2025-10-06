@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content Wrapper */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-5/6 mx-auto ">
         {/* Left Content */}
         <div className="md:w-1/2 space-y-6 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -32,7 +32,7 @@ const Hero = () => {
         </div>
 
         {/* Right Contact Form */}
-        <div className="mt-10 md:mt-0 md:w-1/3 bg-white text-black rounded-lg shadow-lg p-6 md:p-8">
+        <div className="mt-10 mb-10 md:w-1/3 bg-white text-black rounded-lg shadow-lg p-6 md:p-8">
           <h3 className="text-2xl font-semibold mb-2">Get In Touch</h3>
           <p className="text-gray-600 text-sm mb-6">
             Fill out this form and one of our agents will be in touch with you
