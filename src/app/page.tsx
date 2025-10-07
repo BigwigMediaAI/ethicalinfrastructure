@@ -39,8 +39,8 @@ export default function Home() {
                 Maximize your property's value with our expert selling
                 strategies and personalized service.
               </p>
-              <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">
-                <FiArrowRight />
+              <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
+                <FiArrowRight size={18} />
               </button>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function Home() {
                 Find your perfect home with our expert guidance and tailored
                 property options.
               </p>
-              <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">
-                <FiArrowRight />
+              <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
+                <FiArrowRight size={18} />
               </button>
             </div>
           </div>
