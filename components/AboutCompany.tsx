@@ -15,8 +15,9 @@ export default function CompanySection() {
             <Image
               src={sampleImage1}
               alt="Left Side"
-              className="rounded-lg mb-4 object-cover h-[200] w-full"
+              className="rounded-lg mb-4 object-cover h-[200px] w-full"
             />
+
             <h3 className="text-4xl font-bold mb-2">Our Vision</h3>
             <p className="text-gray-700 flex-1">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
