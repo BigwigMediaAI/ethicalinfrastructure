@@ -161,7 +161,7 @@ const Navbar = () => {
 
               <div>
                 <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
-                  We are social
+                  Our social
                 </h3>
                 <div className="flex gap-3  text-xl text-gray-600 mb-5">
                   <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
@@ -178,10 +178,11 @@ const Navbar = () => {
                 </h3>
                 <div className="text-gray-700 text-md">
                   <p className="flex items-center gap-2">
-                    <FiMail /> contact@mail.com
+                    <FiMail />
+                    webmail@eiplin.com
                   </p>
                   <p className="flex items-center gap-2 mt-2">
-                    <MdPhone /> +1 408 167 1234
+                    <MdPhone /> +91 9999000183
                   </p>
                 </div>
               </div>
