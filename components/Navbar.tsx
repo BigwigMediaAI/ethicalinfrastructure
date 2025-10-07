@@ -49,12 +49,12 @@ const Navbar = () => {
           </span>
           <span className="flex items-center gap-2">
             <Link
-              href="https://wa.me/+919999000183"
+              href="https://wa.me/+919999000172"
               className="flex items-center gap-2"
               target="blank"
             >
               <BsWhatsapp />
-              +919999000183
+              +919999000172
             </Link>
           </span>
         </div>

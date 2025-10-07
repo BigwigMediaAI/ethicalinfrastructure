@@ -29,15 +29,15 @@ export default function Footer() {
           <div className="space-y-3 text-sm">
             <div className="flex items-center space-x-2">
               <Phone size={16} />
-              <span>+00 (123) 456 789 012</span>
+              <span>+91-9999000183</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail size={16} />
-              <span>infomail123@domain.com</span>
+              <span>webmail@eiplin.com</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin size={16} />
-              <span>West 2nd lane, Inner circular road, New York City</span>
+              <span>A-26/12B,FF1 DLFCity,Phase-1 Gurugram Haryana -122011</span>
             </div>
           </div>
         </div>
