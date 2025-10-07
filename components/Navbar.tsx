@@ -45,7 +45,7 @@ const Navbar = () => {
         {/* Contact Info */}
         <div className="flex items-center gap-7">
           <span className="flex items-center gap-2">
-            <Link href="mailto:contact@mail.com">contact@mail.com</Link>
+            <Link href="mailto:webmail@eiplin.com">webmail@eiplin.com</Link>
           </span>
           <span className="flex items-center gap-2">
             <Link
