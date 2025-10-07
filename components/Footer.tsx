@@ -37,7 +37,10 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-2">
               <MapPin size={16} />
-              <span>A-26/12B,FF1 DLFCity,Phase-1 Gurugram Haryana -122011</span>
+              <span>
+                FIRST FLOOR, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
+                Gurugram, Haryana 122002
+              </span>
             </div>
           </div>
         </div>
@@ -90,7 +93,7 @@ export default function Footer() {
             Ethical Infrastructure Location
           </h3>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.2049651170355!2d77.09081647549499!3d28.47337337575202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI4JzI0LjEiTiA3N8KwMDUnMzYuMiJF!5e0!3m2!1sen!2sin!4v1759815055066!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2037326384284!2d77.0934439!3d28.4734105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d7d137311f%3A0xc0cbc38c4452175d!2sETHICAL%20INFRASTRUCTURES%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1759831704667!5m2!1sen!2sin"
             width="100%"
             height="180"
             allowFullScreen
