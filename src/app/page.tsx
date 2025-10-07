@@ -7,14 +7,17 @@ import StatsSection from "../../components/Stats";
 import WeHelp from "../../components/WeHelp";
 import bgImage from "../../assets/video-bg.jpg";
 import Testimonials from "../../components/Testimonial";
+import CompanySection from "../../components/AboutCompany";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <Hero />
-      <WeHelp />
+      <CompanySection />
       <FeaturedApartments />
+      <WeHelp />
+
       <div
         className="relative h-[600px] flex items-center justify-center text-white"
         style={{
