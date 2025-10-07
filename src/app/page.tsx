@@ -36,7 +36,7 @@ export default function Home() {
                 Sell Your Property
               </h3>
               <p className="mb-4 text-center">
-                Maximize your property's value with our expert selling
+                Maximize your property&#39;s value with our expert selling
                 strategies and personalized service.
               </p>
               <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
