@@ -8,6 +8,11 @@ import WeHelp from "../../components/WeHelp";
 import bgImage from "../../assets/video-bg.jpg";
 import Testimonials from "../../components/Testimonial";
 import CompanySection from "../../components/AboutCompany";
+import Image from "next/image";
+import sellImage from "../../assets/buy-sell1.jpg"; // replace with your image
+import buyImage from "../../assets/buy-sell2.jpg"; // replace with your image
+import { FiArrowRight } from "react-icons/fi";
+import PropertyGrid from "../../components/Properties";
 
 export default function Home() {
   return (
@@ -15,6 +20,54 @@ export default function Home() {
       <Navbar />
       <Hero />
       <CompanySection />
+      <section className="w-full py-16 bg-[#021A33]">
+        <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* ===== Sell Your Property Card ===== */}
+          <div className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96">
+            <Image
+              src={sellImage}
+              alt="Sell Your Property"
+              className="w-full h-full object-cover transition-transform duration-500 "
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+              <h3 className="text-4xl font-bold mb-2 text-center">
+                Sell Your Property
+              </h3>
+              <p className="mb-4 text-center">
+                Maximize your property's value with our expert selling
+                strategies and personalized service.
+              </p>
+              <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">
+                <FiArrowRight />
+              </button>
+            </div>
+          </div>
+
+          {/* ===== Buy A Property Card ===== */}
+          <div className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96">
+            <Image
+              src={buyImage}
+              alt="Buy A Property"
+              className="w-full h-full object-cover transition-transform duration-500 "
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+              <h3 className="text-4xl font-bold mb-2 text-center">
+                Buy A Property
+              </h3>
+              <p className="mb-4 text-center">
+                Find your perfect home with our expert guidance and tailored
+                property options.
+              </p>
+              <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition">
+                <FiArrowRight />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <PropertyGrid />
       <FeaturedApartments />
       <WeHelp />
 
