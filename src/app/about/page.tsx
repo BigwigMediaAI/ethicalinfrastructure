@@ -5,6 +5,8 @@ import bgImage from "../../../assets/team2.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { Building2, Armchair, Ruler } from "lucide-react";
+import image from "../../../assets/property/property1.jpg";
+import image2 from "../../../assets/property/property2.jpg";
 
 const AboutHero = () => {
   return (
@@ -32,18 +34,56 @@ const AboutHero = () => {
         </div>
       </section>
 
+      {/* ===== ABOUT COMPANY SECTION ===== */}
+      <section className="py-16 bg-gray-50">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12">
+          {/* Text Content */}
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold mb-4">
+              About{" "}
+              <span className="text-blue-600">Ethical Infrastructure</span>
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Vivamus at augue eget arcu dictum varius duis at consectetur
+              lorem.
+            </p>
+            <p className="text-gray-700 mb-4">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </p>
+            <p className="text-gray-700">
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+
+          {/* Image */}
+          <div className="md:w-1/2">
+            <Image
+              src={image2}
+              alt="About Company"
+              className="rounded-xl object-cover w-full h-80"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE ENDORA SECTION */}
-      <section className="py-20 px-6 md:px-16 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-12">
+      <section className="py-12  bg-white">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-start gap-12">
           {/* LEFT TITLE BLOCK */}
           <div className="lg:w-1/3">
-            <span className="bg-blue-600 text-black text-sm font-semibold px-3 py-1 rounded">
+            <span className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
               Bricks And Clicks
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mt-6 mb-4">
               Why Choose <br /> Ethical?
             </h2>
-            <div className="w-16 h-1 bg-blue-400 mb-6"></div>
+            {/* <div className="w-16 h-1 bg-blue-400 mb-6"></div> */}
           </div>
 
           {/* RIGHT FEATURE BOXES */}
@@ -88,6 +128,63 @@ const AboutHero = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="py-16 bg-gray-50">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12">
+          <div className="md:w-1/2">
+            <Image
+              src={image}
+              alt="Our Story"
+              className="rounded-xl object-cover w-full h-80"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold mb-4">Our Journey</h2>
+            <p className="text-gray-600 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p className="text-gray-600">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="w-11/12 md:w-5/6 mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12">Our Core Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {["Integrity", "Excellence", "Innovation"].map((value) => (
+              <div
+                key={value}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
+              >
+                <div className="text-blue-600 mb-4">
+                  <Building2 size={48} />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{value}</h3>
+                <p className="text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-blue-600 text-white text-center">
+        <h2 className="text-4xl font-bold mb-4">Ready to Work With Us?</h2>
+        <p className="mb-6">
+          Contact our team today to discuss your project and how we can help you
+          achieve your goals.
+        </p>
+        <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+          Contact Us
+        </button>
       </section>
 
       <Footer />
