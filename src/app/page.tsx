@@ -14,6 +14,8 @@ import buyImage from "../../assets/buy-sell2.jpg"; // replace with your image
 import { FiArrowRight } from "react-icons/fi";
 import PropertyGrid from "../../components/Properties";
 import BlogGrid from "../../components/Blogs";
+import ScrollToTopButton from "../../components/ScrollToTopButton";
+import ContactSidebar from "../../components/ContactSidebar";
 
 export default function Home() {
   return (
@@ -95,6 +97,8 @@ export default function Home() {
       <Testimonials />
       <BlogGrid />
       <Footer />
+      <ScrollToTopButton />
+      <ContactSidebar />
     </>
   );
 }
