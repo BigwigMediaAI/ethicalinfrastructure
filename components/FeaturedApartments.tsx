@@ -66,7 +66,7 @@ export default function FeaturedApartments() {
   const current = apartments[index];
 
   return (
-    <div className="bg-[#021A33] text-white py-16">
+    <div className="bg-[#021A33] text-white py-12">
       <div className="w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Text Section */}
         <div className="md:w-1/2">
@@ -86,7 +86,7 @@ export default function FeaturedApartments() {
         </div>
 
         {/* Right Card Section */}
-        <div className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex">
+        <div className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex min-h-[350px] transition-all duration-300 ease-in-out">
           {/* Image */}
           <div className="w-1/2 relative">
             <Image
@@ -109,7 +109,7 @@ export default function FeaturedApartments() {
               </h3>
               <h2 className="text-2xl font-bold mt-1">{current.title}</h2>
               <p className="text-gray-500 text-sm mb-4">{current.location}</p>
-              <p className="text-gray-600 text-sm mb-4">
+              <p className="text-gray-600 text-sm mb-4 line-clamp-4">
                 {current.description}
               </p>
               <div className="flex items-center gap-4 text-gray-700 text-sm">
@@ -123,8 +123,10 @@ export default function FeaturedApartments() {
                   <PiRuler /> {current.area}
                 </span>
               </div>
+              <p className="text-sm text-gray-600 mt-4">
+                Agent: {current.agent}
+              </p>
             </div>
-            <p className="text-sm text-gray-600 mt-4">Agent: {current.agent}</p>
           </div>
 
           {/* Arrows */}

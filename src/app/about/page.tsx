@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import bgImage from "../../../assets/team2.jpg";
 import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 const AboutHero = () => {
   return (
@@ -30,6 +31,7 @@ const AboutHero = () => {
           </p>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
