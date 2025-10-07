@@ -15,12 +15,15 @@ import { BsWhatsapp } from "react-icons/bs";
 import { MdPhone } from "react-icons/md";
 import { BiMenu, BiX } from "react-icons/bi";
 import logo from "../assets/logo.png";
-
+type NavItem = {
+  name: string;
+  path: string;
+};
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false); // for mobile
   const [sidePanelOpen, setSidePanelOpen] = useState(false); // for desktop
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Property", path: "/property" },
@@ -69,7 +72,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 font-medium">
-          {navItems.map((item) => (
+          {navItems.map((item: NavItem) => (
             <li key={item.name}>
               <Link
                 href={item.path}
@@ -111,7 +114,7 @@ const Navbar = () => {
             <BiX size={40} />
           </button>
           <ul className="flex flex-col items-center gap-6 text-xl">
-            {navItems.map((item) => (
+            {navItems.map((item: NavItem) => (
               <li key={item.name}>
                 <Link
                   href={item.path}
