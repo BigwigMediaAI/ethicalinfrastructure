@@ -130,7 +130,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={() => setSidePanelOpen(true)}
-            className="text-black hover:text-blue-600 transition"
+            className="text-black hover:text-blue-600 transition cursor-pointer"
           >
             <BiMenu size={32} />
           </button>
@@ -212,6 +212,66 @@ const Navbar = () => {
           ))}
         </nav>
       </div>
+
+      {/* ===== Desktop Side Panel ===== */}
+      {sidePanelOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
+          {/* Create right gap using margin */}
+          <div className="relative h-full w-80 md:w-96 bg-white shadow-2xl animate-slideIn">
+            <button
+              onClick={() => setSidePanelOpen(false)}
+              className="absolute top-6 right-4 text-black"
+            >
+              <BiX size={32} />
+            </button>
+
+            <div className="p-6 pt-12 flex flex-col gap-4 overflow-y-auto h-full">
+              <div>
+                <h3 className="text-2xl font-semibold mb-3 text-[#0a2342]">
+                  About Us
+                </h3>
+                <p className="text-gray-600 text-md leading-relaxed">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+                  dolorem quaerat libero optio fuga dolores dicta neque nesciunt
+                  culpa aspernatur ipsa harum quae, rem dolorum temporibus
+                  excepturi reprehenderit quas, consectetur officiis ut impedit
+                  esse tenetur animi qui! Earum, delectus sapiente?
+                </p>
+              </div>
+
+              <hr />
+
+              <div>
+                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                  Our social
+                </h3>
+                <div className="flex gap-3  text-xl text-gray-600 mb-5">
+                  <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+                  <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+                  <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
+                  <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+                </div>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                  Connect with us
+                </h3>
+                <div className="text-gray-700 text-md">
+                  <p className="flex items-center gap-2">
+                    <FiMail />
+                    webmail@eiplin.com
+                  </p>
+                  <p className="flex items-center gap-2 mt-2">
+                    <MdPhone /> +91 9999000183
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         @keyframes slideIn {
