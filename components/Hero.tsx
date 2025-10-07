@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import hero from "../assets/book_wide-1.webp";
 import axios from "axios";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -119,15 +121,19 @@ const Hero = () => {
                 className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 required
               />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone"
+
+              {/* React Phone Input */}
+              <PhoneInput
+                international
+                defaultCountry="IN"
+                placeholder="Enter phone number"
                 value={formData.phone}
-                onChange={handleChange}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                required
+                onChange={(value) =>
+                  setFormData({ ...formData, phone: value || "" })
+                }
+                className="phone-input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
+
               <input
                 type="email"
                 name="email"
