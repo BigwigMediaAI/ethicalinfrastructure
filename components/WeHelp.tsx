@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
 import aboutImg from "../assets/9-768x532.webp"; // replace with your image
+import Link from "next/link";
 
 const WeHelp = () => {
   return (
@@ -33,10 +34,11 @@ const WeHelp = () => {
               </li>
             ))}
           </ul>
-
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md shadow-md transition">
-            Contact us today
-          </button>
+          <Link href="/contact-us">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md shadow-md transition cursor-pointer">
+              Contact us
+            </button>
+          </Link>
         </div>
 
         {/* ===== Right Image with Play Icon ===== */}

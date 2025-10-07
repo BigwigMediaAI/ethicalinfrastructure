@@ -7,6 +7,7 @@ import Footer from "../../../components/Footer";
 import { Building2, Armchair, Ruler } from "lucide-react";
 import image from "../../../assets/property/property1.jpg";
 import image2 from "../../../assets/property/property2.jpg";
+import Link from "next/link";
 
 const AboutHero = () => {
   return (
@@ -73,8 +74,8 @@ const AboutHero = () => {
       </section>
 
       {/* WHY CHOOSE ENDORA SECTION */}
-      <section className="py-12  bg-white">
-        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-start gap-12">
+      <section className="py-12 bg-white">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 text-center lg:text-left">
           {/* LEFT TITLE BLOCK */}
           <div className="lg:w-1/3">
             <span className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
@@ -83,13 +84,12 @@ const AboutHero = () => {
             <h2 className="text-4xl md:text-5xl font-bold mt-6 mb-4">
               Why Choose <br /> Ethical?
             </h2>
-            {/* <div className="w-16 h-1 bg-blue-400 mb-6"></div> */}
           </div>
 
           {/* RIGHT FEATURE BOXES */}
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="flex flex-col items-start text-left space-y-4">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
               <div className="relative">
                 <div className="absolute -top-2 -left-2 w-16 h-16 bg-blue-300 rounded-full opacity-50 blur-lg"></div>
                 <Building2 size={48} className="relative text-blue-500" />
@@ -102,7 +102,7 @@ const AboutHero = () => {
             </div>
 
             {/* Feature 2 */}
-            <div className="flex flex-col items-start text-left space-y-4">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
               <div className="relative">
                 <div className="absolute -top-2 -left-2 w-16 h-16 bg-blue-300 rounded-full opacity-50 blur-lg"></div>
                 <Armchair size={48} className="relative text-blue-500" />
@@ -115,7 +115,7 @@ const AboutHero = () => {
             </div>
 
             {/* Feature 3 */}
-            <div className="flex flex-col items-start text-left space-y-4">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
               <div className="relative">
                 <div className="absolute -top-2 -left-2 w-16 h-16 bg-blue-300 rounded-full opacity-50 blur-lg"></div>
                 <Ruler size={48} className="relative text-blue-500" />
@@ -153,7 +153,7 @@ const AboutHero = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="w-11/12 md:w-5/6 mx-auto text-center">
           <h2 className="text-4xl font-bold mb-12">Our Core Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -174,17 +174,19 @@ const AboutHero = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-16 bg-blue-600 text-white text-center">
         <h2 className="text-4xl font-bold mb-4">Ready to Work With Us?</h2>
-        <p className="mb-6">
+        <p className="mb-6 px-4">
           Contact our team today to discuss your project and how we can help you
           achieve your goals.
         </p>
-        <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-          Contact Us
-        </button>
+        <Link href="/contact-us">
+          <button className="cursor-pointer bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+            Contact Us
+          </button>
+        </Link>
       </section>
 
       <Footer />

@@ -1,20 +1,86 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import hero from "../assets/book_wide-1.webp";
+import axios from "axios";
 
 const Hero = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    purpose: "buy",
+  });
+
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendOtp = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/send-otp`,
+        formData
+      );
+      if (res.status === 200) {
+        setOtpSent(true);
+        setSuccess("OTP sent to your email.");
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Error sending OTP");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const verifyOtp = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/verify-otp`,
+        {
+          email: formData.email,
+          otp,
+        }
+      );
+      if (res.status === 200) {
+        setSuccess("Lead submitted successfully!");
+        setOtpSent(false);
+        setOtp("");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+          purpose: "buy",
+        });
+      }
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Invalid OTP");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       className="relative bg-cover bg-center text-white"
-      style={{
-        backgroundImage: `url(${hero.src})`, // ✅ use template literal, not string
-      }}
+      style={{ backgroundImage: `url(${hero.src})` }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content Wrapper */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-5/6 mx-auto ">
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-5/6 mx-auto">
         {/* Left Content */}
         <div className="md:w-1/2 space-y-6 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -26,9 +92,6 @@ const Hero = () => {
             your home. Get emails directly to your inbox and manage the lead
             with the built-in CRM.
           </p>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded font-semibold transition">
-            Contact us today
-          </button>
         </div>
 
         {/* Right Contact Form */}
@@ -38,40 +101,95 @@ const Hero = () => {
             Fill out this form and one of our agents will be in touch with you
             soon.
           </p>
-          <form className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="Name"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <input
-              type="tel"
-              placeholder="Phone"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <textarea
-              rows={3}
-              placeholder="Message"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            ></textarea>
 
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <input type="checkbox" id="gdpr" />
-              <label htmlFor="gdpr">I consent to the GDPR Terms</label>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+          {!otpSent ? (
+            <form
+              className="flex flex-col gap-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendOtp();
+              }}
             >
-              Send Email
-            </button>
-          </form>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+              <select
+                name="purpose"
+                value={formData.purpose}
+                onChange={handleChange}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <option value="buy">Buy</option>
+                <option value="sell">Sell</option>
+              </select>
+              <textarea
+                name="message"
+                rows={3}
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              ></textarea>
+
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+                disabled={loading}
+              >
+                {loading ? "Sending OTP..." : "Send OTP"}
+              </button>
+            </form>
+          ) : (
+            <form
+              className="flex flex-col gap-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                verifyOtp();
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Enter OTP"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+                disabled={loading}
+              >
+                {loading ? "Verifying OTP..." : "Verify OTP & Submit"}
+              </button>
+            </form>
+          )}
+
+          {success && <p className="text-green-600 mt-2">{success}</p>}
         </div>
       </div>
     </section>

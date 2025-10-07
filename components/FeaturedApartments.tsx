@@ -6,6 +6,7 @@ import Image from "next/image";
 import image1 from "../assets/9-768x532.webp";
 import image2 from "../assets/9-768x532.webp";
 import image3 from "../assets/9-768x532.webp";
+import Link from "next/link";
 
 const apartments = [
   {
@@ -82,7 +83,11 @@ export default function FeaturedApartments() {
             In the vibrant neighborhood of Portland, Maryland, we are renowned
             among residents, developers, and professionals.
           </p>
-          <button className="text-blue-400 hover:underline">Contact Me</button>
+          <Link href="/contact-us">
+            <button className="bg-blue-500 text-white px-6 py-2 hover:bg-blue-600 rounded-lg cursor-pointer">
+              Contact Us
+            </button>
+          </Link>
         </div>
 
         {/* Right Card Section */}
@@ -132,14 +137,14 @@ export default function FeaturedApartments() {
           {/* Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute -left-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
+            className="absolute left-2 md:-left-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
           >
             <FaArrowLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute -right-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
+            className="absolute right-2 md:-right-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
           >
             <FaArrowRight className="w-5 h-5" />
           </button>

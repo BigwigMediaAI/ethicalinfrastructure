@@ -3,12 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import image1 from "../assets/property/property1.jpg";
 import image2 from "../assets/property/property2.jpg";
 import image3 from "../assets/property/property3.jpg";
 import image4 from "../assets/property/property4.jpg";
 
-// Sample property data
 const properties = [
   {
     id: 1,
@@ -58,7 +59,51 @@ export default function PropertyGrid() {
       <div className="w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">Our Properties</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* ==== Mobile View: Swiper ==== */}
+        <div className="block md:hidden">
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1.2}
+            centeredSlides={false}
+            grabCursor={true}
+          >
+            {properties.map((property) => (
+              <SwiperSlide key={property.id}>
+                <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+                  <div className="relative h-56 w-full">
+                    <Image
+                      src={property.image}
+                      alt={property.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col gap-2">
+                    <h3 className="text-lg font-bold">{property.title}</h3>
+                    <p className="text-gray-500 text-sm">{property.location}</p>
+                    <p className="text-blue-600 font-semibold">
+                      {property.price}
+                    </p>
+                    <div className="flex items-center gap-4 mt-2 text-gray-600">
+                      <div className="flex items-center gap-1">
+                        <FaBed /> {property.bedrooms}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaBath /> {property.bathrooms}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaRulerCombined /> {property.area}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* ==== Desktop View: Grid ==== */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
           {properties.map((property) => (
             <div
               key={property.id}
