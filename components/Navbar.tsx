@@ -43,12 +43,19 @@ const Navbar = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-7">
           <span className="flex items-center gap-2">
-            <FiMail /> contact@mail.com
+            <Link href="mailto:contact@mail.com">contact@mail.com</Link>
           </span>
           <span className="flex items-center gap-2">
-            <BsWhatsapp /> +1 408 167 1234
+            <Link
+              href="https://wa.me/+919999000183"
+              className="flex items-center gap-2"
+              target="blank"
+            >
+              <BsWhatsapp />
+              +919999000183
+            </Link>
           </span>
         </div>
       </div>
