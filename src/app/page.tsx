@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import StatsSection from "../../components/Stats";
 import WeHelp from "../../components/WeHelp";
 import bgImage from "../../assets/video-bg.jpg";
+import Testimonials from "../../components/Testimonial";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
         </div>
       </div>
       <StatsSection />
+      <Testimonials />
       <Footer />
     </>
   );
