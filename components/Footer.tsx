@@ -113,7 +113,7 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-white mb-4">Pillar Location</h3>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902936079624!2d90.38832831543122!3d23.750880894655664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b894d8d5a9d9%3A0x9a8b3e501f9f2d8c!2sDhaka!5e0!3m2!1sen!2sbd!4v1616500000000!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.2049651170355!2d77.09081647549499!3d28.47337337575202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI4JzI0LjEiTiA3N8KwMDUnMzYuMiJF!5e0!3m2!1sen!2sin!4v1759815055066!5m2!1sen!2sin"
             width="100%"
             height="180"
             allowFullScreen
@@ -124,7 +124,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm">
+      <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-center text-sm">
         <p>
           Copyright © 2025 <span className="text-red-500">Piller</span>. All
           Rights Reserved.
