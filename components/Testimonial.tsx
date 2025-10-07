@@ -51,7 +51,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="w-full py-16 font-raleway bg-gray-50 text-black relative">
+    <section className="w-full py-12 font-raleway text-black relative">
       <div className="w-11/12 md:w-5/6 mx-auto">
         {/* Section Label */}
         <p className="text-blue-600 text-xs tracking-widest uppercase font-semibold">

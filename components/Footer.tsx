@@ -7,7 +7,7 @@ import logo from "../assets/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] text-gray-300 pt-16 pb-6">
+    <footer className="bg-[#021A33] text-gray-300 pt-16 pb-6">
       <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
         {/* Left About Section */}
         <div className="col-span-2 space-y-4">

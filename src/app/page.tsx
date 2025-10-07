@@ -13,6 +13,7 @@ import sellImage from "../../assets/buy-sell1.jpg"; // replace with your image
 import buyImage from "../../assets/buy-sell2.jpg"; // replace with your image
 import { FiArrowRight } from "react-icons/fi";
 import PropertyGrid from "../../components/Properties";
+import BlogGrid from "../../components/Blogs";
 
 export default function Home() {
   return (
@@ -92,6 +93,7 @@ export default function Home() {
       </div>
       <StatsSection />
       <Testimonials />
+      <BlogGrid />
       <Footer />
     </>
   );
