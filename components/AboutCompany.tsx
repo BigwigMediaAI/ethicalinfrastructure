@@ -15,7 +15,7 @@ export default function CompanySection() {
             <Image
               src={sampleImage1}
               alt="Left Side"
-              className="rounded-lg mb-4 object-cover h-[200px] w-full"
+              className="rounded-lg mb-4 object-cover h-[350px] w-full"
             />
 
             <h3 className="text-4xl font-bold mb-2">Our Vision</h3>
@@ -39,7 +39,7 @@ export default function CompanySection() {
             <Image
               src={sampleImage2}
               alt="Right Side"
-              className="rounded-lg mb-4 object-cover h-[120] w-full"
+              className="rounded-lg mb-4 object-cover h-[350px] w-full"
             />
             <p className="text-gray-700 flex-1">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
