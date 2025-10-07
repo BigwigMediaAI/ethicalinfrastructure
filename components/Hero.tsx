@@ -39,8 +39,12 @@ const Hero = () => {
         setOtpSent(true);
         setSuccess("OTP sent to your email.");
       }
-    } catch (err: any) {
-      alert(err.response?.data?.message || "Error sending OTP");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        alert(err.response?.data?.message || "Error sending OTP");
+      } else {
+        alert("Error sending OTP");
+      }
     } finally {
       setLoading(false);
     }
@@ -68,8 +72,12 @@ const Hero = () => {
           purpose: "buy",
         });
       }
-    } catch (err: any) {
-      alert(err.response?.data?.message || "Invalid OTP");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        alert(err.response?.data?.message || "Invalid OTP");
+      } else {
+        alert("Invalid OTP");
+      }
     } finally {
       setLoading(false);
     }
