@@ -8,23 +8,23 @@ import logo from "../assets/logo.png";
 export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] text-gray-300 pt-16 pb-6">
-      <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-6 gap-10">
+      <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
         {/* Left About Section */}
         <div className="col-span-2 space-y-4">
           <div className="flex items-center space-x-2">
             <Image
               src={logo}
-              alt="Piller Logo"
+              alt="Ethical Infrastructure Logo"
               width={120}
               height={120}
               className="invert"
             />
           </div>
-          <p className="text-sm leading-relaxed">
-            Piller is a luxury to the resilience, adaptability, Spacious modern
-            villa living room with centrally placed swimming pool blending
-            indoor and outdoor.
-          </p>
+          {/* <p className="text-sm leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste sit
+            esse earum a iure ut necessitatibus. Vero quas eos sapiente vitae
+            optio, eligendi officiis neque.
+          </p> */}
 
           <div className="space-y-3 text-sm">
             <div className="flex items-center space-x-2">
@@ -48,19 +48,19 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li className="flex items-center space-x-2">
               <Home size={16} />
-              <span>#Villa</span>
+              <span>Villa</span>
             </li>
             <li className="flex items-center space-x-2">
               <Home size={16} />
-              <span>#Commercial</span>
+              <span>Commercial</span>
             </li>
             <li className="flex items-center space-x-2">
               <Home size={16} />
-              <span>#Farm Houses</span>
+              <span>Farm Houses</span>
             </li>
             <li className="flex items-center space-x-2">
               <Home size={16} />
-              <span>#Apartments</span>
+              <span>Apartments</span>
             </li>
           </ul>
         </div>
@@ -70,12 +70,6 @@ export default function Footer() {
           <h3 className="font-semibold text-white mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="#">Strategy Services</Link>
-            </li>
-            <li>
-              <Link href="#">Management</Link>
-            </li>
-            <li>
               <Link href="#">Privacy & Policy</Link>
             </li>
             <li>
@@ -84,34 +78,17 @@ export default function Footer() {
             <li>
               <Link href="#">Terms & Conditions</Link>
             </li>
-          </ul>
-        </div>
-
-        {/* Support */}
-        <div>
-          <h3 className="font-semibold text-white mb-4">Support</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link href="#">Help Center</Link>
-            </li>
-            <li>
-              <Link href="#">FAQs</Link>
-            </li>
             <li>
               <Link href="#">Contact Us</Link>
-            </li>
-            <li>
-              <Link href="#">Ticket Support</Link>
-            </li>
-            <li>
-              <Link href="#">Live Chat</Link>
             </li>
           </ul>
         </div>
 
         {/* Map Location (aligned at far right) */}
         <div>
-          <h3 className="font-semibold text-white mb-4">Pillar Location</h3>
+          <h3 className="font-semibold text-white mb-4">
+            Ethical Infrastructure Location
+          </h3>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3507.2049651170355!2d77.09081647549499!3d28.47337337575202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDI4JzI0LjEiTiA3N8KwMDUnMzYuMiJF!5e0!3m2!1sen!2sin!4v1759815055066!5m2!1sen!2sin"
             width="100%"
@@ -126,7 +103,8 @@ export default function Footer() {
       {/* Bottom Section */}
       <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-center text-sm">
         <p>
-          Copyright © 2025 <span className="text-red-500">Piller</span>. All
+          Copyright © 2025{" "}
+          <span className="text-blue-600">Ethical Infrastructure</span>. All
           Rights Reserved.
         </p>
 
