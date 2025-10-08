@@ -36,8 +36,8 @@ const Navbar = () => {
       icon: <FaBuilding />,
       dropdown: [
         { name: "Buy", path: "/buy" },
-        { name: "Sell", path: "/property/sell" },
-        { name: "Lease", path: "/property/lease" },
+        { name: "Sell", path: "/sell" },
+        { name: "Lease", path: "/lease" },
       ],
     },
     { name: "Blogs", path: "/blogs", icon: <FaBlog /> },
