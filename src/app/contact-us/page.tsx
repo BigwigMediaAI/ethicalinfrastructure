@@ -4,11 +4,38 @@ import { Mail, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import banner from "../../../assets/contact.webp";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
     <div className=" bg-white min-h-screen text-black">
       <Navbar />
+
+      {/* Hero Section */}
+      <div className="relative h-[70vh] bg-black flex flex-col justify-center items-center text-center px-6 tracking-widest">
+        {/* Background Image */}
+        <Image
+          src={banner}
+          alt="Contact Banner"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
+
+        {/* Content */}
+        <div className="relative text-white z-20">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-widest">
+            Get in Touch With Us
+          </h1>
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
+            Have questions or need assistance? Our team is here to help you with
+            all your property needs. Let’s connect and turn your real estate
+            goals into reality.
+          </p>
+        </div>
+      </div>
 
       <section className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-8  ">
         <div className="pt-4">

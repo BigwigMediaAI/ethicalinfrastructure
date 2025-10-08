@@ -71,6 +71,10 @@ const Blogs = () => {
     <div className="min-h-screen bg-white text-black">
       <Nav />
 
+      <h2 className="text-4xl font-bold text-[var(--title)] pt-6 text-center">
+        Latest Blogs
+      </h2>
+
       <div className="w-11/12 md:w-5/6 mx-auto py-6">
         {/* Search Bar */}
         <div className="sticky top-[80px] z-10 bg-white py-4 mb-10">
