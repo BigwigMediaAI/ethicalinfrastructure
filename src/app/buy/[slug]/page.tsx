@@ -20,6 +20,7 @@ import Footer from "../../../../components/Footer";
 import HelpSection from "../../../../components/HelpSection";
 import "aos/dist/aos.css"; // CSS is fine at the top
 import ContactInfo from "../../../../components/ContactInfo";
+import Link from "next/link";
 
 interface Property {
   _id: string;
@@ -305,10 +306,11 @@ export default function BuyDetails() {
       )}
 
       {/* Floating Contact Widget */}
-      <div className="fixed bottom-6 right-6 bg-[var(--primary-color)] text-white p-4 rounded-full shadow-xl flex items-center gap-2 cursor-pointer hover:scale-105 transition">
-        <Phone /> Enquire
-      </div>
-
+      <Link href="tel:919999000183">
+        <div className="fixed bottom-6 right-6 bg-[var(--primary-color)] text-black p-4 rounded-full shadow-xl flex items-center gap-2 cursor-pointer hover:scale-105 transition">
+          <Phone />
+        </div>
+      </Link>
       <ContactInfo />
       <HelpSection />
       <Footer />
