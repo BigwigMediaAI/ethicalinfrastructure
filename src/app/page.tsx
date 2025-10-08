@@ -16,8 +16,19 @@ import PropertyGrid from "../../components/Properties";
 import BlogGrid from "../../components/Blogs";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
 import ContactSidebar from "../../components/ContactSidebar";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation duration in ms
+      easing: "ease-in-out",
+      once: true, // animate only once
+    });
+  }, []);
   return (
     <>
       <Navbar />
@@ -26,7 +37,11 @@ export default function Home() {
       <section className="w-full py-16 bg-[#021A33]">
         <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* ===== Sell Your Property Card ===== */}
-          <div className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96">
+          <div
+            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
+            data-aos="flip-left" // optional zoom-in for heading
+            data-aos-delay="200"
+          >
             <Image
               src={sellImage}
               alt="Sell Your Property"
@@ -34,7 +49,7 @@ export default function Home() {
             />
             {/* Overlay */}
             <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-bold mb-2 text-center">
+              <h3 className="text-4xl font-bold mb-2 text-center  tracking-widest">
                 Sell Your Property
               </h3>
               <p className="mb-4 text-center">
@@ -48,7 +63,11 @@ export default function Home() {
           </div>
 
           {/* ===== Buy A Property Card ===== */}
-          <div className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96">
+          <div
+            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
+            data-aos="flip-left" // optional zoom-in for heading
+            data-aos-delay="400"
+          >
             <Image
               src={buyImage}
               alt="Buy A Property"
@@ -56,14 +75,14 @@ export default function Home() {
             />
             {/* Overlay */}
             <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-bold mb-2 text-center">
+              <h3 className="text-4xl font-bold mb-2 text-center tracking-widest">
                 Buy A Property
               </h3>
               <p className="mb-4 text-center">
                 Find your perfect home with our expert guidance and tailored
                 property options.
               </p>
-              <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
+              <button className="flex items-center gap-2 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 px-6 rounded-lg transition">
                 <FiArrowRight size={18} />
               </button>
             </div>

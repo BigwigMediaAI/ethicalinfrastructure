@@ -12,19 +12,19 @@ interface ContactItem {
 const ContactInfo = () => {
   const contacts: ContactItem[] = [
     {
-      icon: <Phone size={40} className="text-red-500" />,
+      icon: <Phone size={40} className="text-blue-500" />,
       title: "Call Us",
       line1: "",
       line2: "+91 9999000183",
     },
     {
-      icon: <MapPin size={40} className="text-red-500" />,
+      icon: <MapPin size={40} className="text-blue-500" />,
       title: "Find Us",
       line1: "First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,",
       line2: "Gurugram, Haryana 122002",
     },
     {
-      icon: <Mail size={40} className="text-red-500" />,
+      icon: <Mail size={40} className="text-blue-500" />,
       title: "Email Us",
       line1: "Direct Email",
       line2: "webmail@eiplin.com",

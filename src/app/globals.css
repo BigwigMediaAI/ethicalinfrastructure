@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+:root {
+  --primary-color: #3b82f6;
+  --hover-color: #2563eb;
+  --primary-bgColor: #0a2342;
+  --title: #0a2342;
+}
+
 .backface-hidden {
   backface-visibility: hidden;
   transform-style: preserve-3d;

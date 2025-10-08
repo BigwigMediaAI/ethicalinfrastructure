@@ -4,11 +4,11 @@ import Image from "next/image";
 import bgImage from "../assets/fun-fact.jpg"; // replace with your image
 
 const statsData = [
-  { value: 12, label: "Our Happy Customers", suffix: "K" },
-  { value: 98, label: "Client Satisfaction Rate", suffix: "%" },
-  { value: 6, label: "Our Office Locations", suffix: "+" },
-  { value: 20, label: "Total Property Sale", suffix: "K" },
-  { value: 85, label: "Real Estate Agents", suffix: "+" },
+  { value: 12, label: "Our Happy\n Customers", suffix: "K" },
+  { value: 98, label: "Client Satisfaction\n Rate", suffix: "%" },
+  { value: 6, label: "Our Office\n Locations", suffix: "+" },
+  { value: 20, label: "Total Property\n Sale", suffix: "K" },
+  { value: 85, label: "Real Estate\n Agents", suffix: "+" },
 ];
 
 export default function StatsSection() {
@@ -78,7 +78,7 @@ export default function StatsSection() {
               {counts[index].toLocaleString()}
               {stat.suffix || ""}
             </h3>
-            <p className="text-gray-200 text-sm md:text-base max-w-[150px]">
+            <p className="text-gray-200 text-sm md:text-base max-w-[150px] whitespace-pre-line">
               {stat.label}
             </p>
           </div>
