@@ -38,7 +38,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2">
               <MapPin size={16} />
               <span>
-                FIRST FLOOR, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
+                First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
                 Gurugram, Haryana 122002
               </span>
             </div>

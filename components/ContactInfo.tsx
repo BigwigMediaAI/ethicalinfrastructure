@@ -20,7 +20,7 @@ const ContactInfo = () => {
     {
       icon: <MapPin size={40} className="text-blue-500" />,
       title: "Find Us",
-      line1: "FIRST FLOOR, A26/12 B, Golf Course Rd, A Block, DLF Phase 1",
+      line1: "First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,",
       line2: "Gurugram, Haryana 122002",
     },
     {
