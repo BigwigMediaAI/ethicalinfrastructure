@@ -210,7 +210,7 @@ export default function PropertyForm({
           >
             <option value="">Select purpose</option>
             <option value="Buy">Buy</option>
-            <option value="Offplan">Offplan</option>
+            <option value="Lease">Lease</option>
           </select>
         </div>
 
