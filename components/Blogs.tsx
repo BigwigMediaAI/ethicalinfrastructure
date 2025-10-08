@@ -34,7 +34,9 @@ export default function BlogGrid() {
   return (
     <section className="py-12 bg-gray-50">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold text-start mb-12">Latest Blogs</h2>
+        <h2 className="text-4xl font-bold text-start mb-12 tracking-widest text-[var(--title)]">
+          Latest Blogs
+        </h2>
 
         {/* ==== Mobile View: Swiper ==== */}
         <div className="block md:hidden">
@@ -70,10 +72,12 @@ export default function BlogGrid() {
 
         {/* ==== Desktop View: Grid ==== */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
+          {blogs.map((blog, index) => (
             <div
               key={blog.id}
               className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer"
+              data-aos="fade-up"
+              data-aos-delay={index * 300}
             >
               <div className="relative h-48 w-full">
                 <Image

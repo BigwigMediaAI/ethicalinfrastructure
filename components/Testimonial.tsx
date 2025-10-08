@@ -5,6 +5,9 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FaQuoteLeft } from "react-icons/fa";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const testimonials = [
   {
@@ -50,16 +53,25 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return (
     <section className="w-full py-12 font-raleway text-black relative">
       <div className="w-11/12 md:w-5/6 mx-auto">
         {/* Section Label */}
-        <p className="text-blue-600 text-xs tracking-widest uppercase font-semibold">
+        <p className="text-[var(--primary-color)] text-xs tracking-widest uppercase font-semibold">
           Testimonials
         </p>
 
         {/* Heading */}
-        <h2 className="text-4xl font-bold mt-2 mb-6">What People Say</h2>
+        <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          What People Say
+        </h2>
 
         {/* Swiper Slider */}
         <Swiper
@@ -99,7 +111,7 @@ export default function Testimonials() {
                   </h3>
 
                   {/* Initials Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold uppercase">
+                  <div className="w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center text-sm font-bold uppercase">
                     {testimonial.name
                       .split(" ")
                       .map((n) => n[0])

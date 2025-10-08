@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaBath, FaBed } from "react-icons/fa";
 import { PiRuler } from "react-icons/pi";
 import Image from "next/image";
@@ -7,6 +7,8 @@ import image1 from "../assets/9-768x532.webp";
 import image2 from "../assets/9-768x532.webp";
 import image3 from "../assets/9-768x532.webp";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const apartments = [
   {
@@ -56,6 +58,14 @@ const apartments = [
 export default function FeaturedApartments() {
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
   const nextSlide = () => {
     setIndex((prev) => (prev + 1) % apartments.length);
   };
@@ -71,27 +81,53 @@ export default function FeaturedApartments() {
       <div className="w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Text Section */}
         <div className="md:w-1/2">
-          <p className="text-blue-400 text-sm uppercase tracking-widest">
+          <p
+            className="text-[var(--primary-color)] text-sm uppercase tracking-widest"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
             Exclusive
           </p>
-          <h2 className="text-4xl font-bold mt-2 mb-6">Featured Apartments</h2>
-          <p className="text-gray-300 mb-4">
+          <h2
+            className="text-4xl font-bold mt-2 mb-6 tracking-widest"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            Featured Apartments
+          </h2>
+          <p
+            className="text-gray-300 mb-4"
+            data-aos="fade-right"
+            data-aos-delay="600"
+          >
             Dynamic approach and tireless commitment to facilitating
             transactions for buyers and sellers.
           </p>
-          <p className="text-gray-300 mb-6">
+          <p
+            className="text-gray-300 mb-6"
+            data-aos="fade-right"
+            data-aos-delay="800"
+          >
             In the vibrant neighborhood of Portland, Maryland, we are renowned
             among residents, developers, and professionals.
           </p>
           <Link href="/contact-us">
-            <button className="bg-blue-500 text-white px-6 py-2 hover:bg-blue-600 rounded-lg cursor-pointer">
+            <button
+              className="bg-[var(--primary-color)] text-white px-6 py-2 hover:bg-[var(--hover-color)] rounded-lg cursor-pointer"
+              data-aos="fade-right"
+              data-aos-delay="1000"
+            >
               Contact Us
             </button>
           </Link>
         </div>
 
         {/* Right Card Section */}
-        <div className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex min-h-[350px] transition-all duration-300 ease-in-out">
+        <div
+          className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex min-h-[350px] transition-all duration-300 ease-in-out"
+          data-aos="zoom-in"
+          data-aos-delay="1000"
+        >
           {/* Image */}
           <div className="w-1/2 relative">
             <Image

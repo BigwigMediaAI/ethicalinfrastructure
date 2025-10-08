@@ -50,19 +50,15 @@ export default function Footer() {
           <h3 className="font-semibold text-white mb-4">Featured Houses</h3>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center space-x-2">
-              <Home size={16} />
               <span>Villa</span>
             </li>
             <li className="flex items-center space-x-2">
-              <Home size={16} />
               <span>Commercial</span>
             </li>
             <li className="flex items-center space-x-2">
-              <Home size={16} />
               <span>Farm Houses</span>
             </li>
             <li className="flex items-center space-x-2">
-              <Home size={16} />
               <span>Apartments</span>
             </li>
           </ul>
@@ -89,9 +85,6 @@ export default function Footer() {
 
         {/* Map Location (aligned at far right) */}
         <div>
-          <h3 className="font-semibold text-white mb-4">
-            Ethical Infrastructure Location
-          </h3>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2037326384284!2d77.0934439!3d28.4734105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d7d137311f%3A0xc0cbc38c4452175d!2sETHICAL%20INFRASTRUCTURES%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1759831704667!5m2!1sen!2sin"
             width="100%"
@@ -107,8 +100,10 @@ export default function Footer() {
       <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-center text-sm">
         <p>
           Copyright © 2025{" "}
-          <span className="text-blue-600">Ethical Infrastructure</span>. All
-          Rights Reserved.
+          <span className="text-[var(--primary-color)]">
+            Ethical Infrastructure
+          </span>
+          . All Rights Reserved.
         </p>
 
         <div className="flex space-x-4 mt-4 md:mt-0">

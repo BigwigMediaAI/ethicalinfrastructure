@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,8 @@ import image1 from "../assets/property/property1.jpg";
 import image2 from "../assets/property/property2.jpg";
 import image3 from "../assets/property/property3.jpg";
 import image4 from "../assets/property/property4.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const properties = [
   {
@@ -54,6 +56,14 @@ const properties = [
 ];
 
 export default function PropertyGrid() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
   return (
     <section className="py-12">
       <div className="w-11/12 md:w-5/6 mx-auto">
@@ -63,15 +73,14 @@ export default function PropertyGrid() {
 
         {/* ==== Mobile View: Swiper ==== */}
         <div className="block md:hidden">
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={1.2}
-            centeredSlides={false}
-            grabCursor={true}
-          >
-            {properties.map((property) => (
+          <Swiper spaceBetween={16} slidesPerView={1.2} grabCursor={true}>
+            {properties.map((property, index) => (
               <SwiperSlide key={property.id}>
-                <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+                <div
+                  className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 200} // stagger cards by 200ms
+                >
                   <div className="relative h-56 w-full">
                     <Image
                       src={property.image}
@@ -85,7 +94,7 @@ export default function PropertyGrid() {
                       {property.title}
                     </h3>
                     <p className="text-gray-500 text-sm">{property.location}</p>
-                    <p className=" font-semibold">{property.price}</p>
+                    <p className="font-semibold">{property.price}</p>
                     <div className="flex items-center gap-4 mt-2 text-gray-600">
                       <div className="flex items-center gap-1">
                         <FaBed /> {property.bedrooms}
@@ -106,10 +115,12 @@ export default function PropertyGrid() {
 
         {/* ==== Desktop View: Grid ==== */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {properties.map((property) => (
+          {properties.map((property, index) => (
             <div
               key={property.id}
               className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
+              data-aos="fade-up"
+              data-aos-delay={index * 200} // stagger cards by 200ms
             >
               <div className="relative h-56 w-full">
                 <Image
@@ -120,9 +131,11 @@ export default function PropertyGrid() {
                 />
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <h3 className="text-lg font-bold">{property.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--primary-color)]">
+                  {property.title}
+                </h3>
                 <p className="text-gray-500 text-sm">{property.location}</p>
-                <p className="text-blue-600 font-semibold">{property.price}</p>
+                <p className="font-semibold">{property.price}</p>
                 <div className="flex items-center gap-4 mt-2 text-gray-600">
                   <div className="flex items-center gap-1">
                     <FaBed /> {property.bedrooms}
