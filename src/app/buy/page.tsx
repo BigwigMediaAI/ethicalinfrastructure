@@ -146,7 +146,7 @@ export default function BuyPage() {
             }}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
               selectedType === type
-                ? "bg-blue-600 text-white"
+                ? "bg-[var(--primary-color)] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
             variants={{
@@ -201,7 +201,7 @@ export default function BuyPage() {
                         src={p.images[0]}
                         alt={p.title}
                         fill
-                        className="object-cover"
+                        className="object-cover rounded"
                         unoptimized
                       />
                     ) : (
@@ -212,12 +212,12 @@ export default function BuyPage() {
                   </div>
 
                   {/* Info */}
-                  <div className="p-4 bg-[var(--bg-color)]">
-                    <h3 className="font-bold text-[var(--title)] text-lg line-clamp-1">
+                  <div className="p-4">
+                    <h3 className="font-bold text-[var(--primary-color)] text-lg line-clamp-1">
                       {p.title}
                     </h3>
                     {p.location && (
-                      <p className="flex items-center text-[var(--primary-color)] text-sm mt-1">
+                      <p className="flex items-center text-sm mt-1">
                         <MapPin size={16} className="mr-1" /> {p.location}
                       </p>
                     )}
@@ -234,16 +234,12 @@ export default function BuyPage() {
 
                     <button
                       onClick={() => router.push(`/buy/${p.slug}`)}
-                      className="relative px-6 py-3 bg-blue-500 text-white font-semibold 
+                      className="relative px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold 
                       overflow-hidden group cursor-pointer transition-all duration-300 w-full mt-4 rounded"
                     >
                       <span className="relative z-10 tracking-widest">
                         View Details
                       </span>
-                      <span
-                        className="absolute inset-0 w-full h-full bg-gradient-to-r from-black/20 to-transparent 
-                        translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"
-                      ></span>
                     </button>
                   </div>
                 </motion.div>
@@ -272,7 +268,7 @@ export default function BuyPage() {
                       onClick={() => setCurrentPage(num as number)}
                       className={`px-3 py-2 rounded border ${
                         currentPage === num
-                          ? "bg-blue-500 text-white"
+                          ? "bg-[var(--primary-color)] text-white"
                           : "bg-white hover:bg-gray-100"
                       }`}
                     >

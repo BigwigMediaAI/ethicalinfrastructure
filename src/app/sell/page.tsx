@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Phone,
@@ -17,8 +17,17 @@ import banner from "../../../assets/sell.jpg";
 
 import Image from "next/image";
 import SellForm from "../../../components/SellForm";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Sell() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   const [showForm, setShowForm] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -51,7 +60,7 @@ function Sell() {
 
         {/* Content */}
         <div className="relative text-white z-20">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-widest">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-widest">
             Get the Best Value for Your Property
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
@@ -72,12 +81,18 @@ function Sell() {
         ref={sellRef}
         className="py-12 bg-white w-11/12 md:w-5/6 text-[var(--primary-color)] mx-auto tracking-widest"
       >
-        <h2 className="uppercase text-2xl md:text-3xl font-semibold  font-amatic text-center mb-12 ">
+        <h2 className="text-4xl  font-bold   text-center mb-12 text-[var(--title)]">
           Our Selling Process
         </h2>
         <div className="grid md:grid-cols-3 gap-10 ">
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--bg-color)]">
-            <ClipboardList size={40} className="text-blue-500 mb-4" />
+          <div
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            data-aos="fade-up"
+          >
+            <ClipboardList
+              size={40}
+              className="text-[var(--primary-color)] mb-4"
+            />
             <h3 className="text-xl font-semibold mb-2 text-black">
               Step 1: Share Your Details
             </h3>
@@ -86,8 +101,12 @@ function Sell() {
               about your property.
             </p>
           </div>
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--bg-color)]">
-            <Home size={40} className="text-blue-500 mb-4" />
+          <div
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <Home size={40} className="text-[var(--primary-color)] mb-4" />
             <h3 className="text-xl font-semibold mb-2 text-black">
               Step 2: Property Evaluation
             </h3>
@@ -96,8 +115,15 @@ function Sell() {
               market price.
             </p>
           </div>
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--bg-color)]">
-            <DollarSign size={40} className="text-blue-500 mb-4" />
+          <div
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            data-aos="fade-up"
+            data-aos-delay="800"
+          >
+            <DollarSign
+              size={40}
+              className="text-[var(--primary-color)] mb-4"
+            />
             <h3 className="text-xl font-semibold mb-2 text-black">
               Step 3: Close the Deal
             </h3>
@@ -110,8 +136,8 @@ function Sell() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 bg-[var(--bg-color)] text-[var(--primary-color)] tracking-widest">
-        <h2 className="uppercase text-2xl md:text-3xl font-semibold font-amatic text-center mb-12">
+      <section className="py-12  tracking-widest">
+        <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)]">
           Why Sell With Us?
         </h2>
         <div className="grid md:grid-cols-3 gap-10 w-11/12 md:w-5/6 mx-auto">
@@ -132,8 +158,10 @@ function Sell() {
             <div
               key={i}
               className="flex items-center gap-4 p-6 rounded-xl bg-white shadow"
+              data-aos="fade-up"
+              data-aos-delay={i * 300}
             >
-              <CheckCircle className="text-blue-500" size={32} />
+              <CheckCircle className="text-[var(--primary-color)]" size={32} />
               <div>
                 <h3 className="text-lg font-semibold text-black">
                   {item.title}
@@ -147,7 +175,7 @@ function Sell() {
 
       {/* Sell Form */}
       <section className="py-16 bg-white w-11/12 md:w-5/6 mx-auto ">
-        <h2 className="uppercase text-2xl md:text-3xl font-semibold font-amatic text-center mb-12  ">
+        <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)] ">
           Get In Touch With Us
         </h2>
         <div className="grid md:grid-cols-2 gap-10 items-center tracking-widest">
@@ -168,7 +196,7 @@ function Sell() {
             {/* Button to toggle form */}
             <button
               onClick={() => setShowForm(!showForm)}
-              className="inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition"
+              className="inline-block bg-[var(--primary-color)] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-[var(--hover-color)] transition"
             >
               List Your Property
             </button>
@@ -196,7 +224,7 @@ function Sell() {
         </div>
       )}
 
-      <div className="bg-blue-500 text-white text-center py-10 px-4 mt-12">
+      <div className="bg-[var(--primary-color)] text-white text-center py-10 px-4 mt-12">
         <h2 className="text-3xl font-bold mb-4">
           Ready to Start Your Dream Project?
         </h2>
