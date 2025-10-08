@@ -81,10 +81,12 @@ export default function BlogGrid() {
 
             {/* Desktop Grid */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogs.map((blog) => (
+              {blogs.map((blog, index) => (
                 <div
                   key={blog._id}
                   className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 300}
                   onClick={() => (window.location.href = `/blogs/${blog.slug}`)}
                 >
                   <div className="relative h-48 w-full">

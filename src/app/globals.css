@@ -79,3 +79,68 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+.blog-content {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content a {
+  color: #b10203; /* Tailwind blue-600 */
+  text-decoration: none;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #d1d5db; /* gray-300 */
+  padding-left: 1rem;
+  color: #6b7280; /* gray-500 */
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.blog-content ul {
+  list-style-type: disc; /* bullets */
+}
+
+.blog-content ol {
+  list-style-type: decimal; /* numbers */
+}

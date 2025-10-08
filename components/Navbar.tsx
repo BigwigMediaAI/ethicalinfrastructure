@@ -14,6 +14,8 @@ import {
   FaBuilding,
   FaEnvelope,
   FaBlog,
+  FaYoutube,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { BsWhatsapp } from "react-icons/bs";
@@ -49,12 +51,36 @@ const Navbar = () => {
       {/* ===== Top Bar ===== */}
       <div className="hidden bg-[var(--primary-bgColor)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
         <div className="flex items-center gap-4">
-          <FaFacebookF className="cursor-pointer hover:text-blue-400" />
-          <FaLinkedinIn className="cursor-pointer hover:text-blue-400" />
-          <FaPinterestP className="cursor-pointer hover:text-blue-400" />
-          <FaVimeoV className="cursor-pointer hover:text-blue-400" />
-          <FaInstagram className="cursor-pointer hover:text-blue-400" />
-          <FaTwitter className="cursor-pointer hover:text-blue-400" />
+          <Link
+            href="https://www.facebook.com/profile.php?id=61581857552733"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF className="cursor-pointer hover:text-blue-600 transition" />
+          </Link>
+
+          <Link
+            href="https://www.linkedin.com/company/109224060/admin/dashboard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn className="cursor-pointer hover:text-blue-400 transition" />
+          </Link>
+
+          <Link
+            href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="cursor-pointer hover:text-pink-400 transition" />
+          </Link>
+          <Link
+            href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube className="cursor-pointer hover:text-red-600 transition" />
+          </Link>
         </div>
 
         <div className="flex items-center gap-7">
@@ -62,7 +88,7 @@ const Navbar = () => {
             href="mailto:contact@mail.com"
             className="flex items-center gap-2"
           >
-            contact@mail.com
+            webmail@eiplin.com
           </Link>
           <Link
             href="https://wa.me/+919999000172"
@@ -245,11 +271,37 @@ const Navbar = () => {
                 <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
                   Our social
                 </h3>
-                <div className="flex gap-3  text-xl text-gray-600 mb-5">
-                  <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-                  <FaInstagram className="hover:text-pink-500 cursor-pointer" />
-                  <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
-                  <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="https://www.facebook.com/profile.php?id=61581857552733"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebookF className="cursor-pointer text-gray-500 hover:text-blue-600 transition text-2xl" />
+                  </Link>
+
+                  <Link
+                    href="https://www.linkedin.com/company/109224060/admin/dashboard/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaLinkedinIn className="cursor-pointer text-gray-500 hover:text-blue-400 transition text-2xl" />
+                  </Link>
+
+                  <Link
+                    href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaInstagram className="cursor-pointer text-gray-500 hover:text-pink-400 transition text-2xl" />
+                  </Link>
+                  <Link
+                    href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaYoutube className="cursor-pointer text-gray-500 hover:text-red-600 transition text-2xl" />
+                  </Link>
                 </div>
               </div>
               <hr />
@@ -262,6 +314,9 @@ const Navbar = () => {
                   <p className="flex items-center gap-2">
                     <FiMail />
                     webmail@eiplin.com
+                  </p>
+                  <p className="flex items-center gap-2 mt-2">
+                    <FaWhatsapp /> +91 9999000172
                   </p>
                   <p className="flex items-center gap-2 mt-2">
                     <MdPhone /> +91 9999000183

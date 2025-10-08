@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import Image from "next/image";
+import ContactInfo from "../../../../components/ContactInfo";
 
 interface BlogType {
   title: string;
@@ -84,8 +85,8 @@ export default async function BlogDetails({
 
       <Navbar />
 
-      <section className="w-11/12 md:w-5/6 mx-auto pt-[100px] md:pt-[140px] text-left">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-3">
+      <section className="w-11/12 md:w-5/6 mx-auto text-left pt-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-[var(--title)] leading-tight mb-3">
           {blog.title}
         </h1>
         <p className="text-gray-500 text-sm md:text-base mb-6">
@@ -130,14 +131,7 @@ export default async function BlogDetails({
         )}
       </div>
 
-      <section className="bg-[var(--primary-color)] text-white text-center py-16 px-6 mt-20">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Start Your Dream Project?
-        </h2>
-        <button className="bg-white text-[var(--primary-color)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-          Get Started
-        </button>
-      </section>
+      <ContactInfo />
 
       <Footer />
     </div>

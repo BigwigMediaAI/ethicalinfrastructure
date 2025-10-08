@@ -86,7 +86,7 @@ const Blogs = () => {
         {/* Blog Cards */}
         {loading ? (
           <div className="flex flex-col justify-center items-center ">
-            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-3" />
+            <div className="w-12 h-12 border-4 border-[var(--primary-color)] border-t-transparent rounded-full animate-spin mb-3" />
             <p className="text-gray-600 text-lg">Loading blogs...</p>
           </div>
         ) : currentBlogs.length === 0 ? (

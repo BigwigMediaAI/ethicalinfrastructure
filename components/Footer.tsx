@@ -97,7 +97,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-center text-sm">
+      <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm">
         <p>
           Copyright © 2025{" "}
           <span className="text-[var(--primary-color)]">
@@ -105,8 +105,16 @@ export default function Footer() {
           </span>
           . All Rights Reserved.
         </p>
+        <p>
+          Made & Marketed by{" "}
+          <span className="text-[var(--primary-color)]">
+            <Link href="https://www.bigwigmediadigital.com/">
+              Bigwig Media Digital
+            </Link>
+          </span>
+        </p>
 
-        <div className="flex space-x-4 mt-4 md:mt-0">
+        {/* <div className="flex space-x-4 mt-4 md:mt-0">
           <Link href="#">
             <i className="fab fa-facebook-f"></i>
           </Link>
@@ -119,7 +127,7 @@ export default function Footer() {
           <Link href="#">
             <i className="fab fa-whatsapp"></i>
           </Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
