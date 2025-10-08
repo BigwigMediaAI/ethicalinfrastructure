@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "aos": "^2.2.0",
     "axios": "^1.12.2",
+    "framer-motion": "^12.23.22",
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.544.0",
     "next": "15.5.4",
@@ -19,11 +21,13 @@
     "react-icons": "^5.5.0",
     "react-phone-number-input": "^3.4.12",
     "react-quill-new": "^3.6.0",
-    "swiper": "^12.0.2"
+    "swiper": "^12.0.2",
+    "yet-another-react-lightbox": "^1.14.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
