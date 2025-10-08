@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "aos": "^2.2.0",
+    "aos": "^2.3.4",
     "axios": "^1.12.2",
     "framer-motion": "^12.23.22",
     "fuse.js": "^7.1.0",

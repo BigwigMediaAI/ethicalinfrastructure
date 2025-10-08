@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <header className="w-full sticky top-0 z-50 bg-white shadow-md">
       {/* ===== Top Bar ===== */}
-      <div className="hidden bg-[#0a2342] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
+      <div className="hidden bg-[var(--primary-bgColor)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
         <div className="flex items-center gap-4">
           <FaFacebookF className="cursor-pointer hover:text-blue-400" />
           <FaLinkedinIn className="cursor-pointer hover:text-blue-400" />
@@ -86,7 +86,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <li
               key={item.name}
-              className="relative group"
+              className="relative group tracking-widest"
               onMouseEnter={() =>
                 setDropdownOpen(item.name === "Property" ? "Property" : null)
               }
@@ -95,13 +95,13 @@ const Navbar = () => {
               {item.path ? (
                 <Link
                   href={item.path}
-                  className="hover:text-blue-500 transition flex items-center gap-1"
+                  className="hover:text-[var(--hover-color)] transition flex items-center gap-1"
                 >
                   {item.name}
                   {item.dropdown && <BiChevronDown className="text-lg" />}
                 </Link>
               ) : (
-                <span className="cursor-pointer hover:text-blue-500 transition flex items-center gap-1">
+                <span className="cursor-pointer hover:text-[var(--hover-color)] transition flex items-center gap-1">
                   {item.name}
                   {item.dropdown && <BiChevronDown className="text-lg" />}
                 </span>
@@ -130,7 +130,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={() => setSidePanelOpen(true)}
-            className="text-black hover:text-blue-600 transition cursor-pointer"
+            className="text-black hover:text-[var(--hover-color)] transition cursor-pointer"
           >
             <BiMenu size={32} />
           </button>

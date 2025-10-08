@@ -55,9 +55,11 @@ const properties = [
 
 export default function PropertyGrid() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-12">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Properties</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)] tracking-widest">
+          Our Properties
+        </h2>
 
         {/* ==== Mobile View: Swiper ==== */}
         <div className="block md:hidden">
@@ -79,11 +81,11 @@ export default function PropertyGrid() {
                     />
                   </div>
                   <div className="p-4 flex flex-col gap-2">
-                    <h3 className="text-lg font-bold">{property.title}</h3>
+                    <h3 className="text-lg font-bold text-[var(--primary-color)]">
+                      {property.title}
+                    </h3>
                     <p className="text-gray-500 text-sm">{property.location}</p>
-                    <p className="text-blue-600 font-semibold">
-                      {property.price}
-                    </p>
+                    <p className=" font-semibold">{property.price}</p>
                     <div className="flex items-center gap-4 mt-2 text-gray-600">
                       <div className="flex items-center gap-1">
                         <FaBed /> {property.bedrooms}

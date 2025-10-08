@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import hero from "../assets/book_wide-1.webp";
 import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +21,10 @@ const Hero = () => {
   const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true }); // animation duration 1s, animate once
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -92,12 +98,20 @@ const Hero = () => {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-5/6 mx-auto">
         {/* Left Content */}
-        <div className="md:w-1/2 space-y-6 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+        <div className="md:w-1/2 space-y-6 text-center md:text-left tracking-widest">
+          <h1
+            className="text-4xl font-bold leading-tight "
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
             Get More Real Estate Leads With{" "}
             <span className="text-blue-400">Ethical Infrastructure</span>
           </h1>
-          <p className="text-gray-200 text-lg max-w-lg">
+          <p
+            className="text-gray-200 text-lg max-w-lg"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
             Engage with our professional real estate agents to sell, buy or rent
             your home. Get emails directly to your inbox and manage the lead
             with the built-in CRM.
@@ -105,8 +119,13 @@ const Hero = () => {
         </div>
 
         {/* Right Contact Form */}
-        <div className="mt-10 mb-10 md:w-1/3 bg-white text-black rounded-lg shadow-lg p-6 md:p-8">
-          <h3 className="text-2xl font-semibold mb-2">Get In Touch</h3>
+        <div
+          className="mt-6 mb-6 md:w-1/3 bg-white text-black rounded-lg shadow-lg p-6"
+          data-aos="zoom in"
+        >
+          <h3 className="text-2xl font-semibold mb-2 tracking-widest">
+            Get In Touch
+          </h3>
           <p className="text-gray-600 text-sm mb-6">
             Fill out this form and one of our agents will be in touch with you
             soon.
@@ -126,7 +145,7 @@ const Hero = () => {
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                 required
               />
 
@@ -139,7 +158,7 @@ const Hero = () => {
                 onChange={(value) =>
                   setFormData({ ...formData, phone: value || "" })
                 }
-                className="phone-input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="phone-input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               />
 
               <input
@@ -148,14 +167,14 @@ const Hero = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                 required
               />
               <select
                 name="purpose"
                 value={formData.purpose}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               >
                 <option value="buy">Buy</option>
                 <option value="sell">Sell</option>
@@ -166,12 +185,12 @@ const Hero = () => {
                 placeholder="Message"
                 value={formData.message}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               ></textarea>
 
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+                className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 rounded"
                 disabled={loading}
               >
                 {loading ? "Sending OTP..." : "Send OTP"}
@@ -190,12 +209,12 @@ const Hero = () => {
                 placeholder="Enter OTP"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                 required
               />
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+                className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 rounded"
                 disabled={loading}
               >
                 {loading ? "Verifying OTP..." : "Verify OTP & Submit"}
