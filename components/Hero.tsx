@@ -100,7 +100,7 @@ const Hero = () => {
         {/* Left Content */}
         <div className="md:w-1/2 space-y-6 text-center md:text-left tracking-widest">
           <h1
-            className="text-4xl font-bold leading-tight "
+            className="text-4xl font-bold"
             data-aos="fade-right"
             data-aos-delay="200"
           >
@@ -112,9 +112,10 @@ const Hero = () => {
             data-aos="fade-right"
             data-aos-delay="400"
           >
-            Engage with our professional real estate agents to sell, buy or rent
-            your home. Get emails directly to your inbox and manage the lead
-            with the built-in CRM.
+            Engage with our professional real estate agents to buy, sell, or
+            lease properties. We specialize in Residential, Commercial,
+            Industrial, Pre-Leased properties, and Farmhouses. Receive leads
+            directly to your inbox and manage them with our built-in CRM.
           </p>
         </div>
 

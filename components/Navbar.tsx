@@ -270,11 +270,11 @@ const Navbar = () => {
                   About Us
                 </h3>
                 <p className="text-gray-500 text-md leading-relaxed">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                  dolorem quaerat libero optio fuga dolores dicta neque nesciunt
-                  culpa aspernatur ipsa harum quae, rem dolorum temporibus
-                  excepturi reprehenderit quas, consectetur officiis ut impedit
-                  esse tenetur animi qui! Earum, delectus sapiente?
+                  ETHICAL INFRASTRUCTURES PRIVATE LIMITED delivers personalized,
+                  cost-effective real estate solutions with a focus on customer
+                  satisfaction. Our dedicated team provides expert guidance,
+                  site visits, and market updates to ensure seamless, informed,
+                  and tailored property transactions for every client.
                 </p>
               </div>
 

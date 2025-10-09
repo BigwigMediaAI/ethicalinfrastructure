@@ -44,11 +44,12 @@ export default function CompanySection() {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-              neque omnis ducimus doloremque natus reprehenderit, consequatur,
-              unde veritatis dignissimos maxime aliquam quia distinctio maiores
-              quo voluptas earum illo? Voluptates, dicta at quisquam earum
-              ratione corrupti quia maxime similique quam? Rem!
+              To be a trusted leader in real estate by providing transparent,
+              personalized, and cost-effective solutions. We aim to exceed
+              client expectations through expert guidance, market insights, and
+              dedicated support, ensuring every property transaction delivers
+              long-term value, satisfaction, and a seamless, stress-free
+              experience for our clients.
             </p>
           </div>
 
@@ -69,9 +70,9 @@ export default function CompanySection() {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              fringilla, nunc nec placerat consectetur, justo nulla lacinia
-              lorem, sit amet egestas quam elit at nunc. Suspendisse potenti.
+              Ethical Infrastructures Pvt. Ltd. is dedicated to delivering
+              personalized, cost-effective real estate solutions focused on
+              client needs and long-term value.
             </p>
             <Image
               src={sampleImage2}
@@ -85,9 +86,9 @@ export default function CompanySection() {
               data-aos="fade-up"
               data-aos-delay="800"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-              vehicula diam at quam congue, in tincidunt libero commodo. Sed sit
-              amet sapien non justo feugiat ullamcorper.
+              Our expert team ensures every client receives complete guidance,
+              market insights, and seamless service, from property search to
+              successful investment.
             </p>
           </div>
         </div>

@@ -108,8 +108,8 @@ export default function FeaturedApartments() {
             data-aos="fade-right"
             data-aos-delay="800"
           >
-            In the vibrant neighborhood of Portland, Maryland, we are renowned
-            among residents, developers, and professionals.
+            Based in Gurugram, we are renowned for providing expert guidance and
+            personalized services to clients across all real estate sectors.
           </p>
           <Link href="/contact-us">
             <button

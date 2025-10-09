@@ -25,7 +25,7 @@ const WeHelp = () => {
             data-aos="fade-right"
             data-aos-delay="200"
           >
-            We help our clients sell, buy or rent properties
+            We help our clients sell, buy or lease properties
           </h2>
 
           <p
@@ -33,17 +33,18 @@ const WeHelp = () => {
             data-aos="fade-right"
             data-aos-delay="400"
           >
-            Utilizing our exceptional experience and knowledge of the luxury
-            waterfront markets, we serve an extensive and elite worldwide client
-            base with honesty and transparency.
+            With years of expertise in Residential, Commercial, Industrial,
+            Leasing, Pre-Leased, and FarmHouse properties, we provide trusted
+            guidance and personalized services to clients in Gurugram and
+            beyond.
           </p>
 
           <ul className="space-y-3 text-[var(--text)]">
             {[
-              "24/7 Support available",
-              "Expert legal support from us",
-              "Free submission on our website",
-              "Home loans assistance from our staff",
+              "24/7 client support",
+              "Expert legal and documentation assistance",
+              "Property listing and promotion services",
+              "Dedicated team for smooth transactions",
             ].map((item, index) => (
               <li
                 key={index}
@@ -56,6 +57,7 @@ const WeHelp = () => {
               </li>
             ))}
           </ul>
+
           <Link href="/contact-us">
             <button
               className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-medium px-6 py-2 rounded-md shadow-md transition cursor-pointer"
