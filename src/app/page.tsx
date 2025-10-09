@@ -19,6 +19,7 @@ import ContactSidebar from "../../components/ContactSidebar";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 export default function Home() {
   // Initialize AOS
@@ -56,9 +57,11 @@ export default function Home() {
                 Maximize your property&#39;s value with our expert selling
                 strategies and personalized service.
               </p>
-              <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
-                <FiArrowRight size={18} />
-              </button>
+              <Link href="/sell">
+                <button className="cursor-pointer flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
+                  <FiArrowRight size={18} />
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -82,9 +85,11 @@ export default function Home() {
                 Find your perfect home with our expert guidance and tailored
                 property options.
               </p>
-              <button className="flex items-center gap-2 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 px-6 rounded-lg transition">
-                <FiArrowRight size={18} />
-              </button>
+              <Link href="/buy">
+                <button className="cursor-pointer flex items-center gap-2 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 px-6 rounded-lg transition">
+                  <FiArrowRight size={18} />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
