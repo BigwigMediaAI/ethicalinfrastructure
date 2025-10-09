@@ -18,7 +18,7 @@ export default function CompanySection() {
   }, []);
 
   return (
-    <section className="w-full py-16 bg-gray-50">
+    <section className="w-full py-16 bg-[var(--white)]/40">
       <div className="w-11/12 md:w-5/6 mx-auto">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-stretch">
           {/* Left Side */}
@@ -40,7 +40,7 @@ export default function CompanySection() {
               Our Vision
             </h3>
             <p
-              className="text-gray-700 flex-1"
+              className="text-[var(--text)] flex-1"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -65,7 +65,7 @@ export default function CompanySection() {
               About the Company
             </h3>
             <p
-              className="text-gray-700 mb-4 flex-1"
+              className="text-[var(--text)] mb-4 flex-1"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -81,7 +81,7 @@ export default function CompanySection() {
               data-aos-delay="600"
             />
             <p
-              className="text-gray-700 flex-1"
+              className="text-[var(--text)] flex-1"
               data-aos="fade-up"
               data-aos-delay="800"
             >

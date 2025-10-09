@@ -38,7 +38,7 @@ export default function BlogGrid() {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 ">
       <div className="w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-4xl font-bold text-start mb-12">Latest Blogs</h2>
 
@@ -55,7 +55,7 @@ export default function BlogGrid() {
               <Swiper spaceBetween={16} slidesPerView={1.2} grabCursor>
                 {blogs.map((blog) => (
                   <SwiperSlide key={blog._id}>
-                    <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer">
+                    <div className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer">
                       <div className="relative h-48 w-full">
                         <Image
                           src={blog.coverImage}
@@ -65,7 +65,9 @@ export default function BlogGrid() {
                         />
                       </div>
                       <div className="p-4 flex flex-col gap-2">
-                        <h3 className="text-lg font-bold">{blog.title}</h3>
+                        <h3 className="text-lg font-bold text-[var(--black)]">
+                          {blog.title}
+                        </h3>
                         <div className="flex justify-between text-gray-500 text-sm mt-2">
                           <span>By {blog.author}</span>
                           <span>
@@ -84,7 +86,7 @@ export default function BlogGrid() {
               {blogs.map((blog, index) => (
                 <div
                   key={blog._id}
-                  className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer"
+                  className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer"
                   data-aos="fade-up"
                   data-aos-delay={index * 300}
                   onClick={() => (window.location.href = `/blogs/${blog.slug}`)}

@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function ContactPage() {
   return (
-    <div className=" bg-white min-h-screen text-black">
+    <div className="  min-h-screen ">
       <Navbar />
 
       {/* Hero Section */}

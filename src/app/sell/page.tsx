@@ -29,7 +29,6 @@ function Sell() {
     });
   }, []);
   const [showForm, setShowForm] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const sellRef = useRef<HTMLDivElement | null>(null);
   const scrollToNext = () => {
@@ -79,7 +78,7 @@ function Sell() {
 
       <section
         ref={sellRef}
-        className="py-12 bg-white w-11/12 md:w-5/6 text-[var(--primary-color)] mx-auto tracking-widest"
+        className="py-12  w-11/12 md:w-5/6 mx-auto tracking-widest"
       >
         <h2 className="text-4xl  font-bold   text-center mb-12 text-[var(--title)]">
           Our Selling Process
@@ -93,10 +92,10 @@ function Sell() {
               size={40}
               className="text-[var(--primary-color)] mb-4"
             />
-            <h3 className="text-xl font-semibold mb-2 text-black">
+            <h3 className="text-xl font-semibold mb-2 text-[var(--title)]">
               Step 1: Share Your Details
             </h3>
-            <p className="text-gray-700">
+            <p className="text-[var(--text)]">
               Fill out our form or call us directly to provide basic information
               about your property.
             </p>
@@ -107,10 +106,10 @@ function Sell() {
             data-aos-delay="400"
           >
             <Home size={40} className="text-[var(--primary-color)] mb-4" />
-            <h3 className="text-xl font-semibold mb-2 text-black">
+            <h3 className="text-xl font-semibold mb-2 text-[var(--title)]">
               Step 2: Property Evaluation
             </h3>
-            <p className="text-gray-700">
+            <p className="text-[var(--text)]">
               Our experts will evaluate your property and suggest the best
               market price.
             </p>
@@ -124,10 +123,10 @@ function Sell() {
               size={40}
               className="text-[var(--primary-color)] mb-4"
             />
-            <h3 className="text-xl font-semibold mb-2 text-black">
+            <h3 className="text-xl font-semibold mb-2 text-[var(--title)]">
               Step 3: Close the Deal
             </h3>
-            <p className="text-gray-700">
+            <p className="text-[var(--text)]">
               We connect you with genuine buyers and ensure a hassle-free
               closing process.
             </p>
@@ -157,16 +156,16 @@ function Sell() {
           ].map((item, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 p-6 rounded-xl bg-white shadow"
+              className="flex items-center gap-4 p-6 rounded-xl bg-[var(--desktop-sidebar)] shadow"
               data-aos="fade-up"
               data-aos-delay={i * 300}
             >
               <CheckCircle className="text-[var(--primary-color)]" size={32} />
               <div>
-                <h3 className="text-lg font-semibold text-black">
+                <h3 className="text-lg font-semibold text-[var(--black)]">
                   {item.title}
                 </h3>
-                <p className="text-gray-700">{item.desc}</p>
+                <p className="text-[var(--text)]">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -174,13 +173,13 @@ function Sell() {
       </section>
 
       {/* Sell Form */}
-      <section className="py-16 bg-white w-11/12 md:w-5/6 mx-auto ">
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto ">
         <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)] ">
           Get In Touch With Us
         </h2>
         <div className="grid md:grid-cols-2 gap-10 items-center tracking-widest">
           <div className="space-y-6">
-            <p className="text-md text-gray-600">
+            <p className="text-md text-[var(--text)]">
               Want to sell your property quickly and easily? Fill out the form
               or contact us directly.
             </p>
@@ -206,7 +205,7 @@ function Sell() {
 
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="relative bg-white w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-xl">
+          <div className="relative bg-[var(--desktop-sidebar)] w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-xl">
             {/* Close button */}
             <button
               onClick={() => setShowForm(false)}

@@ -22,6 +22,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { MdPhone } from "react-icons/md";
 import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
+import ThemeToggle from "./Theme-toggle";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white shadow-md">
+    <header className="w-full sticky top-0 z-50 bg-[var(--white)] shadow-md">
       {/* ===== Top Bar ===== */}
       <div className="hidden bg-[var(--primary-bgColor)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
         <div className="flex items-center gap-4">
@@ -104,7 +105,14 @@ const Navbar = () => {
       <nav className="flex items-center justify-between px-6 py-2 relative">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logo} alt="Logo" width={120} height={45} priority />
+          <Image
+            src={logo}
+            alt="Logo"
+            width={120}
+            height={45}
+            priority
+            className="logo-invert"
+          />
         </Link>
 
         {/* ===== Desktop Menu ===== */}
@@ -154,21 +162,25 @@ const Navbar = () => {
 
         {/* Right Icons */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle />
           <button
             onClick={() => setSidePanelOpen(true)}
-            className="text-black hover:text-[var(--hover-color)] transition cursor-pointer"
+            className="text-[var(--black)] hover:text-[var(--primary-color)]  transition cursor-pointer"
           >
             <BiMenu size={32} />
           </button>
         </div>
 
         {/* ===== Mobile Menu Button ===== */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-black"
-        >
-          <BiMenu size={36} />
-        </button>
+        <div className="flex gap-5 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className=" text-[var(--black)] "
+          >
+            <BiMenu size={36} />
+          </button>
+        </div>
       </nav>
 
       {/* ===== Mobile Fullscreen Menu ===== */}
@@ -183,8 +195,9 @@ const Navbar = () => {
             alt="Logo"
             width={140}
             height={40}
-            className="invert"
+            className="logo-invert"
           />
+
           <button
             onClick={() => setMenuOpen(false)}
             className="text-white text-2xl"
@@ -243,20 +256,20 @@ const Navbar = () => {
       {sidePanelOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
           {/* Create right gap using margin */}
-          <div className="relative h-full w-80 md:w-96 bg-white shadow-2xl animate-slideIn">
+          <div className="relative h-full w-80 md:w-96 bg-[var(--desktop-sidebar)] shadow-2xl animate-slideIn">
             <button
               onClick={() => setSidePanelOpen(false)}
-              className="absolute top-6 right-4 text-black"
+              className="absolute top-6 right-4 text-[var(--black)]"
             >
               <BiX size={32} />
             </button>
 
             <div className="p-6 pt-12 flex flex-col gap-4 overflow-y-auto h-full">
               <div>
-                <h3 className="text-2xl font-semibold mb-3 text-[#0a2342]">
+                <h3 className="text-2xl font-semibold mb-3 text-[var(--title)]">
                   About Us
                 </h3>
-                <p className="text-gray-600 text-md leading-relaxed">
+                <p className="text-gray-500 text-md leading-relaxed">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
                   dolorem quaerat libero optio fuga dolores dicta neque nesciunt
                   culpa aspernatur ipsa harum quae, rem dolorum temporibus
@@ -268,7 +281,7 @@ const Navbar = () => {
               <hr />
 
               <div>
-                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                <h3 className="text-2xl font-semibold text-[var(--title)] mb-4">
                   Our social
                 </h3>
                 <div className="flex items-center gap-4">
@@ -307,10 +320,10 @@ const Navbar = () => {
               <hr />
 
               <div>
-                <h3 className="text-2xl font-semibold text-[#0a2342] mb-4">
+                <h3 className="text-2xl font-semibold text-[var(--title)] mb-4">
                   Connect with us
                 </h3>
-                <div className="text-gray-700 text-md">
+                <div className="text-gray-500 text-md">
                   <p className="flex items-center gap-2">
                     <FiMail />
                     webmail@eiplin.com

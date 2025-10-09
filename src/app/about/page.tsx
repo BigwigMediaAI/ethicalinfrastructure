@@ -60,7 +60,7 @@ const AboutHero = () => {
               </span>
             </h2>
             <p
-              className="text-gray-700 mb-4"
+              className="text-[var(--text)] mb-4"
               data-aos="fade-right"
               data-aos-delay="400"
             >
@@ -70,7 +70,7 @@ const AboutHero = () => {
               lorem.
             </p>
             <p
-              className="text-gray-700 mb-4"
+              className="text-[var(--text)] mb-4"
               data-aos="fade-right"
               data-aos-delay="600"
             >
@@ -80,7 +80,7 @@ const AboutHero = () => {
               nulla pariatur.
             </p>
             <p
-              className="text-gray-700"
+              className="text-[var(--text)]"
               data-aos="fade-right"
               data-aos-delay="800"
             >
@@ -181,7 +181,7 @@ const AboutHero = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 ">
         <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <Image
@@ -200,7 +200,7 @@ const AboutHero = () => {
               Our Journey
             </h2>
             <p
-              className="text-gray-600 mb-4"
+              className="text-[var(--text)] mb-4"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -208,7 +208,7 @@ const AboutHero = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
             <p
-              className="text-gray-600"
+              className="text-[var(--text)]"
               data-aos="fade-up"
               data-aos-delay="600"
             >

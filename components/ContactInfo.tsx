@@ -32,7 +32,7 @@ const ContactInfo = () => {
   ];
 
   return (
-    <section className="bg-gray-50  py-12">
+    <section className="  py-12">
       {/* Heading */}
       <h2 className="text-center text-3xl md:text-4xl font-bold text-[var(--title)] mb-10 tracking-widest">
         Your Dream House Is One Step Away!
@@ -46,8 +46,8 @@ const ContactInfo = () => {
             <h3 className="text-lg font-semibold text-[var(--title)] mb-2">
               {item.title}
             </h3>
-            <p className="text-sm text-gray-600">{item.line1}</p>
-            <p className="text-sm text-gray-600">{item.line2}</p>
+            <p className="text-sm text-[var(--text)]">{item.line1}</p>
+            <p className="text-sm text-[var(--text)]">{item.line2}</p>
           </div>
         ))}
       </div>

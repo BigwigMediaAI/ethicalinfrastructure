@@ -17,7 +17,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
-import HelpSection from "../../../../components/HelpSection";
+// import HelpSection from "../../../../components/HelpSection";
 import "aos/dist/aos.css"; // CSS is fine at the top
 import ContactInfo from "../../../../components/ContactInfo";
 import Link from "next/link";
@@ -98,7 +98,7 @@ export default function BuyDetails() {
   }
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+    <div className="   transition-colors duration-300">
       <Navbar />
 
       {/* Hero with overlay */}
@@ -164,9 +164,11 @@ export default function BuyDetails() {
         {/* Info + Description - Right Side */}
         <div className="sticky top-24 self-start space-y-6">
           {/* Title + Location + Price */}
-          <h1 className="text-3xl font-bold">{property.title}</h1>
+          <h1 className="text-3xl font-bold text-[var(--title)]">
+            {property.title}
+          </h1>
           {property.location && (
-            <p className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-300">
+            <p className="flex items-center gap-2 text-lg text-[var(--text)]">
               <MapPin size={18} /> {property.location}
             </p>
           )}
@@ -179,22 +181,22 @@ export default function BuyDetails() {
           {/* Badges */}
           <div className="flex flex-wrap gap-3">
             {property.purpose && (
-              <span className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-lg shadow flex items-center gap-2">
+              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
                 <Home size={18} /> {property.purpose}
               </span>
             )}
             {property.bedrooms && (
-              <span className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-lg shadow flex items-center gap-2">
+              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
                 <BedDouble size={18} /> {property.bedrooms} Beds
               </span>
             )}
             {property.bathrooms && (
-              <span className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-lg shadow flex items-center gap-2">
+              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
                 🛁 {property.bathrooms} Baths
               </span>
             )}
             {property.areaSqft && (
-              <span className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-lg shadow flex items-center gap-2">
+              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
                 📐 {property.areaSqft} Sqft
               </span>
             )}
@@ -202,7 +204,7 @@ export default function BuyDetails() {
 
           {/* Description */}
           <h2 className="text-xl font-semibold mt-6">About this Property</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-lg text-[var(--text)] leading-relaxed">
             {property.description}
           </p>
 
@@ -214,7 +216,7 @@ export default function BuyDetails() {
                 {property.highlights.map((h, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 bg-[var(--bg-color)] rounded-full shadow text-sm"
+                    className="px-4 py-2 bg-gray-100 rounded-full shadow text-sm text-gray-800"
                   >
                     {h}
                   </span>
@@ -228,7 +230,7 @@ export default function BuyDetails() {
       {/* Video Tour */}
       {property.videoLink && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
-          <h2 className="text-2xl font-semibold mb-6 text-[var(--primary-color)]">
+          <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Virtual Tour
           </h2>
           <div className="w-full h-[500px] overflow-hidden rounded-xl shadow">
@@ -254,14 +256,14 @@ export default function BuyDetails() {
       {/* Features */}
       {property?.featuresAmenities?.length > 0 && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
-          <h2 className="text-2xl font-semibold mb-6 text-[var(--primary-color)]">
+          <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Features & Amenities
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {property.featuresAmenities.map((f, idx) => (
               <div
                 key={idx}
-                className="p-4 bg-[var(--bg-color)] rounded-lg shadow text-center"
+                className="p-4 bg-gray-100 rounded-lg shadow text-center text-gray-800"
               >
                 ⭐ {f}
               </div>
@@ -273,14 +275,14 @@ export default function BuyDetails() {
       {/* Nearby */}
       {property?.nearby?.length > 0 && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
-          <h2 className="text-2xl font-semibold mb-6 text-[var(--primary-color)]">
+          <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Nearby Places
           </h2>
           <div className="flex flex-wrap gap-3">
             {property.nearby.map((n, idx) => (
               <span
                 key={idx}
-                className="px-5 py-2 bg-[var(--bg-color)] rounded-full"
+                className="px-5 py-2 bg-gray-100 text-gray-800 rounded-full"
               >
                 {n}
               </span>
@@ -292,7 +294,7 @@ export default function BuyDetails() {
       {/* Map */}
       {property.googleMapUrl && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
-          <h2 className="text-2xl font-semibold mb-6 text-[var(--primary-color)]">
+          <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Location
           </h2>
           <iframe
@@ -312,7 +314,7 @@ export default function BuyDetails() {
         </div>
       </Link>
       <ContactInfo />
-      <HelpSection />
+      {/* <HelpSection /> */}
       <Footer />
 
       {/* Lightbox */}

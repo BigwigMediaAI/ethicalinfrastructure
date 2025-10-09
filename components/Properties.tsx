@@ -77,7 +77,7 @@ export default function PropertyGrid() {
             {properties.map((property, index) => (
               <SwiperSlide key={property.id}>
                 <div
-                  className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
+                  className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
                   data-aos="fade-up"
                   data-aos-delay={index * 200} // stagger cards by 200ms
                 >
@@ -118,7 +118,7 @@ export default function PropertyGrid() {
           {properties.map((property, index) => (
             <div
               key={property.id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
+              className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
               data-aos="fade-up"
               data-aos-delay={index * 200} // stagger cards by 200ms
             >
@@ -135,8 +135,10 @@ export default function PropertyGrid() {
                   {property.title}
                 </h3>
                 <p className="text-gray-500 text-sm">{property.location}</p>
-                <p className="font-semibold">{property.price}</p>
-                <div className="flex items-center gap-4 mt-2 text-gray-600">
+                <p className="font-semibold text-[var(--text)]">
+                  {property.price}
+                </p>
+                <div className="flex items-center gap-4 mt-2 text-gray-500">
                   <div className="flex items-center gap-1">
                     <FaBed /> {property.bedrooms}
                   </div>

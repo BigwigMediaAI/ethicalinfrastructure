@@ -126,7 +126,7 @@ export default function BuyPage() {
 
       {/* Filters */}
       <motion.div
-        className="sticky top-0 bg-white shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
+        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
         initial="hidden"
         animate="visible"
         variants={{
@@ -187,7 +187,7 @@ export default function BuyPage() {
               {paginatedProperties.map((p) => (
                 <motion.div
                   key={p._id}
-                  className="overflow-hidden shadow-md hover:shadow-xl transition bg-white"
+                  className="overflow-hidden shadow-md hover:shadow-xl transition bg-[var(--desktop-sidebar)] rounded"
                   variants={{
                     hidden: { opacity: 0, scale: 0.9, y: 30 },
                     visible: { opacity: 1, scale: 1, y: 0 },
@@ -222,7 +222,7 @@ export default function BuyPage() {
                       </p>
                     )}
                     {p.price !== null && (
-                      <p className="mt-1 font-semibold text-gray-800">
+                      <p className="mt-1 font-semibold text-[var(--text)]">
                         ₹ {p.price?.toLocaleString()}
                       </p>
                     )}

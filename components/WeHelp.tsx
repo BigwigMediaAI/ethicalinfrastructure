@@ -16,7 +16,7 @@ const WeHelp = () => {
     });
   }, []);
   return (
-    <section className="w-full py-16 px-6 bg-white">
+    <section className="w-full py-16 px-6">
       <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* ===== Left Content ===== */}
         <div className="space-y-6">
@@ -29,7 +29,7 @@ const WeHelp = () => {
           </h2>
 
           <p
-            className="text-gray-600 leading-relaxed"
+            className="text-[var(--text)] leading-relaxed"
             data-aos="fade-right"
             data-aos-delay="400"
           >
@@ -38,7 +38,7 @@ const WeHelp = () => {
             base with honesty and transparency.
           </p>
 
-          <ul className="space-y-3 text-gray-700">
+          <ul className="space-y-3 text-[var(--text)]">
             {[
               "24/7 Support available",
               "Expert legal support from us",
