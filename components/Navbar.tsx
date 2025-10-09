@@ -269,7 +269,7 @@ const Navbar = () => {
                 <h3 className="text-2xl font-semibold mb-3 text-[var(--title)]">
                   About Us
                 </h3>
-                <p className="text-gray-500 text-md leading-relaxed">
+                <p className="text-[var(--text)] text-md leading-relaxed">
                   ETHICAL INFRASTRUCTURES PRIVATE LIMITED delivers personalized,
                   cost-effective real estate solutions with a focus on customer
                   satisfaction. Our dedicated team provides expert guidance,
@@ -290,7 +290,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaFacebookF className="cursor-pointer text-gray-500 hover:text-blue-600 transition text-2xl" />
+                    <FaFacebookF className="cursor-pointer text-[var(--text)] hover:text-blue-600 transition text-2xl" />
                   </Link>
 
                   <Link
@@ -298,7 +298,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaLinkedinIn className="cursor-pointer text-gray-500 hover:text-blue-400 transition text-2xl" />
+                    <FaLinkedinIn className="cursor-pointer text-[var(--text)] hover:text-blue-400 transition text-2xl" />
                   </Link>
 
                   <Link
@@ -306,14 +306,14 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaInstagram className="cursor-pointer text-gray-500 hover:text-pink-400 transition text-2xl" />
+                    <FaInstagram className="cursor-pointer text-[var(--text)] hover:text-pink-400 transition text-2xl" />
                   </Link>
                   <Link
                     href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaYoutube className="cursor-pointer text-gray-500 hover:text-red-600 transition text-2xl" />
+                    <FaYoutube className="cursor-pointer text-[var(--text)] hover:text-red-600 transition text-2xl" />
                   </Link>
                 </div>
               </div>
@@ -323,7 +323,7 @@ const Navbar = () => {
                 <h3 className="text-2xl font-semibold text-[var(--title)] mb-4">
                   Connect with us
                 </h3>
-                <div className="text-gray-500 text-md">
+                <div className="text-[var(--text)] text-md">
                   <p className="flex items-center gap-2">
                     <FiMail />
                     webmail@eiplin.com
