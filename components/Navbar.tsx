@@ -195,7 +195,7 @@ const Navbar = () => {
             alt="Logo"
             width={140}
             height={40}
-            className="logo-invert"
+            className="invert"
           />
 
           <button
