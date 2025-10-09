@@ -33,14 +33,14 @@ const AboutHero = () => {
           className="object-cover brightness-50"
         />
         <div className="relative text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-widest">
+          <h1 className="text-4xl md:text-5xl mt-20 font-bold mb-4 tracking-widest">
             About <span className="text-[var(--primary-color)]">Us</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl">
+          {/* <p className="max-w-2xl mx-auto text-lg md:text-xl">
             We are dedicated to delivering excellence and innovation in
             everything we do, empowering clients to achieve their goals with
             confidence.
-          </p>
+          </p> */}
         </div>
       </section>
 
@@ -64,28 +64,24 @@ const AboutHero = () => {
               data-aos="fade-right"
               data-aos-delay="400"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Vivamus at augue eget arcu dictum varius duis at consectetur
-              lorem.
+              Here at ETHICAL INFRASTRUCTURES PRIVATE LIMITED we function to
+              deliver complete customer satisfaction and craft the best deals so
+              as to stand out from the plethora of real estate agents that have
+              sprouted to bank in on this boom in the real estate field but fail
+              to provide exhaustive guidance and long term vision.
             </p>
             <p
               className="text-[var(--text)] mb-4"
               data-aos="fade-right"
               data-aos-delay="600"
             >
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
-            </p>
-            <p
-              className="text-[var(--text)]"
-              data-aos="fade-right"
-              data-aos-delay="800"
-            >
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit anim id est laborum.
+              We provide complete need based and cost effective solutions to our
+              clients and our unique selling point is the gamut of personalised
+              services provided by our dedicated team to meet the client
+              specific and task specific needs of our clients. Every prospective
+              client is taken for site visits, market surveys and given updated
+              information about the status of their property and market
+              condition.
             </p>
           </div>
 
@@ -199,21 +195,33 @@ const AboutHero = () => {
             >
               Our Journey
             </h2>
+
             <p
               className="text-[var(--text)] mb-4"
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Founded with a clear vision to redefine the standards of real
+              estate consultancy,{" "}
+              <strong>Ethical Infrastructures Private Limited</strong> began its
+              journey with a mission to bring integrity, transparency, and
+              personalized service to every client interaction. In a market
+              often crowded with short-term opportunists, we focused on building
+              long-term trust and delivering complete satisfaction.
             </p>
+
             <p
               className="text-[var(--text)]"
               data-aos="fade-up"
               data-aos-delay="600"
             >
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Over the years, we have grown into a trusted name in real estate
+              by offering need-based, cost-effective, and client-centric
+              solutions. Our dedicated team goes beyond conventional
+              brokerage—conducting detailed site visits, market surveys, and
+              providing up-to-date insights on property trends. This commitment
+              to personalized guidance and long-term value has shaped our
+              journey and continues to drive our success.
             </p>
           </div>
         </div>
