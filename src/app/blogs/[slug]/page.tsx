@@ -72,7 +72,7 @@ export default async function BlogDetails({
     .slice(0, 4);
 
   return (
-    <div className="bg-white text-black min-h-screen">
+    <div className=" min-h-screen">
       {/* Schema Markup */}
       {Array.isArray(blog.schemaMarkup) &&
         blog.schemaMarkup.map((markup, idx) => (
@@ -89,9 +89,9 @@ export default async function BlogDetails({
         <h1 className="text-3xl md:text-4xl font-bold text-[var(--title)] leading-tight mb-3">
           {blog.title}
         </h1>
-        <p className="text-gray-500 text-sm md:text-base mb-6">
-          By <span className="font-semibold text-gray-800">{blog.author}</span>{" "}
-          • {new Date(blog.datePublished).toLocaleDateString()}
+        <p className="text-[var(--text)] text-sm md:text-base mb-6">
+          By <span className="font-semibold ">{blog.author}</span> •{" "}
+          {new Date(blog.datePublished).toLocaleDateString()}
         </p>
       </section>
 
@@ -114,14 +114,14 @@ export default async function BlogDetails({
         />
 
         {relatedBlogs.length > 0 && (
-          <aside className="lg:col-span-1 bg-gray-50 p-5 rounded-2xl shadow-sm h-fit mt-10">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">
+          <aside className="lg:col-span-1 bg-[var(--desktop-sidebar)] p-5 rounded-2xl shadow-sm h-fit mt-10">
+            <h2 className="text-2xl font-semibold mb-4 text-[var(--title)] border-b border-gray-200 pb-2">
               Related Blogs
             </h2>
             <div className="space-y-5">
               {relatedBlogs.map((rel) => (
                 <div key={rel.slug}>
-                  <h3 className="text-base font-semibold text-gray-800 leading-snug line-clamp-2">
+                  <h3 className="text-base font-semibold text-[var(--black)] leading-snug line-clamp-2">
                     {rel.title}
                   </h3>
                 </div>

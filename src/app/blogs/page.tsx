@@ -68,7 +68,7 @@ const Blogs = () => {
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen">
       <Nav />
 
       <h2 className="text-4xl font-bold text-[var(--title)] pt-6 text-center">
@@ -77,13 +77,13 @@ const Blogs = () => {
 
       <div className="w-11/12 md:w-5/6 mx-auto py-6">
         {/* Search Bar */}
-        <div className="sticky top-[80px] z-10 bg-white py-4 mb-10">
+        <div className="sticky top-[80px] z-10  py-4 mb-10">
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="🔍 Search blogs by title or author"
-            className="w-full p-4 border border-gray-300 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+            className="w-full p-4 border border-gray-300 rounded-lg  placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
           />
         </div>
 
@@ -103,7 +103,7 @@ const Blogs = () => {
               <div
                 key={blog._id}
                 onClick={() => router.push(`/blogs/${blog.slug}`)}
-                className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-200"
+                className="bg-[var(--desktop-sidebar)] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-200"
               >
                 {/* Image Section */}
                 <div className="relative w-full h-60 overflow-hidden">
@@ -118,13 +118,13 @@ const Blogs = () => {
                 {/* Content Section */}
                 <div className="p-6 flex flex-col justify-between h-[200px]">
                   <div>
-                    <h2 className="text-xl font-semibold mb-2 line-clamp-2 group-hover:text-[var(--primary-color)] transition-colors">
+                    <h2 className="text-xl font-semibold mb-2 line-clamp-2 group-hover:text-[var(--primary-color)] transition-colors text-[var(--title)]">
                       {blog.title}
                     </h2>
-                    <p className="text-gray-600 text-sm mb-1">
+                    <p className="text-[var(--text)] text-sm mb-1">
                       {new Date(blog.datePublished).toLocaleDateString()}
                     </p>
-                    <p className="text-gray-800 text-sm">
+                    <p className="text-[var(--text)] text-sm">
                       By <span className="font-medium">{blog.author}</span>
                     </p>
                   </div>

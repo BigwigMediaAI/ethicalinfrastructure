@@ -126,7 +126,7 @@ export default function BuyPage() {
 
       {/* Filters */}
       <motion.div
-        className="sticky top-0 bg-white shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
+        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
         initial="hidden"
         animate="visible"
         variants={{
@@ -187,7 +187,7 @@ export default function BuyPage() {
               {paginatedProperties.map((p) => (
                 <motion.div
                   key={p._id}
-                  className="overflow-hidden shadow-md hover:shadow-xl transition bg-white"
+                  className="overflow-hidden shadow-md hover:shadow-xl transition bg-[var(--desktop-sidebar)] rounded"
                   variants={{
                     hidden: { opacity: 0, scale: 0.9, y: 30 },
                     visible: { opacity: 1, scale: 1, y: 0 },
@@ -213,7 +213,7 @@ export default function BuyPage() {
 
                   {/* Info */}
                   <div className="p-4 bg-[var(--bg-color)]">
-                    <h3 className="font-bold text-[var(--primary-color)] text-lg line-clamp-1">
+                    <h3 className="font-bold text-[var(--title)] text-lg line-clamp-1">
                       {p.title}
                     </h3>
                     {p.location && (
@@ -222,18 +222,13 @@ export default function BuyPage() {
                       </p>
                     )}
                     {p.price !== null && (
-                      <p className="mt-1 font-semibold text-gray-800">
+                      <p className="mt-1 font-semibold text-[var(--text)]">
                         ₹ {p.price?.toLocaleString()}
-                      </p>
-                    )}
-                    {p.type && (
-                      <p className="mt-1 text-sm text-gray-600 flex items-center">
-                        <Home size={16} className="mr-1" /> {p.type}
                       </p>
                     )}
 
                     <button
-                      onClick={() => router.push(`/buy/${p.slug}`)}
+                      onClick={() => router.push(`/lease/${p.slug}`)}
                       className="relative px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold 
                       overflow-hidden group cursor-pointer transition-all duration-300 w-full mt-4 rounded"
                     >
@@ -252,7 +247,7 @@ export default function BuyPage() {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-3 py-2 rounded border bg-white hover:bg-gray-100 disabled:opacity-50"
+                  className="px-3 py-2 rounded border  hover:bg-gray-100 disabled:opacity-50"
                 >
                   Prev
                 </button>
@@ -269,7 +264,7 @@ export default function BuyPage() {
                       className={`px-3 py-2 rounded border ${
                         currentPage === num
                           ? "bg-[var(--primary-color)] text-white"
-                          : "bg-white hover:bg-gray-100"
+                          : " hover:bg-gray-100"
                       }`}
                     >
                       {num}
@@ -280,7 +275,7 @@ export default function BuyPage() {
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-3 py-2 rounded border bg-white hover:bg-gray-100 disabled:opacity-50"
+                  className="px-3 py-2 rounded border  hover:bg-gray-100 disabled:opacity-50"
                 >
                   Next
                 </button>
