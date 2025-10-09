@@ -97,14 +97,14 @@ const AboutHero = () => {
       </section>
 
       {/* WHY CHOOSE ENDORA SECTION */}
-      <section className="py-16 bg-[var(--primary-bgColor)] ">
+      <section className="py-16 bg-[var(--primary-bgColor)]">
         <div className="w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 text-center lg:text-left">
           {/* LEFT TITLE BLOCK */}
           <div className="lg:w-1/3" data-aos="fade-right" data-aos-delay="200">
             <span className="bg-[var(--primary-color)] text-white text-sm font-semibold px-3 py-1 rounded">
               Bricks And Clicks
             </span>
-            <h2 className="text-4xl  font-bold mt-6 mb-4 text-white tracking-widest">
+            <h2 className="text-4xl font-bold mt-6 mb-4 text-white tracking-widest">
               Why Choose <br /> Ethical?
             </h2>
           </div>
@@ -124,11 +124,11 @@ const AboutHero = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold text-white">
-                Historic Properties
+                Residential & Commercial Expertise
               </h3>
               <p className="text-gray-300">
-                Fusce aliquet quam eget neque ultrices elementum felis id arcu
-                blandit sagittis.
+                Professional guidance for buying, selling, or leasing
+                Residential and Commercial properties in Gurugram.
               </p>
             </div>
 
@@ -145,11 +145,11 @@ const AboutHero = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold text-white">
-                Furniture Includes
+                Industrial & Leasing Services
               </h3>
               <p className="text-gray-300">
-                Fusce aliquet quam eget neque ultrices elementum felis id arcu
-                blandit sagittis.
+                Specialized support for Industrial spaces, Pre-Leased
+                properties, and FarmHouses to maximize value and efficiency.
               </p>
             </div>
 
@@ -166,11 +166,11 @@ const AboutHero = () => {
                 />
               </div>
               <h3 className="text-xl font-semibold text-white">
-                Architecture Design
+                Trusted & Transparent Process
               </h3>
               <p className="text-gray-300">
-                Fusce aliquet quam eget neque ultrices elementum felis id arcu
-                blandit sagittis.
+                Honest advice, personalized services, and complete support
+                throughout the buying, selling, or leasing journey.
               </p>
             </div>
           </div>
