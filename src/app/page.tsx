@@ -21,6 +21,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import ButtonFill from "../../components/Button";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 export default function Home() {
   // Initialize AOS
@@ -37,7 +38,7 @@ export default function Home() {
       <Hero />
       <CompanySection />
       <section className="w-full py-16 bg-[#021A33]">
-        <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* ===== Sell Your Property Card ===== */}
           <div
             className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
@@ -51,7 +52,7 @@ export default function Home() {
             />
             {/* Overlay */}
             <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-bold mb-2 text-center  tracking-widest">
+              <h3 className="text-4xl font-semibold mb-2 text-center  tracking-widest">
                 Sell Your Property
               </h3>
               <p className="mb-4 text-center">
@@ -77,7 +78,7 @@ export default function Home() {
             />
             {/* Overlay */}
             <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-bold mb-2 text-center tracking-widest">
+              <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
                 Buy A Property
               </h3>
               <p className="mb-4 text-center">
@@ -85,6 +86,32 @@ export default function Home() {
                 property options.
               </p>
               <Link href="/buy">
+                <ButtonFill text={<FiArrowRight size={18} />} />
+              </Link>
+            </div>
+          </div>
+
+          {/* ===== Lease A Property Card ===== */}
+          <div
+            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
+            data-aos="flip-left" // optional zoom-in for heading
+            data-aos-delay="400"
+          >
+            <Image
+              src={buyImage}
+              alt="Lease A Property"
+              className="w-full h-full object-cover transition-transform duration-500 "
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+              <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
+                Lease A Property
+              </h3>
+              <p className="mb-4 text-center">
+                Lease premium spaces effortlessly with personalized service and
+                expert support.
+              </p>
+              <Link href="/lease">
                 <ButtonFill text={<FiArrowRight size={18} />} />
               </Link>
             </div>
@@ -119,7 +146,32 @@ export default function Home() {
       <BlogGrid />
       <Footer />
       <ScrollToTopButton />
-      <ContactSidebar />
+      <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
+        <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">
+          <a
+            href="tel:+919999000183"
+            className="w-full flex items-center justify-center gap-2"
+          >
+            <FaPhoneAlt size={18} />
+            Call Us
+          </a>
+        </div>
+        <div className="w-1/2 bg-white text-green-500 text-center py-3 border-l border-white">
+          <a
+            href="https://wa.me/+919999000172"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2"
+          >
+            <FaWhatsapp size={18} />
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div className="hidden md:block">
+        <ContactSidebar />
+      </div>
     </>
   );
 }

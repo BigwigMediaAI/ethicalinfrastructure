@@ -20,6 +20,8 @@ import SellForm from "../../../components/SellForm";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ButtonFill from "../../../components/Button";
+import ContactSidebar from "../../../components/ContactSidebar";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 function Sell() {
   useEffect(() => {
@@ -231,6 +233,33 @@ function Sell() {
           Let’s bring your vision to life with our expert team. Get in touch
           today and take the first step toward your future.
         </p>
+      </div>
+
+      <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
+        <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">
+          <a
+            href="tel:+919999000183"
+            className="w-full flex items-center justify-center gap-2"
+          >
+            <FaPhoneAlt size={18} />
+            Call Us
+          </a>
+        </div>
+        <div className="w-1/2 bg-white text-green-500 text-center py-3 border-l border-white">
+          <a
+            href="https://wa.me/+919999000172"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2"
+          >
+            <FaWhatsapp size={18} />
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div className="hidden md:block">
+        <ContactSidebar />
       </div>
 
       <Footer />

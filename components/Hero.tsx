@@ -180,6 +180,7 @@ const Hero = () => {
               >
                 <option value="buy">Buy</option>
                 <option value="sell">Sell</option>
+                <option value="lease">Lease</option>
               </select>
               <textarea
                 name="message"
