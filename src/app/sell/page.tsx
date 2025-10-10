@@ -186,11 +186,11 @@ function Sell() {
             </p>
             <div className="flex items-center gap-3">
               <Phone className="text-[var(--title)]" />
-              <span className="text-md">+91 8368607860</span>
+              <span className="text-md">+91 9999000172</span>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="text-[var(--title)]" />
-              <span className="text-md">info@khalsaproperty.in</span>
+              <span className="text-md">webmail@eiplin.com</span>
             </div>
 
             {/* Button to toggle form */}
