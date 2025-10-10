@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import ButtonFill from "./Button";
 
 interface SellFormProps {
   onSuccess?: () => void;
@@ -244,13 +245,10 @@ export default function SellForm({ onSuccess }: SellFormProps) {
           </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="inline-block bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition"
-        >
-          {loading ? "Submitting..." : "Submit Property"}
-        </button>
+        <ButtonFill
+          text={loading ? "Submitting..." : "Submit Property"}
+          className="font-semibold py-3 px-8 shadow-md  disabled:opacity-50"
+        />
       </form>
     </div>
   );

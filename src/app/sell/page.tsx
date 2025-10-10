@@ -19,6 +19,7 @@ import Image from "next/image";
 import SellForm from "../../../components/SellForm";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ButtonFill from "../../../components/Button";
 
 function Sell() {
   useEffect(() => {
@@ -193,12 +194,11 @@ function Sell() {
             </div>
 
             {/* Button to toggle form */}
-            <button
+            <ButtonFill
+              text="List Your Property"
               onClick={() => setShowForm(!showForm)}
-              className="inline-block bg-[var(--primary-color)] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-[var(--hover-color)] transition"
-            >
-              List Your Property
-            </button>
+              className="font-semibold py-3 px-8 shadow-md"
+            />
           </div>
         </div>
       </section>

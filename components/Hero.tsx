@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ButtonFill from "./Button";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -189,13 +190,11 @@ const Hero = () => {
                 className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               ></textarea>
 
-              <button
-                type="submit"
-                className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 rounded"
-                disabled={loading}
-              >
-                {loading ? "Sending OTP..." : "Send OTP"}
-              </button>
+              <ButtonFill
+                text={loading ? "Sending OTP..." : "Send OTP"}
+                onClick={() => !loading && sendOtp()}
+                className="w-full font-semibold py-2 disabled:opacity-50"
+              />
             </form>
           ) : (
             <form
@@ -213,13 +212,11 @@ const Hero = () => {
                 className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                 required
               />
-              <button
-                type="submit"
-                className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 rounded"
-                disabled={loading}
-              >
-                {loading ? "Verifying OTP..." : "Verify OTP & Submit"}
-              </button>
+              <ButtonFill
+                text={loading ? "Verifying OTP..." : "Verify OTP & Submit"}
+                onClick={() => !loading && verifyOtp()}
+                className="w-full font-semibold py-2 disabled:opacity-50"
+              />
             </form>
           )}
 

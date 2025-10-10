@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
+import ButtonFill from "../../components/Button";
 
 export default function Home() {
   // Initialize AOS
@@ -58,9 +59,7 @@ export default function Home() {
                 strategies and personalized service.
               </p>
               <Link href="/sell">
-                <button className="cursor-pointer flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg transition">
-                  <FiArrowRight size={18} />
-                </button>
+                <ButtonFill text={<FiArrowRight size={18} />} />
               </Link>
             </div>
           </div>
@@ -86,9 +85,7 @@ export default function Home() {
                 property options.
               </p>
               <Link href="/buy">
-                <button className="cursor-pointer flex items-center gap-2 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold py-2 px-6 rounded-lg transition">
-                  <FiArrowRight size={18} />
-                </button>
+                <ButtonFill text={<FiArrowRight size={18} />} />
               </Link>
             </div>
           </div>

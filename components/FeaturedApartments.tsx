@@ -9,6 +9,7 @@ import image3 from "../assets/9-768x532.webp";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ButtonFill from "./Button";
 
 const apartments = [
   {
@@ -112,13 +113,7 @@ export default function FeaturedApartments() {
             personalized services to clients across all real estate sectors.
           </p>
           <Link href="/contact-us">
-            <button
-              className="bg-[var(--primary-color)] text-white px-6 py-2 hover:bg-[var(--hover-color)] rounded-lg cursor-pointer"
-              data-aos="fade-right"
-              data-aos-delay="1000"
-            >
-              Contact Us
-            </button>
+            <ButtonFill text="Contact Us" aos="fade-right" aosDelay="1000" />
           </Link>
         </div>
 

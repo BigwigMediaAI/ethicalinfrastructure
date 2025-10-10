@@ -6,6 +6,7 @@ import aboutImg from "../assets/9-768x532.webp"; // replace with your image
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ButtonFill from "./Button";
 
 const WeHelp = () => {
   useEffect(() => {
@@ -59,13 +60,11 @@ const WeHelp = () => {
           </ul>
 
           <Link href="/contact-us">
-            <button
-              className="bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-medium px-6 py-2 rounded-md shadow-md transition cursor-pointer"
+            <ButtonFill
+              text="Contact Us"
               data-aos="fade-right"
               data-aos-delay="1200"
-            >
-              Contact us
-            </button>
+            />
           </Link>
         </div>
 
