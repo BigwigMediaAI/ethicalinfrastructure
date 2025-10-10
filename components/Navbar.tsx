@@ -172,7 +172,7 @@ const Navbar = () => {
         </div>
 
         {/* ===== Mobile Menu Button ===== */}
-        <div className="flex gap-5 md:hidden">
+        <div className="flex items-center gap-5 md:hidden">
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
