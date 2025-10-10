@@ -24,7 +24,7 @@ const ButtonFill: React.FC<ButtonFillProps> = ({
       onClick={onClick}
       data-aos={aos}
       data-aos-delay={aosDelay}
-      className={`relative overflow-hidden border-2 border-[var(--primary-color)] px-6 py-2 rounded-lg group transition-all duration-500 ${className}`}
+      className={`cursor-pointer relative overflow-hidden border-2 border-[var(--primary-color)] px-6 py-2 rounded-lg group transition-all duration-500 ${className}`}
     >
       {/* Animated background */}
       <span className="absolute inset-0 bg-[var(--primary-color)] h-0 group-hover:h-full transition-all duration-500 ease-in rounded-md z-0"></span>

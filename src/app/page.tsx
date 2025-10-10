@@ -9,8 +9,9 @@ import bgImage from "../../assets/video-bg.jpg";
 import Testimonials from "../../components/Testimonial";
 import CompanySection from "../../components/AboutCompany";
 import Image from "next/image";
-import sellImage from "../../assets/buy-sell1.jpg"; // replace with your image
-import buyImage from "../../assets/buy-sell2.jpg"; // replace with your image
+import sellImage from "../../assets/sell.jpg"; // replace with your image
+import buyImage from "../../assets/buy.jpg"; // replace with your image
+import leaseImage from "../../assets/lease.jpg";
 import { FiArrowRight } from "react-icons/fi";
 import PropertyGrid from "../../components/Properties";
 import BlogGrid from "../../components/Blogs";
@@ -51,7 +52,7 @@ export default function Home() {
               className="w-full h-full object-cover transition-transform duration-500 "
             />
             {/* Overlay */}
-            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
               <h3 className="text-4xl font-semibold mb-2 text-center  tracking-widest">
                 Sell Your Property
               </h3>
@@ -77,7 +78,7 @@ export default function Home() {
               className="w-full h-full object-cover transition-transform duration-500 "
             />
             {/* Overlay */}
-            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
               <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
                 Buy A Property
               </h3>
@@ -98,12 +99,12 @@ export default function Home() {
             data-aos-delay="400"
           >
             <Image
-              src={buyImage}
+              src={leaseImage}
               alt="Lease A Property"
               className="w-full h-full object-cover transition-transform duration-500 "
             />
             {/* Overlay */}
-            <div className="absolute inset-0  flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
+            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
               <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
                 Lease A Property
               </h3>

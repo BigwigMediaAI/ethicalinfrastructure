@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import bgImage from "../../../assets/team2.jpg";
+import bgImage from "../../../assets/aboutus.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { Building2, Armchair, Ruler } from "lucide-react";
