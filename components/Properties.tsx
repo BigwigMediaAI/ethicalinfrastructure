@@ -1,68 +1,59 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import image1 from "../assets/property/property1.jpg";
-import image2 from "../assets/property/property2.jpg";
-import image3 from "../assets/property/property3.jpg";
-import image4 from "../assets/property/property4.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
 
-const properties = [
-  {
-    id: 1,
-    title: "Luxury Villa in Goa",
-    location: "Goa, India",
-    price: "₹2.5 Cr",
-    bedrooms: 4,
-    bathrooms: 3,
-    area: "3500 sqft",
-    image: image1,
-  },
-  {
-    id: 2,
-    title: "Modern Apartment",
-    location: "Mumbai, India",
-    price: "₹1.2 Cr",
-    bedrooms: 3,
-    bathrooms: 2,
-    area: "1800 sqft",
-    image: image2,
-  },
-  {
-    id: 3,
-    title: "Cozy Family Home",
-    location: "Bangalore, India",
-    price: "₹90 Lakh",
-    bedrooms: 3,
-    bathrooms: 2,
-    area: "1500 sqft",
-    image: image3,
-  },
-  {
-    id: 4,
-    title: "Beachfront Villa",
-    location: "Goa, India",
-    price: "₹4 Cr",
-    bedrooms: 5,
-    bathrooms: 4,
-    area: "4000 sqft",
-    image: image4,
-  },
-];
+interface Property {
+  _id: string;
+  title: string;
+  location: string;
+  price: string;
+  bedrooms: number;
+  bathrooms: number;
+  areaSqft: string;
+  images: string[];
+}
 
 export default function PropertyGrid() {
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
       once: true,
     });
+
+    const fetchProperties = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE}/property`
+        );
+        setProperties(res.data);
+      } catch (err) {
+        console.error("Failed to fetch properties:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
   }, []);
+
+  if (loading) {
+    return <p className="text-center py-12">Loading properties...</p>;
+  }
+
+  if (!properties.length) {
+    return <p className="text-center py-12">No properties available.</p>;
+  }
 
   return (
     <section className="py-12">
@@ -75,19 +66,21 @@ export default function PropertyGrid() {
         <div className="block md:hidden">
           <Swiper spaceBetween={16} slidesPerView={1.2} grabCursor={true}>
             {properties.map((property, index) => (
-              <SwiperSlide key={property.id}>
+              <SwiperSlide key={property._id}>
                 <div
                   className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
                   data-aos="fade-up"
-                  data-aos-delay={index * 200} // stagger cards by 200ms
+                  data-aos-delay={index * 200}
                 >
                   <div className="relative h-56 w-full">
-                    <Image
-                      src={property.image}
-                      alt={property.title}
-                      fill
-                      className="object-cover"
-                    />
+                    {property.images?.[0] && (
+                      <Image
+                        src={property.images[0]}
+                        alt={property.title}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                   <div className="p-4 flex flex-col gap-2">
                     <h3 className="text-lg font-bold text-[var(--primary-color)]">
@@ -103,7 +96,7 @@ export default function PropertyGrid() {
                         <FaBath /> {property.bathrooms}
                       </div>
                       <div className="flex items-center gap-1">
-                        <FaRulerCombined /> {property.area}
+                        <FaRulerCombined /> {property.areaSqft}
                       </div>
                     </div>
                   </div>
@@ -114,21 +107,29 @@ export default function PropertyGrid() {
         </div>
 
         {/* ==== Desktop View: Grid ==== */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          className={`hidden md:grid gap-8 ${
+            properties.length < 4
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center"
+              : "grid-cols-2 lg:grid-cols-4"
+          }`}
+        >
           {properties.map((property, index) => (
             <div
-              key={property.id}
-              className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
+              key={property._id}
+              className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition w-full max-w-sm"
               data-aos="fade-up"
-              data-aos-delay={index * 200} // stagger cards by 200ms
+              data-aos-delay={index * 200}
             >
               <div className="relative h-56 w-full">
-                <Image
-                  src={property.image}
-                  alt={property.title}
-                  fill
-                  className="object-cover"
-                />
+                {property.images?.[0] && (
+                  <Image
+                    src={property.images[0]}
+                    alt={property.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </div>
               <div className="p-4 flex flex-col gap-2">
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
@@ -146,7 +147,7 @@ export default function PropertyGrid() {
                     <FaBath /> {property.bathrooms}
                   </div>
                   <div className="flex items-center gap-1">
-                    <FaRulerCombined /> {property.area}
+                    <FaRulerCombined /> {property.areaSqft}
                   </div>
                 </div>
               </div>
