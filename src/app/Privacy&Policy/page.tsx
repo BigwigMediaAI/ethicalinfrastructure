@@ -61,13 +61,13 @@ export default function PrivacyPolicyPage() {
                 <li>
                   <strong>Affiliate</strong> means an entity that controls, is
                   controlled by, or is under common control with a party, where
-                  "control" means ownership of 50% or more of the shares, equity
+                  control means ownership of 50% or more of the shares, equity
                   interest or other securities entitled to vote for election of
                   directors or other managing authority.
                 </li>
                 <li>
-                  <strong>Company</strong> (referred to as either "the Company",
-                  "We", "Us" or "Our" in this Agreement) refers to Ethical
+                  <strong>Company</strong> (referred to as either the Company,
+                  We, Us or Our in this Agreement) refers to Ethical
                   Infrastructure.
                 </li>
                 <li>
@@ -190,10 +190,10 @@ export default function PrivacyPolicyPage() {
               </ul>
 
               <p>
-                Cookies can be "Persistent" or "Session" Cookies. Persistent
-                Cookies remain on Your personal computer or mobile device when
-                You go offline, while Session Cookies are deleted as soon as You
-                close Your web browser. Learn more about cookies on the{" "}
+                Cookies can be Persistent or Session Cookies. Persistent Cookies
+                remain on Your personal computer or mobile device when You go
+                offline, while Session Cookies are deleted as soon as You close
+                Your web browser. Learn more about cookies on the{" "}
                 <a
                   href="https://www.freeprivacypolicy.com/blog/sample-privacy-policy-template/#Use_Of_Cookies_And_Tracking"
                   target="_blank"
@@ -471,7 +471,7 @@ export default function PrivacyPolicyPage() {
               <p>
                 We will let You know via email and/or a prominent notice on Our
                 Service, prior to the change becoming effective and update the
-                "Last updated" date at the top of this Privacy Policy.
+                Last updated date at the top of this Privacy Policy.
               </p>
               <p>
                 You are advised to review this Privacy Policy periodically for

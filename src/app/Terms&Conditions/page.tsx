@@ -23,9 +23,8 @@ export default function TermsAndConditionsPage() {
 
             <article className="space-y-8 text-gray-800 leading-relaxed">
               <p>
-                Please read these Terms and Conditions ("Terms") carefully
-                before using the Ethical Infrastructures P Ltd website ("the
-                Website").
+                Please read these Terms and Conditions (Terms) carefully before
+                using the Ethical Infrastructures P Ltd website (the Website).
               </p>
               <p>
                 By accessing or using the Website, you agree to be bound by
@@ -86,7 +85,7 @@ export default function TermsAndConditionsPage() {
                 </h2>
                 <p>
                   If you have any questions or concerns about these Terms,
-                  please contact us at{" "}
+                  please contact us at
                   <a
                     href="mailto:info@eiplin.com"
                     className="text-indigo-600 underline font-medium"
