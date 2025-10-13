@@ -141,7 +141,7 @@ export default function PrivacyPolicyPage() {
                 Usage Data is collected automatically when using the Service.
               </p>
               <p>
-                Usage Data may include information such as Your Device's
+                Usage Data may include information such as Your Device&#39;s
                 Internet Protocol address (e.g. IP address), browser type,
                 browser version, the pages of our Service that You visit, the
                 time and date of Your visit, the time spent on those pages,
@@ -151,9 +151,10 @@ export default function PrivacyPolicyPage() {
                 When You access the Service by or through a mobile device, We
                 may collect certain information automatically, including, but
                 not limited to, the type of mobile device You use, Your mobile
-                device's unique ID, the IP address of Your mobile device, Your
-                mobile operating system, the type of mobile Internet browser You
-                use, unique device identifiers and other diagnostic data.
+                device&#39;s unique ID, the IP address of Your mobile device,
+                Your mobile operating system, the type of mobile Internet
+                browser You use, unique device identifiers and other diagnostic
+                data.
               </p>
               <p>
                 We may also collect information that Your browser sends whenever
@@ -361,10 +362,10 @@ export default function PrivacyPolicyPage() {
               <h3>Transfer of Your Personal Data</h3>
               <p>
                 Your information, including Personal Data, is processed at the
-                Company's operating offices and in any other places where the
-                parties involved in the processing are located. It means that
-                this information may be transferred to — and maintained on —
-                computers located outside of Your state, province, country or
+                Company&#39;s operating offices and in any other places where
+                the parties involved in the processing are located. It means
+                that this information may be transferred to — and maintained on
+                — computers located outside of Your state, province, country or
                 other governmental jurisdiction where the data protection laws
                 may differ from those from Your jurisdiction.
               </p>
@@ -437,7 +438,7 @@ export default function PrivacyPolicyPage() {
                 We cannot guarantee its absolute security.
               </p>
 
-              <h2>Children's Privacy</h2>
+              <h2>Children&#39;s Privacy</h2>
               <p>
                 Our Service does not address anyone under the age of 13. We do
                 not knowingly collect personally identifiable information from
@@ -453,8 +454,8 @@ export default function PrivacyPolicyPage() {
               <p>
                 Our Service may contain links to other websites that are not
                 operated by Us. If You click on a third party link, You will be
-                directed to that third party's site. We strongly advise You to
-                review the Privacy Policy of every site You visit.
+                directed to that third party&#39;s site. We strongly advise You
+                to review the Privacy Policy of every site You visit.
               </p>
               <p>
                 We have no control over and assume no responsibility for the
