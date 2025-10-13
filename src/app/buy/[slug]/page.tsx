@@ -24,6 +24,8 @@ import Link from "next/link";
 import ContactSidebar from "../../../../components/ContactSidebar";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
+import ButtonFill from "../../../../components/Button";
+
 interface Property {
   _id: string;
   title: string;
@@ -42,6 +44,7 @@ interface Property {
   extraHighlights: string[];
   description: string;
   googleMapUrl?: string;
+  brochure?: string;
 }
 
 export default function BuyDetails() {
@@ -224,6 +227,19 @@ export default function BuyDetails() {
                   </span>
                 ))}
               </div>
+            </>
+          )}
+
+          {property.brochure && (
+            <>
+              <h2 className="text-xl font-semibold text-[var(--title)]">
+                Brochure
+              </h2>
+
+              <ButtonFill
+                onClick={() => window.open(property.brochure, "_blank")}
+                text="📄 View Brochure"
+              />
             </>
           )}
         </div>

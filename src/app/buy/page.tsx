@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import ContactInfo from "../../../components/ContactInfo";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../components/ContactSidebar";
+import ButtonFill from "../../../components/Button";
 
 interface Property {
   _id: string;
@@ -234,15 +235,11 @@ export default function BuyPage() {
                       </p>
                     )}
 
-                    <button
+                    <ButtonFill
                       onClick={() => router.push(`/buy/${p.slug}`)}
-                      className="relative px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--hover-color)] text-white font-semibold 
-                      overflow-hidden group cursor-pointer transition-all duration-300 w-full mt-4 rounded"
-                    >
-                      <span className="relative z-10 tracking-widest">
-                        View Details
-                      </span>
-                    </button>
+                      text="View Details"
+                      className="w-full mt-4"
+                    />
                   </div>
                 </motion.div>
               ))}

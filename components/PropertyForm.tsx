@@ -71,6 +71,7 @@ export default function PropertyForm({
   const [existingImages, setExistingImages] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<File[]>([]);
   const [loading, setLoading] = useState(false); // 🔹 loader
+  const [brochureFile, setBrochureFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (property) {
@@ -119,6 +120,13 @@ export default function PropertyForm({
     setNewImages((prev) => [...prev, ...Array.from(files)]);
   };
 
+  // Add this handler
+  const handleBrochureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setBrochureFile(e.target.files[0]);
+    }
+  };
+
   const handleRemoveExistingImage = (url: string) => {
     setExistingImages((prev) => prev.filter((img) => img !== url));
   };
@@ -149,6 +157,10 @@ export default function PropertyForm({
 
       newImages.forEach((file) => data.append("images", file));
       data.append("existingImages", JSON.stringify(existingImages));
+
+      if (brochureFile) {
+        data.append("brochure", brochureFile); // <-- this was missing
+      }
 
       if (property) {
         await axios.patch(
@@ -335,6 +347,17 @@ export default function PropertyForm({
           placeholder="googleMapUrl"
           value={formData.googleMapUrl || ""}
           onChange={handleChange}
+        />
+      </div>
+
+      {/* Brochure Upload */}
+      <div className="mt-4">
+        <label className="block font-medium mb-2">Upload Brochure (PDF)</label>
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handleBrochureChange}
+          className="mt-2"
         />
       </div>
 
