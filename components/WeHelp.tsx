@@ -30,7 +30,7 @@ const WeHelp = () => {
           </h2>
 
           <p
-            className="text-[var(--text)] leading-relaxed"
+            className="text-[var(--text)] leading-relaxed text-justify"
             data-aos="fade-right"
             data-aos-delay="400"
           >

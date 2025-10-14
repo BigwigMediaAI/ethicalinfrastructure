@@ -109,7 +109,7 @@ const Hero = () => {
             <span className="text-blue-400">Ethical Infrastructure</span>
           </h1>
           <p
-            className="text-gray-200 text-lg max-w-lg"
+            className="text-gray-200 text-lg max-w-lg text-justify"
             data-aos="fade-right"
             data-aos-delay="400"
           >

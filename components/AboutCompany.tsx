@@ -40,7 +40,7 @@ export default function CompanySection() {
               Our Vision
             </h3>
             <p
-              className="text-[var(--text)] flex-1"
+              className="text-[var(--text)] flex-1 text-justify"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -66,30 +66,24 @@ export default function CompanySection() {
               About the Company
             </h3>
             <p
-              className="text-[var(--text)] mb-4 flex-1"
+              className="text-[var(--text)]  flex-1 mb-4"
               data-aos="fade-up"
               data-aos-delay="400"
             >
               Ethical Infrastructures Pvt. Ltd. is dedicated to delivering
               personalized, cost-effective real estate solutions focused on
-              client needs and long-term value.
+              client needs and long-term value. Our expert team ensures every
+              client receives complete guidance, market insights, and seamless
+              service, from property search to successful investment.
             </p>
+
             <Image
               src={sampleImage2}
               alt="Right Side"
               className="rounded-lg mb-4 object-cover h-[350px] w-full"
               data-aos="zoom-in"
-              data-aos-delay="600"
-            />
-            <p
-              className="text-[var(--text)] flex-1"
-              data-aos="fade-up"
               data-aos-delay="800"
-            >
-              Our expert team ensures every client receives complete guidance,
-              market insights, and seamless service, from property search to
-              successful investment.
-            </p>
+            />
           </div>
         </div>
       </div>

@@ -145,7 +145,7 @@ export default function FeaturedApartments() {
               </h3>
               <h2 className="text-2xl font-bold mt-1">{current.title}</h2>
               <p className="text-gray-500 text-sm mb-4">{current.location}</p>
-              <p className="text-gray-600 text-sm mb-4 line-clamp-4">
+              <p className="text-gray-600 text-sm mb-4 line-clamp-4 text-justify">
                 {current.description}
               </p>
               <div className="flex items-center gap-4 text-gray-700 text-sm">

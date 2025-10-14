@@ -6,7 +6,7 @@ import bgImage from "../assets/fun-fact.jpg"; // replace with your image
 const statsData = [
   { value: 12, label: "Our Happy\n Customers", suffix: "K" },
   { value: 98, label: "Client Satisfaction\n Rate", suffix: "%" },
-  { value: 6, label: "Our Office\n Locations", suffix: "+" },
+  // { value: 6, label: "Our Office\n Locations", suffix: "+" },
   { value: 20, label: "Total Property\n Sale", suffix: "K" },
   { value: 85, label: "Real Estate\n Agents", suffix: "+" },
 ];
@@ -70,7 +70,7 @@ export default function StatsSection() {
       />
 
       {/* Overlay Content */}
-      <div className="w-11/12 md:w-5/6 relative z-10 flex flex-wrap justify-center items-center gap-10 text-center px-4 md:grid md:grid-cols-5 md:gap-8">
+      <div className="w-11/12 md:w-5/6 relative z-10 flex flex-wrap justify-center items-center gap-10 text-center px-4 md:grid md:grid-cols-4 md:gap-8">
         {" "}
         {statsData.map((stat, index) => (
           <div key={index} className="flex flex-col items-center">

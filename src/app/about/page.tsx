@@ -62,18 +62,18 @@ const AboutHero = () => {
               </span>
             </h2>
             <p
-              className="text-[var(--text)] mb-4"
+              className="text-[var(--text)] mb-4 text-justify"
               data-aos="fade-right"
               data-aos-delay="400"
             >
-              Here at ETHICAL INFRASTRUCTURES PRIVATE LIMITED we function to
-              deliver complete customer satisfaction and craft the best deals so
-              as to stand out from the plethora of real estate agents that have
+              At ETHICAL INFRASTRUCTURES PRIVATE LIMITED we function to deliver
+              complete customer satisfaction and craft the best deals so as to
+              stand out from the plethora of real estate agents that have
               sprouted to bank in on this boom in the real estate field but fail
               to provide exhaustive guidance and long term vision.
             </p>
             <p
-              className="text-[var(--text)] mb-4"
+              className="text-[var(--text)] mb-4 text-justify"
               data-aos="fade-right"
               data-aos-delay="600"
             >
@@ -130,7 +130,7 @@ const AboutHero = () => {
               </h3>
               <p className="text-gray-300">
                 Professional guidance for buying, selling, or leasing
-                Residential and Commercial properties in Gurugram.
+                Residential and Commercial properties.
               </p>
             </div>
 
@@ -149,9 +149,9 @@ const AboutHero = () => {
               <h3 className="text-xl font-semibold text-white">
                 Industrial & Leasing Services
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-justify">
                 Specialized support for Industrial spaces, Pre-Leased
-                properties, and FarmHouses to maximize value and efficiency.
+                properties, and FarmHouses to maximize.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ const AboutHero = () => {
               </h3>
               <p className="text-gray-300">
                 Honest advice, personalized services, and complete support
-                throughout the buying, selling, or leasing journey.
+                throughout the buying.
               </p>
             </div>
           </div>
@@ -199,7 +199,7 @@ const AboutHero = () => {
             </h2>
 
             <p
-              className="text-[var(--text)] mb-4"
+              className="text-[var(--text)] mb-4 text-justify"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -213,7 +213,7 @@ const AboutHero = () => {
             </p>
 
             <p
-              className="text-[var(--text)]"
+              className="text-[var(--text)] text-justify"
               data-aos="fade-up"
               data-aos-delay="600"
             >
