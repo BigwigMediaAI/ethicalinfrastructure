@@ -116,7 +116,7 @@ export default function BuyPage() {
             Find Your Dream Home
           </h1>
           <p className="mt-4 text-lg tracking-widest">
-            Apartments • Villas • Plots
+            Builder Floors • Apartments • Villas • Farmhouses
           </p>
           <button
             onClick={scrollToNext}
@@ -140,26 +140,28 @@ export default function BuyPage() {
           },
         }}
       >
-        {["All", "Apartment", "Villa"].map((type) => (
-          <motion.button
-            key={type}
-            onClick={() => {
-              setSelectedType(type);
-              setCurrentPage(1);
-            }}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              selectedType === type
-                ? "bg-[var(--primary-color)] text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            {type}
-          </motion.button>
-        ))}
+        {["All", "Builder Floor", "Apartment", "Villa", "Farmhouses"].map(
+          (type) => (
+            <motion.button
+              key={type}
+              onClick={() => {
+                setSelectedType(type);
+                setCurrentPage(1);
+              }}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+                selectedType === type
+                  ? "bg-[var(--primary-color)] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              {type}
+            </motion.button>
+          )
+        )}
       </motion.div>
 
       {/* Property List */}
