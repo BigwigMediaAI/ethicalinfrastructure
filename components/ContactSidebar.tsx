@@ -26,7 +26,7 @@ const ContactSidebar: React.FC = () => {
 
           {/* Contact Options */}
           <a
-            href="mailto:webmail@eiplin.com"
+            href="mailto:info@eipl.co"
             className="w-12 h-24 bg-blue-500 flex items-center justify-center text-white cursor-pointer"
           >
             <div className="flex flex-col items-center justify-center space-y-1">

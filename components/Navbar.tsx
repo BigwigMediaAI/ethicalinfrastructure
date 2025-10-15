@@ -16,9 +16,10 @@ import {
   FaBlog,
   FaYoutube,
   FaWhatsapp,
+  FaPhoneAlt,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
-import { BsWhatsapp } from "react-icons/bs";
+import { BsPhone, BsWhatsapp } from "react-icons/bs";
 import { MdPhone } from "react-icons/md";
 import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
@@ -92,11 +93,11 @@ const Navbar = () => {
             webmail@eiplin.com
           </Link>
           <Link
-            href="https://wa.me/+919999000172"
+            href="tel:+919999000183"
             className="flex items-center gap-2"
             target="_blank"
           >
-            <BsWhatsapp /> +919999000172
+            <FaPhoneAlt /> +91 9999000183
           </Link>
         </div>
       </div>
@@ -326,14 +327,15 @@ const Navbar = () => {
                 <div className="text-[var(--text)] text-md">
                   <p className="flex items-center gap-2">
                     <FiMail />
-                    webmail@eiplin.com
+                    info@eipl.co
                   </p>
-                  <p className="flex items-center gap-2 mt-2">
-                    <FaWhatsapp /> +91 9999000172
-                  </p>
-                  <p className="flex items-center gap-2 mt-2">
+
+                  <Link
+                    href="tel:+919999000183"
+                    className="flex items-center gap-2 mt-2"
+                  >
                     <MdPhone /> +91 9999000183
-                  </p>
+                  </Link>
                 </div>
               </div>
             </div>

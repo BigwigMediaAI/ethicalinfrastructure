@@ -108,11 +108,11 @@ export default function Footer() {
         <div className="space-y-3 text-sm col-span-2">
           <div className="flex items-center space-x-2">
             <Phone size={16} />
-            <span>+91-9999000183</span>
+            <span>+91 9999000183</span>
           </div>
           <div className="flex items-center space-x-2">
             <Mail size={16} />
-            <span>webmail@eiplin.com</span>
+            <span>info@eipl.co</span>
           </div>
           <div className="flex items-center space-x-2">
             <MapPin size={20} /> {/* Increased size from 16 → 20 */}
