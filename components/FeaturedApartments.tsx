@@ -3,61 +3,48 @@ import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaBath, FaBed } from "react-icons/fa";
 import { PiRuler } from "react-icons/pi";
 import Image from "next/image";
-import image1 from "../assets/9-768x532.webp";
-import image2 from "../assets/9-768x532.webp";
-import image3 from "../assets/9-768x532.webp";
+import image1 from "../assets/silverglades.png";
+import image2 from "../assets/av.png";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ButtonFill from "./Button";
+import LeadFormModal from "./LeadPopup";
 
 const apartments = [
   {
     id: 1,
+    slug: "silverglades",
     tag: "Featured",
-    price: "$500,000",
-    title: "Park Avenue Apartment",
-    location: "East 59th St",
+    title: "Silverglades",
+    location: "Gurugram, Haryana",
+    price: "",
     description:
-      "Located inside Fort Bonifacio, this luxurious apartment features spacious interiors, modern design, and a private pool area.",
+      "Since 1988, we’ve been redefining luxury living across Delhi NCR, creating timeless homes that reflect innovation, elegance, and enduring quality.",
     image: image1,
-    beds: 3,
-    baths: 2.5,
-    area: "1,300 ft²",
-    agent: "Jess Lee",
+    beds: 4,
+    baths: 5,
+    area: "7700 ft²",
   },
   {
     id: 2,
+    slug: "ananta-vilasa",
     tag: "Hot Offer",
-    price: "$420,000",
-    title: "Sunset Heights",
-    location: "Ocean Drive",
+    price: "",
+    title: "Ananta Vilasa",
+    location: "Gurugram, Haryana",
     description:
-      "Enjoy ocean views and premium amenities in this modern apartment with an open-plan layout and a large balcony.",
+      "Discover Ananta Vilasa, an exclusive collection of 4BHK residences along Gurugram’s Golf Course Road. Crafted by Reza Kabul, where design, luxury, and serenity meet effortlessly.",
     image: image2,
-    beds: 2,
-    baths: 2,
-    area: "1,100 ft²",
-    agent: "Ryan Patel",
-  },
-  {
-    id: 3,
-    tag: "Sales",
-    price: "$620,000",
-    title: "Emerald Towers",
-    location: "Downtown Ave",
-    description:
-      "A stylish apartment located in the heart of the city with easy access to shopping centers and top restaurants.",
-    image: image3,
     beds: 4,
-    baths: 3,
-    area: "1,800 ft²",
-    agent: "Sophia Chen",
+    baths: 5,
+    area: "3549 ft²",
   },
 ];
 
 export default function FeaturedApartments() {
   const [index, setIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -79,7 +66,7 @@ export default function FeaturedApartments() {
 
   return (
     <div className="bg-[#021A33] text-white py-12">
-      <div className="w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Text Section */}
         <div className="md:w-1/2">
           <p
@@ -112,14 +99,17 @@ export default function FeaturedApartments() {
             Based in Gurugram, we are renowned for providing expert guidance and
             personalized services to clients across all real estate sectors.
           </p>
-          <Link href="/contact-us">
-            <ButtonFill text="Contact Us" aos="fade-right" aosDelay="1000" />
-          </Link>
+          <div data-aos="fade-right" data-aos-delay="1000">
+            <ButtonFill
+              text="Get in Touch"
+              onClick={() => setShowModal(true)}
+            />
+          </div>
         </div>
 
         {/* Right Card Section */}
         <div
-          className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex min-h-[350px] transition-all duration-300 ease-in-out"
+          className="relative bg-white text-black rounded-2xl shadow-lg overflow-visible md:w-1/2 flex min-h-[380px] transition-all duration-300 ease-in-out"
           data-aos="zoom-in"
           data-aos-delay="1000"
         >
@@ -148,7 +138,7 @@ export default function FeaturedApartments() {
               <p className="text-gray-600 text-sm mb-4 line-clamp-4 text-justify">
                 {current.description}
               </p>
-              <div className="flex items-center gap-4 text-gray-700 text-sm">
+              <div className="flex items-center gap-4 text-gray-700 text-sm mb-4">
                 <span className="flex items-center gap-1">
                   <FaBed /> {current.beds}
                 </span>
@@ -159,10 +149,12 @@ export default function FeaturedApartments() {
                   <PiRuler /> {current.area}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mt-4">
-                Agent: {current.agent}
-              </p>
             </div>
+
+            {/* View Details Button */}
+            <Link href={`/buy/${current.slug}`}>
+              <ButtonFill text="View Details" />
+            </Link>
           </div>
 
           {/* Arrows */}
@@ -181,6 +173,7 @@ export default function FeaturedApartments() {
           </button>
         </div>
       </div>
+      <LeadFormModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

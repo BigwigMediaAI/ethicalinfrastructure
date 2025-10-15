@@ -8,6 +8,8 @@ import "swiper/css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import ButtonFill from "./Button"; // ✅ Import your existing button component
 
 interface Property {
   _id: string;
@@ -18,11 +20,13 @@ interface Property {
   bathrooms: number;
   areaSqft: string;
   images: string[];
+  slug: string; // ✅ Ensure slug is present in your backend data
 }
 
 export default function PropertyGrid() {
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     AOS.init({
@@ -99,6 +103,13 @@ export default function PropertyGrid() {
                         <FaRulerCombined /> {property.areaSqft}
                       </div>
                     </div>
+
+                    {/* ✅ View Details Button */}
+                    <ButtonFill
+                      text="View Details"
+                      className="w-full mt-4"
+                      onClick={() => router.push(`/buy/${property.slug}`)}
+                    />
                   </div>
                 </div>
               </SwiperSlide>
@@ -150,6 +161,13 @@ export default function PropertyGrid() {
                     <FaRulerCombined /> {property.areaSqft}
                   </div>
                 </div>
+
+                {/* ✅ View Details Button */}
+                <ButtonFill
+                  text="View Details"
+                  className="w-full mt-4"
+                  onClick={() => router.push(`/buy/${property.slug}`)}
+                />
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
 import aboutImg from "../assets/9-768x532.webp"; // replace with your image
@@ -7,8 +7,10 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ButtonFill from "./Button";
+import LeadFormModal from "./LeadPopup";
 
 const WeHelp = () => {
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -59,13 +61,12 @@ const WeHelp = () => {
             ))}
           </ul>
 
-          <Link href="/contact-us">
+          <div data-aos="fade-right" data-aos-delay="1200">
             <ButtonFill
-              text="Contact Us"
-              data-aos="fade-right"
-              data-aos-delay="1200"
+              text="Get in Touch"
+              onClick={() => setShowModal(true)}
             />
-          </Link>
+          </div>
         </div>
 
         {/* ===== Right Image with Play Icon ===== */}
@@ -83,6 +84,7 @@ const WeHelp = () => {
           />
         </div>
       </div>
+      <LeadFormModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 };
