@@ -7,6 +7,7 @@ import Footer from "../../../components/Footer";
 import banner from "../../../assets/contact.webp";
 import Image from "next/image";
 import ContactSidebar from "../../../components/ContactSidebar";
+import Link from "next/link";
 
 export default function ContactPage() {
   return (
@@ -68,17 +69,20 @@ export default function ContactPage() {
 
           <div className="flex flex-col gap-4">
             {/* Phone Button */}
-            <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans">
+            <Link
+              href="tel:+919999000183"
+              className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
+            >
               <Phone className="w-6 h-6 text-gray-700" />
               <span className="text-sm text-gray-700">+91 9999000183</span>
-            </div>
-            <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans">
+            </Link>
+            {/* <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans">
               <Phone className="w-6 h-6 text-gray-700" />
               <span className="text-sm text-gray-700">+91 9999000172</span>
-            </div>
+            </div> */}
 
             {/* WhatsApp Button */}
-            <a
+            <Link
               href="https://wa.me/+919999000172"
               target="_blank"
               rel="noopener noreferrer"
@@ -86,16 +90,16 @@ export default function ContactPage() {
             >
               <FaWhatsapp className="w-6 h-6 text-green-600" />
               <span className="text-sm text-gray-700">+91 9999000172</span>
-            </a>
+            </Link>
 
             {/* Email Button */}
-            <a
+            <Link
               href="mailto:webmail@eiplin.com"
               className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
             >
               <Mail className="w-6 h-6 text-gray-700" />
-              <span className="text-sm text-gray-700">webmail@eiplin.com</span>
-            </a>
+              <span className="text-sm text-gray-700">info@eipl.co</span>
+            </Link>
           </div>
         </div>
       </section>
