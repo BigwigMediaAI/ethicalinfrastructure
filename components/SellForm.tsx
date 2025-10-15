@@ -9,9 +9,31 @@ interface SellFormProps {
   onSuccess?: () => void;
 }
 
+interface PropertyData {
+  name: string;
+  email: string;
+  phone: string;
+  title: string;
+  description: string;
+  purpose: string;
+  type: string;
+  location: string;
+  price: number | string;
+  bedrooms: number | string;
+  bathrooms: number | string;
+  areaSqft: number | string;
+  highlights: string[];
+  featuresAmenities: string[];
+  nearby: string[];
+  extraHighlights: string[];
+  googleMapUrl: string;
+  videoLink: string;
+  brochure: File | null;
+}
+
 export default function SellForm({ onSuccess }: SellFormProps) {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<PropertyData>({
     name: "",
     email: "",
     phone: "",
@@ -24,12 +46,13 @@ export default function SellForm({ onSuccess }: SellFormProps) {
     bedrooms: "",
     bathrooms: "",
     areaSqft: "",
-    highlights: "[]",
-    featuresAmenities: "[]",
-    nearby: "[]",
+    highlights: [],
+    featuresAmenities: [],
+    nearby: [],
+    extraHighlights: [],
     googleMapUrl: "",
     videoLink: "",
-    extraHighlights: "[]",
+    brochure: null,
   });
 
   const [images, setImages] = useState<FileList | null>(null);
@@ -46,6 +69,12 @@ export default function SellForm({ onSuccess }: SellFormProps) {
     setImages(e.target.files);
   };
 
+  const handleBrochureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData({ ...formData, brochure: e.target.files[0] });
+    }
+  };
+
   const resetForm = () => {
     setFormData({
       name: "",
@@ -60,12 +89,13 @@ export default function SellForm({ onSuccess }: SellFormProps) {
       bedrooms: "",
       bathrooms: "",
       areaSqft: "",
-      highlights: "[]",
-      featuresAmenities: "[]",
-      nearby: "[]",
+      highlights: [],
+      featuresAmenities: [],
+      nearby: [],
+      extraHighlights: [],
       googleMapUrl: "",
       videoLink: "",
-      extraHighlights: "[]",
+      brochure: null,
     });
     setImages(null);
   };
@@ -76,14 +106,26 @@ export default function SellForm({ onSuccess }: SellFormProps) {
 
     try {
       const data = new FormData();
+
       for (const key in formData) {
-        data.append(key, formData[key as keyof typeof formData]);
+        const value = formData[key as keyof PropertyData];
+        if (value !== null) {
+          if (Array.isArray(value)) {
+            data.append(key, JSON.stringify(value));
+          } else {
+            data.append(key, value.toString());
+          }
+        }
       }
 
       if (images) {
         Array.from(images).forEach((file) => {
           data.append("images", file);
         });
+      }
+
+      if (formData.brochure) {
+        data.append("brochure", formData.brochure);
       }
 
       await axios.post(
@@ -114,7 +156,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
         onSubmit={handleSubmit}
       >
         {/* Seller Info */}
-        <div className="p-6 border border-gray-300 dark:border-gray-800 rounded-lg shadow-sm bg-[var(--white)] ">
+        <div className="p-6 border border-gray-300 dark:border-gray-800 rounded-lg shadow-sm bg-[var(--white)]">
           <h3 className="text-xl font-semibold mb-4 text-[var(--title)]">
             Seller Information
           </h3>
@@ -126,7 +168,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               value={formData.name}
               onChange={handleChange}
               required
-              className="p-3 border border-gray-300   text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 text-[var(--text)] rounded w-full"
             />
             <input
               type="email"
@@ -135,24 +177,24 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               value={formData.email}
               onChange={handleChange}
               required
-              className="p-3 border border-gray-300 dark:border-gray-800 bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 dark:border-gray-800 bg-[var(--white)] text-[var(--text)] rounded w-full"
             />
             <PhoneInput
               country={"in"}
               value={formData.phone}
               onChange={(phone) => setFormData({ ...formData, phone })}
-              inputClass="!w-full  !border !border-gray-300 dark:!border-gray-800 !bg-[var(--white)]  !text-[var(--text)] !rounded focus:outline-none"
+              inputClass="!w-full !border !border-gray-300 dark:!border-gray-800 !bg-[var(--white)] !text-[var(--text)] !rounded focus:outline-none"
               buttonClass="!border-none !bg-transparent"
               containerClass="w-full"
               placeholder="Phone Number"
-              enableAreaCodes={true}
-              enableSearch={true}
+              enableAreaCodes
+              enableSearch
             />
           </div>
         </div>
 
         {/* Property Info */}
-        <div className="p-6 border border-gray-300  rounded-lg shadow-sm bg-[var(--white)]">
+        <div className="p-6 border border-gray-300 rounded-lg shadow-sm bg-[var(--white)]">
           <h3 className="text-xl font-semibold mb-4 text-[var(--title)]">
             Property Details
           </h3>
@@ -164,7 +206,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               value={formData.title}
               onChange={handleChange}
               required
-              className="p-3 border border-gray-300  bg-[var(--white)] text-[var(--text)] rounded w-full col-span-2"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full col-span-2"
             />
             <textarea
               name="description"
@@ -172,8 +214,8 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full col-span-2"
-            ></textarea>
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full col-span-2"
+            />
 
             <input
               type="text"
@@ -181,15 +223,31 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Location"
               value={formData.location}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
             />
+
+            <select
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
+            >
+              <option value="">Select Property Type</option>
+              <option value="Apartment">Builder Floor</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Villa">Villa</option>
+              <option value="Penthouse">Penthouse</option>
+              <option value="Plot">Plot</option>
+              <option value="Office">Office</option>
+            </select>
+
             <input
               type="number"
               name="price"
               placeholder="Price"
               value={formData.price}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
               min={0}
             />
             <input
@@ -198,7 +256,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Bedrooms"
               value={formData.bedrooms}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
               min={0}
             />
             <input
@@ -207,7 +265,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Bathrooms"
               value={formData.bathrooms}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
               min={0}
             />
             <input
@@ -216,7 +274,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Area (sq ft)"
               value={formData.areaSqft}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
               min={0}
             />
             <input
@@ -225,7 +283,7 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Google Map URL"
               value={formData.googleMapUrl}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
             />
             <input
               type="text"
@@ -233,21 +291,41 @@ export default function SellForm({ onSuccess }: SellFormProps) {
               placeholder="Video Link"
               value={formData.videoLink}
               onChange={handleChange}
-              className="p-3 border border-gray-300  bg-[var(--white)]  text-[var(--text)] rounded w-full"
+              className="p-3 border border-gray-300 bg-[var(--white)] text-[var(--text)] rounded w-full"
             />
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleImageChange}
-              className="p-3 text-[var(--text)]"
-            />
+
+            {/* Images */}
+            <div className="flex flex-col">
+              <label className="mb-1 font-medium text-[var(--text)]">
+                Upload Property Images
+              </label>
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleImageChange}
+                className="p-3 text-[var(--text)] border border-gray-300 rounded"
+              />
+            </div>
+
+            {/* Brochure */}
+            <div className="flex flex-col">
+              <label className="mb-1 font-medium text-[var(--text)]">
+                Upload Property Brochure (PDF)
+              </label>
+              <input
+                type="file"
+                accept=".pdf"
+                onChange={handleBrochureChange}
+                className="p-3 text-[var(--text)] border border-gray-300 rounded"
+              />
+            </div>
           </div>
         </div>
 
         <ButtonFill
           text={loading ? "Submitting..." : "Submit Property"}
-          className="font-semibold py-3 px-8 shadow-md  disabled:opacity-50"
+          className="font-semibold py-3 px-8 shadow-md disabled:opacity-50"
         />
       </form>
     </div>
