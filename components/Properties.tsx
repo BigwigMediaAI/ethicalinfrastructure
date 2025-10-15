@@ -9,7 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import ButtonFill from "./Button"; // ✅ Import your existing button component
+import ButtonFill from "./Button";
 
 interface Property {
   _id: string;
@@ -20,7 +20,7 @@ interface Property {
   bathrooms: number;
   areaSqft: string;
   images: string[];
-  slug: string; // ✅ Ensure slug is present in your backend data
+  slug: string;
 }
 
 export default function PropertyGrid() {
@@ -29,11 +29,7 @@ export default function PropertyGrid() {
   const router = useRouter();
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
 
     const fetchProperties = async () => {
       try {
@@ -51,13 +47,13 @@ export default function PropertyGrid() {
     fetchProperties();
   }, []);
 
-  if (loading) {
+  if (loading)
     return <p className="text-center py-12">Loading properties...</p>;
-  }
-
-  if (!properties.length) {
+  if (!properties.length)
     return <p className="text-center py-12">No properties available.</p>;
-  }
+
+  // Always show only top 4 properties
+  const displayedProperties = properties.slice(0, 4);
 
   return (
     <section className="py-12">
@@ -69,7 +65,7 @@ export default function PropertyGrid() {
         {/* ==== Mobile View: Swiper ==== */}
         <div className="block md:hidden">
           <Swiper spaceBetween={16} slidesPerView={1.2} grabCursor={true}>
-            {properties.map((property, index) => (
+            {displayedProperties.map((property, index) => (
               <SwiperSlide key={property._id}>
                 <div
                   className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
@@ -104,7 +100,6 @@ export default function PropertyGrid() {
                       </div>
                     </div>
 
-                    {/* ✅ View Details Button */}
                     <ButtonFill
                       text="View Details"
                       className="w-full mt-4"
@@ -120,12 +115,12 @@ export default function PropertyGrid() {
         {/* ==== Desktop View: Grid ==== */}
         <div
           className={`hidden md:grid gap-8 ${
-            properties.length < 4
+            displayedProperties.length < 4
               ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center"
               : "grid-cols-2 lg:grid-cols-4"
           }`}
         >
-          {properties.map((property, index) => (
+          {displayedProperties.map((property, index) => (
             <div
               key={property._id}
               className="bg-[var(--desktop-sidebar)] shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition w-full max-w-sm"
@@ -162,7 +157,6 @@ export default function PropertyGrid() {
                   </div>
                 </div>
 
-                {/* ✅ View Details Button */}
                 <ButtonFill
                   text="View Details"
                   className="w-full mt-4"
@@ -172,6 +166,17 @@ export default function PropertyGrid() {
             </div>
           ))}
         </div>
+
+        {/* ✅ View All Button */}
+        {properties.length > 4 && (
+          <div className="flex justify-center mt-8">
+            <ButtonFill
+              text="View All"
+              onClick={() => router.push("/buy")}
+              className="px-6 py-2"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
