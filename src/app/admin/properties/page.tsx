@@ -10,13 +10,14 @@ interface Property {
   _id: string;
   title: string;
   slug: string;
+  type: string;
   description: string;
   purpose: string;
   location: string;
-  price: number | null;
-  bedrooms: number | null;
-  bathrooms: number | null;
-  areaSqft: number | null;
+  price: number | string;
+  bedrooms: number | string;
+  bathrooms: number | string;
+  areaSqft: number | string;
   highlights: string[];
   featuresAmenities: string[];
   nearby: string[];
@@ -94,6 +95,7 @@ export default function AllProperties() {
               <th className="p-3">Title</th>
 
               <th className="p-3">Purpose</th>
+              <th className="p-3">Type</th>
               <th className="p-3">Location</th>
               <th className="p-3">Actions</th>
             </tr>
@@ -104,23 +106,24 @@ export default function AllProperties() {
                 <tr key={property._id} className="border-t border-gray-300">
                   <td className="p-3 text-center">{property.title}</td>
                   <td className="p-3 text-center ">{property.purpose}</td>
+                  <td className="p-3 text-center ">{property.type}</td>
                   <td className="p-3 text-center">{property.location}</td>
                   <td className="p-3 flex gap-3 justify-center">
                     <button
                       onClick={() => openViewModal(property)}
-                      className="p-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white"
+                      className="p-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white cursor-pointer"
                     >
                       <Eye size={16} />
                     </button>
                     <button
                       onClick={() => openFormModal(property)}
-                      className="p-2 bg-yellow-400 hover:bg-yellow-500 rounded-lg text-white"
+                      className="p-2 bg-yellow-400 hover:bg-yellow-500 rounded-lg text-white cursor-pointer"
                     >
                       <Pencil size={16} />
                     </button>
                     <button
                       onClick={() => handleDelete(property.slug)}
-                      className="p-2 bg-red-500 hover:bg-red-600 rounded-lg text-white"
+                      className="p-2 bg-red-500 hover:bg-red-600 rounded-lg text-white cursor-pointer"
                     >
                       <Trash2 size={16} />
                     </button>
@@ -147,7 +150,7 @@ export default function AllProperties() {
           <div className="bg-gray-800 w-11/12 md:w-3/4 lg:w-2/3 max-h-[90vh] overflow-y-auto no-scrollbar rounded-lg shadow-lg p-6 relative">
             <button
               onClick={() => setIsViewModalOpen(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-white"
+              className="absolute top-3 right-3 text-gray-400 hover:text-white cursor-pointer"
             >
               <X size={20} />
             </button>
@@ -169,6 +172,9 @@ export default function AllProperties() {
                 </p>
                 <p>
                   <strong>Price:</strong> {selectedProperty.price ?? "—"}
+                </p>
+                <p>
+                  <strong>Type:</strong> {selectedProperty.type ?? "—"}
                 </p>
               </div>
               <div>

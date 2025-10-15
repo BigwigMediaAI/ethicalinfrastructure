@@ -12,7 +12,7 @@ interface PropertyData {
   title: string;
   slug: string;
   description: string;
-
+  type: string;
   purpose: string;
   location: string;
   price: number | string;
@@ -50,7 +50,7 @@ export default function PropertyForm({
   const [formData, setFormData] = useState<Partial<PropertyData>>({
     title: "",
     description: "",
-
+    type: "",
     purpose: "",
     location: "",
     price: "",
@@ -78,7 +78,7 @@ export default function PropertyForm({
       setFormData({
         title: property.title,
         description: property.description,
-
+        type: property.type,
         purpose: property.purpose,
         location: property.location,
         price: property.price,
@@ -225,6 +225,20 @@ export default function PropertyForm({
             <option value="Lease">Lease</option>
           </select>
         </div>
+        <div>
+          <select
+            name="type"
+            value={formData.type || ""}
+            onChange={handleChange}
+            className="w-full rounded-lg p-3 bg-white text-black border border-gray-300 focus:ring "
+          >
+            <option value="">Select Type</option>
+            <option value="Builder Floor">Builder Floor</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="Farmhouse">Farmhouse</option>
+          </select>
+        </div>
 
         <InputField
           name="location"
@@ -234,28 +248,24 @@ export default function PropertyForm({
         />
         <InputField
           name="price"
-          type="number"
           placeholder="Price"
           value={formData.price || ""}
           onChange={handleChange}
         />
         <InputField
           name="bedrooms"
-          type="number"
           placeholder="Bedrooms"
           value={formData.bedrooms || ""}
           onChange={handleChange}
         />
         <InputField
           name="bathrooms"
-          type="number"
           placeholder="Bathrooms"
           value={formData.bathrooms || ""}
           onChange={handleChange}
         />
         <InputField
           name="areaSqft"
-          type="number"
           placeholder="Area (sqft)"
           value={formData.areaSqft || ""}
           onChange={handleChange}
