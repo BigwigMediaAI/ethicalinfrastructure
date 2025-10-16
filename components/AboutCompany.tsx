@@ -6,14 +6,14 @@ export default function AboutSection() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="bg-[var(--white)] text-[var(--black)] px-4 py-12 md:py-20 flex justify-center relative overflow-hidden ">
-      <div className="p-[1px] bg-gradient-to-r from-[var(--primary-color)] via-black to-[var(--primary-color)] max-w-7xl w-full">
-        <div className="bg-white dark:bg-black p-6 md:p-12">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-[var(--primary-color)] mb-6">
-            ETHICAL INFRASTRUCTURES PRIVATE LIMITED
+    <section className="bg-[var(--white)] text-[var(--black)] py-12 flex justify-center relative overflow-hidden ">
+      <div className="p-[1px] bg-gradient-to-r from-[var(--primary-color)] via-black to-[var(--primary-color)] w-11/12 md:w-5/6">
+        <div className="bg-[var(--white)] p-6 md:p-12">
+          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+            Ethical Infrastructures Private Limited
           </h2>
 
-          <p className="text-sm md:text-base mb-6 text-justify">
+          <p className="text-sm md:text-base mb-6 text-justify text-[var(--text)]">
             Here at{" "}
             <span className="font-medium">
               ETHICAL INFRASTRUCTURES PRIVATE LIMITED
@@ -25,7 +25,7 @@ export default function AboutSection() {
             transparency, and a long-term vision for our clients.
           </p>
 
-          <p className="text-sm md:text-base mb-6 text-justify">
+          <p className="text-sm md:text-base mb-6 text-justify text-[var(--text)]">
             We provide complete need-based and cost-effective solutions to our
             clients. Our unique selling point lies in the range of personalized
             services offered by our dedicated team, ensuring every client’s
@@ -36,13 +36,13 @@ export default function AboutSection() {
           {!expanded ? (
             <button
               onClick={() => setExpanded(true)}
-              className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2"
+              className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2 cursor-pointer"
             >
               READ MORE
             </button>
           ) : (
             <>
-              <div className="mt-6 space-y-4 text-sm md:text-base">
+              <div className="mt-6 space-y-4 text-sm md:text-base text-[var(--text)]">
                 <p>
                   Each prospective client is guided through comprehensive site
                   visits, detailed market surveys, and kept informed with
@@ -119,7 +119,7 @@ export default function AboutSection() {
               <div className="mt-6">
                 <button
                   onClick={() => setExpanded(false)}
-                  className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2"
+                  className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2 cursor-pointer"
                 >
                   SEE LESS
                 </button>

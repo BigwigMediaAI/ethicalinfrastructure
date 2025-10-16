@@ -11,7 +11,7 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: <Home size={32} className="text-[#9C623E]" />,
+    icon: <Home size={32} />,
     label: "Buy Property",
     title: "Buy Property",
     description:
@@ -19,7 +19,7 @@ const services: Service[] = [
     redirected: "/buy",
   },
   {
-    icon: <Building2 size={32} className="text-[#9C623E]" />,
+    icon: <Building2 size={32} />,
     label: "Sell Property",
     title: "Sell Property",
     description:
@@ -27,7 +27,7 @@ const services: Service[] = [
     redirected: "/sell",
   },
   {
-    icon: <KeyRound size={32} className="text-[#9C623E]" />,
+    icon: <KeyRound size={32} />,
     label: "Lease Property",
     title: "Lease Property",
     description:
@@ -39,12 +39,12 @@ const services: Service[] = [
 const WhatWeDoSection: React.FC = () => {
   return (
     <div className="bg-[var(--white)] text-[var(--black)]">
-      <section className="max-w-7xl px-6 py-16 mx-auto">
+      <section className="w-11/12 md:w-5/6 py-12 mx-auto">
         <div className="mb-6">
-          <p className="text-md mb-2 tracking-wider text-[var(--primary-color)] font-semibold uppercase">
+          <p className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
             Our Services
           </p>
-          <h2 className="text-2xl md:text-3xl font-light text-[var(--black)]">
+          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
             Buy, Sell & Lease Properties with Ethical Guidance
           </h2>
         </div>
@@ -54,13 +54,15 @@ const WhatWeDoSection: React.FC = () => {
             <a
               href={service.redirected}
               key={idx}
-              className="group bg-gray-100 dark:bg-zinc-900 hover:shadow-xl rounded-xl p-6 transition duration-300 flex flex-col space-y-4 md:space-y-6 hover:scale-[1.02]"
+              className="group bg-[var(--featured)] shadow-xl rounded-xl p-6 transition duration-300 flex flex-col space-y-4 md:space-y-6 hover:scale-[1.02]"
             >
               <div className="flex items-center space-x-4">
-                <div className="flex-shrink-0">{service.icon}</div>
+                <div className="flex-shrink-0 text-[var(--primary-color)]">
+                  {service.icon}
+                </div>
                 <h3 className="text-lg font-semibold">{service.title}</h3>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm text-[var(--title)] leading-relaxed">
                 {service.description}
               </p>
             </a>

@@ -10,12 +10,13 @@ import {
 } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import Image from "next/image";
+import ButtonFill from "./Button";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-black text-black dark:text-white font-raleway text-sm">
+    <footer className="bg-[var(--white)] text-[var(--black)] text-sm">
       {/* Top horizontal line */}
-      <div className="border-t border-gray-300 dark:border-gray-700 w-full" />
+      <div className="border-t border-[var(--text)] w-full" />
 
       {/* Logo and CONTACTS Title */}
       <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 lg:px-6">
@@ -25,7 +26,7 @@ const Footer = () => {
             <Image
               src={logo}
               alt="Logo"
-              className="w-44 h-auto object-contain"
+              className="w-44 h-auto object-contain logo-invert"
             />
             <div className="w-20 border-t border-[var(--primary-color)]" />
           </div>
@@ -39,7 +40,7 @@ const Footer = () => {
       <div className="md:max-w-7xl mx-auto border-t border-gray-300 dark:border-gray-700 w-full mb-8" />
 
       {/* Main content */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between px-6 sm:px-12 lg:px-6 gap-8 pb-10 font-light dark:font-thin">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between px-6 sm:px-12 lg:px-6 gap-8 pb-10">
         {/* Left: Navigation Columns */}
         <div className="grid grid-cols-3 gap-6">
           {[
@@ -72,7 +73,7 @@ const Footer = () => {
         {/* Right: Contact Info */}
         <div className="space-y-4 lg:text-right">
           <h3 className="text-lg">Gurugram, Haryana</h3>
-          <p className="text-gray-700 dark:text-gray-200">
+          <p className="text-[var(--text)]">
             First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
             Gurugram, Haryana 122002
           </p>
@@ -132,9 +133,11 @@ const Footer = () => {
             </a>
           </div>
 
-          <button className="mt-4 px-6 py-3 font-raleway font-light bg-gradient-to-r from-[#C29579] via-[#e3c5b5] to-[#C29579] text-black hover:opacity-90 transition">
-            <a href="tel:+919999000183">Call Us</a>
-          </button>
+          <ButtonFill
+            text="Call Us"
+            onClick={() => (window.location.href = "tel:+919999000183")}
+            className="mt-4"
+          />
         </div>
       </div>
 

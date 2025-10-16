@@ -103,9 +103,8 @@ export default function BuyLeaseSection() {
             </div>
 
             <p className="text-[var(--text)] mt-8 text-sm md:text-base leading-relaxed max-w-md">
-              Find your next home, secure a rental, or make your first smart
-              investment. Our curated portfolio covers all your real estate
-              goals in Dubai.
+              Discover, sell, or lease premium properties in Gurugram, your
+              trusted partner for every real estate move.
             </p>
           </div>
         </div>
