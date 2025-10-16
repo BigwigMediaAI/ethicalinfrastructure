@@ -155,7 +155,7 @@ const Navbar = () => {
 
               {/* Dropdown */}
               {item.dropdown && dropdownOpen === "Property" && (
-                <ul className="absolute left-0 top-full bg-[var(--white)] shadow-lg  w-48 z-50">
+                <ul className="absolute left-0 top-full bg-[var(--white)] shadow-lg  w-40 z-50">
                   {item.dropdown.map((drop) => (
                     <li
                       key={drop.name}
@@ -176,7 +176,7 @@ const Navbar = () => {
 
                       {/* --- Second-level dropdown --- */}
                       {drop.subDropdown && (
-                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-44 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60]">
+                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-52 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60]">
                           {drop.subDropdown.map((sub) => (
                             <li key={sub.name}>
                               <Link
