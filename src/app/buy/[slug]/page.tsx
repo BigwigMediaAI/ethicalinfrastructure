@@ -52,10 +52,23 @@ export default function BuyDetails() {
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [leadData, setLeadData] = useState({
+    name: "",
+    phone: "",
+    countryCode: "+91",
+  });
+  const [loadingLead, setLoadingLead] = useState(false);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+
   useEffect(() => {
-    // only run in browser
+    const submitted = sessionStorage.getItem("brochureLeadSubmitted");
+    if (submitted) setLeadSubmitted(true);
+
+    // Initialize AOS
     (async () => {
-      const AOS = await import("aos"); // import dynamically
+      const AOS = await import("aos");
       AOS.init({ duration: 1000, once: true, offset: 100 });
     })();
   }, []);
@@ -85,6 +98,45 @@ export default function BuyDetails() {
 
   const displayedImages = property?.images?.slice(0, 7) || [];
   const extraCount = (property?.images?.length || 0) - displayedImages.length;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLeadData({ ...leadData, [e.target.name]: e.target.value });
+  };
+
+  // Lead submission handler
+  const handleSubmitLead = async () => {
+    if (!leadData.name || !/^\d{10}$/.test(leadData.phone)) {
+      alert("Please enter a valid name and 10-digit phone number.");
+      return;
+    }
+
+    setLoadingLead(true);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/brochure-leads`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(leadData),
+        }
+      );
+
+      if (!res.ok) throw new Error("Failed to submit lead");
+
+      // Mark as submitted in sessionStorage globally for the session
+      sessionStorage.setItem("brochureLeadSubmitted", "true");
+      setLeadSubmitted(true);
+
+      // Close modal & open brochure
+      setIsLeadModalOpen(false);
+      window.open(property.brochure, "_blank");
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong, please try again.");
+    } finally {
+      setLoadingLead(false);
+    }
+  };
 
   function getYouTubeEmbedUrl(url: string) {
     try {
@@ -230,17 +282,27 @@ export default function BuyDetails() {
             </>
           )}
 
+          {/* Brochure Section */}
+          {/* Brochure Section */}
           {property.brochure && (
-            <>
-              <h2 className="text-xl font-semibold text-[var(--title)]">
+            <section className="mt-6">
+              <h2 className="text-xl font-semibold text-[var(--title)] mb-4">
                 Brochure
               </h2>
 
               <ButtonFill
-                onClick={() => window.open(property.brochure, "_blank")}
+                onClick={() => {
+                  if (leadSubmitted) {
+                    // If already submitted in this session, open brochure directly
+                    window.open(property.brochure, "_blank");
+                  } else {
+                    // Open modal to submit lead
+                    setIsLeadModalOpen(true);
+                  }
+                }}
                 text="📄 View Brochure"
               />
-            </>
+            </section>
           )}
         </div>
       </section>
@@ -370,6 +432,72 @@ export default function BuyDetails() {
           index={photoIndex}
           plugins={[Fullscreen, Slideshow]}
         />
+      )}
+
+      {/* Lead Modal */}
+      {isLeadModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl w-11/12 max-w-md shadow-xl relative">
+            <button
+              className="absolute top-4 right-4 text-2xl font-bold text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              onClick={() => setIsLeadModalOpen(false)}
+            >
+              ×
+            </button>
+
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+              Get Your Brochure
+            </h2>
+
+            <div className="flex flex-col gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name*"
+                className="border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                value={leadData.name}
+                onChange={handleInputChange}
+              />
+
+              <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-[var(--primary-color)]">
+                <select
+                  name="countryCode"
+                  className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white p-3 outline-none border-r border-gray-300 dark:border-gray-600"
+                  value={leadData.countryCode || "+91"}
+                  onChange={(e) =>
+                    setLeadData({ ...leadData, countryCode: e.target.value })
+                  }
+                >
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+61">🇦🇺 +61</option>
+                </select>
+
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number*"
+                  className="flex-1 p-3 bg-transparent text-gray-800 dark:text-white outline-none"
+                  value={leadData.phone}
+                  onChange={handleInputChange}
+                  pattern="^[0-9]{10}$"
+                  title="Please enter a valid 10-digit phone number"
+                />
+              </div>
+              <ButtonFill
+                onClick={handleSubmitLead}
+                text={loadingLead ? "Submitting..." : "Submit & View Brochure"}
+                className="mt-2"
+              />
+            </div>
+
+            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              We respect your privacy. Your information will not be shared.
+            </p>
+          </div>
+        </div>
       )}
     </div>
   );
