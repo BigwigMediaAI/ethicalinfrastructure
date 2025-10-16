@@ -53,7 +53,7 @@ const ScrollingIcons = () => {
     dots: false,
     infinite: true,
     speed: 2000,
-    slidesToShow: 6, // default for desktop
+    slidesToShow: 5, // default for desktop
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
