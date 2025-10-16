@@ -83,47 +83,53 @@ const RealEstateExperts: React.FC = () => {
       <div className="grid grid-cols-3 md:grid-cols-6 text-center gap-6 w-11/12 mx-auto">
         <div>
           <FaBuilding className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans"> 8,000+</h3>
+          <h3 className="text-2xl font-sans">3,500+</h3>
           <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Verified Listings \n Across Dubai"}
+            {"Verified Properties \n Across Gurugram & Delhi NCR"}
           </p>
         </div>
-        <div>
-          <FaGlobe className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans">10+</h3>
-          <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Languages Spoken for \n Global Clients"}
-          </p>
-        </div>
+
         <div>
           <FaUsers className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans">150+</h3>
+          <h3 className="text-2xl font-sans">2,000+</h3>
           <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Dedicated Property \n Advisors"}
+            {"Happy Clients \n Served With Trust"}
           </p>
         </div>
+
         <div>
           <FaHandshake className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans">1200+</h3>
+          <h3 className="text-2xl font-sans">1,200+</h3>
           <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Properties Successfully \n Sold"}
+            {"Successful Property \n Transactions"}
           </p>
         </div>
+
         <div>
           <FaHome className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans">3500+</h3>
+          <h3 className="text-2xl font-sans">1,000+</h3>
           <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Active Rental \n Listings"}
+            {"Homes Bought \n & Sold Seamlessly"}
           </p>
         </div>
+
         <div>
           <FaChartLine className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
-          <h3 className="text-2xl font-sans">7B+ AED</h3>
+          <h3 className="text-2xl font-sans">₹1,500+ Cr</h3>
           <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
-            {"Real Estate \n Portfolio Value"}
+            {"Worth of Properties \n Managed & Sold"}
+          </p>
+        </div>
+
+        <div>
+          <FaGlobe className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
+          <h3 className="text-2xl font-sans">15+</h3>
+          <p className="text-sm text-[var(--text)] mt-2 whitespace-pre-wrap">
+            {"Years of Expertise \n in Real Estate Consulting"}
           </p>
         </div>
       </div>
+
       <LeadFormModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );

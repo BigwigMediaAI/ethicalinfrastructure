@@ -11,44 +11,44 @@ import "aos/dist/aos.css";
 
 const testimonials = [
   {
-    name: "PULKIT",
+    name: "Pulkit Sharma",
     message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut odio nec ligula aliquam fringilla.",
+      "ETHICAL INFRASTRUCTURES made buying my dream apartment in Gurugram effortless. The team guided me at every step and ensured a transparent and smooth process.",
   },
   {
-    name: "KIRTI BEDI",
+    name: "Kirti Bedi",
     message:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "Selling my property was never this easy! The consultants provided professional advice, connected me with serious buyers, and handled all documentation seamlessly.",
   },
   {
-    name: "SAURAV SHARMA",
+    name: "Saurav Sharma",
     message:
-      "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.",
+      "Leasing a commercial space was quick and hassle-free thanks to their experienced team. They helped me find the right property that fit my budget and requirements.",
   },
   {
-    name: "ANITA DESAI",
+    name: "Anita Desai",
     message:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "I highly recommend ETHICAL INFRASTRUCTURES. Their attention to detail, market knowledge, and honest guidance made my property investment worry-free.",
   },
   {
-    name: "RAHUL VERMA",
+    name: "Rahul Verma",
     message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.",
+      "From the first site visit to closing the deal, the team provided excellent support. Their professionalism and responsiveness are unmatched.",
   },
   {
-    name: "PRIYA KAPOOR",
+    name: "Priya Kapoor",
     message:
-      "Cras pulvinar mattis nunc sed blandit libero volutpat sed. Nunc non blandit massa enim nec.",
+      "Finding a leased home for my family was seamless. They offered a wide selection of verified listings and guided us through legal formalities efficiently.",
   },
   {
-    name: "RAJ SINGH",
+    name: "Raj Singh",
     message:
-      "Faucibus in ornare quam viverra orci sagittis eu volutpat. Aliquam sem fringilla ut morbi tincidunt.",
+      "Buying my commercial property in Delhi NCR was a smooth experience. The team’s insights and market research helped me make the right decision.",
   },
   {
-    name: "NEHA GUPTA",
+    name: "Neha Gupta",
     message:
-      "Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec.",
+      "The consultants are knowledgeable, patient, and extremely helpful. They ensured that all my questions were answered and the process was transparent.",
   },
 ];
 
