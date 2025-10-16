@@ -1,147 +1,202 @@
 "use client";
 
-import { Mail, Phone, MapPin, Home } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../assets/logo.png";
 import {
+  FaEnvelope,
   FaFacebookF,
-  FaInstagram,
   FaLinkedinIn,
+  FaWhatsapp,
+  FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import logo from "../assets/logo.png";
+import Image from "next/image";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-[#021A33] text-gray-300 pt-16 pb-16 md:pb-6">
-      <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
-        {/* Left About Section */}
-        <div className="col-span-2 md:col-span-1 space-y-4">
-          <div className="flex items-center space-x-2">
+    <footer className="bg-white dark:bg-black text-black dark:text-white font-raleway text-sm">
+      {/* Top horizontal line */}
+      <div className="border-t border-gray-300 dark:border-gray-700 w-full" />
+
+      {/* Logo and CONTACTS Title */}
+      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 lg:px-6">
+        <div className="flex flex-col items-center md:items-start">
+          <div className="flex items-center gap-4">
+            <div className="w-16 border-t border-[var(--primary-color)]" />
             <Image
               src={logo}
-              alt="Ethical Infrastructure Logo"
-              width={120}
-              height={120}
-              className="invert"
+              alt="Logo"
+              className="w-44 h-auto object-contain"
             />
+            <div className="w-20 border-t border-[var(--primary-color)]" />
           </div>
-          {/* <p className="text-sm leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste sit
-            esse earum a iure ut necessitatibus. Vero quas eos sapiente vitae
-            optio, eligendi officiis neque.
-          </p> */}
-          <div className="flex items-center gap-4">
-            <Link
+        </div>
+        <h2 className="hidden md:block text-2xl font-thin mt-10 md:mt-0">
+          CONTACTS
+        </h2>
+      </div>
+
+      {/* Mid horizontal line */}
+      <div className="md:max-w-7xl mx-auto border-t border-gray-300 dark:border-gray-700 w-full mb-8" />
+
+      {/* Main content */}
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between px-6 sm:px-12 lg:px-6 gap-8 pb-10 font-light dark:font-thin">
+        {/* Left: Navigation Columns */}
+        <div className="grid grid-cols-3 gap-6">
+          {[
+            [
+              { label: "Buy", path: "/buy" },
+              { label: "Sell", path: "/sell" },
+              { label: "Lease", path: "/lease" },
+            ],
+
+            [
+              { label: "Team", path: "/team" },
+              { label: "Contact Us", path: "/contact-us" },
+            ],
+          ].map((group, idx) => (
+            <ul key={idx} className="space-y-4">
+              {group.map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.path}
+                    className="cursor-pointer hover:text-[var(--primary-color)] transition"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+
+        {/* Right: Contact Info */}
+        <div className="space-y-4 lg:text-right">
+          <h3 className="text-lg">Gurugram, Haryana</h3>
+          <p className="text-gray-700 dark:text-gray-200">
+            First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
+            Gurugram, Haryana 122002
+          </p>
+          <div className="flex justify-start lg:justify-end gap-4 pt-2 text-[var(--primary-color)] text-xl">
+            <a
+              href="mailto:info@eipl.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
+            >
+              <FaEnvelope />
+            </a>
+
+            <a
               href="https://www.facebook.com/profile.php?id=61581857552733"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
             >
-              <FaFacebookF className="cursor-pointer hover:text-blue-600 transition text-2xl" />
-            </Link>
+              <FaFacebookF />
+            </a>
 
-            <Link
+            <a
               href="https://www.linkedin.com/company/109224060/admin/dashboard/"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
             >
-              <FaLinkedinIn className="cursor-pointer hover:text-blue-400 transition text-2xl" />
-            </Link>
+              <FaLinkedinIn />
+            </a>
 
-            <Link
+            <a
+              href="https://wa.me/919999000172"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
+            >
+              <FaWhatsapp />
+            </a>
+
+            <a
               href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
             >
-              <FaInstagram className="cursor-pointer hover:text-pink-400 transition text-2xl" />
-            </Link>
-            <Link
+              <FaInstagram />
+            </a>
+
+            <a
               href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-white hover:bg-gray-700 p-2 rounded"
             >
-              <FaYoutube className="cursor-pointer hover:text-red-600 transition text-2xl" />
-            </Link>
+              <FaYoutube />
+            </a>
           </div>
-        </div>
 
-        {/* Featured Houses */}
-        <div>
-          <h3 className="font-semibold text-white mb-4">Featured Houses</h3>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center space-x-2">
-              <span>Villa</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>Commercial</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>Farm Houses</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span>Apartments</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h3 className="font-semibold text-white mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link href="Privacy&Policy">Privacy & Policy</Link>
-            </li>
-            <li>
-              <Link href="Terms&Conditions">Terms & Conditions</Link>
-            </li>
-            <li>
-              <Link href="/contact-us">Contact Us</Link>
-            </li>
-            <li>
-              <Link href="/team">Team</Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Map Location (aligned at far right) */}
-
-        <div className="space-y-3 text-sm col-span-2">
-          <div className="flex items-center space-x-2">
-            <Phone size={16} />
-            <span>+91 9999000183</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Mail size={16} />
-            <span>info@eipl.co</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <MapPin size={20} /> {/* Increased size from 16 → 20 */}
-            <span>
-              First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
-              Gurugram, Haryana 122002
-            </span>
-          </div>
+          <button className="mt-4 px-6 py-3 font-raleway font-light bg-gradient-to-r from-[#C29579] via-[#e3c5b5] to-[#C29579] text-black hover:opacity-90 transition">
+            <a href="tel:+919999000183">Call Us</a>
+          </button>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="w-11/12 md:w-5/6 mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm">
-        <p>
-          Copyright © 2025{" "}
-          <span className="text-[var(--primary-color)]">
-            Ethical Infrastructure
-          </span>
-          . All Rights Reserved.
-        </p>
-        <p>
-          Made & Marketed by{" "}
-          <span className="text-[var(--primary-color)]">
-            <Link href="https://www.bigwigmediadigital.com/">
-              Bigwig Media Digital
-            </Link>
-          </span>
-        </p>
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-6 py-6 text-xs text-gray-600 dark:text-gray-400 flex flex-col gap-2">
+        <div className="flex flex-col sm:hidden gap-2 pb-16">
+          <div className="flex flex-row justify-between items-center flex-wrap gap-2">
+            <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
+            <div className="flex gap-4">
+              <a
+                href="/Terms&Conditions"
+                className="cursor-pointer hover:text-[var(--primary-color)] transition"
+              >
+                Terms of Use
+              </a>
+              <a
+                href="/Privacy&Policy"
+                className="cursor-pointer hover:text-[var(--primary-color)] transition"
+              >
+                Privacy Policy
+              </a>
+            </div>
+          </div>
+          <div className="w-full flex justify-center mt-2">
+            <a
+              href="https://www.bigwigdigital.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center"
+            >
+              Made & Marketed with ❤️ by Bigwig Digital
+            </a>
+          </div>
+        </div>
+
+        <div className="hidden sm:flex flex-row justify-between items-center w-full">
+          <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
+          <a
+            href="https://www.bigwigdigital.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-sm tracking-widest text-center"
+          >
+            Made & Marketed with ❤️ by Bigwig Digital
+          </a>
+          <div className="flex gap-4">
+            <a
+              href="/Terms&Conditions"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Terms of Use
+            </a>
+            <a
+              href="/Privacy&Policy"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Privacy Policy
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
