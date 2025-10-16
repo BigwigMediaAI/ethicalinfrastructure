@@ -13,6 +13,10 @@ import {
   FaBlog,
   FaYoutube,
   FaPhoneAlt,
+  FaMap,
+  FaLocationArrow,
+  FaGoogle,
+  FaMapMarkedAlt,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { MdPhone } from "react-icons/md";
@@ -20,6 +24,7 @@ import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
 import { usePathname } from "next/navigation";
+import { FaLocationCrosshairs, FaLocationPin } from "react-icons/fa6";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,6 +76,13 @@ const Navbar = () => {
             target="_blank"
           >
             <FaYoutube className="cursor-pointer hover:text-red-600 transition" />
+          </Link>
+          <Link
+            href="https://maps.app.goo.gl/Z4fHRJ9yCoNWc8119"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaMapMarkedAlt className="cursor-pointer hover:text-green-600 transition" />
           </Link>
         </div>
 
