@@ -23,6 +23,7 @@ import "aos/dist/aos.css";
 import Link from "next/link";
 import ButtonFill from "../../components/Button";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import RealEstateExperts from "../../components/expert";
 
 export default function Home() {
   // Initialize AOS
@@ -37,7 +38,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <CompanySection />
+      <RealEstateExperts />
       <section className="w-full py-12 bg-[var(--white)]">
         <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* ===== Sell Your Property Card ===== */}
@@ -144,6 +145,7 @@ export default function Home() {
       </div>
       <StatsSection />
       <Testimonials />
+      <CompanySection />
       <BlogGrid />
       <Footer />
       <ScrollToTopButton />

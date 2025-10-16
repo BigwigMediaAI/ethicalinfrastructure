@@ -1,92 +1,74 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { FaCheckCircle, FaPlay } from "react-icons/fa";
-import aboutImg from "../assets/9-768x532.webp"; // replace with your image
-import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import ButtonFill from "./Button";
-import LeadFormModal from "./LeadPopup";
+import React from "react";
+import { Building2, Home, KeyRound } from "lucide-react"; // Lucide icons
 
-const WeHelp = () => {
-  const [showModal, setShowModal] = useState(false);
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+type Service = {
+  icon: React.ReactNode;
+  label: string;
+  title: string;
+  description: string;
+  redirected: string;
+};
+
+const services: Service[] = [
+  {
+    icon: <Home size={32} className="text-[#9C623E]" />,
+    label: "Buy Property",
+    title: "Buy Property",
+    description:
+      "Discover premium residential and commercial properties across Delhi NCR with ETHICAL INFRASTRUCTURES PRIVATE LIMITED. Our experts help you find the perfect home or investment property that fits your lifestyle, budget, and vision — ensuring transparency and smooth transactions at every step.",
+    redirected: "/buy",
+  },
+  {
+    icon: <Building2 size={32} className="text-[#9C623E]" />,
+    label: "Sell Property",
+    title: "Sell Property",
+    description:
+      "Looking to sell your property? Our experienced consultants provide accurate market evaluations, professional marketing strategies, and connect you with serious buyers to ensure quick and profitable sales. We manage the entire process with utmost professionalism and integrity.",
+    redirected: "/sell",
+  },
+  {
+    icon: <KeyRound size={32} className="text-[#9C623E]" />,
+    label: "Lease Property",
+    title: "Lease Property",
+    description:
+      "Whether you're a landlord seeking reliable tenants or a client looking for a leased property, ETHICAL INFRASTRUCTURES simplifies the leasing process. We provide verified listings, handle documentation, and ensure fair, transparent agreements for both parties.",
+    redirected: "/lease",
+  },
+];
+
+const WhatWeDoSection: React.FC = () => {
   return (
-    <section className="w-full py-16 px-6">
-      <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* ===== Left Content ===== */}
-        <div className="space-y-6">
-          <h2
-            className="text-4xl font-bold text-[var(--title)] tracking-widest"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
-            We help our clients sell, buy or lease properties
-          </h2>
-
-          <p
-            className="text-[var(--text)] leading-relaxed text-justify"
-            data-aos="fade-right"
-            data-aos-delay="400"
-          >
-            With years of expertise in Residential, Commercial, Industrial,
-            Leasing, Pre-Leased, and FarmHouse properties, we provide trusted
-            guidance and personalized services to clients in Gurugram and
-            beyond.
+    <div className="bg-white dark:bg-black text-black dark:text-white font-raleway custom-gradient-lines relative">
+      <section className="max-w-7xl px-6 py-16 mx-auto">
+        <div className="mb-6">
+          <p className="text-md mb-2 tracking-wider text-[#9C623E] font-semibold uppercase">
+            Our Services
           </p>
-
-          <ul className="space-y-3 text-[var(--text)]">
-            {[
-              "24/7 client support",
-              "Expert legal and documentation assistance",
-              "Property listing and promotion services",
-              "Dedicated team for smooth transactions",
-            ].map((item, index) => (
-              <li
-                key={index}
-                className="flex items-center gap-3"
-                data-aos="fade-right"
-                data-aos-delay={index * 300}
-              >
-                <FaCheckCircle className="text-[var(--primary-color)]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div data-aos="fade-right" data-aos-delay="1200">
-            <ButtonFill
-              text="Get in Touch"
-              onClick={() => setShowModal(true)}
-            />
-          </div>
+          <h2 className="text-2xl md:text-3xl font-light text-black dark:text-gray-100">
+            Buy, Sell & Lease Properties with Ethical Guidance
+          </h2>
         </div>
 
-        {/* ===== Right Image with Play Icon ===== */}
-        <div
-          className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg"
-          data-aos="fade-right"
-          zoom-in="1200"
-        >
-          <Image
-            src={aboutImg}
-            alt="Modern Living Room"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, idx) => (
+            <a
+              href={service.redirected}
+              key={idx}
+              className="group bg-gray-100 dark:bg-zinc-900 hover:shadow-xl rounded-xl p-6 transition duration-300 flex flex-col space-y-4 md:space-y-6 hover:scale-[1.02]"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0">{service.icon}</div>
+                <h3 className="text-lg font-semibold">{service.title}</h3>
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {service.description}
+              </p>
+            </a>
+          ))}
         </div>
-      </div>
-      <LeadFormModal isOpen={showModal} onClose={() => setShowModal(false)} />
-    </section>
+      </section>
+    </div>
   );
 };
 
-export default WeHelp;
+export default WhatWeDoSection;

@@ -1,90 +1,131 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect } from "react";
-import sampleImage1 from "../assets/about1.jpg";
-import sampleImage2 from "../assets/aboutCompany.gif";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState } from "react";
 
-export default function CompanySection() {
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // animation duration in ms
-      easing: "ease-in-out",
-      once: true, // animate only once
-    });
-  }, []);
+export default function AboutSection() {
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="w-full py-16 bg-[var(--white)]/40">
-      <div className="w-11/12 md:w-5/6 mx-auto">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-stretch">
-          {/* Left Side */}
-          <div
-            className="flex-1 flex flex-col"
-            data-aos="fade-up" // AOS animation for left side
-          >
-            <Image
-              src={sampleImage1}
-              alt="Left Side"
-              className="rounded-lg mb-4 object-cover h-[350px] w-full"
-            />
+    <section className="bg-white dark:bg-black text-black dark:text-white px-4 py-12 md:py-20 flex justify-center relative overflow-hidden font-raleway font-light dark:font-thin custom-gradient-lines">
+      <div className="p-[1px] bg-gradient-to-r from-[var(--primary-color)] via-black to-[var(--primary-color)] max-w-7xl w-full">
+        <div className="bg-white dark:bg-black p-6 md:p-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-[var(--primary-color)] mb-6">
+            ETHICAL INFRASTRUCTURES PRIVATE LIMITED
+          </h2>
 
-            <h3
-              className="text-4xl font-bold mb-2 text-[var(--title)] tracking-widest"
-              data-aos="zoom-in" // optional zoom-in for heading
-              data-aos-delay="200"
-            >
-              Our Vision
-            </h3>
-            <p
-              className="text-[var(--text)] flex-1 text-justify"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              To be a trusted leader in real estate by providing transparent,
-              personalized, and cost-effective solutions. We aim to exceed
-              client expectations through expert guidance, market insights, and
-              dedicated support, ensuring every property transaction delivers
-              long-term value, satisfaction, and a seamless, stress-free
-              experience for our clients.
-            </p>
-          </div>
+          <p className="text-sm md:text-base mb-6 text-justify">
+            Here at{" "}
+            <span className="font-medium">
+              ETHICAL INFRASTRUCTURES PRIVATE LIMITED
+            </span>
+            , we are dedicated to delivering complete customer satisfaction and
+            crafting the best real estate deals that stand out from the crowd.
+            While many agencies have emerged to capitalize on the booming real
+            estate sector, we pride ourselves on offering exhaustive guidance,
+            transparency, and a long-term vision for our clients.
+          </p>
 
-          {/* Right Side */}
-          <div
-            className="flex-1 flex flex-col"
-            data-aos="fade-down" // AOS animation for right side
-          >
-            <h3
-              className="text-4xl font-bold mb-4 text-[var(--title)] tracking-widest"
-              data-aos="zoom-in"
-              data-aos-delay="200"
-            >
-              About the Company
-            </h3>
-            <p
-              className="text-[var(--text)]  flex-1 mb-4"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              Ethical Infrastructures Pvt. Ltd. is dedicated to delivering
-              personalized, cost-effective real estate solutions focused on
-              client needs and long-term value. Our expert team ensures every
-              client receives complete guidance, market insights, and seamless
-              service, from property search to successful investment.
-            </p>
+          <p className="text-sm md:text-base mb-6 text-justify">
+            We provide complete need-based and cost-effective solutions to our
+            clients. Our unique selling point lies in the range of personalized
+            services offered by our dedicated team, ensuring every client’s
+            specific and task-specific requirements are fulfilled with
+            precision, professionalism, and care.
+          </p>
 
-            <Image
-              src={sampleImage2}
-              alt="Right Side"
-              className="rounded-lg mb-4 object-cover h-[350px] w-full"
-              data-aos="zoom-in"
-              data-aos-delay="800"
-            />
-          </div>
+          {!expanded ? (
+            <button
+              onClick={() => setExpanded(true)}
+              className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2"
+            >
+              READ MORE
+            </button>
+          ) : (
+            <>
+              <div className="mt-6 space-y-4 text-sm md:text-base">
+                <p>
+                  Each prospective client is guided through comprehensive site
+                  visits, detailed market surveys, and kept informed with
+                  real-time updates on property status and market conditions.
+                  Our transparent processes and client-centric approach ensure
+                  that you make confident, well-informed decisions at every
+                  step.
+                </p>
+
+                <p>
+                  Backed by years of expertise and deep market understanding,
+                  ETHICAL INFRASTRUCTURES has established itself as a trusted
+                  name in real estate consulting and property management across
+                  Delhi NCR. We believe in building long-lasting relationships,
+                  not just completing transactions.
+                </p>
+
+                <h3 className="text-[var(--primary-color)] font-semibold mt-4">
+                  Our Vision
+                </h3>
+                <p>
+                  To redefine the real estate experience through innovation,
+                  integrity, and ethical practices. We strive to create
+                  world-class developments and provide unmatched service that
+                  delivers true value to our clients and investors.
+                </p>
+
+                <h3 className="text-[var(--primary-color)] font-semibold mt-4">
+                  Our Services
+                </h3>
+                <p>
+                  ETHICAL INFRASTRUCTURES offers a complete suite of real estate
+                  solutions designed to cater to both individual and corporate
+                  clients, including:
+                </p>
+                <ul className="list-disc list-inside ml-4">
+                  <li>Property buying, selling, and leasing services</li>
+                  <li>Investment consultation and property advisory</li>
+                  <li>Market research and property valuation</li>
+                  <li>Project marketing and promotional support</li>
+                  <li>Legal and documentation assistance</li>
+                  <li>Property management and after-sales services</li>
+                </ul>
+
+                <h3 className="text-[var(--primary-color)] font-semibold mt-4">
+                  Why Choose Us
+                </h3>
+                <p>
+                  Our commitment to transparency, ethical conduct, and
+                  personalized attention sets us apart. We combine deep market
+                  insights with advanced tools to ensure every property
+                  transaction is seamless, efficient, and rewarding for our
+                  clients.
+                </p>
+
+                <p>
+                  Whether you’re looking to buy, sell, or invest in premium
+                  properties, our team of experienced professionals is here to
+                  guide you every step of the way — from consultation to
+                  closure.
+                </p>
+
+                <h3 className="text-[var(--primary-color)] font-semibold mt-4">
+                  Our Commitment
+                </h3>
+                <p>
+                  At ETHICAL INFRASTRUCTURES, we don’t just build properties —
+                  we build trust. Every interaction with our clients is based on
+                  honesty, transparency, and an unwavering commitment to
+                  excellence.
+                </p>
+              </div>
+
+              <div className="mt-6">
+                <button
+                  onClick={() => setExpanded(false)}
+                  className="text-[var(--primary-color)] text-sm tracking-wide inline-block border-b border-[var(--primary-color)] pt-2"
+                >
+                  SEE LESS
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
