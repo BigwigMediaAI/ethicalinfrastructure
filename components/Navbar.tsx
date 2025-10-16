@@ -20,10 +20,12 @@ import { MdPhone } from "react-icons/md";
 import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const pathname = usePathname();
 
   // 👇 fix: allow string or null instead of boolean
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
@@ -126,32 +128,28 @@ const Navbar = () => {
               {item.path ? (
                 <Link
                   href={item.path}
-                  className="hover:text-[var(--hover-color)] transition flex items-center gap-1"
+                  className={`flex items-center gap-1 transition 
+            ${
+              pathname === item.path
+                ? "text-[var(--hover-color)] font-semibold" // ✅ active color
+                : "text-[var(--black)] hover:text-[var(--hover-color)]"
+            }`}
                 >
                   {item.name}
                   {item.dropdown && <BiChevronDown className="text-lg" />}
                 </Link>
               ) : (
-                <span className="cursor-pointer hover:text-[var(--hover-color)] transition flex items-center gap-1">
+                <span
+                  className={`cursor-pointer flex items-center gap-1 transition 
+            ${
+              dropdownOpen === "Property"
+                ? "text-[var(--hover-color)] font-semibold"
+                : "text-[var(--black)] hover:text-[var(--hover-color)]"
+            }`}
+                >
                   {item.name}
                   {item.dropdown && <BiChevronDown className="text-lg" />}
                 </span>
-              )}
-
-              {/* Dropdown */}
-              {item.dropdown && dropdownOpen === "Property" && (
-                <ul className="absolute left-0 top-full bg-white shadow-lg rounded-lg overflow-hidden w-40">
-                  {item.dropdown.map((drop) => (
-                    <li key={drop.name}>
-                      <Link
-                        href={drop.path}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 transition"
-                      >
-                        {drop.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               )}
             </li>
           ))}

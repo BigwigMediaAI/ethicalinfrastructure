@@ -26,7 +26,7 @@ const AboutHero = () => {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative w-full h-[60vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[50vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         <Image
           src={bgImage}
           alt="About Us Background"
@@ -47,8 +47,8 @@ const AboutHero = () => {
       </section>
 
       {/* ===== ABOUT COMPANY SECTION ===== */}
-      <section className="py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12">
+      <section className="py-12 bg-[var(--white)]">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12 ">
           {/* Text Content */}
           <div className="md:w-2/3">
             <h2
@@ -99,14 +99,14 @@ const AboutHero = () => {
       </section>
 
       {/* WHY CHOOSE ENDORA SECTION */}
-      <section className="py-16 bg-[var(--primary-bgColor)]">
-        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 text-center lg:text-left">
+      <section className="py-16 bg-[var(--white)]">
+        <div className="w-11/12 md:w-5/6 bg-[var(--featured)] p-6 md:p-10 rounded-xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 text-center lg:text-left">
           {/* LEFT TITLE BLOCK */}
           <div className="lg:w-1/3" data-aos="fade-right" data-aos-delay="200">
-            <span className="bg-[var(--primary-color)] text-white text-sm font-semibold px-3 py-1 rounded">
+            <span className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
               Bricks And Clicks
             </span>
-            <h2 className="text-4xl font-bold mt-6 mb-4 text-white tracking-widest">
+            <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
               Why Choose <br /> Ethical?
             </h2>
           </div>
@@ -125,10 +125,10 @@ const AboutHero = () => {
                   className="relative text-[var(--primary-color)]"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-[var(--black)]">
                 Residential & Commercial Expertise
               </h3>
-              <p className="text-gray-300">
+              <p className="text-[var(--text)]">
                 Professional guidance for buying, selling, or leasing
                 Residential and Commercial properties.
               </p>
@@ -146,10 +146,10 @@ const AboutHero = () => {
                   className="relative text-[var(--primary-color)]"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-[var(--black)]">
                 Industrial & Leasing Services
               </h3>
-              <p className="text-gray-300 text-justify">
+              <p className="text-[var(--text)]">
                 Specialized support for Industrial spaces, Pre-Leased
                 properties, and FarmHouses to maximize.
               </p>
@@ -167,10 +167,10 @@ const AboutHero = () => {
                   className="relative text-[var(--primary-color)]"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-[var(--black)]">
                 Trusted & Transparent Process
               </h3>
-              <p className="text-gray-300">
+              <p className="text-[var(--text)]">
                 Honest advice, personalized services, and complete support
                 throughout the buying.
               </p>
@@ -179,7 +179,7 @@ const AboutHero = () => {
         </div>
       </section>
 
-      <section className="py-16 ">
+      <section className="py-12 bg-[var(--white)] ">
         <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <Image
@@ -251,19 +251,6 @@ const AboutHero = () => {
           </div>
         </div>
       </section> */}
-
-      <section className="py-16 bg-[var(--primary-color)] text-white text-center">
-        <h2 className="text-4xl font-bold mb-4">Ready to Work With Us?</h2>
-        <p className="mb-6 px-4">
-          Contact our team today to discuss your project and how we can help you
-          achieve your goals.
-        </p>
-        <Link href="/contact-us">
-          <button className="cursor-pointer bg-white text-[var(--primary-color)] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-            Contact Us
-          </button>
-        </Link>
-      </section>
 
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
         <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">

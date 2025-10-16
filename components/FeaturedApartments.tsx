@@ -159,14 +159,14 @@ export default function FeaturedApartments() {
           {/* Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 md:-left-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
+            className="absolute left-2 md:-left-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-[var(--primary-color)] hover:text-white"
           >
             <FaArrowLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 md:-right-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 hover:text-white"
+            className="absolute right-2 md:-right-12 top-1/2 transform -translate-y-1/2 cursor-pointer bg-[#112335] text-white p-3 rounded-full shadow-lg hover:bg-[var(--primary-color)] hover:text-white"
           >
             <FaArrowRight className="w-5 h-5" />
           </button>
