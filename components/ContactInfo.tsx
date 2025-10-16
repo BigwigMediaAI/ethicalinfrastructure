@@ -27,7 +27,7 @@ const ContactInfo = () => {
       icon: <Mail size={40} className="text-[var(--primary-color)]" />,
       title: "Email Us",
       line1: "Direct Email",
-      line2: "webmail@eiplin.com",
+      line2: "info@eipl.co",
     },
   ];
 

@@ -53,31 +53,46 @@ const ScrollingIcons = () => {
     dots: false,
     infinite: true,
     speed: 2000,
-    slidesToShow: 5,
+    slidesToShow: 6, // default for desktop
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
     arrows: false,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 768, // mobile breakpoint
+        settings: {
+          slidesToShow: 3, // show 3 slides on mobile
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="w-full py-10 bg-[var(--white)] overflow-hidden">
-      <Slider {...settings}>
-        {icons.map((icon, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-center px-4 w-48 "
-          >
-            <img
-              src={icon.src.src}
-              alt={icon.alt}
-              className="h-16 w-48 object-fill"
-            />
-          </div>
-        ))}
-      </Slider>
+    <div className=" py-10 bg-[var(--white)] overflow-hidden">
+      <div className="w-11/12 md:w-5/6 mx-auto">
+        <h2 className="text-4xl font-bold mt-2 mb-6 md:mb-10 tracking-widest text-[var(--title)]">
+          Trusted by Leading Builders
+        </h2>
+
+        <Slider {...settings}>
+          {icons.map((icon, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center px-4 w-28"
+            >
+              <img
+                src={icon.src.src}
+                alt={icon.alt}
+                className="h-16 w-28 object-fill"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
