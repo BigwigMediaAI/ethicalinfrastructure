@@ -63,7 +63,7 @@ const ScrollingIcons = () => {
   };
 
   return (
-    <div className="w-full py-10 bg-black dark:bg-[var(--bg-color1)] overflow-hidden">
+    <div className="w-full py-10 bg-[var(--white)] overflow-hidden">
       <Slider {...settings}>
         {icons.map((icon, index) => (
           <div key={index} className="flex items-center justify-center px-4">
