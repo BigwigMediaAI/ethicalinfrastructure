@@ -5,17 +5,13 @@ import Image from "next/image";
 import {
   FaFacebookF,
   FaLinkedinIn,
-  FaPinterestP,
-  FaVimeoV,
   FaInstagram,
-  FaTwitter,
   FaHome,
   FaInfoCircle,
   FaBuilding,
   FaEnvelope,
   FaBlog,
   FaYoutube,
-  FaWhatsapp,
   FaPhoneAlt,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
@@ -51,7 +47,7 @@ const Navbar = () => {
   return (
     <header className="w-full sticky top-0 z-50 bg-[var(--white)] shadow-md">
       {/* ===== Top Bar ===== */}
-      <div className="hidden bg-[var(--primary-bgColor)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
+      <div className="hidden bg-[var(--white)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
         <div className="flex items-center gap-4">
           <Link
             href="https://www.facebook.com/profile.php?id=61581857552733"

@@ -56,7 +56,7 @@ export default function PropertyGrid() {
   const displayedProperties = properties.slice(0, 4);
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-[var(--white)]">
       <div className="w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)] tracking-widest">
           Our Properties

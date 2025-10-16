@@ -38,7 +38,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <CompanySection />
-      <section className="w-full py-16 bg-[#021A33]">
+      <section className="w-full py-12 bg-[var(--white)]">
         <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* ===== Sell Your Property Card ===== */}
           <div
