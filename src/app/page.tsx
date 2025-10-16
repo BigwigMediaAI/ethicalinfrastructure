@@ -38,7 +38,7 @@ export default function Home() {
       <WeHelp />
       <PropertyGrid />
       <FeaturedApartments />
-
+      {/* 
       <div
         className="relative h-[600px] flex items-center justify-center text-white"
         style={{
@@ -49,15 +49,15 @@ export default function Home() {
         }}
       >
         <div className="absolute inset-0 bg-black/50" /> {/* dark overlay */}
-        <div className="relative z-10 text-center px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Find Your Dream Property
-          </h2>
-          <p className="text-lg text-gray-200 max-w-xl mx-auto">
-            Discover the perfect home that matches your lifestyle and budget.
-          </p>
-        </div>
+      <div className="relative z-10 text-center px-4">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          Find Your Dream Property
+        </h2>
+        <p className="text-lg text-gray-200 max-w-xl mx-auto">
+          Discover the perfect home that matches your lifestyle and budget.
+        </p>
       </div>
+      {/* </div>  */}
       {/* <StatsSection /> */}
       <Testimonials />
       <BlogGrid />

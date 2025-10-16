@@ -88,7 +88,7 @@ const Navbar = () => {
             href="mailto:contact@mail.com"
             className="flex items-center gap-2"
           >
-            webmail@eiplin.com
+            info@eipl.co
           </Link>
           <Link
             href="tel:+919999000183"
