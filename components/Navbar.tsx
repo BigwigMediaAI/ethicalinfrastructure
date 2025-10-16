@@ -13,9 +13,6 @@ import {
   FaBlog,
   FaYoutube,
   FaPhoneAlt,
-  FaMap,
-  FaLocationArrow,
-  FaGoogle,
   FaMapMarkedAlt,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
@@ -24,7 +21,6 @@ import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
 import { usePathname } from "next/navigation";
-import { FaLocationCrosshairs, FaLocationPin } from "react-icons/fa6";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

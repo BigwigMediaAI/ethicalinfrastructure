@@ -88,7 +88,7 @@ function Sell() {
         </h2>
         <div className="grid md:grid-cols-3 gap-10 ">
           <div
-            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--featured)]"
             data-aos="fade-up"
           >
             <ClipboardList
@@ -104,7 +104,7 @@ function Sell() {
             </p>
           </div>
           <div
-            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--featured)]"
             data-aos="fade-up"
             data-aos-delay="400"
           >
@@ -118,7 +118,7 @@ function Sell() {
             </p>
           </div>
           <div
-            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition "
+            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition bg-[var(--featured)]"
             data-aos="fade-up"
             data-aos-delay="800"
           >
@@ -159,7 +159,7 @@ function Sell() {
           ].map((item, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 p-6 rounded-xl bg-[var(--desktop-sidebar)] shadow"
+              className="flex items-center gap-4 p-6 rounded-xl bg-[var(--featured)] shadow"
               data-aos="fade-up"
               data-aos-delay={i * 300}
             >
@@ -225,7 +225,7 @@ function Sell() {
         </div>
       )}
 
-      <div className="bg-[var(--primary-color)] text-white text-center py-10 px-4 mt-12">
+      {/* <div className="bg-[var(--primary-color)] text-white text-center py-10 px-4 mt-12">
         <h2 className="text-3xl font-bold mb-4">
           Ready to Start Your Dream Project?
         </h2>
@@ -233,7 +233,7 @@ function Sell() {
           Let’s bring your vision to life with our expert team. Get in touch
           today and take the first step toward your future.
         </p>
-      </div>
+      </div> */}
 
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
         <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">

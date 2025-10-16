@@ -107,7 +107,7 @@ export default function BuyDetails() {
       <Navbar />
 
       {/* Hero with overlay */}
-      <section className="relative h-[100vh]">
+      <section className="relative h-[50vh] md:h-[80vh]">
         <Swiper
           modules={[Navigation, Autoplay]}
           navigation
@@ -221,7 +221,7 @@ export default function BuyDetails() {
                 {property.highlights.map((h, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 bg-gray-100 rounded-full shadow text-sm text-gray-800"
+                    className="px-4 py-2 bg-[var(--featured)] rounded-full shadow text-sm text-[var(--text)]"
                   >
                     {h}
                   </span>
@@ -281,7 +281,7 @@ export default function BuyDetails() {
             {property.featuresAmenities.map((f, idx) => (
               <div
                 key={idx}
-                className="p-4 bg-gray-100 rounded-lg shadow text-center text-gray-800"
+                className="p-4 bg-[var(--featured)] rounded-lg shadow text-center text-[var(--text)]"
               >
                 ⭐ {f}
               </div>
@@ -300,7 +300,7 @@ export default function BuyDetails() {
             {property.nearby.map((n, idx) => (
               <span
                 key={idx}
-                className="px-5 py-2 bg-gray-100 text-gray-800 rounded-full"
+                className="px-5 py-2 bg-[var(--featured)] text-[var(--text)] rounded-full"
               >
                 {n}
               </span>
