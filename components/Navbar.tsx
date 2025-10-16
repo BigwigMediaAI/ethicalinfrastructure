@@ -79,7 +79,7 @@ const Navbar = () => {
             href="mailto:webmail@eiplin.com"
             className="flex items-center gap-2"
           >
-            webmail@eiplin.com
+            info@eipl.co
           </Link>
           <Link href="tel:+919999000183" className="flex items-center gap-2">
             <FaPhoneAlt /> +91 9999000183

@@ -77,7 +77,7 @@ const RealEstateExperts: React.FC = () => {
         </div>
       </div>
       {/* Desktop stats */}
-      <div className="grid grid-cols-3 md:grid-cols-6 text-center gap-6 w-11/12 mx-auto">
+      {/* <div className="grid grid-cols-3 md:grid-cols-6 text-center gap-6 w-11/12 mx-auto">
         <div>
           <FaBuilding className="text-2xl mb-2 mx-auto text-[var(--primary-color)]" />
           <h3 className="text-2xl font-sans">3,500+</h3>
@@ -125,7 +125,7 @@ const RealEstateExperts: React.FC = () => {
             {"Years of Expertise \n in Real Estate Consulting"}
           </p>
         </div>
-      </div>
+      </div> */}
 
       <LeadFormModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
