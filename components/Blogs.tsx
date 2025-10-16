@@ -40,7 +40,9 @@ export default function BlogGrid() {
   return (
     <section className="py-12 ">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold text-start mb-12">Latest Blogs</h2>
+        <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          Latest Blogs
+        </h2>
 
         {loading ? (
           <div className="flex justify-center items-center h-40">
@@ -65,7 +67,7 @@ export default function BlogGrid() {
                         />
                       </div>
                       <div className="p-4 flex flex-col gap-2">
-                        <h3 className="text-lg font-bold text-[var(--black)]">
+                        <h3 className="text-lg font-semibold text-[var(--primary-color)]">
                           {blog.title}
                         </h3>
                         <div className="flex justify-between text-gray-500 text-sm mt-2">

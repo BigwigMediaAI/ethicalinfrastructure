@@ -59,18 +59,21 @@ const ScrollingIcons = () => {
     autoplaySpeed: 0,
     cssEase: "linear",
     arrows: false,
-    pauseOnHover: false,
+    pauseOnHover: true,
   };
 
   return (
     <div className="w-full py-10 bg-[var(--white)] overflow-hidden">
       <Slider {...settings}>
         {icons.map((icon, index) => (
-          <div key={index} className="flex items-center justify-center px-4">
+          <div
+            key={index}
+            className="flex items-center justify-center px-4 w-48 "
+          >
             <img
               src={icon.src.src}
               alt={icon.alt}
-              className="h-16 w-auto object-contain"
+              className="h-16 w-48 object-fill"
             />
           </div>
         ))}
