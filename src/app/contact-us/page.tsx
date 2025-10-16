@@ -71,10 +71,10 @@ export default function ContactPage() {
             {/* Phone Button */}
             <Link
               href="tel:+919999000183"
-              className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
+              className="bg-[var(--featured)] text-[var(--text)]  rounded-md p-4 flex items-center gap-4 shadow-sm transition font-sans"
             >
-              <Phone className="w-6 h-6 text-gray-700" />
-              <span className="text-sm text-gray-700">+91 9999000183</span>
+              <Phone className="w-6 h-6 " />
+              <span className="text-sm ">+91 9999000183</span>
             </Link>
             {/* <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans">
               <Phone className="w-6 h-6 text-gray-700" />
@@ -86,19 +86,19 @@ export default function ContactPage() {
               href="https://wa.me/+919999000172"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
+              className="bg-[var(--featured)] text-[var(--text)] rounded-md p-4 flex items-center gap-4 shadow-sm transition font-sans"
             >
               <FaWhatsapp className="w-6 h-6 text-green-600" />
-              <span className="text-sm text-gray-700">+91 9999000172</span>
+              <span className="text-sm ">+91 9999000172</span>
             </Link>
 
             {/* Email Button */}
             <Link
-              href="mailto:webmail@eiplin.com"
-              className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
+              href="mailto:info@eipl.co"
+              className="bg-[var(--featured)] text-[var(--text)] rounded-md p-4 flex items-center gap-4 shadow-sm hover:bg-gray-200 transition font-sans"
             >
-              <Mail className="w-6 h-6 text-gray-700" />
-              <span className="text-sm text-gray-700">info@eipl.co</span>
+              <Mail className="w-6 h-6 " />
+              <span className="text-sm">info@eipl.co</span>
             </Link>
           </div>
         </div>

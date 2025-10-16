@@ -15,7 +15,6 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
-import { BsPhone, BsWhatsapp } from "react-icons/bs";
 import { MdPhone } from "react-icons/md";
 import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
 import logo from "../assets/logo.png";
@@ -25,10 +24,8 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
-  const pathname = usePathname();
-
-  // 👇 fix: allow string or null instead of boolean
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const navItems = [
     { name: "Home", path: "/", icon: <FaHome /> },
@@ -49,35 +46,29 @@ const Navbar = () => {
   return (
     <header className="w-full sticky top-0 z-50 bg-[var(--white)] shadow-md">
       {/* ===== Top Bar ===== */}
-      <div className="hidden bg-[var(--white)] md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
+      <div className="hidden md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
         <div className="flex items-center gap-4">
           <Link
             href="https://www.facebook.com/profile.php?id=61581857552733"
             target="_blank"
-            rel="noopener noreferrer"
           >
-            <FaFacebookF className="cursor-pointer hover:text-blue-600 transition" />
+            <FaFacebookF className="cursor-pointer hover:text-[var(--primary-color)] transition" />
           </Link>
-
           <Link
             href="https://www.linkedin.com/company/109224060/admin/dashboard/"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <FaLinkedinIn className="cursor-pointer hover:text-blue-400 transition" />
           </Link>
-
           <Link
             href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <FaInstagram className="cursor-pointer hover:text-pink-400 transition" />
           </Link>
           <Link
             href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <FaYoutube className="cursor-pointer hover:text-red-600 transition" />
           </Link>
@@ -85,16 +76,12 @@ const Navbar = () => {
 
         <div className="flex items-center gap-7">
           <Link
-            href="mailto:contact@mail.com"
+            href="mailto:webmail@eiplin.com"
             className="flex items-center gap-2"
           >
             webmail@eiplin.com
           </Link>
-          <Link
-            href="tel:+919999000183"
-            className="flex items-center gap-2"
-            target="_blank"
-          >
+          <Link href="tel:+919999000183" className="flex items-center gap-2">
             <FaPhoneAlt /> +91 9999000183
           </Link>
         </div>
@@ -128,28 +115,45 @@ const Navbar = () => {
               {item.path ? (
                 <Link
                   href={item.path}
-                  className={`flex items-center gap-1 transition 
-            ${
-              pathname === item.path
-                ? "text-[var(--hover-color)] font-semibold" // ✅ active color
-                : "text-[var(--black)] hover:text-[var(--hover-color)]"
-            }`}
+                  className={`flex items-center gap-1 transition-all ${
+                    pathname === item.path
+                      ? "text-[var(--hover-color)] font-semibold"
+                      : "text-[var(--black)] hover:text-[var(--hover-color)]"
+                  }`}
                 >
                   {item.name}
-                  {item.dropdown && <BiChevronDown className="text-lg" />}
                 </Link>
               ) : (
                 <span
-                  className={`cursor-pointer flex items-center gap-1 transition 
-            ${
-              dropdownOpen === "Property"
-                ? "text-[var(--hover-color)] font-semibold"
-                : "text-[var(--black)] hover:text-[var(--hover-color)]"
-            }`}
+                  className={`cursor-pointer flex items-center gap-1 transition-all ${
+                    dropdownOpen === "Property"
+                      ? "text-[var(--hover-color)] font-semibold"
+                      : "text-[var(--black)] hover:text-[var(--hover-color)]"
+                  }`}
                 >
                   {item.name}
-                  {item.dropdown && <BiChevronDown className="text-lg" />}
+                  <BiChevronDown className="text-lg" />
                 </span>
+              )}
+
+              {/* Dropdown */}
+              {item.dropdown && dropdownOpen === "Property" && (
+                <ul className="absolute left-0 top-full bg-[var(--white)] shadow-lg rounded-lg overflow-hidden w-40">
+                  {item.dropdown.map((drop) => (
+                    <li key={drop.name}>
+                      <Link
+                        href={drop.path}
+                        className={`block px-4 py-2 text-sm transition-colors ${
+                          pathname === drop.path
+                            ? "text-[var(--hover-color)] font-semibold bg-gray-100"
+                            : "text-[var(--text)] hover:bg-[var(--featured)]"
+                        }`}
+                      >
+                        {drop.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               )}
             </li>
           ))}
@@ -160,7 +164,7 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={() => setSidePanelOpen(true)}
-            className="text-[var(--black)] hover:text-[var(--primary-color)]  transition cursor-pointer"
+            className="text-[var(--black)] hover:text-[var(--hover-color)] transition"
           >
             <BiMenu size={32} />
           </button>
@@ -171,7 +175,7 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className=" text-[var(--black)] "
+            className="text-[var(--black)]"
           >
             <BiMenu size={36} />
           </button>
@@ -179,10 +183,10 @@ const Navbar = () => {
       </nav>
 
       {/* ===== Mobile Fullscreen Menu ===== */}
-
       <div
-        className={`fixed top-0 left-0 w-3/4 sm:w-2/5 h-full bg-[#0a2342] z-50 transform transition-transform duration-300 ease-in-out 
-        ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 w-3/4 sm:w-2/5 h-full bg-[#0a2342] z-50 transform transition-transform duration-300 ease-in-out ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-700">
           <Image
@@ -192,7 +196,6 @@ const Navbar = () => {
             height={40}
             className="invert"
           />
-
           <button
             onClick={() => setMenuOpen(false)}
             className="text-white text-2xl"
@@ -212,11 +215,10 @@ const Navbar = () => {
                         dropdownOpen === item.name ? null : item.name
                       )
                     }
-                    className="flex items-center gap-2 px-5 py-3 text-white hover:bg-blue-600 rounded transition"
+                    className="flex items-center gap-2 px-5 py-3 text-white hover:bg-[var(--primary-color)] rounded transition"
                   >
                     {item.icon} <span>{item.name}</span> <BiChevronDown />
                   </button>
-
                   {dropdownOpen === item.name && (
                     <ul className="flex flex-col ml-10 mt-1 space-y-1">
                       {item.dropdown.map((drop) => (
@@ -224,7 +226,11 @@ const Navbar = () => {
                           <Link
                             href={drop.path}
                             onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2 text-white hover:text-blue-200 transition px-3 py-2 rounded"
+                            className={`flex items-center gap-2 text-white transition px-3 py-2 rounded ${
+                              pathname === drop.path
+                                ? "text-[var(--hover-color)] font-semibold"
+                                : "hover:text-blue-200"
+                            }`}
                           >
                             {drop.name}
                           </Link>
@@ -237,7 +243,11 @@ const Navbar = () => {
                 <Link
                   href={item.path ?? "/"}
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 px-5 py-3 text-white hover:bg-blue-600 rounded transition"
+                  className={`flex items-center gap-2 px-5 py-3 text-white rounded transition ${
+                    pathname === item.path
+                      ? "bg-[var(--primary-color)] text-[var(--hover-color)] font-semibold"
+                      : "hover:bg-[var(--primary-color)]"
+                  }`}
                 >
                   {item.icon} <span>{item.name}</span>
                 </Link>
@@ -250,7 +260,6 @@ const Navbar = () => {
       {/* ===== Desktop Side Panel ===== */}
       {sidePanelOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
-          {/* Create right gap using margin */}
           <div className="relative h-full w-80 md:w-96 bg-[var(--desktop-sidebar)] shadow-2xl animate-slideIn">
             <button
               onClick={() => setSidePanelOpen(false)}
@@ -280,38 +289,13 @@ const Navbar = () => {
                   Our social
                 </h3>
                 <div className="flex items-center gap-4">
-                  <Link
-                    href="https://www.facebook.com/profile.php?id=61581857552733"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaFacebookF className="cursor-pointer text-[var(--text)] hover:text-blue-600 transition text-2xl" />
-                  </Link>
-
-                  <Link
-                    href="https://www.linkedin.com/company/109224060/admin/dashboard/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedinIn className="cursor-pointer text-[var(--text)] hover:text-blue-400 transition text-2xl" />
-                  </Link>
-
-                  <Link
-                    href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaInstagram className="cursor-pointer text-[var(--text)] hover:text-pink-400 transition text-2xl" />
-                  </Link>
-                  <Link
-                    href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaYoutube className="cursor-pointer text-[var(--text)] hover:text-red-600 transition text-2xl" />
-                  </Link>
+                  <FaFacebookF className="cursor-pointer text-[var(--text)] hover:text-[var(--primary-color)] transition text-2xl" />
+                  <FaLinkedinIn className="cursor-pointer text-[var(--text)] hover:text-blue-400 transition text-2xl" />
+                  <FaInstagram className="cursor-pointer text-[var(--text)] hover:text-pink-400 transition text-2xl" />
+                  <FaYoutube className="cursor-pointer text-[var(--text)] hover:text-red-600 transition text-2xl" />
                 </div>
               </div>
+
               <hr />
 
               <div>
@@ -323,7 +307,6 @@ const Navbar = () => {
                     <FiMail />
                     info@eipl.co
                   </p>
-
                   <Link
                     href="tel:+919999000183"
                     className="flex items-center gap-2 mt-2"
@@ -337,6 +320,7 @@ const Navbar = () => {
         </div>
       )}
 
+      {/* ===== Animations ===== */}
       <style jsx>{`
         @keyframes slideIn {
           from {
