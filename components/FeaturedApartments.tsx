@@ -66,7 +66,7 @@ export default function FeaturedApartments() {
 
   return (
     <div className="bg-[var(--white)] text-white py-12">
-      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[var(--featured)] py-8 px-14 rounded-2xl shadow-lg">
+      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[var(--featured)] py-8 px-2 md:px-14 rounded-2xl shadow-lg">
         {/* Left Text Section */}
         <div className="md:w-1/2">
           <p

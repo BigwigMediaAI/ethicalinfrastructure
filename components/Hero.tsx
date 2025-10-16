@@ -6,7 +6,7 @@ import hero from "../assets/book_wide-1.webp";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[40vh] md:h-[80vh] overflow-hidden">
       <Image
         src={hero}
         alt="Hero Background"
