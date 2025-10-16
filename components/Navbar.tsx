@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { MdPhone } from "react-icons/md";
-import { BiMenu, BiX, BiChevronDown } from "react-icons/bi";
+import { BiMenu, BiX, BiChevronDown, BiChevronRight } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
 import { usePathname } from "next/navigation";
@@ -35,7 +35,16 @@ const Navbar = () => {
       name: "Property",
       icon: <FaBuilding />,
       dropdown: [
-        { name: "Buy", path: "/buy" },
+        {
+          name: "Buy",
+          path: "/buy",
+          subDropdown: [
+            { name: "Builder Floor", path: "/buy?type=builder-floor" },
+            { name: "Villa", path: "/buy?type=villa" },
+            { name: "Apartment", path: "/buy?type=apartment" },
+            { name: "Farmhouse", path: "/buy?type=farmhouse" },
+          ],
+        },
         { name: "Sell", path: "/sell" },
         { name: "Lease", path: "/lease" },
       ],
@@ -110,11 +119,11 @@ const Navbar = () => {
         </Link>
 
         {/* ===== Desktop Menu ===== */}
-        <ul className="hidden md:flex gap-8 font-medium">
+        <ul className="hidden md:flex gap-8 font-medium ">
           {navItems.map((item) => (
             <li
               key={item.name}
-              className="relative group tracking-widest"
+              className="relative group tracking-widest py-8"
               onMouseEnter={() =>
                 setDropdownOpen(item.name === "Property" ? "Property" : null)
               }
@@ -146,19 +155,40 @@ const Navbar = () => {
 
               {/* Dropdown */}
               {item.dropdown && dropdownOpen === "Property" && (
-                <ul className="absolute left-0 top-full bg-[var(--white)] shadow-lg rounded-lg overflow-hidden w-40">
+                <ul className="absolute left-0 top-full bg-[var(--white)] shadow-lg  w-48 z-50">
                   {item.dropdown.map((drop) => (
-                    <li key={drop.name}>
+                    <li
+                      key={drop.name}
+                      className="relative group/submenu hover:bg-[var(--featured)]"
+                    >
+                      {/* --- Full-row clickable link --- */}
                       <Link
                         href={drop.path}
-                        className={`block px-4 py-2 text-sm transition-colors ${
-                          pathname === drop.path
-                            ? "text-[var(--hover-color)] font-semibold bg-gray-100"
-                            : "text-[var(--text)] hover:bg-[var(--featured)]"
-                        }`}
+                        className="flex justify-between items-center px-4 py-2 text-sm text-[var(--text)] hover:text-[var(--hover-color)] w-full"
                       >
-                        {drop.name}
+                        <span>{drop.name}</span>
+
+                        {/* --- Arrow for sub-dropdown --- */}
+                        {drop.subDropdown && (
+                          <BiChevronRight className="ml-1 cursor-pointer group-hover/submenu:text-[var(--hover-color)]" />
+                        )}
                       </Link>
+
+                      {/* --- Second-level dropdown --- */}
+                      {drop.subDropdown && (
+                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-44 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60]">
+                          {drop.subDropdown.map((sub) => (
+                            <li key={sub.name}>
+                              <Link
+                                href={sub.path}
+                                className="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--featured)] hover:text-[var(--hover-color)]"
+                              >
+                                {sub.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>

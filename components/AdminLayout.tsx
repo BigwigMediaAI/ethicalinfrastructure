@@ -94,7 +94,7 @@ export default function AdminLayout({
               className={`flex items-center gap-3 px-6 py-3 text-sm font-medium transition-all duration-200 
                 ${
                   pathname === to
-                    ? "bg-[#2563eb] text-white shadow-md"
+                    ? "bg-[var(--primary-color)] text-white shadow-md"
                     : "text-gray-300 hover:bg-[#1e1e1e] hover:text-white"
                 }`}
             >
@@ -124,7 +124,7 @@ export default function AdminLayout({
               href={to}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-md transition-all duration-200 ${
                 pathname === to
-                  ? "bg-[#2563eb] text-white shadow-md"
+                  ? "bg-[var(--primary-color)] text-white shadow-md"
                   : "text-gray-400 hover:bg-[#1a1a1a] hover:text-white"
               }`}
             >

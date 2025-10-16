@@ -6,8 +6,7 @@ import { MapPin, Home } from "lucide-react";
 import banner from "../../../assets/buy-banner.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-// import HelpSection from "../../../components/HelpSection";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import ContactInfo from "../../../components/ContactInfo";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
@@ -26,17 +25,28 @@ interface Property {
 }
 
 export default function BuyPage() {
-  const [selectedType, setSelectedType] = useState("All");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const buyRef = useRef<HTMLDivElement | null>(null);
+
+  const filterOptions = [
+    { name: "All", value: "all" },
+    { name: "Builder Floor", value: "builder-floor" },
+    { name: "Apartment", value: "apartment" },
+    { name: "Villa", value: "villa" },
+    { name: "Farmhouses", value: "farmhouse" },
+  ];
+
+  const typeFromQuery = searchParams.get("type") || "all";
+  const [selectedType, setSelectedType] = useState(typeFromQuery.toLowerCase());
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-  const buyRef = useRef<HTMLDivElement | null>(null);
-  const router = useRouter();
 
-  // Pagination state
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 9;
 
-  // Fetch properties from backend
+  // Fetch properties
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property`)
       .then((res) => res.json())
@@ -53,12 +63,22 @@ export default function BuyPage() {
       });
   }, []);
 
-  const filtered =
-    selectedType === "All"
-      ? properties
-      : properties.filter((p) => p.type === selectedType);
+  // Sync query param -> selectedType
+  useEffect(() => {
+    const queryType = searchParams.get("type") || "all";
+    setSelectedType(queryType.toLowerCase());
+    setCurrentPage(1);
+  }, [searchParams]);
 
-  // Pagination logic
+  // Filter properties based on selectedType
+  const filtered =
+    selectedType === "all"
+      ? properties
+      : properties.filter(
+          (p) => p.type?.replace(/\s+/g, "-").toLowerCase() === selectedType
+        );
+
+  // Pagination
   const totalPages = Math.ceil(filtered.length / propertiesPerPage);
   const startIdx = (currentPage - 1) * propertiesPerPage;
   const paginatedProperties = filtered.slice(
@@ -66,6 +86,7 @@ export default function BuyPage() {
     startIdx + propertiesPerPage
   );
 
+  // Scroll to property section
   const scrollToNext = () => {
     if (buyRef.current) {
       const yOffset = -50;
@@ -78,7 +99,7 @@ export default function BuyPage() {
   // Generate page numbers (with ellipsis)
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    const maxVisible = 3; // show 3 around current
+    const maxVisible = 3;
 
     if (totalPages <= 7) {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
@@ -99,7 +120,7 @@ export default function BuyPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative h-[70vh]  bg-black text-white flex items-center justify-center">
+      <div className="relative h-[70vh] bg-black text-white flex items-center justify-center">
         <Image
           src={banner}
           alt="Goa Homes"
@@ -127,41 +148,37 @@ export default function BuyPage() {
         </motion.div>
       </div>
 
-      {/* Filters */}
+      {/* Filter Buttons */}
       <motion.div
         className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
         initial="hidden"
         animate="visible"
         variants={{
           hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 },
-          },
+          visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
         }}
       >
-        {["All", "Builder Floor", "Apartment", "Villa", "Farmhouses"].map(
-          (type) => (
-            <motion.button
-              key={type}
-              onClick={() => {
-                setSelectedType(type);
-                setCurrentPage(1);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-                selectedType === type
-                  ? "bg-[var(--primary-color)] text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-            >
-              {type}
-            </motion.button>
-          )
-        )}
+        {filterOptions.map((opt) => (
+          <motion.button
+            key={opt.value}
+            onClick={() => {
+              setSelectedType(opt.value);
+              setCurrentPage(1);
+              router.push(`/buy?type=${opt.value}`, { scroll: false });
+            }}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+              selectedType === opt.value
+                ? "bg-[var(--primary-color)] text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            {opt.name}
+          </motion.button>
+        ))}
       </motion.div>
 
       {/* Property List */}
@@ -184,9 +201,7 @@ export default function BuyPage() {
               animate="visible"
               variants={{
                 hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.2 },
-                },
+                visible: { transition: { staggerChildren: 0.2 } },
               }}
             >
               {paginatedProperties.map((p) => (
@@ -199,7 +214,6 @@ export default function BuyPage() {
                   }}
                   transition={{ duration: 0.6 }}
                 >
-                  {/* Image */}
                   <div className="relative h-64 w-full">
                     {p.images?.[0] ? (
                       <Image
@@ -216,7 +230,6 @@ export default function BuyPage() {
                     )}
                   </div>
 
-                  {/* Info */}
                   <div className="p-4">
                     <h3 className="font-bold text-[var(--primary-color)] text-lg line-clamp-1">
                       {p.title}
@@ -248,7 +261,7 @@ export default function BuyPage() {
             </motion.div>
 
             {/* Pagination */}
-            {totalPages > 1 && getPageNumbers().length > 0 && (
+            {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-10">
                 <button
                   disabled={currentPage === 1}
@@ -292,8 +305,8 @@ export default function BuyPage() {
       </div>
 
       <ContactInfo />
-      {/* <HelpSection /> */}
 
+      {/* Mobile Floating Buttons */}
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
         <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">
           <a
@@ -320,6 +333,7 @@ export default function BuyPage() {
       <div className="hidden md:block">
         <ContactSidebar />
       </div>
+
       <Footer />
     </div>
   );
