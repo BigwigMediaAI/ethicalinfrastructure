@@ -3,16 +3,12 @@ import FeaturedApartments from "../../components/FeaturedApartments";
 import Footer from "../../components/Footer";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
-import StatsSection from "../../components/Stats";
+
 import WeHelp from "../../components/WeHelp";
 import bgImage from "../../assets/video-bg.jpg";
 import Testimonials from "../../components/Testimonial";
 import CompanySection from "../../components/AboutCompany";
-import Image from "next/image";
-import sellImage from "../../assets/sell.jpg"; // replace with your image
-import buyImage from "../../assets/buy.jpg"; // replace with your image
-import leaseImage from "../../assets/lease.jpg";
-import { FiArrowRight } from "react-icons/fi";
+
 import PropertyGrid from "../../components/Properties";
 import BlogGrid from "../../components/Blogs";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
@@ -20,10 +16,9 @@ import ContactSidebar from "../../components/ContactSidebar";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Link from "next/link";
-import ButtonFill from "../../components/Button";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import RealEstateExperts from "../../components/expert";
+import BuyLeaseSection from "../../components/BuyLease";
 
 export default function Home() {
   // Initialize AOS
@@ -39,87 +34,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <RealEstateExperts />
-      <section className="w-full py-12 bg-[var(--white)]">
-        <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* ===== Sell Your Property Card ===== */}
-          <div
-            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
-            data-aos="flip-left" // optional zoom-in for heading
-            data-aos-delay="200"
-          >
-            <Image
-              src={sellImage}
-              alt="Sell Your Property"
-              className="w-full h-full object-cover transition-transform duration-500 "
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-semibold mb-2 text-center  tracking-widest">
-                Sell Your Property
-              </h3>
-              <p className="mb-4 text-center">
-                Maximize your property&#39;s value with our expert selling
-                strategies and personalized service.
-              </p>
-              <Link href="/sell">
-                <ButtonFill text={<FiArrowRight size={18} />} />
-              </Link>
-            </div>
-          </div>
-
-          {/* ===== Buy A Property Card ===== */}
-          <div
-            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
-            data-aos="flip-left" // optional zoom-in for heading
-            data-aos-delay="400"
-          >
-            <Image
-              src={buyImage}
-              alt="Buy A Property"
-              className="w-full h-full object-cover transition-transform duration-500 "
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
-                Buy A Property
-              </h3>
-              <p className="mb-4 text-center">
-                Find your perfect home with our expert guidance and tailored
-                property options.
-              </p>
-              <Link href="/buy">
-                <ButtonFill text={<FiArrowRight size={18} />} />
-              </Link>
-            </div>
-          </div>
-
-          {/* ===== Lease A Property Card ===== */}
-          <div
-            className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer h-96"
-            data-aos="flip-left" // optional zoom-in for heading
-            data-aos-delay="400"
-          >
-            <Image
-              src={leaseImage}
-              alt="Lease A Property"
-              className="w-full h-full object-cover transition-transform duration-500 "
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-end items-center p-6 text-white transition-all duration-300">
-              <h3 className="text-4xl font-semibold mb-2 text-center tracking-widest">
-                Lease A Property
-              </h3>
-              <p className="mb-4 text-center">
-                Lease premium spaces effortlessly with personalized service and
-                expert support.
-              </p>
-              <Link href="/lease">
-                <ButtonFill text={<FiArrowRight size={18} />} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BuyLeaseSection />
       <PropertyGrid />
       <FeaturedApartments />
       <WeHelp />
@@ -143,7 +58,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <StatsSection />
+      {/* <StatsSection /> */}
       <Testimonials />
       <CompanySection />
       <BlogGrid />

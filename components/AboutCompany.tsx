@@ -6,7 +6,7 @@ export default function AboutSection() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="bg-white dark:bg-black text-black dark:text-white px-4 py-12 md:py-20 flex justify-center relative overflow-hidden font-raleway font-light dark:font-thin custom-gradient-lines">
+    <section className="bg-[var(--white)] text-[var(--black)] px-4 py-12 md:py-20 flex justify-center relative overflow-hidden ">
       <div className="p-[1px] bg-gradient-to-r from-[var(--primary-color)] via-black to-[var(--primary-color)] max-w-7xl w-full">
         <div className="bg-white dark:bg-black p-6 md:p-12">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-[var(--primary-color)] mb-6">
