@@ -23,6 +23,8 @@
     "react-phone-input-2": "^2.15.1",
     "react-phone-number-input": "^3.4.12",
     "react-quill-new": "^3.6.0",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1",
     "swiper": "^12.0.2",
     "yet-another-react-lightbox": "^1.14.0"
   },
@@ -33,6 +35,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-slick": "^0.23.13",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",

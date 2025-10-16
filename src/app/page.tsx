@@ -19,6 +19,7 @@ import "aos/dist/aos.css";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import RealEstateExperts from "../../components/expert";
 import BuyLeaseSection from "../../components/BuyLease";
+import ScrollingIcons from "../../components/ScrollingIcons";
 
 export default function Home() {
   // Initialize AOS
@@ -62,6 +63,8 @@ export default function Home() {
       <Testimonials />
       <BlogGrid />
       <CompanySection />
+      <ScrollingIcons />
+
       <Footer />
       <ScrollToTopButton />
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
