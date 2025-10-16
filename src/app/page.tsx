@@ -35,9 +35,9 @@ export default function Home() {
       <Hero />
       <RealEstateExperts />
       <BuyLeaseSection />
+      <WeHelp />
       <PropertyGrid />
       <FeaturedApartments />
-      <WeHelp />
 
       <div
         className="relative h-[600px] flex items-center justify-center text-white"
@@ -60,8 +60,8 @@ export default function Home() {
       </div>
       {/* <StatsSection /> */}
       <Testimonials />
-      <CompanySection />
       <BlogGrid />
+      <CompanySection />
       <Footer />
       <ScrollToTopButton />
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
