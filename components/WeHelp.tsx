@@ -31,7 +31,7 @@ const services: Service[] = [
     label: "Lease Property",
     title: "Lease Property",
     description:
-      "Whether you're a landlord seeking reliable tenants or a client looking for a leased property, ETHICAL INFRASTRUCTURES simplifies the leasing process. We provide verified listings, handle documentation, and ensure fair, transparent agreements for both parties.",
+      "Whether you're a landlord seeking reliable tenants or a client looking for a leased property, ETHICAL INFRASTRUCTURES PRIVATE LIMITED simplifies the leasing process. We provide verified listings, handle documentation, and ensure fair, transparent agreements for both parties.",
     redirected: "/lease",
   },
 ];
