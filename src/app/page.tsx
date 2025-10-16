@@ -39,6 +39,7 @@ export default function Home() {
       <WeHelp />
       <PropertyGrid />
       <FeaturedApartments />
+      <ScrollingIcons />
       {/* 
       <div
         className="relative h-[600px] flex items-center justify-center text-white"
@@ -60,10 +61,9 @@ export default function Home() {
       </div> */}
       {/* </div>  */}
       {/* <StatsSection /> */}
+      <CompanySection />
       <Testimonials />
       <BlogGrid />
-      <CompanySection />
-      <ScrollingIcons />
 
       <Footer />
       <ScrollToTopButton />
