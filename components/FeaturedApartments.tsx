@@ -65,8 +65,8 @@ export default function FeaturedApartments() {
   const current = apartments[index];
 
   return (
-    <div className="bg-[#021A33] text-white py-12">
-      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+    <div className="bg-[var(--white)] text-white py-12">
+      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[var(--featured)] py-8 px-14 rounded-2xl shadow-lg">
         {/* Left Text Section */}
         <div className="md:w-1/2">
           <p
@@ -77,14 +77,14 @@ export default function FeaturedApartments() {
             Exclusive
           </p>
           <h2
-            className="text-4xl font-bold mt-2 mb-6 tracking-widest"
+            className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]"
             data-aos="fade-right"
             data-aos-delay="400"
           >
             Featured Apartments
           </h2>
           <p
-            className="text-gray-300 mb-4"
+            className=" mb-4 text-[var(--text)]"
             data-aos="fade-right"
             data-aos-delay="600"
           >
@@ -92,7 +92,7 @@ export default function FeaturedApartments() {
             transactions for buyers and sellers.
           </p>
           <p
-            className="text-gray-300 mb-6"
+            className="text-[var(--text)] mb-6"
             data-aos="fade-right"
             data-aos-delay="800"
           >
@@ -130,10 +130,9 @@ export default function FeaturedApartments() {
           {/* Content */}
           <div className="p-6 w-1/2 flex flex-col justify-between">
             <div>
-              <h3 className="text-blue-600 text-lg font-semibold">
-                {current.price}
-              </h3>
-              <h2 className="text-2xl font-bold mt-1">{current.title}</h2>
+              <h2 className="text-2xl font-bold mt-1 text-[var(--primary-color)]">
+                {current.title}
+              </h2>
               <p className="text-gray-500 text-sm mb-4">{current.location}</p>
               <p className="text-gray-600 text-sm mb-4 line-clamp-4 text-justify">
                 {current.description}

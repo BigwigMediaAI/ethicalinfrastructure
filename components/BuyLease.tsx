@@ -4,6 +4,7 @@ import sellImage from "../assets/sell.jpg"; // replace with your image
 import buyImage from "../assets/buy.jpg"; // replace with your image
 import leaseImage from "../assets/lease.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function BuyLeaseSection() {
   const [activeTab, setActiveTab] = useState<"buy" | "sell" | "lease">("buy");
@@ -26,11 +27,11 @@ export default function BuyLeaseSection() {
               onMouseEnter={() => setActiveTab("buy")}
             >
               <h2
-                className={`text-5xl  tracking-wider transition-colors ${
-                  activeTab === "buy" ? "text-[var(--black)] " : ""
+                className={`text-5xl  tracking-wider transition-colors duration-300  ${
+                  activeTab === "buy" ? "text-[var(--title)] font-bold " : ""
                 }`}
               >
-                <a href="/buy">BUY</a>
+                <Link href="/buy">BUY</Link>
               </h2>
               <div
                 className={`relative ml-6 h-[1px] bg-[var(--black)] transition-all duration-300 ${
@@ -53,11 +54,11 @@ export default function BuyLeaseSection() {
               onMouseEnter={() => setActiveTab("sell")}
             >
               <h2
-                className={`text-5xl font-raleway font-thin tracking-wider transition-colors ${
-                  activeTab === "sell" ? "text-[var(--black)] " : ""
+                className={`text-5xl  tracking-wider transition-colors duration-300  group-hover:font-bold ${
+                  activeTab === "sell" ? "text-[var(--title)] font-bold  " : ""
                 }`}
               >
-                <a href="/sell">SELL</a>
+                <Link href="/sell">SELL</Link>
               </h2>
               <div
                 className={`relative ml-6 h-[1px] bg-[var(--black)] transition-all duration-300 ${
@@ -80,11 +81,11 @@ export default function BuyLeaseSection() {
               onMouseEnter={() => setActiveTab("lease")}
             >
               <h2
-                className={`text-5xl font-raleway font-thin tracking-wider transition-colors ${
-                  activeTab === "lease" ? "text-[var(--black)] " : ""
+                className={`text-5xl  tracking-wider transition-colors duration-300  group-hover:font-bold ${
+                  activeTab === "lease" ? "text-[var(--title)] font-bold  " : ""
                 }`}
               >
-                <a href="/lease">LEASE</a>
+                <Link href="/lease">LEASE</Link>
               </h2>
               <div
                 className={`relative ml-6 h-[1px] bg-[var(--black)] transition-all duration-300 ${

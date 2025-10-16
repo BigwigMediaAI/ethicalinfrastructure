@@ -51,7 +51,7 @@ const RealEstateExperts: React.FC = () => {
 
         {/* Text and stats */}
         <div className="mt-8 md:mt-0">
-          <h2 className="text-3xl md:text-3xl font-light mb-6">
+          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
             Luxury Living Starts with{" "}
             <span className="text-[var(--primary-color)]">
               ETHICAL INFRASTRUCTURES
@@ -73,10 +73,7 @@ const RealEstateExperts: React.FC = () => {
             Infrastructures ensures you make confident
           </p>
 
-          <ButtonFill
-            onClick={() => setShowModal(true)}
-            text="Talk to an Expert"
-          />
+          <ButtonFill onClick={() => setShowModal(true)} text="Get In Touch" />
         </div>
       </div>
       {/* Desktop stats */}

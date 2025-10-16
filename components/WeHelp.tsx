@@ -38,13 +38,13 @@ const services: Service[] = [
 
 const WhatWeDoSection: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white font-raleway custom-gradient-lines relative">
+    <div className="bg-[var(--white)] text-[var(--black)]">
       <section className="max-w-7xl px-6 py-16 mx-auto">
         <div className="mb-6">
-          <p className="text-md mb-2 tracking-wider text-[#9C623E] font-semibold uppercase">
+          <p className="text-md mb-2 tracking-wider text-[var(--primary-color)] font-semibold uppercase">
             Our Services
           </p>
-          <h2 className="text-2xl md:text-3xl font-light text-black dark:text-gray-100">
+          <h2 className="text-2xl md:text-3xl font-light text-[var(--black)]">
             Buy, Sell & Lease Properties with Ethical Guidance
           </h2>
         </div>
