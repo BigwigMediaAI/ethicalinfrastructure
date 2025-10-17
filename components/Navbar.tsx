@@ -40,8 +40,8 @@ const Navbar = () => {
           path: "/buy",
           subDropdown: [
             { name: "Builder Floor", path: "/buy?type=builder-floor" },
-            { name: "Villa", path: "/buy?type=villa" },
             { name: "Apartment", path: "/buy?type=apartment" },
+            { name: "Villa", path: "/buy?type=villa" },
             { name: "Farmhouse", path: "/buy?type=farmhouse" },
           ],
         },
@@ -176,7 +176,7 @@ const Navbar = () => {
 
                       {/* --- Second-level dropdown --- */}
                       {drop.subDropdown && (
-                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-52 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60] ">
+                        <ul className="absolute left-full top-0 bg-[var(--white)] shadow-lg  w-52 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60] ">
                           {drop.subDropdown.map((sub) => (
                             <li key={sub.name}>
                               <Link
