@@ -20,16 +20,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Centered Content */}
-      <div className="relative z-10 text-center px-4 md:px-10 max-w-3xl">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-5 font-merriweather text-white leading-tight">
-          Dream It. Live It. Own Your Home with Ethical Infrastructure Pvt. Ltd.
+      <div className="relative z-10 text-center max-w-3xl">
+        <h1 className="text-4xl font-bold mb-5 font-merriweather text-white leading-tight tracking-widest">
+          Your Vision, Our Ethical Commitment
         </h1>
-        <h2 className="text-lg md:text-2xl mb-6 uppercase text-gray-200">
-          Premium properties, secure investments, and expert guidance with{" "}
-          <span className="text-[var(--primary-color)] font-bold">
-            ETHICAL INFRASTRUCTURE Pvt. Ltd.
-          </span>
-        </h2>
       </div>
     </section>
   );
