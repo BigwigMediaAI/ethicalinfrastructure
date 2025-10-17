@@ -44,7 +44,7 @@ const apartments = [
   },
   {
     id: 3,
-    slug: "DLF PRIVANA WEST",
+    slug: "dlf-privana-west",
     tag: "Hot Offer",
     price: "",
     title: "DLF PRIVANA WEST",
@@ -58,7 +58,7 @@ const apartments = [
   },
   {
     id: 4,
-    slug: "Crest",
+    slug: "crest",
     tag: "Hot Offer",
     price: "",
     title: "Crest",
