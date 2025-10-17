@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MessageCircle, HelpCircle } from "lucide-react";
+import Link from "next/link";
 
 const HelpSection = () => {
   return (
@@ -17,7 +18,7 @@ const HelpSection = () => {
         <div className="flex items-center gap-2">
           <HelpCircle className="w-5 h-5" />
           <span>
-            <a href="/faq">Browse our FAQ</a>
+            <Link href="/faq">Browse our FAQ</Link>
           </span>
         </div>
       </div>

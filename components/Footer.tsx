@@ -59,12 +59,12 @@ const Footer = () => {
             <ul key={idx} className="space-y-4">
               {group.map((item, i) => (
                 <li key={i}>
-                  <a
+                  <Link
                     href={item.path}
                     className="cursor-pointer hover:text-[var(--primary-color)] transition"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
