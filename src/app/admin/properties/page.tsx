@@ -7,6 +7,7 @@ import { Plus, Pencil, Trash2, Eye, X } from "lucide-react";
 import PropertyForm from "../../../../components/PropertyForm";
 
 interface Property {
+  builder: string;
   _id: string;
   title: string;
   slug: string;
@@ -36,6 +37,16 @@ export default function AllProperties() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [editProperty, setEditProperty] = useState<Property | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const pageSize = 10;
+
+  // Pagination logic
+  const totalPages = Math.ceil(properties.length / pageSize);
+  const paginatedProperties = properties.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   useEffect(() => {
     fetchProperties();
@@ -101,8 +112,8 @@ export default function AllProperties() {
             </tr>
           </thead>
           <tbody>
-            {properties.length > 0 ? (
-              properties.map((property) => (
+            {paginatedProperties.length > 0 ? (
+              paginatedProperties.map((property) => (
                 <tr key={property._id} className="border-t border-gray-300">
                   <td className="p-3 text-center">{property.title}</td>
                   <td className="p-3 text-center ">{property.purpose}</td>
@@ -189,6 +200,9 @@ export default function AllProperties() {
                   <strong>Area (sqft):</strong>{" "}
                   {selectedProperty.areaSqft ?? "—"}
                 </p>
+                <p>
+                  <strong>Builder:</strong> {selectedProperty.builder ?? "—"}
+                </p>
               </div>
             </div>
 
@@ -248,6 +262,69 @@ export default function AllProperties() {
         </div>
       )}
 
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10">
+          {/* Prev Button */}
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="px-3 py-2 rounded border bg-black hover:bg-gray-800 disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          {/* Page Numbers */}
+          {(() => {
+            const pages = [];
+            const maxVisible = 5; // show 5 pages max at a time
+
+            let startPage = Math.max(
+              1,
+              currentPage - Math.floor(maxVisible / 2)
+            );
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+            if (endPage - startPage + 1 < maxVisible) {
+              startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            if (startPage > 1) pages.push(1, "...");
+            for (let i = startPage; i <= endPage; i++) pages.push(i);
+            if (endPage < totalPages) pages.push("...", totalPages);
+
+            return pages.map((num, idx) =>
+              num === "..." ? (
+                <span key={idx} className="px-3 py-2 text-gray-500">
+                  ...
+                </span>
+              ) : (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentPage(Number(num))}
+                  className={`px-3 py-2 rounded border ${
+                    currentPage === num
+                      ? "bg-[var(--primary-color)] text-white"
+                      : "bg-black hover:bg-gray-800"
+                  }`}
+                >
+                  {num}
+                </button>
+              )
+            );
+          })()}
+
+          {/* Next Button */}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="px-3 py-2 rounded border hover:bg-gray-800 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
+
       {/* Form Modal (for Add / Update) */}
       {isFormModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -272,6 +349,7 @@ export default function AllProperties() {
                       bedrooms: editProperty.bedrooms ?? "",
                       bathrooms: editProperty.bathrooms ?? "",
                       areaSqft: editProperty.areaSqft ?? "",
+                      builder: editProperty.builder ?? "",
                     }
                   : undefined
               }

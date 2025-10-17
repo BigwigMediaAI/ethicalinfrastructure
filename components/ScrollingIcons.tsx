@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -26,26 +27,25 @@ import img20 from "../assets/logos/vipul.png";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 const icons = [
-  { src: img1, alt: "Nifty" },
-  { src: img2, alt: "Gold" },
-  { src: img3, alt: "Gold" },
-  { src: img4, alt: "Gold" },
-  { src: img5, alt: "Gold" },
-  { src: img6, alt: "Gold" },
-  { src: img7, alt: "Gold" },
-  { src: img8, alt: "Gold" },
-  //   { src: img9, alt: "Gold" },
-  { src: img10, alt: "Gold" },
-  { src: img11, alt: "Gold" },
-  { src: img12, alt: "Gold" },
-  { src: img13, alt: "Gold" },
-  { src: img14, alt: "Gold" },
-  { src: img15, alt: "Gold" },
-  { src: img16, alt: "Gold" },
-  { src: img17, alt: "Gold" },
-  { src: img18, alt: "Gold" },
-  { src: img19, alt: "Gold" },
-  { src: img20, alt: "Gold" },
+  { src: img1, alt: "Builders Association", link: "/builders-association" },
+  { src: img2, alt: "Emaar", link: "/emaar" },
+  { src: img3, alt: "Godrej", link: "/godrej" },
+  { src: img4, alt: "Hines", link: "/hines" },
+  { src: img5, alt: "Pioneer", link: "/pioneer" },
+  { src: img6, alt: "Sobha Realty", link: "/shobha-reality" },
+  { src: img7, alt: "Supertech", link: "/supertech" },
+  { src: img8, alt: "DLF", link: "/dlf" },
+  { src: img10, alt: "Bestech", link: "/bestech" },
+  { src: img11, alt: "M3M", link: "/m3m" },
+  { src: img12, alt: "Mahindra", link: "/mahindra" },
+  { src: img13, alt: "Manbhawan", link: "/manbhawan" },
+  { src: img14, alt: "Salcon", link: "/salcon" },
+  { src: img15, alt: "Silver Glades", link: "/silverglades" },
+  { src: img16, alt: "Smartworld", link: "/smartworld" },
+  { src: img17, alt: "Suncity", link: "/suncity" },
+  { src: img18, alt: "Trump", link: "/trump" },
+  { src: img19, alt: "Vatika", link: "/vatika" },
+  { src: img20, alt: "Vipul", link: "/vipul" },
 ];
 
 const ScrollingIcons = () => {
@@ -53,7 +53,7 @@ const ScrollingIcons = () => {
     dots: false,
     infinite: true,
     speed: 2000,
-    slidesToShow: 5, // default for desktop
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
@@ -62,9 +62,9 @@ const ScrollingIcons = () => {
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 768, // mobile breakpoint
+        breakpoint: 768,
         settings: {
-          slidesToShow: 3, // show 3 slides on mobile
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -72,7 +72,7 @@ const ScrollingIcons = () => {
   };
 
   return (
-    <div className=" py-10 bg-[var(--white)] overflow-hidden">
+    <div className="py-10 bg-[var(--white)] overflow-hidden">
       <div className="w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-4xl font-bold mt-2 mb-6 md:mb-10 tracking-widest text-[var(--title)]">
           Trusted by Leading Builders
@@ -84,11 +84,13 @@ const ScrollingIcons = () => {
               key={index}
               className="flex items-center justify-center px-4 w-28"
             >
-              <img
-                src={icon.src.src}
-                alt={icon.alt}
-                className="h-16 w-28 object-fill"
-              />
+              <Link href={icon.link}>
+                <img
+                  src={icon.src.src}
+                  alt={icon.alt}
+                  className="h-16 w-28 object-contain hover:scale-110 transition-transform duration-300"
+                />
+              </Link>
             </div>
           ))}
         </Slider>

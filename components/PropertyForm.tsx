@@ -26,6 +26,7 @@ interface PropertyData {
   googleMapUrl: string;
   videoLink: string;
   images: string[];
+  builder: string;
 }
 
 type ArrayFields =
@@ -59,6 +60,7 @@ export default function PropertyForm({
     areaSqft: "",
     googleMapUrl: "",
     videoLink: "",
+    builder: "",
   });
 
   const [arrayInputs, setArrayInputs] = useState<Record<ArrayFields, string>>({
@@ -87,6 +89,7 @@ export default function PropertyForm({
         areaSqft: property.areaSqft,
         googleMapUrl: property.googleMapUrl,
         videoLink: property.videoLink,
+        builder: property.builder,
       });
 
       setArrayInputs({
@@ -268,6 +271,12 @@ export default function PropertyForm({
           name="areaSqft"
           placeholder="Area (sqft)"
           value={formData.areaSqft || ""}
+          onChange={handleChange}
+        />
+        <InputField
+          name="builder"
+          placeholder="Builder"
+          value={formData.builder || ""}
           onChange={handleChange}
         />
       </div>
