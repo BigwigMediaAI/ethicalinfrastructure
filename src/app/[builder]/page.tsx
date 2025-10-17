@@ -95,7 +95,7 @@ export default function BuilderPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold capitalize">
+          <h1 className="text-4xl md:text-5xl font-bold uppercase">
             {builderName} Properties
           </h1>
           <p className="mt-4 text-gray-600 text-lg">
