@@ -263,38 +263,63 @@ export default function BuyPageContent() {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-10">
+                {/* Prev Button */}
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-3 py-2 rounded border bg-white hover:bg-gray-100 disabled:opacity-50"
+                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
                 >
                   Prev
                 </button>
 
-                {getPageNumbers().map((num, idx) =>
-                  num === "..." ? (
-                    <span key={idx} className="px-3 py-2">
-                      ...
-                    </span>
-                  ) : (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentPage(num as number)}
-                      className={`px-3 py-2 rounded border ${
-                        currentPage === num
-                          ? "bg-[var(--primary-color)] text-white"
-                          : "bg-white hover:bg-gray-100"
-                      }`}
-                    >
-                      {num}
-                    </button>
-                  )
-                )}
+                {/* Page Numbers */}
+                {(() => {
+                  const pages = [];
+                  const maxVisible = 5; // show 5 pages max at a time
 
+                  let startPage = Math.max(
+                    1,
+                    currentPage - Math.floor(maxVisible / 2)
+                  );
+                  let endPage = Math.min(
+                    totalPages,
+                    startPage + maxVisible - 1
+                  );
+
+                  if (endPage - startPage + 1 < maxVisible) {
+                    startPage = Math.max(1, endPage - maxVisible + 1);
+                  }
+
+                  if (startPage > 1) pages.push(1, "...");
+                  for (let i = startPage; i <= endPage; i++) pages.push(i);
+                  if (endPage < totalPages) pages.push("...", totalPages);
+
+                  return pages.map((num, idx) =>
+                    num === "..." ? (
+                      <span key={idx} className="px-3 py-2 text-gray-500">
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentPage(Number(num))}
+                        className={`px-3 py-2 rounded border ${
+                          currentPage === num
+                            ? "bg-[var(--primary-color)] text-[var(--white)]"
+                            : "bg-[var(--white)] hover:bg-[var(--pagination-button)]"
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    )
+                  );
+                })()}
+
+                {/* Next Button */}
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-3 py-2 rounded border bg-white hover:bg-gray-100 disabled:opacity-50"
+                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
                 >
                   Next
                 </button>
