@@ -159,7 +159,7 @@ const Navbar = () => {
                   {item.dropdown.map((drop) => (
                     <li
                       key={drop.name}
-                      className="relative group/submenu hover:bg-[var(--featured)]"
+                      className="relative group/submenu hover:bg-[var(--featured)] border-b-[0.5px] border-[var(--primary-color)]"
                     >
                       {/* --- Full-row clickable link --- */}
                       <Link
@@ -170,18 +170,18 @@ const Navbar = () => {
 
                         {/* --- Arrow for sub-dropdown --- */}
                         {drop.subDropdown && (
-                          <BiChevronRight className="ml-1 cursor-pointer group-hover/submenu:text-[var(--hover-color)]" />
+                          <BiChevronRight className="ml-1 cursor-pointer group-hover/submenu:text-[var(--hover-color)] " />
                         )}
                       </Link>
 
                       {/* --- Second-level dropdown --- */}
                       {drop.subDropdown && (
-                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-52 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60]">
+                        <ul className="absolute left-full top-2 bg-[var(--white)] shadow-lg  w-52 opacity-0 group-hover/submenu:opacity-100 invisible group-hover/submenu:visible translate-x-1 group-hover/submenu:translate-x-0 transition-all duration-200 ease-in-out z-[60] ">
                           {drop.subDropdown.map((sub) => (
                             <li key={sub.name}>
                               <Link
                                 href={sub.path}
-                                className="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--featured)] hover:text-[var(--hover-color)]"
+                                className="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--featured)] hover:text-[var(--hover-color)] border-b-[0.5px] border-[var(--primary-color)]"
                               >
                                 {sub.name}
                               </Link>
