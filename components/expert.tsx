@@ -17,7 +17,7 @@ const RealEstateExperts: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="bg-[var(--white)] py-12 text-[var(--black)] transition-colors ">
-      <div className="w-11/12 md:w-5/6 mx-auto grid md:grid-cols-2 gap-4 md:gap-8 items-center py-12">
+      <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center py-12">
         {/* Image section */}
         <div className="relative w-full h-[400px] flex justify-center">
           <Image

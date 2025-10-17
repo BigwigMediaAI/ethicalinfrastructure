@@ -53,7 +53,7 @@ export default function BuyLeaseSection() {
                   onClick={() => handleRedirect(path)}
                   className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-300 ${
                     activeTab === label.toLowerCase()
-                      ? "bg-[var(--title)] text-black border-[var(--title)]"
+                      ? "bg-[var(--black)] text-[var(--white)] border-[var(--title)]"
                       : "bg-transparent border-gray-400 text-[var(--black)]"
                   }`}
                 >
