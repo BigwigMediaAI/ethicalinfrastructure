@@ -1,10 +1,12 @@
 "use client";
 
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
-import Image from "next/image";
-import { div } from "framer-motion/client";
+// import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+// import Image from "next/image";
+// import { div } from "framer-motion/client";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import founder from "../../../assets/founder.png";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -85,19 +87,41 @@ export default function TeamPage() {
     <div>
       <Navbar />
       <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-blue-600 mb-2">Our Team</h2>
-          <p className="text-gray-600 max-w-xl mx-auto">
-            We are a passionate team of professionals dedicated to delivering
-            quality and creativity in everything we do.
-          </p>
-        </div>
+        {/* Our Founder */}
+        <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+          <h3 className="uppercase text-2xl md:text-3xl font-semibold text-[var(--primary-color)] mb-6 font-amatic border-l-4 border-[var(--primary-color)] pl-3">
+            Our Founder
+          </h3>
 
-        <div className="relative w-full flex justify-center">
-          {/* Orange stripe background */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            {/* Founder Card */}
+            <div className="rounded-xl col-span-1 overflow-hidden shadow-md hover:shadow-xl transition duration-300 bg-white">
+              <Image
+                src={founder}
+                alt="Founder"
+                className="w-full h-[70vh] object-cover"
+              />
+            </div>
+
+            {/* Founder Statement */}
+            <div className="flex flex-col col-span-2 justify-center text-gray-800">
+              <p className="text-xl  leading-relaxed italic font-light text-gray-800">
+                “At <strong>ETHICAL INFRASTRUCTURE Pvt. Ltd.</strong>, our
+                mission has always been to deliver homes that bring happiness,
+                security, and trust to every family. Since 1995, we’ve dedicated
+                ourselves to making real estate simple, transparent, and
+                reliable for all our clients.”
+              </p>
+              <span className="mt-6 block font-semibold text-[var(--primary-color)] text-lg md:text-xl">
+                — Mr. Sorabh Chopra, Founder
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* <div className="relative w-full flex justify-center">
           <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-20 bg-orange-500 -z-10"></div>
 
-          {/* Team members */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-11/12 md:w-4/5">
             {team.map((member, index) => (
               <div
@@ -115,23 +139,11 @@ export default function TeamPage() {
                   <h3 className="text-xl font-semibold text-gray-900">
                     {member.name}
                   </h3>
-                  {/* <p className="text-sm text-gray-500 mb-4">{member.role}</p> */}
-                  {/* <div className="flex justify-center gap-4 text-orange-500">
-                  <a href={member.social.facebook}>
-                    <FaFacebookF className="hover:text-orange-600 transition" />
-                  </a>
-                  <a href={member.social.twitter}>
-                    <FaTwitter className="hover:text-orange-600 transition" />
-                  </a>
-                  <a href={member.social.instagram}>
-                    <FaInstagram className="hover:text-orange-600 transition" />
-                  </a>
-                </div> */}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </div>

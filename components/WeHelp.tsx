@@ -15,7 +15,7 @@ const services: Service[] = [
     label: "Buy Property",
     title: "Buy Property",
     description:
-      "Discover premium residential and commercial properties across Delhi NCR with ETHICAL INFRASTRUCTURES PRIVATE LIMITED. Our experts help you find the perfect home or investment property that fits your lifestyle, budget, and vision — ensuring transparency and smooth transactions at every step.",
+      "Discover premium builder floors, villas, farmhouses, apartments, and commercial properties across Delhi NCR with ETHICAL INFRASTRUCTURES PRIVATE LIMITED. Our experts help you find the perfect home or investment property that fits your lifestyle, budget, and vision ensuring transparency and smooth transactions at every step.",
     redirected: "/buy",
   },
   {
@@ -62,7 +62,7 @@ const WhatWeDoSection: React.FC = () => {
                 </div>
                 <h3 className="text-lg font-semibold">{service.title}</h3>
               </div>
-              <p className="text-sm text-[var(--title)] leading-relaxed">
+              <p className="text-sm text-[var(--title)] leading-relaxed text-justify">
                 {service.description}
               </p>
             </a>

@@ -61,16 +61,22 @@ const RealEstateExperts: React.FC = () => {
           <p className="text-[var(--text)] mb-6 text-justify">
             Searching for your ideal home or a profitable real estate investment
             in Delhi NCR? At ETHICAL INFRASTRUCTURES PRIVATE LIMITED, we go
-            beyond property transactions, we build long-term relationships
+            beyond property transactions — we build long-term relationships
             rooted in trust, transparency, and professionalism. Our expert
             consultants assist clients across Gurugram, Delhi, and surrounding
-            regions with buying, selling, and investing in premium properties
-            that match their goals and lifestyle aspirations.With a client-first
-            approach and an in-depth understanding of the market, we provide
-            comprehensive support from site visits and market research to legal
-            guidance and portfolio management. Whether you’re seeking a luxury
-            residence or a high-return commercial space, Ethical Infrastructures
-            ensures you make confident.
+            regions with buying, selling, and investing in premium{" "}
+            <span className="uppercase text-[var(--primary-color)]">
+              {" "}
+              builder floors, villas, farmhouses, apartments, and commercial
+              properties{" "}
+            </span>
+            that match their goals and lifestyle aspirations. With a
+            client-first approach and an in-depth understanding of the market,
+            we provide comprehensive support from site visits and market
+            research to legal guidance and portfolio management. Whether you’re
+            seeking a luxury residence or a high-return commercial space,
+            Ethical Infrastructures ensures you make confident decisions every
+            step of the way
           </p>
 
           <ButtonFill onClick={() => setShowModal(true)} text="Get In Touch" />
