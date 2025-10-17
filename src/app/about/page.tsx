@@ -52,7 +52,7 @@ const AboutHero = () => {
           {/* Text Content */}
           <div className="md:w-2/3">
             <h2
-              className="text-4xl font-bold mb-4 tracking-widest text-[var(--title)]"
+              className="text-3xl md:text-4xl font-bold mb-4 tracking-widest text-[var(--title)]"
               data-aos="fade-right"
               data-aos-delay="200"
             >
@@ -106,7 +106,7 @@ const AboutHero = () => {
             <span className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
               Bricks And Clicks
             </span>
-            <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
               Why Choose <br /> Ethical?
             </h2>
           </div>
@@ -191,7 +191,7 @@ const AboutHero = () => {
           </div>
           <div className="md:w-1/2">
             <h2
-              className="text-4xl font-bold mb-4 tracking-widest text-[var(--title)]"
+              className="text-3xl md:text-4xl font-bold mb-4 tracking-widest text-[var(--title)]"
               data-aos="fade-up"
               data-aos-delay="200"
             >

@@ -74,7 +74,7 @@ const ScrollingIcons = () => {
   return (
     <div className="py-10 bg-[var(--white)] overflow-hidden">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold mt-2 mb-6 md:mb-10 tracking-widest text-[var(--title)]">
+        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 md:mb-10 tracking-widest text-[var(--title)]">
           Trusted by Leading Builders
         </h2>
 

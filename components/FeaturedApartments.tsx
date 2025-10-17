@@ -107,7 +107,7 @@ export default function FeaturedApartments() {
             Exclusive
           </p>
           <h2
-            className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]"
+            className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]"
             data-aos="fade-right"
             data-aos-delay="400"
           >

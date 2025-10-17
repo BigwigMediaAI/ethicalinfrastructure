@@ -9,7 +9,7 @@ export default function AboutSection() {
     <section className="bg-[var(--white)] text-[var(--black)] py-12 flex justify-center relative overflow-hidden ">
       <div className="p-[1px] bg-gradient-to-r from-[var(--primary-color)] via-black to-[var(--primary-color)] w-11/12 md:w-5/6">
         <div className="bg-[var(--white)] p-6 md:p-12">
-          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
             Ethical Infrastructures Private Limited
           </h2>
 

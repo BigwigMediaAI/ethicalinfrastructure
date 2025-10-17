@@ -52,7 +52,7 @@ const RealEstateExperts: React.FC = () => {
 
         {/* Text and stats */}
         <div className="mt-8 md:mt-0">
-          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
             Luxury Living Starts with{" "}
             <span className="text-[var(--primary-color)]">
               ETHICAL INFRASTRUCTURES

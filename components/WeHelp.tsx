@@ -44,7 +44,7 @@ const WhatWeDoSection: React.FC = () => {
           <p className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
             Our Services
           </p>
-          <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
             Buy, Sell & Lease Properties with Ethical Guidance
           </h2>
         </div>

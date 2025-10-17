@@ -40,7 +40,7 @@ export default function BlogGrid() {
   return (
     <section className="py-12 ">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
           Latest Blogs
         </h2>
 

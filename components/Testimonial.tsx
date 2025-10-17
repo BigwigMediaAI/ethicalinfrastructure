@@ -69,7 +69,7 @@ export default function Testimonials() {
         </p>
 
         {/* Heading */}
-        <h2 className="text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
           What People Say
         </h2>
 

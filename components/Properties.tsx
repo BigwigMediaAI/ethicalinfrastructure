@@ -58,7 +58,7 @@ export default function PropertyGrid() {
   return (
     <section className="py-12 bg-[var(--white)]">
       <div className="w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[var(--title)] tracking-widest">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[var(--title)] tracking-widest">
           Our Properties
         </h2>
 
