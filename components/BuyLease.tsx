@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import sellImage from "../assets/sell.jpg"; // replace with your image
-import buyImage from "../assets/buy.jpg"; // replace with your image
-import leaseImage from "../assets/lease.jpg";
+import sellImage from "../assets/sale.svg"; // replace with your image
+import buyImage from "../assets/buy.svg"; // replace with your image
+import leaseImage from "../assets/lease.svg";
 import Image from "next/image";
 import Link from "next/link";
 
