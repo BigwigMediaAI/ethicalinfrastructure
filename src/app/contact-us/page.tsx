@@ -45,16 +45,14 @@ export default function ContactPage() {
             Head Office
           </h2>
           <hr />
-
           <p className="mb-1 text-lg font-semibold">Gurugram, India</p>
           <p className="mb-4">
             A-26/12B,FF1 DLFCity,Phase-1 Gurugram Haryana -122011
           </p>
-
           <p className="text-gray-400 mt-8">
             Our business operating hours are as follows:
           </p>
-          <p className="mt-2">Monday to Saturday: 11:00am - 7:30pm</p>
+          We’re here for you from 10 AM to 7 PM daily{" "}
         </div>
 
         <div className="pt-4">
