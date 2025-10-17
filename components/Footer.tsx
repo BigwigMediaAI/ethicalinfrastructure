@@ -12,6 +12,7 @@ import {
 import logo from "../assets/logo.png";
 import Image from "next/image";
 import ButtonFill from "./Button";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -159,55 +160,55 @@ const Footer = () => {
           <div className="flex flex-row justify-between items-center flex-wrap gap-2">
             <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
             <div className="flex gap-4">
-              <a
+              <Link
                 href="/Terms&Conditions"
                 className="cursor-pointer hover:text-[var(--primary-color)] transition"
               >
                 Terms of Use
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/Privacy&Policy"
                 className="cursor-pointer hover:text-[var(--primary-color)] transition"
               >
                 Privacy Policy
-              </a>
+              </Link>
             </div>
           </div>
           <div className="w-full flex justify-center mt-2">
-            <a
+            <Link
               href="https://www.bigwigdigital.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center"
             >
               Made & Marketed with ❤️ by Bigwig Digital
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className="hidden sm:flex flex-row justify-between items-center w-full">
           <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
-          <a
+          <Link
             href="https://www.bigwigdigital.in/"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-sm tracking-widest text-center"
           >
             Made & Marketed with ❤️ by Bigwig Digital
-          </a>
+          </Link>
           <div className="flex gap-4">
-            <a
+            <Link
               href="/Terms&Conditions"
               className="cursor-pointer hover:text-[var(--primary-color)] transition"
             >
               Terms of Use
-            </a>
-            <a
+            </Link>
+            <Link
               href="/Privacy&Policy"
               className="cursor-pointer hover:text-[var(--primary-color)] transition"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
