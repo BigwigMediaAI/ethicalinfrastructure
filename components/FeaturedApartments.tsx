@@ -5,6 +5,8 @@ import { PiRuler } from "react-icons/pi";
 import Image from "next/image";
 import image1 from "../assets/silverglades.png";
 import image2 from "../assets/av.png";
+import image3 from "../assets/Screenshot202025-10-1720121336.webp";
+import image4 from "../assets/Screenshot 2025-10-15 180229.png";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -39,6 +41,34 @@ const apartments = [
     beds: 4,
     baths: 5,
     area: "3549 ft²",
+  },
+  {
+    id: 3,
+    slug: "DLF PRIVANA WEST",
+    tag: "Hot Offer",
+    price: "",
+    title: "DLF PRIVANA WEST",
+    location: "Sector 76, Gurgaon,Haryana",
+    description:
+      "DLF Privana West is envisioned as a premium community that blends modern living with comfort and convenience. Residents can expect spacious, meticulously designed homes with contemporary interiors, complemented by top-notch facilities and amenities to enhance lifestyle and recreation.",
+    image: image3,
+    beds: 4,
+    baths: 5,
+    area: "3000 ft²",
+  },
+  {
+    id: 4,
+    slug: "Crest",
+    tag: "Hot Offer",
+    price: "",
+    title: "Crest",
+    location: "Gurugram, Haryana",
+    description:
+      "Six stunning towers set the stage for an exquisite lifestyle. The Crest marries classic and modern design in timeless harmony. Its interior is equally spectacular, with well-appointed, spacious three and four bedroom apartments and private decks that overlook a beautifully landscaped complex and the radiant city skyline.",
+    image: image4,
+    beds: 4,
+    baths: 5,
+    area: "3000 ft²",
   },
 ];
 

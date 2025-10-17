@@ -11,6 +11,7 @@ import image1 from "../assets/9-768x532.webp";
 import Image from "next/image";
 import ButtonFill from "./Button";
 import LeadFormModal from "./LeadPopup";
+import Link from "next/link";
 
 const RealEstateExperts: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -67,8 +68,11 @@ const RealEstateExperts: React.FC = () => {
             regions with buying, selling, and investing in premium{" "}
             <span className="uppercase text-[var(--primary-color)]">
               {" "}
-              builder floors, villas, farmhouses, apartments, and commercial
-              properties{" "}
+              <Link href="/buy?type=builder-floor">builder floors</Link>,{" "}
+              <Link href="/buy?type=villa">villas</Link>,{" "}
+              <Link href="/buy?type=farmhouse">farmhouses</Link> ,{" "}
+              <Link href="/buy?type=apartment"> apartments</Link>, and
+              commercial properties{" "}
             </span>
             that match their goals and lifestyle aspirations. With a
             client-first approach and an in-depth understanding of the market,
