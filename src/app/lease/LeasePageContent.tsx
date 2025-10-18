@@ -24,7 +24,7 @@ interface Property {
   purpose?: string;
 }
 
-export default function BuyPageContent() {
+export default function LeasePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const buyRef = useRef<HTMLDivElement | null>(null);
@@ -52,7 +52,7 @@ export default function BuyPageContent() {
       .then((res) => res.json())
       .then((data) => {
         const buyProperties = data.filter(
-          (p: Property) => p.purpose?.toLowerCase() === "buy"
+          (p: Property) => p.purpose?.toLowerCase() === "lease"
         );
         setProperties(buyProperties);
         setLoading(false);
@@ -164,7 +164,7 @@ export default function BuyPageContent() {
             onClick={() => {
               setSelectedType(opt.value);
               setCurrentPage(1);
-              router.push(`/buy?type=${opt.value}`, { scroll: false });
+              router.push(`/lease?type=${opt.value}`, { scroll: false });
             }}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
               selectedType === opt.value
