@@ -80,7 +80,7 @@ export default function PropertyGrid() {
                       modules={[Navigation, Pagination, Autoplay]}
                       spaceBetween={0}
                       loop={true}
-                      autoplay={{ delay: 1500, disableOnInteraction: false }}
+                      autoplay={{ delay: 2500, disableOnInteraction: false }}
                       className="h-56 w-full"
                     >
                       {property.images?.map((img, i) => (
