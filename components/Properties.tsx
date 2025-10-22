@@ -10,6 +10,9 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import ButtonFill from "./Button";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface Property {
   _id: string;
@@ -73,15 +76,28 @@ export default function PropertyGrid() {
                   data-aos-delay={index * 200}
                 >
                   <div className="relative h-56 w-full">
-                    {property.images?.[0] && (
-                      <Image
-                        src={property.images[0]}
-                        alt={property.title}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
+                    <Swiper
+                      modules={[Navigation, Pagination, Autoplay]}
+                      spaceBetween={0}
+                      loop={true}
+                      autoplay={{ delay: 1500, disableOnInteraction: false }}
+                      className="h-56 w-full"
+                    >
+                      {property.images?.map((img, i) => (
+                        <SwiperSlide key={i}>
+                          <div className="relative h-56 w-full">
+                            <Image
+                              src={img}
+                              alt={`${property.title} image ${i + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
+
                   <div className="p-4 flex flex-col gap-2">
                     <h3 className="text-lg font-bold text-[var(--primary-color)]">
                       {property.title}
@@ -128,14 +144,26 @@ export default function PropertyGrid() {
               data-aos-delay={index * 200}
             >
               <div className="relative h-56 w-full">
-                {property.images?.[0] && (
-                  <Image
-                    src={property.images[0]}
-                    alt={property.title}
-                    fill
-                    className="object-cover"
-                  />
-                )}
+                <Swiper
+                  modules={[Navigation, Pagination, Autoplay]}
+                  className="h-56 w-full"
+                  spaceBetween={0}
+                  loop={true}
+                  autoplay={{ delay: 3000 }}
+                >
+                  {property.images?.map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="relative h-56 w-full">
+                        <Image
+                          src={img}
+                          alt={`${property.title} image ${i + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
               <div className="p-4 flex flex-col gap-2">
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
