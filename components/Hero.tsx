@@ -20,9 +20,12 @@ const Hero = () => {
 
       {/* Centered Content */}
       <div className="relative z-10 text-center max-w-3xl">
-        <h1 className="text-4xl font-bold mb-5 font-merriweather text-white leading-tight tracking-widest">
-          Your Vision, Our Ethical Commitment
+        <h1 className="text-xl md:text-4xl font-bold mb-2 font-merriweather text-white leading-tight tracking-widest">
+          Ethical Infrastructure Pvt. Ltd.
         </h1>
+        <p className="text-lg text-white/80 font-medium">
+          Your Vision, Our Ethical Commitment
+        </p>
       </div>
     </section>
   );
