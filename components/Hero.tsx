@@ -1,19 +1,18 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import hero from "../assets/book_wide-1.webp";
 
 const Hero = () => {
   return (
     <section className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden flex items-center justify-center">
-      {/* Background Image */}
-      <Image
-        src={hero}
-        alt="Hero Background"
-        fill
-        className="object-cover"
-        priority
+      {/* Background Video */}
+      <video
+        src="./video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute w-full h-full object-cover"
       />
 
       {/* Overlay */}
