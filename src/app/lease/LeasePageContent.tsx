@@ -150,7 +150,7 @@ export default function LeasePageContent() {
 
       {/* Filter Buttons */}
       <motion.div
-        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
+        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-wrap justify-center gap-3 px-3 py-4 tracking-widest overflow-x-hidden"
         initial="hidden"
         animate="visible"
         variants={{

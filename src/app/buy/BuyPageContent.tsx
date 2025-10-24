@@ -150,7 +150,7 @@ export default function BuyPageContent() {
 
       {/* Filter Buttons */}
       <motion.div
-        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex gap-4 p-4 justify-center tracking-widest"
+        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-wrap justify-center gap-3 px-3 py-4 tracking-widest overflow-x-hidden"
         initial="hidden"
         animate="visible"
         variants={{
@@ -166,7 +166,7 @@ export default function BuyPageContent() {
               setCurrentPage(1);
               router.push(`/buy?type=${opt.value}`, { scroll: false });
             }}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
               selectedType === opt.value
                 ? "bg-[var(--primary-color)] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"

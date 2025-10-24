@@ -5,6 +5,7 @@ import Image from "next/image";
 import buyImage from "../assets/buy.svg";
 import sellImage from "../assets/sale.svg";
 import leaseImage from "../assets/lease.svg";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function BuyLeaseSection() {
   const [activeTab, setActiveTab] = useState<"buy" | "sell" | "lease">("buy");
@@ -26,7 +27,7 @@ export default function BuyLeaseSection() {
     const interval = setInterval(() => {
       index = (index + 1) % tabs.length;
       setActiveTab(tabs[index]);
-    }, 2500); // switch every 2.5s
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
@@ -41,8 +42,8 @@ export default function BuyLeaseSection() {
         {/* LEFT SECTION */}
         <div className="border border-gray-700 h-auto md:h-[300px] my-auto p-6 md:p-12 flex flex-col justify-center">
           <div className="space-y-4 w-full">
-            {/* ===== MOBILE BUTTONS ===== */}
-            <div className="flex md:hidden justify-center gap-4 mb-6">
+            {/* ===== MOBILE VIEW (Vertical Buttons with Arrow) ===== */}
+            <div className="flex md:hidden flex-col gap-4 mb-6">
               {[
                 { label: "BUY", path: "/buy" },
                 { label: "SELL", path: "/sell" },
@@ -51,13 +52,16 @@ export default function BuyLeaseSection() {
                 <button
                   key={label}
                   onClick={() => handleRedirect(path)}
-                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-300 ${
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-md text-base font-semibold border transition-all duration-300 ${
                     activeTab === label.toLowerCase()
                       ? "bg-[var(--black)] text-[var(--white)] border-[var(--title)]"
                       : "bg-transparent border-gray-400 text-[var(--black)]"
                   }`}
                 >
-                  {label}
+                  <span>{label}</span>
+                  <span className="text-lg">
+                    <FaArrowRight />
+                  </span>
                 </button>
               ))}
             </div>
