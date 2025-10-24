@@ -4,7 +4,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden flex items-center justify-center">
+    <section className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
       {/* Background Video */}
       <video
         src="./video.mp4"

@@ -20,6 +20,7 @@ import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import RealEstateExperts from "../../components/expert";
 import BuyLeaseSection from "../../components/BuyLease";
 import ScrollingIcons from "../../components/ScrollingIcons";
+import OurSegments from "../../components/OurSegments";
 
 export default function Home() {
   // Initialize AOS
@@ -34,11 +35,11 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <RealEstateExperts />
+      <OurSegments />
+      <PropertyGrid />
       <BuyLeaseSection />
       <WeHelp />
-      <PropertyGrid />
-      <FeaturedApartments />
+      {/* <FeaturedApartments /> */}
       <ScrollingIcons />
       {/* 
       <div
@@ -61,9 +62,9 @@ export default function Home() {
       </div> */}
       {/* </div>  */}
       {/* <StatsSection /> */}
-      <CompanySection />
+      {/* <CompanySection /> */}
       <Testimonials />
-      <BlogGrid />
+      {/* <BlogGrid /> */}
 
       <Footer />
       <ScrollToTopButton />
