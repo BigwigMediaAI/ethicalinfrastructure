@@ -127,7 +127,7 @@ const OurSegments = () => {
   return (
     <section className="py-16 px-4 md:px-12 lg:px-20 bg-[var(--white)] text-center text-[var(--black)]">
       <h2 className="text-3xl md:text-4xl  font-bold tracking-widest text-[var(--black)] mb-12">
-        Our Segments
+        Our Specializations
       </h2>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-5 flex-wrap">
