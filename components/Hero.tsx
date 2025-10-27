@@ -23,7 +23,8 @@ const Hero = () => {
         <h1
           className="text-xl md:text-5xl font-bold mb-2 font-merriweather text-white leading-tight uppercase"
           style={{
-            WebkitTextStroke: "1px #f2b596", // adds border
+            WebkitTextStroke: "1px #f2b596",
+            color: "transparent", // adds border
           }}
         >
           Ethical Infrastructures Pvt. Ltd.
