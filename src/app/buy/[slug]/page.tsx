@@ -343,9 +343,10 @@ export default function BuyDetails() {
             {property.featuresAmenities.map((f, idx) => (
               <div
                 key={idx}
-                className="p-4 bg-[var(--featured)] rounded-lg shadow text-center text-[var(--text)]"
+                className="flex flex-row items-center justify-evenly text-center bg-[var(--featured)] rounded-lg shadow text-[var(--text)] p-4 min-h-[100px]"
               >
-                ⭐ {f}
+                <span className="text-lg mb-2">⭐</span>
+                <p className="text-sm md:text-sm leading-snug">{f}</p>
               </div>
             ))}
           </div>
