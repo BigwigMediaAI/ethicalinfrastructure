@@ -134,7 +134,7 @@ const OurSegments = () => {
         {segments.map((segment, index) => (
           <div
             key={index}
-            className="w-full sm:w-[90%] md:w-[90%] lg:w-[32%] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow bg-[var(--featured)] mx-auto "
+            className="group w-full sm:w-[90%] md:w-[90%] lg:w-[32%] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow bg-[var(--featured)] mx-auto "
           >
             <div className="relative h-80 md:h-96 w-full">
               <Swiper
@@ -160,6 +160,25 @@ const OurSegments = () => {
                   </SwiperSlide>
                 ))}
               </Swiper>
+
+              {/* Custom styling for Swiper navigation */}
+              <style jsx global>{`
+                .swiper-button-next,
+                .swiper-button-prev {
+                  opacity: 0;
+                  transition: opacity 0.3s ease;
+                }
+
+                .group:hover .swiper-button-next,
+                .group:hover .swiper-button-prev {
+                  opacity: 1;
+                }
+
+                .swiper-button-next,
+                .swiper-button-prev {
+                  color: #007aff !important; /* your desired color */
+                }
+              `}</style>
             </div>
 
             <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-widest text-[var(--black)] py-5">

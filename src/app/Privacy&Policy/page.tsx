@@ -8,17 +8,17 @@ export default function PrivacyPolicyPage() {
   return (
     <div>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 text-gray-900">
+      <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-20 lg:px-40">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+          <div className=" rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100 mt-28">
             <header className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-indigo-700 mb-2">
+              <h1 className="text-4xl font-bold text-[var(--primary-color)] mb-2">
                 Privacy Policy
               </h1>
               <p className="text-gray-600">Last updated: October 13, 2025</p>
             </header>
 
-            <article className="prose prose-sm md:prose-base max-w-none text-gray-800">
+            <article className="prose prose-sm md:prose-base max-w-none text-justify">
               <p>
                 This Privacy Policy describes Our policies and procedures on the
                 collection, use and disclosure of Your information when You use

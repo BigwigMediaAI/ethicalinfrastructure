@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import buyImage from "../assets/buy.svg";
+import buyImage from "../assets/Modern Real Estate Property Promotion Facebook Post.jpg";
 import sellImage from "../assets/sale.svg";
 import leaseImage from "../assets/lease.svg";
 import { FaArrowRight } from "react-icons/fa";
@@ -153,7 +153,7 @@ export default function BuyLeaseSection() {
           <Image
             src={images[activeTab]}
             alt={activeTab}
-            className="w-full h-full object-cover transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700 rounded-md"
             draggable="false"
           />
         </div>
