@@ -9,11 +9,11 @@ export default function TermsAndConditionsPage() {
   return (
     <div>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 text-gray-900">
+      <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-24 lg:px-48">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-16 border border-gray-100">
-            <header className="text-center mb-10">
-              <h1 className="text-4xl font-bold text-indigo-700 mb-3">
+          <div className=" rounded-3xl shadow-2xl p-8 md:p-16 border border-gray-100 mt-28">
+            <header className="text-center mb-10 ">
+              <h1 className="text-4xl font-bold text-[var(--primary-color)] mb-3">
                 Terms and Conditions
               </h1>
               <p className="text-gray-600 text-lg">
@@ -21,7 +21,7 @@ export default function TermsAndConditionsPage() {
               </p>
             </header>
 
-            <article className="space-y-8 text-gray-800 leading-relaxed">
+            <article className="space-y-8 leading-relaxed">
               <p>
                 Please read these Terms and Conditions (Terms) carefully before
                 using the Ethical Infrastructures P Ltd website (the Website).
@@ -33,7 +33,7 @@ export default function TermsAndConditionsPage() {
               </p>
 
               <section>
-                <h2 className="text-2xl font-semibold text-indigo-600 mb-3">
+                <h2 className="text-2xl font-semibold  mb-3">
                   Acceptance of Terms
                 </h2>
                 <p>
@@ -57,7 +57,7 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-semibold text-indigo-600 mb-3">
+                <h2 className="text-2xl font-semibold  mb-3">
                   Services Provided
                 </h2>
                 <p>
@@ -69,9 +69,7 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-semibold text-indigo-600 mb-3">
-                  Governing Law
-                </h2>
+                <h2 className="text-2xl font-semibold  mb-3">Governing Law</h2>
                 <p>
                   These Terms shall be governed by and construed in accordance
                   with the laws without regard to its conflict of law
@@ -80,15 +78,13 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-semibold text-indigo-600 mb-3">
-                  Contact Us
-                </h2>
+                <h2 className="text-2xl font-semibold  mb-3">Contact Us</h2>
                 <p>
                   If you have any questions or concerns about these Terms,
                   please contact us at
                   <a
                     href="mailto:info@eiplin.com"
-                    className="text-indigo-600 underline font-medium"
+                    className="underline font-medium"
                   >
                     info@eiplin.com
                   </a>
