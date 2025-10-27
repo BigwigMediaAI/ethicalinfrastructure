@@ -30,7 +30,6 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", path: "/", icon: <FaHome /> },
-    { name: "About", path: "/about", icon: <FaInfoCircle /> },
     {
       name: "Property",
       icon: <FaBuilding />,
@@ -50,6 +49,7 @@ const Navbar = () => {
       ],
     },
     { name: "Blogs", path: "/blogs", icon: <FaBlog /> },
+    { name: "About", path: "/about", icon: <FaInfoCircle /> },
     { name: "Contact Us", path: "/contact-us", icon: <FaEnvelope /> },
   ];
 
