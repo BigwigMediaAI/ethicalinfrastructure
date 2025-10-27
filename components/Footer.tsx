@@ -42,56 +42,68 @@ const Footer = () => {
       <div className="md:max-w-7xl mx-auto border-t border-gray-300 dark:border-gray-700 w-full mb-8" />
 
       {/* Main content */}
+      {/* Main content */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between px-6 sm:px-12 lg:px-6 gap-8 pb-10">
-        {/* Left: Navigation Columns */}
-        <div className="grid grid-cols-3 gap-6">
-          {[
-            [
-              { label: "Buy", path: "/buy" },
-              { label: "Sell", path: "/sell" },
-              { label: "Lease", path: "/lease" },
-            ],
-            [
-              { label: "About", path: "/about" },
-              { label: "Contact Us", path: "/contact-us" },
-            ],
-          ].map((group, idx) => (
-            <ul key={idx} className="space-y-4">
-              {group.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.path}
-                    className="cursor-pointer hover:text-[var(--primary-color)] transition"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ))}
+        {/* Left: Google Map */}
+        <div className="w-full lg:w-[35%] flex justify-center lg:justify-start">
+          <div className="w-full md:w-[350px] h-[250px] md:h-[200px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2037326384284!2d77.0934439!3d28.4734105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d7d137311f%3A0xc0cbc38c4452175d!2sETHICAL%20INFRASTRUCTURES%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1759831704667!5m2!1sen!2sin"
+              className="w-full h-full border-0 rounded"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
 
-          {/* Google Map iframe below navigation */}
-          <div className="col-span-3 mt-4">
-            <div className="w-full md:w-[400px] h-[250px] md:h-[200px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2037326384284!2d77.0934439!3d28.4734105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d7d137311f%3A0xc0cbc38c4452175d!2sETHICAL%20INFRASTRUCTURES%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1759831704667!5m2!1sen!2sin"
-                className="w-full h-full border-0 rounded"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+        {/* Center: Navigation Links */}
+        <div className="flex flex-col justify-center items-center w-full lg:w-[30%]">
+          <div className="flex flex-wrap justify-center gap-6 text-center">
+            <Link
+              href="/buy"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Buy
+            </Link>
+            <Link
+              href="/sell"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Sell
+            </Link>
+            <Link
+              href="/lease"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Lease
+            </Link>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6 text-center mt-4">
+            <Link
+              href="/about"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact-us"
+              className="cursor-pointer hover:text-[var(--primary-color)] transition"
+            >
+              Contact
+            </Link>
           </div>
         </div>
 
         {/* Right: Contact Info */}
-        <div className="space-y-4 lg:text-right">
+        <div className="space-y-4 text-center lg:text-right w-full lg:w-[35%]">
           <h3 className="text-lg">Gurugram, Haryana</h3>
           <p className="text-[var(--text)]">
             First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
             Gurugram, Haryana 122002
           </p>
-          <div className="flex justify-start lg:justify-end gap-4 pt-2 text-[var(--primary-color)] text-xl">
+
+          <div className="flex justify-center lg:justify-end gap-4 pt-2 text-[var(--primary-color)] text-xl">
             <a
               href="mailto:info@eipl.co"
               target="_blank"
@@ -100,7 +112,6 @@ const Footer = () => {
             >
               <FaEnvelope />
             </a>
-
             <a
               href="https://www.facebook.com/profile.php?id=61581857552733"
               target="_blank"
@@ -109,7 +120,6 @@ const Footer = () => {
             >
               <FaFacebookF />
             </a>
-
             <a
               href="https://www.linkedin.com/company/109224060/admin/dashboard/"
               target="_blank"
@@ -118,7 +128,6 @@ const Footer = () => {
             >
               <FaLinkedinIn />
             </a>
-
             <a
               href="https://wa.me/919999000172"
               target="_blank"
@@ -127,7 +136,6 @@ const Footer = () => {
             >
               <FaWhatsapp />
             </a>
-
             <a
               href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
               target="_blank"
@@ -136,7 +144,6 @@ const Footer = () => {
             >
               <FaInstagram />
             </a>
-
             <a
               href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
               target="_blank"

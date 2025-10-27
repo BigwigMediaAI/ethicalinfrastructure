@@ -40,7 +40,6 @@ export default function Home() {
       <BuyLeaseSection />
       <WeHelp />
       {/* <FeaturedApartments /> */}
-      <ScrollingIcons />
       {/* 
       <div
         className="relative h-[600px] flex items-center justify-center text-white"
@@ -65,6 +64,7 @@ export default function Home() {
       {/* <CompanySection /> */}
       <Testimonials />
       {/* <BlogGrid /> */}
+      <ScrollingIcons />
 
       <Footer />
       <ScrollToTopButton />
