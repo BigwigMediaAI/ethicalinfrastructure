@@ -12,6 +12,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../components/ContactSidebar";
+import founder from "../../../assets/founder.png";
 
 const AboutHero = () => {
   useEffect(() => {
@@ -47,7 +48,7 @@ const AboutHero = () => {
       </section>
 
       {/* ===== ABOUT COMPANY SECTION ===== */}
-      <section className="py-12 bg-[var(--white)]">
+      <section className="py-12 bg-[var(--white)] ">
         <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-12 ">
           {/* Text Content */}
           <div className="md:w-2/3">
@@ -97,7 +98,46 @@ const AboutHero = () => {
           </div>
         </div>
       </section>
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        <h3
+          className="uppercase text-2xl md:text-3xl font-semibold text-[var(--primary-color)] mb-6 font-amatic border-l-4 border-[var(--primary-color)] pl-3"
+          data-aos="fade-right"
+          data-aos-delay="400"
+        >
+          Our Founder
+        </h3>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {/* Founder Card */}
+          <div className="rounded-xl col-span-1 overflow-hidden shadow-md hover:shadow-xl transition duration-300 bg-white">
+            <Image
+              src={founder}
+              alt="Founder"
+              className="w-full h-[70vh] object-cover"
+              data-aos="zoom-in"
+              data-aos-delay="800"
+            />
+          </div>
+
+          {/* Founder Statement */}
+          <div className="flex flex-col col-span-2 justify-center text-[var(--text)]">
+            <p
+              className="text-xl  leading-relaxed italic font-light text-[var(--text)]"
+              data-aos="fade-right"
+              data-aos-delay="400"
+            >
+              “At <strong>ETHICAL INFRASTRUCTURE Pvt. Ltd.</strong>, our mission
+              has always been to deliver homes that bring happiness, security,
+              and trust to every family. Since 1995, we’ve dedicated ourselves
+              to making real estate simple, transparent, and reliable for all
+              our clients.”
+            </p>
+            <span className="mt-6 block font-semibold text-[var(--primary-color)] text-lg md:text-xl">
+              — Mr. Sorabh Chopra, Founder
+            </span>
+          </div>
+        </div>
+      </section>
       {/* WHY CHOOSE ENDORA SECTION */}
       <section className="py-16 bg-[var(--white)]">
         <div className="w-11/12 md:w-5/6 bg-[var(--featured)] p-6 md:p-10 rounded-xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 text-center lg:text-left">
