@@ -58,9 +58,9 @@ const Navbar = () => {
       {/* =========================
           TRANSPARENT FIXED HEADER
          ========================= */}
-      <header className="w-full fixed top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
+      <header className="w-full absolute top-0 left-0 z-40 bg-transparent">
         {/* ===== Top Bar ===== */}
-        <div className="hidden md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
+        <div className="hidden md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-white">
           <div className="flex items-center gap-4">
             <Link
               href="https://www.facebook.com/profile.php?id=61581857552733"
@@ -118,16 +118,16 @@ const Navbar = () => {
               width={120}
               height={45}
               priority
-              className="logo-invert"
+              className="invert"
             />
           </Link>
 
           {/* ===== Desktop Menu ===== */}
-          <ul className="hidden md:flex gap-8 font-medium ">
+          <ul className="hidden md:flex gap-8 font-medium  ">
             {navItems.map((item) => (
               <li
                 key={item.name}
-                className="relative group tracking-widest py-8"
+                className="relative group tracking-widest py-8 "
                 onMouseEnter={() =>
                   setDropdownOpen(item.name === "Property" ? "Property" : null)
                 }
@@ -139,7 +139,7 @@ const Navbar = () => {
                     className={`flex items-center gap-1 transition-all ${
                       pathname === item.path
                         ? "text-[var(--hover-color)] font-semibold"
-                        : "text-[var(--black)] hover:text-[var(--hover-color)]"
+                        : "text-white hover:text-[var(--hover-color)]"
                     }`}
                   >
                     {item.name}
@@ -149,7 +149,7 @@ const Navbar = () => {
                     className={`cursor-pointer flex items-center gap-1 transition-all ${
                       dropdownOpen === "Property"
                         ? "text-[var(--hover-color)] font-semibold"
-                        : "text-[var(--black)] hover:text-[var(--hover-color)]"
+                        : "text-white hover:text-[var(--hover-color)]"
                     }`}
                   >
                     {item.name}
