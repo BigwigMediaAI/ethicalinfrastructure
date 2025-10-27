@@ -20,10 +20,16 @@ const Hero = () => {
 
       {/* Centered Content */}
       <div className="relative z-10 text-center max-w-5xl">
-        <h1 className="text-xl md:text-5xl font-bold mb-2 font-merriweather text-white leading-tight tracking-widest">
-          Ethical Infrastructure Pvt. Ltd.
+        <h1
+          className="text-xl md:text-5xl font-bold mb-2 font-merriweather text-white leading-tight uppercase"
+          style={{
+            WebkitTextStroke: "1px #f2b596", // adds border
+          }}
+        >
+          Ethical Infrastructures Pvt. Ltd.
         </h1>
-        <p className="text-lg text-white/80 font-medium">
+
+        <p className="text-lg md:text-2xl text-white/80 font-medium">
           Your Vision, Our Ethical Commitment
         </p>
       </div>
