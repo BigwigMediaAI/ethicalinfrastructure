@@ -166,7 +166,7 @@ export default function PropertyGrid() {
                 </Swiper>
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <h3 className="text-lg font-bold text-[var(--primary-color)]">
+                <h3 className="text-base font-bold text-[var(--primary-color)] uppercase">
                   {property.title}
                 </h3>
                 <p className="text-gray-500 text-sm">{property.location}</p>
