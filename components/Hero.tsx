@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
       {/* Background Video */}
       <video
-        src="./video.mp4"
+        src="./Ethvideo.mp4"
         autoPlay
         loop
         muted
@@ -24,12 +24,12 @@ const Hero = () => {
           className="text-xl md:text-5xl font-bold mb-2 font-merriweather uppercase leading-tight"
           style={{
             WebkitTextStroke: "1px #f2b596",
-            color: "transparent",
-            textShadow: `
-      0 0 10px rgba(242, 181, 150, 0.6),
-      0 0 20px rgba(242, 181, 150, 0.4),
-      2px 2px 4px rgba(0, 0, 0, 0.6)
-    `,
+            //         color: "transparent",
+            //         textShadow: `
+            //   0 0 10px rgba(242, 181, 150, 0.6),
+            //   0 0 20px rgba(242, 181, 150, 0.4),
+            //   2px 2px 4px rgba(0, 0, 0, 0.6)
+            // `,
           }}
         >
           Ethical Infrastructures Pvt. Ltd.

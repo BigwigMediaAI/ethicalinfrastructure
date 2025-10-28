@@ -70,7 +70,7 @@ const Blogs = () => {
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen py-32">
       <Nav />
 
       <h2 className="text-4xl font-bold text-[var(--title)] pt-6 text-center">
@@ -79,7 +79,7 @@ const Blogs = () => {
 
       <div className="w-11/12 md:w-5/6 mx-auto py-6">
         {/* Search Bar */}
-        <div className="sticky top-[80px] z-10  py-4 mb-10">
+        <div className=" z-10  py-4 mb-10">
           <input
             type="text"
             value={searchTerm}

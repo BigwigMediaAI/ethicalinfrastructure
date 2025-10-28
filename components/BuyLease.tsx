@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import buyImage from "../assets/Modern Real Estate Property Promotion Facebook Post.jpg";
-import sellImage from "../assets/sale.svg";
-import leaseImage from "../assets/lease.svg";
+import buyImage from "../assets/Bug Your Dream home.png";
+import sellImage from "../assets/Sell Your House Easily.png";
+import leaseImage from "../assets/Lease your Property.png";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function BuyLeaseSection() {
