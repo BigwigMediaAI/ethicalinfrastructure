@@ -231,7 +231,7 @@ export default function LeasePageContent() {
                   </div>
 
                   <div className="p-4">
-                    <h3 className="font-bold text-[var(--primary-color)] text-lg line-clamp-1">
+                    <h3 className="font-bold text-[var(--primary-color)] text-lg line-clamp-1 uppercase">
                       {p.title}
                     </h3>
                     {p.location && (

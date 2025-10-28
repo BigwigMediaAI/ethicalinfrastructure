@@ -4,11 +4,17 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import ButtonFill from "./Button";
+import { useRouter } from "next/navigation"; // ✅ FIXED — correct import
 
 const OurSegments = () => {
+  const router = useRouter(); // ✅ useRouter hook
+
   const segments = [
     {
       title: "Builder Floors",
+      href: "/buy?type=builder-floor", // 👈 added link
       images: [
         "https://res.cloudinary.com/dcq2oziz4/image/upload/v1761300453/IMG_3345_tuyjaj.jpg",
         "https://res.cloudinary.com/dcq2oziz4/image/upload/v1761300452/IMG_3351_c20c6n.jpg",
@@ -24,6 +30,8 @@ const OurSegments = () => {
     },
     {
       title: "Kothis",
+      href: "/buy?type=villa", // 👈 added link
+
       images: [
         "https://res.cloudinary.com/dcq2oziz4/image/upload/v1761306318/IMG_1413_v989ao.jpg",
         "https://res.cloudinary.com/dcq2oziz4/image/upload/v1761306318/IMG_1416_untxuf.jpg",
@@ -35,6 +43,8 @@ const OurSegments = () => {
     },
     {
       title: "Apartments",
+      href: "/buy?type=apartment", // 👈 added link
+
       images: [
         "https://res.cloudinary.com/dasczew6y/image/upload/v1760357906/Ethical/images/Screenshot%202025-10-13%20131016.png",
         "https://res.cloudinary.com/dasczew6y/image/upload/v1760357907/Ethical/images/Screenshot%202025-10-13%20131307.png",
@@ -126,7 +136,7 @@ const OurSegments = () => {
 
   return (
     <section className="py-16 px-4 md:px-12 lg:px-20 bg-[var(--white)] text-center text-[var(--black)]">
-      <h2 className="text-3xl md:text-4xl  font-bold tracking-widest text-[var(--black)] mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-widest text-[var(--black)] mb-12">
         Our Specializations
       </h2>
 
@@ -134,7 +144,7 @@ const OurSegments = () => {
         {segments.map((segment, index) => (
           <div
             key={index}
-            className="group w-full sm:w-[90%] md:w-[90%] lg:w-[32%] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow bg-[var(--featured)] mx-auto "
+            className="group w-full sm:w-[90%] md:w-[90%] lg:w-[32%] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow bg-[var(--featured)] mx-auto cursor-pointer"
           >
             <div className="relative h-80 md:h-96 w-full">
               <Swiper
@@ -160,30 +170,35 @@ const OurSegments = () => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-
-              {/* Custom styling for Swiper navigation */}
               <style jsx global>{`
                 .swiper-button-next,
                 .swiper-button-prev {
                   opacity: 0;
                   transition: opacity 0.3s ease;
                 }
-
                 .group:hover .swiper-button-next,
                 .group:hover .swiper-button-prev {
                   opacity: 1;
                 }
-
                 .swiper-button-next,
                 .swiper-button-prev {
-                  color: #007aff !important; /* your desired color */
+                  color: #007aff !important;
                 }
               `}</style>
             </div>
 
-            <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-widest text-[var(--black)] py-5">
-              {segment.title}
-            </h3>
+            <div className="p-5">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-widest text-[var(--black)] mb-4">
+                {segment.title}
+              </h3>
+
+              {/* 👇 View Details Button */}
+              <ButtonFill
+                text="View Details"
+                className="w-full"
+                onClick={() => router.push(segment.href)}
+              />
+            </div>
           </div>
         ))}
       </div>
