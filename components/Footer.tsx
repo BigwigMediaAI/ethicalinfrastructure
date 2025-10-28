@@ -59,7 +59,7 @@ const Footer = () => {
 
         {/* Center: Navigation Links */}
         <div className="flex flex-col justify-center items-center w-full lg:w-[30%]">
-          <div className="flex flex-wrap justify-center gap-6 text-center">
+          <div className="flex flex-wrap justify-center gap-6 text-center text-base">
             <Link
               href="/buy"
               className="cursor-pointer hover:text-[var(--primary-color)] transition"
@@ -79,7 +79,7 @@ const Footer = () => {
               Lease
             </Link>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 text-center mt-4">
+          <div className="flex flex-wrap justify-center gap-6 text-center mt-4 text-base">
             <Link
               href="/about"
               className="cursor-pointer hover:text-[var(--primary-color)] transition"
