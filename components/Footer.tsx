@@ -99,8 +99,8 @@ const Footer = () => {
         <div className="space-y-4 text-center lg:text-right w-full lg:w-[35%]">
           <h3 className="text-lg">Gurugram, Haryana</h3>
           <p className="text-[var(--text)]">
-            First Floor, A26/12 B, Golf Course Rd, A Block, DLF Phase 1,
-            Gurugram, Haryana 122002
+            A-26/12B, 1st Floor, Block-A, DLF Phase 1, Main Golf Course Road,
+            Gurgaon-122002, Haryana - India
           </p>
 
           <div className="flex justify-center lg:justify-end gap-4 pt-2 text-[var(--primary-color)] text-xl">
