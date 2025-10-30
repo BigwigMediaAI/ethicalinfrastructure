@@ -38,9 +38,15 @@ export default function BuyPageContent() {
   ];
 
   const typeFromQuery = searchParams.get("type") || "all";
+  const locationFromQuery = searchParams.get("location") || "all"; // ⚡ Added
+
   const [selectedType, setSelectedType] = useState(typeFromQuery.toLowerCase());
+  const [selectedLocation, setSelectedLocation] = useState(
+    locationFromQuery.toLowerCase()
+  ); // ⚡ Added
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
+  const [locations, setLocations] = useState<string[]>([]); // ⚡ Added
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,11 +56,24 @@ export default function BuyPageContent() {
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property`)
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Property[]) => {
         const buyProperties = data.filter(
           (p: Property) => p.purpose?.toLowerCase() === "buy"
         );
+
         setProperties(buyProperties);
+
+        // ✅ Get unique locations (type-safe)
+        const uniqueLocations = Array.from(
+          new Set(
+            buyProperties
+              .map((p) => p.location?.trim())
+              .filter((loc): loc is string => Boolean(loc))
+              .map((loc) => loc.toLowerCase())
+          )
+        ).sort();
+
+        setLocations(["all", ...uniqueLocations]);
         setLoading(false);
       })
       .catch((err) => {
@@ -63,20 +82,25 @@ export default function BuyPageContent() {
       });
   }, []);
 
-  // Sync query param -> selectedType
+  // Sync query params
   useEffect(() => {
     const queryType = searchParams.get("type") || "all";
+    const queryLoc = searchParams.get("location") || "all";
     setSelectedType(queryType.toLowerCase());
+    setSelectedLocation(queryLoc.toLowerCase());
     setCurrentPage(1);
   }, [searchParams]);
 
-  // Filter properties
-  const filtered =
-    selectedType === "all"
-      ? properties
-      : properties.filter(
-          (p) => p.type?.replace(/\s+/g, "-").toLowerCase() === selectedType
-        );
+  // ⚡ Combined Filter Logic
+  const filtered = properties.filter((p) => {
+    const typeMatch =
+      selectedType === "all" ||
+      p.type?.replace(/\s+/g, "-").toLowerCase() === selectedType;
+    const locationMatch =
+      selectedLocation === "all" ||
+      p.location?.toLowerCase() === selectedLocation;
+    return typeMatch && locationMatch;
+  });
 
   // Pagination logic
   const totalPages = Math.ceil(filtered.length / propertiesPerPage);
@@ -94,25 +118,6 @@ export default function BuyPageContent() {
         buyRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
-  };
-
-  // Generate page numbers
-  const getPageNumbers = () => {
-    const pages: (number | string)[] = [];
-    const maxVisible = 3;
-
-    if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      pages.push(1);
-      if (currentPage > maxVisible + 1) pages.push("...");
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
-      for (let i = start; i <= end; i++) pages.push(i);
-      if (currentPage < totalPages - maxVisible) pages.push("...");
-      pages.push(totalPages);
-    }
-    return pages;
   };
 
   return (
@@ -148,37 +153,54 @@ export default function BuyPageContent() {
         </motion.div>
       </div>
 
-      {/* Filter Buttons */}
       <motion.div
         className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-wrap justify-center gap-3 px-3 py-4 tracking-widest overflow-x-hidden"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
+        {/* Type Buttons */}
         {filterOptions.map((opt) => (
-          <motion.button
+          <button
             key={opt.value}
             onClick={() => {
               setSelectedType(opt.value);
               setCurrentPage(1);
-              router.push(`/buy?type=${opt.value}`, { scroll: false });
+              router.push(
+                `/buy?type=${opt.value}&location=${selectedLocation}`,
+                { scroll: false }
+              );
             }}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
               selectedType === opt.value
                 ? "bg-[var(--primary-color)] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
           >
             {opt.name}
-          </motion.button>
+          </button>
         ))}
+
+        {/* ⚡ Location Dropdown */}
+        <select
+          value={selectedLocation}
+          onChange={(e) => {
+            const newLoc = e.target.value;
+            setSelectedLocation(newLoc);
+            setCurrentPage(1);
+            router.push(`/buy?type=${selectedType}&location=${newLoc}`, {
+              scroll: false,
+            });
+          }}
+          className="px-4 py-2 rounded-full text-sm font-semibold border bg-gray-100 text-gray-700 hover:bg-gray-200"
+        >
+          {locations.map((loc) => (
+            <option key={loc} value={loc}>
+              {loc === "all"
+                ? "All Locations"
+                : loc.charAt(0).toUpperCase() + loc.slice(1)}
+            </option>
+          ))}
+        </select>
       </motion.div>
 
       {/* Property List */}
