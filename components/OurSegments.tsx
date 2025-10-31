@@ -29,7 +29,7 @@ const OurSegments = () => {
       ],
     },
     {
-      title: "Kothis",
+      title: "Villa (Kothis)",
       href: "/buy?type=villa", // 👈 added link
 
       images: [
