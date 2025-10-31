@@ -21,8 +21,9 @@ const LeadForm: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   // ✅ Validation Regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^\+?[1-9]\d{7,14}$/; // international format (E.164)
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  const phoneRegex = /^\+\d{1,4}\d{10}$/; // international format (E.164)
 
   const handleChange = (
     e: React.ChangeEvent<
