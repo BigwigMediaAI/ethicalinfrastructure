@@ -50,7 +50,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
       alert("Please enter a valid phone number with country code");
       return;
     }
-    if (!emailRegex.test(formData.email)) {
+    if (formData.email && !emailRegex.test(formData.email)) {
       alert("Please enter a valid email address");
       return;
     }
@@ -147,11 +147,10 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
+              placeholder="Email Address (optional)"
               value={formData.email}
               onChange={handleChange}
               className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-              required
             />
 
             <select

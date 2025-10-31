@@ -71,7 +71,7 @@ const LeadForm: React.FC = () => {
       const payload = { ...formData };
 
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/leads/submit`,
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/submit`,
         payload
       );
 
