@@ -87,7 +87,7 @@ export default async function BlogDetails({
 
       <Navbar />
 
-      <section className="w-11/12 md:w-5/6 mx-auto text-left pt-12">
+      <section className="w-11/12 md:w-5/6 mx-auto text-left pt-24 md:pt-40">
         <h1 className="text-3xl md:text-4xl font-bold text-[var(--title)] leading-tight mb-3">
           {blog.title}
         </h1>

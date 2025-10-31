@@ -1,55 +1,23 @@
 "use client";
 
 import React from "react";
-import {
-  FaEnvelope,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaWhatsapp,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
-import logo from "../assets/logo.png";
-import Image from "next/image";
-import ButtonFill from "./Button";
 import Link from "next/link";
+import LeadForm from "./LeadForm";
 
 const Footer = () => {
   return (
     <footer className="bg-[var(--white)] text-[var(--black)] text-sm">
-      {/* Top horizontal line */}
+      {/* Top Line */}
       <div className="border-t border-[var(--text)] w-full" />
 
-      {/* Logo and CONTACTS Title */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 lg:px-6">
-        <div className="flex flex-col items-center md:items-start">
-          <div className="flex items-center gap-4">
-            <div className="w-16 border-t border-[var(--primary-color)]" />
-            <Image
-              src={logo}
-              alt="Logo"
-              className="w-44 h-auto object-contain logo-invert"
-            />
-            <div className="w-20 border-t border-[var(--primary-color)]" />
-          </div>
-        </div>
-        <h2 className="hidden md:block text-2xl font-thin mt-10 md:mt-0">
-          CONTACTS
-        </h2>
-      </div>
-
-      {/* Mid horizontal line */}
-      <div className="md:max-w-7xl mx-auto border-t border-gray-300 dark:border-gray-700 w-full mb-8" />
-
-      {/* Main content */}
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between px-6 sm:px-12 lg:px-6 gap-8 pb-10">
+      {/* Main Content: Map + Lead Form */}
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch gap-6 px-4 py-10">
         {/* Left: Google Map */}
-        <div className="w-full lg:w-[35%] flex justify-center lg:justify-start">
-          <div className="w-full md:w-[350px] h-[250px] md:h-[200px]">
+        <div className="w-full lg:w-1/2">
+          <div className="w-full h-[250px] md:h-[450px] rounded-lg overflow-hidden shadow-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.2037326384284!2d77.0934439!3d28.4734105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d7d137311f%3A0xc0cbc38c4452175d!2sETHICAL%20INFRASTRUCTURES%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1759831704667!5m2!1sen!2sin"
-              className="w-full h-full border-0 rounded"
+              className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -57,167 +25,40 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Center: Navigation Links */}
-        <div className="flex flex-col justify-center items-center w-full lg:w-[30%]">
-          <div className="flex flex-wrap justify-center gap-6 text-center text-base">
-            <Link
-              href="/buy"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Buy
-            </Link>
-            <Link
-              href="/sell"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Sell
-            </Link>
-            <Link
-              href="/lease"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Lease
-            </Link>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 text-center mt-4 text-base">
-            <Link
-              href="/about"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact-us"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-
-        {/* Right: Contact Info */}
-        <div className="space-y-4 text-center lg:text-right w-full lg:w-[35%]">
-          <h3 className="text-lg">Gurugram, Haryana</h3>
-          <p className="text-[var(--text)]">
-            A-26/12B, 1st Floor, Block-A, DLF Phase 1, Main Golf Course Road,
-            Gurgaon-122002, Haryana - India
-          </p>
-
-          <div className="flex justify-center lg:justify-end gap-4 pt-2 text-[var(--primary-color)] text-xl">
-            <a
-              href="mailto:info@eipl.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaEnvelope />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61581857552733"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/109224060/admin/dashboard/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://wa.me/919999000172"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaWhatsapp />
-            </a>
-            <a
-              href="https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white hover:bg-gray-700 p-2 rounded"
-            >
-              <FaYoutube />
-            </a>
-          </div>
-
-          <ButtonFill
-            text="Call Us"
-            onClick={() => (window.location.href = "tel:+919999000183")}
-            className="mt-4"
-          />
+        {/* Right: Lead Form */}
+        <div className="w-full lg:w-1/2">
+          <LeadForm />
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-6 py-6 text-xs text-[var(--text)] flex flex-col gap-2">
-        <div className="flex flex-col sm:hidden gap-2 pb-16">
-          <div className="flex flex-row justify-between items-center flex-wrap gap-2">
-            <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
-            <div className="flex gap-4">
-              <Link
-                href="/Terms&Conditions"
-                className="cursor-pointer hover:text-[var(--primary-color)] transition"
-              >
-                Terms of Use
-              </Link>
-              <Link
-                href="/Privacy&Policy"
-                className="cursor-pointer hover:text-[var(--primary-color)] transition"
-              >
-                Privacy Policy
-              </Link>
-            </div>
-          </div>
-          <div className="w-full flex justify-center mt-2">
-            <Link
-              href="https://www.bigwigdigital.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center"
-            >
-              Made & Marketed with ❤️ by Bigwig Digital
-            </Link>
-          </div>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-300 w-full" />
+      <div className="max-w-7xl mx-auto px-4 py-6 text-xs text-[var(--text)] flex flex-col sm:flex-row justify-between items-center gap-4">
+        <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
+
+        <div className="flex gap-4">
+          <Link
+            href="/Terms&Conditions"
+            className="hover:text-[var(--primary-color)] transition"
+          >
+            Terms of Use
+          </Link>
+          <Link
+            href="/Privacy&Policy"
+            className="hover:text-[var(--primary-color)] transition"
+          >
+            Privacy Policy
+          </Link>
         </div>
 
-        <div className="hidden sm:flex flex-row justify-between items-center w-full">
-          <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
-          <Link
-            href="https://www.bigwigdigital.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-sm tracking-widest text-center"
-          >
-            Made & Marketed with ❤️ by Bigwig Digital
-          </Link>
-          <div className="flex gap-4">
-            <Link
-              href="/Terms&Conditions"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Terms of Use
-            </Link>
-            <Link
-              href="/Privacy&Policy"
-              className="cursor-pointer hover:text-[var(--primary-color)] transition"
-            >
-              Privacy Policy
-            </Link>
-          </div>
-        </div>
+        <Link
+          href="https://www.bigwigmediadigital.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-2 uppercase text-xs tracking-widest text-center"
+        >
+          Made & Marketed with ❤️ by Bigwig Digital
+        </Link>
       </div>
     </footer>
   );
