@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -26,6 +26,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
@@ -53,12 +54,27 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contact-us", icon: <FaEnvelope /> },
   ];
 
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // when user scrolls 50px
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       {/* =========================
           TRANSPARENT FIXED HEADER
          ========================= */}
-      <header className="w-full absolute top-0 left-0 z-40 bg-transparent">
+      <header
+        className={`w-full fixed top-0 left-0 z-40 transition-all duration-500 ${
+          scrolled
+            ? "bg-[var(--white)]/40 backdrop-blur-md shadow-md"
+            : "bg-transparent"
+        }`}
+      >
         {/* ===== Top Bar ===== */}
         <div className="hidden md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
           <div className="flex items-center gap-4">

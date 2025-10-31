@@ -27,7 +27,7 @@ const Hero = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* Centered Content */}
         <div className="relative z-10 text-center max-w-5xl">
