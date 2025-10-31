@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Tinos } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../../components/theme-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const tinos = Tinos({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "700"], // choose what you need
 });
 
 export const metadata: Metadata = {
@@ -25,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${tinos.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

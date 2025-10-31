@@ -21,15 +21,14 @@ const Hero = () => {
       {/* Centered Content */}
       <div className="relative z-10 text-center max-w-5xl">
         <h1
-          className="text-xl md:text-5xl font-bold mb-2 font-merriweather uppercase leading-tight"
+          className="text-xl md:text-5xl font-bold mb-2 uppercase leading-tight"
           style={{
             WebkitTextStroke: "1px #f2b596",
-            //         color: "transparent",
-            //         textShadow: `
-            //   0 0 10px rgba(242, 181, 150, 0.6),
-            //   0 0 20px rgba(242, 181, 150, 0.4),
-            //   2px 2px 4px rgba(0, 0, 0, 0.6)
-            // `,
+            textShadow: `
+              0 0 10px rgba(242, 181, 150, 0.6),
+              0 0 20px rgba(242, 181, 150, 0.4),
+              2px 2px 4px rgba(0, 0, 0, 0.6)
+            `,
           }}
         >
           Ethical Infrastructures Pvt. Ltd.
