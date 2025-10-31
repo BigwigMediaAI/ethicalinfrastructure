@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import ButtonFill from "./Button";
 import Image from "next/image";
-import popupBg from "../assets/9-768x532.webp"; // 🖼️ Add your own elegant image here
+import popupBg from "../assets/9-768x532.webp";
 
 interface LeadFormModalProps {
   isOpen: boolean;
@@ -18,14 +18,17 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
     name: "",
     phone: "",
     email: "",
+    requirements: "Apartment",
+    budget: "Below ₹1Cr",
     message: "",
-    purpose: "buy",
   });
 
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
+
+  // ✅ Regex validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\+\d{10,15}$/; // international format with +country code
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -35,56 +38,46 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendOtp = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // ✅ Validation
+    if (!formData.name.trim()) {
+      alert("Please enter your name");
+      return;
+    }
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Please enter a valid phone number with country code");
+      return;
+    }
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/send-otp`,
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/submit`,
         formData
       );
       if (res.status === 200) {
-        setOtpSent(true);
-        setSuccess("OTP sent to your email.");
-      }
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        alert(err.response?.data?.message || "Error sending OTP");
-      } else {
-        alert("Error sending OTP");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const verifyOtp = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/verify-otp`,
-        {
-          email: formData.email,
-          otp,
-        }
-      );
-      if (res.status === 200) {
         setSuccess("Lead submitted successfully!");
-        setOtpSent(false);
-        setOtp("");
         setFormData({
           name: "",
           phone: "",
           email: "",
+          requirements: "Apartment",
+          budget: "Below ₹1Cr",
           message: "",
-          purpose: "buy",
         });
-        setTimeout(() => onClose(), 1500); // close popup after success
+        setTimeout(() => onClose(), 1500);
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
-        alert(err.response?.data?.message || "Invalid OTP");
+        alert(err.response?.data?.message || "Error submitting form");
       } else {
-        alert("Invalid OTP");
+        alert("Error submitting form");
       }
     } finally {
       setLoading(false);
@@ -96,7 +89,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
       <div className="relative bg-white text-black w-full md:w-[800px] rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
-        {/* Image Section */}
+        {/* Left Image Section */}
         <div className="hidden md:block md:w-1/2 relative">
           <Image
             src={popupBg}
@@ -113,9 +106,8 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Form Section */}
+        {/* Right Form Section */}
         <div className="w-full md:w-1/2 p-6 relative">
-          {/* Close Button */}
           <button
             onClick={onClose}
             className="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-3xl leading-none"
@@ -130,95 +122,77 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
             Fill out the form and our team will reach out shortly.
           </p>
 
-          {!otpSent ? (
-            <form
-              className="flex flex-col gap-3"
-              onSubmit={(e) => {
-                e.preventDefault();
-                sendOtp();
-              }}
+          <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+              required
+            />
+
+            <PhoneInput
+              international
+              defaultCountry="IN"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(value) =>
+                setFormData({ ...formData, phone: value || "" })
+              }
+              className="phone-input border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+              required
+            />
+
+            <select
+              name="requirements"
+              value={formData.requirements}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
             >
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-                required
-              />
+              <option value="Apartment">Apartment</option>
+              <option value="Builder Floor">Builder Floor</option>
+              <option value="Villa">Villa</option>
+              <option value="Farmhouse">Farmhouse</option>
+            </select>
 
-              <PhoneInput
-                international
-                defaultCountry="IN"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={(value) =>
-                  setFormData({ ...formData, phone: value || "" })
-                }
-                className="phone-input border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-                required
-              />
-
-              <select
-                name="purpose"
-                value={formData.purpose}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-              >
-                <option value="buy">Buy</option>
-                <option value="sell">Sell</option>
-                <option value="lease">Lease</option>
-              </select>
-
-              <textarea
-                name="message"
-                rows={3}
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-              ></textarea>
-
-              <ButtonFill
-                text={loading ? "Sending OTP..." : "Send OTP"}
-                onClick={() => !loading && sendOtp()}
-                className="w-full font-semibold py-2 mt-2"
-              />
-            </form>
-          ) : (
-            <form
-              className="flex flex-col gap-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                verifyOtp();
-              }}
+            <select
+              name="budget"
+              value={formData.budget}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
             >
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-                required
-              />
+              <option value="Below ₹1Cr">Below ₹1Cr</option>
+              <option value="₹1Cr - ₹2Cr">₹1Cr - ₹2Cr</option>
+              <option value="₹2Cr - ₹5Cr">₹2Cr - ₹5Cr</option>
+              <option value="Above ₹5Cr">Above ₹5Cr</option>
+            </select>
 
-              <ButtonFill
-                text={loading ? "Verifying OTP..." : "Verify OTP & Submit"}
-                onClick={() => !loading && verifyOtp()}
-                className="w-full font-semibold py-2"
-              />
-            </form>
-          )}
+            <textarea
+              name="message"
+              rows={3}
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            ></textarea>
+
+            <ButtonFill
+              text={loading ? "Submitting..." : "Submit"}
+              onClick={() => {}}
+              className="w-full font-semibold py-2 mt-2"
+            />
+          </form>
 
           {success && (
             <p className="text-green-600 text-sm mt-2 font-medium">{success}</p>
