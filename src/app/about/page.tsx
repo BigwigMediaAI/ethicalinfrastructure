@@ -126,11 +126,16 @@ const AboutHero = () => {
               data-aos="fade-right"
               data-aos-delay="400"
             >
-              “At <strong>ETHICAL INFRASTRUCTURE Pvt. Ltd.</strong>, our mission
-              has always been to deliver homes that bring happiness, security,
-              and trust to every family. Since 1995, we’ve dedicated ourselves
-              to making real estate simple, transparent, and reliable for all
-              our clients.”
+              “With over a decade of hands-on experience in the real estate
+              industry, I began my journey in 1992 with a clear vision - to make
+              home buying transparent, trustworthy, and fulfilling for every
+              individual. After years of learning, understanding client needs,
+              and witnessing the evolving landscape of real estate, I founded
+              <strong> Ethical Infrastructure Pvt. Ltd.</strong> in 2007. The
+              company was built on the strong foundation of integrity, quality,
+              and customer satisfaction - values that continue to guide us in
+              delivering homes that bring happiness, comfort, and trust
+              to every family.”
             </p>
             <span className="mt-6 block font-semibold text-[var(--primary-color)] text-lg md:text-xl">
               — Mr. Sorabh Chopra, Founder
