@@ -27,8 +27,9 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
   const [success, setSuccess] = useState("");
 
   // ✅ Regex validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^\+\d{10,15}$/; // international format with +country code
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  const phoneRegex = /^\+\d{1,4}\d{10}$/; // international format with +country code
 
   const handleChange = (
     e: React.ChangeEvent<
