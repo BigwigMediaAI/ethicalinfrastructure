@@ -2,13 +2,12 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import ButtonFill from "./Button";
 
 const LeadForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
+    countryCode: "+91",
     phone: "",
     email: "",
     requirements: "",
@@ -20,10 +19,7 @@ const LeadForm: React.FC = () => {
   const [success, setSuccess] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  // ✅ Validation Regex
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-  const phoneRegex = /^\+\d{1,4}\d{10}$/; // international format (E.164)
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -31,32 +27,49 @@ const LeadForm: React.FC = () => {
     >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // clear errors when typing
+    setErrors({ ...errors, [e.target.name]: "" }); // clear error while typing
+  };
+
+  // ✅ Real-time phone input handler
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    // allow only digits
+    if (/^\d*$/.test(value)) {
+      // limit to 10 digits
+      if (value.length > 10) return;
+
+      setFormData({ ...formData, phone: value });
+
+      // set real-time error messages
+      if (value.length < 10 && value.length > 0)
+        setErrors({
+          ...errors,
+          phone: "Phone number must be exactly 10 digits.",
+        });
+      else setErrors({ ...errors, phone: "" });
+    }
   };
 
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    // ✅ Name
     if (!formData.name.trim()) newErrors.name = "Name is required.";
 
-    // ✅ Phone
     if (!formData.phone) newErrors.phone = "Phone number is required.";
-    else if (!phoneRegex.test(formData.phone))
-      newErrors.phone = "Enter a valid phone number with country code.";
+    else if (formData.phone.length !== 10)
+      newErrors.phone = "Phone number must be exactly 10 digits.";
 
-    // ✅ Email
     if (formData.email && !emailRegex.test(formData.email))
       newErrors.email = "Enter a valid email address.";
 
-    // ✅ Requirements
     if (!formData.requirements)
       newErrors.requirements = "Please select a property type.";
 
-    // ✅ Budget
     if (!formData.budget) newErrors.budget = "Please select a budget range.";
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -67,9 +80,11 @@ const LeadForm: React.FC = () => {
     if (!validateForm()) return;
 
     setLoading(true);
-
     try {
-      const payload = { ...formData };
+      const payload = {
+        ...formData,
+        phone: formData.countryCode + formData.phone, // include country code
+      };
 
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/submit`,
@@ -80,6 +95,7 @@ const LeadForm: React.FC = () => {
         setSuccess("✅ Lead submitted successfully!");
         setFormData({
           name: "",
+          countryCode: "+91",
           phone: "",
           email: "",
           requirements: "",
@@ -115,17 +131,45 @@ const LeadForm: React.FC = () => {
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
-          {/* ✅ PhoneInput with Country Code */}
-          <PhoneInput
-            international
-            defaultCountry="IN"
-            placeholder="Phone Number*"
-            value={formData.phone}
-            onChange={(value) =>
-              setFormData((prev) => ({ ...prev, phone: value || "" }))
-            }
-            className="border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-[#021A33]"
-          />
+          {/* Phone */}
+          <div className="flex gap-2">
+            <select
+              name="countryCode"
+              value={formData.countryCode}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            >
+              <option value="+91">+91 India</option>
+              <option value="+1">+1 USA</option>
+              <option value="+44">+44 UK</option>
+              <option value="+971">+971 UAE</option>
+              <option value="+61">+61 Australia</option>
+              <option value="+81">+81 Japan</option>
+              <option value="+49">+49 Germany</option>
+              <option value="+33">+33 France</option>
+              <option value="+86">+86 China</option>
+              <option value="+55">+55 Brazil</option>
+              <option value="+7">+7 Russia</option>
+              <option value="+27">+27 South Africa</option>
+              <option value="+39">+39 Italy</option>
+              <option value="+34">+34 Spain</option>
+              <option value="+65">+65 Singapore</option>
+              <option value="+64">+64 New Zealand</option>
+              <option value="+82">+82 South Korea</option>
+              <option value="+46">+46 Sweden</option>
+              <option value="+47">+47 Norway</option>
+            </select>
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="1234567890"
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              maxLength={10}
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33] flex-1"
+            />
+          </div>
           {errors.phone && (
             <p className="text-red-500 text-sm">{errors.phone}</p>
           )}
@@ -143,7 +187,7 @@ const LeadForm: React.FC = () => {
             <p className="text-red-500 text-sm">{errors.email}</p>
           )}
 
-          {/* Requirements Dropdown */}
+          {/* Requirements */}
           <select
             name="requirements"
             value={formData.requirements}
@@ -160,7 +204,7 @@ const LeadForm: React.FC = () => {
             <p className="text-red-500 text-sm">{errors.requirements}</p>
           )}
 
-          {/* Budget Dropdown */}
+          {/* Budget */}
           <select
             name="budget"
             value={formData.budget}

@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import ButtonFill from "./Button";
 import Image from "next/image";
 import popupBg from "../assets/9-768x532.webp";
@@ -16,6 +14,7 @@ interface LeadFormModalProps {
 const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
+    countryCode: "+91",
     phone: "",
     email: "",
     requirements: "Apartment",
@@ -25,11 +24,9 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
-  // ✅ Regex validation
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-  const phoneRegex = /^\+\d{1,4}\d{10}$/; // international format with +country code
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -37,6 +34,23 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
     >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+
+    // Allow only digits
+    if (/^\d*$/.test(val)) {
+      setFormData({ ...formData, phone: val });
+
+      if (val.length > 10) {
+        setPhoneError("Phone number cannot exceed 10 digits");
+      } else if (val.length < 10 && val.length > 0) {
+        setPhoneError("Phone number must be exactly 10 digits");
+      } else {
+        setPhoneError("");
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,25 +61,33 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
       alert("Please enter your name");
       return;
     }
-    if (!phoneRegex.test(formData.phone)) {
-      alert("Please enter a valid phone number with country code");
+
+    if (!formData.phone || formData.phone.length !== 10) {
+      alert("Phone number must be exactly 10 digits");
       return;
     }
+
     if (formData.email && !emailRegex.test(formData.email)) {
       alert("Please enter a valid email address");
       return;
     }
 
     setLoading(true);
+
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/submit`,
-        formData
+        {
+          ...formData,
+          phone: formData.countryCode + formData.phone, // include country code
+        }
       );
+
       if (res.status === 200) {
         setSuccess("Lead submitted successfully!");
         setFormData({
           name: "",
+          countryCode: "+91",
           phone: "",
           email: "",
           requirements: "Apartment",
@@ -134,16 +156,46 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
               required
             />
 
-            <PhoneInput
-              international
-              defaultCountry="IN"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={(value) =>
-                setFormData({ ...formData, phone: value || "" })
-              }
-              className="phone-input border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
-            />
+            <div className="flex gap-2">
+              <select
+                name="countryCode"
+                value={formData.countryCode}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33] w-28"
+              >
+                <option value="+91">+91 India</option>
+                <option value="+1">+1 USA</option>
+                <option value="+44">+44 UK</option>
+                <option value="+971">+971 UAE</option>
+                <option value="+61">+61 Australia</option>
+                <option value="+81">+81 Japan</option>
+                <option value="+49">+49 Germany</option>
+                <option value="+33">+33 France</option>
+                <option value="+86">+86 China</option>
+                <option value="+55">+55 Brazil</option>
+                <option value="+7">+7 Russia</option>
+                <option value="+27">+27 South Africa</option>
+                <option value="+39">+39 Italy</option>
+                <option value="+34">+34 Spain</option>
+                <option value="+65">+65 Singapore</option>
+                <option value="+64">+64 New Zealand</option>
+                <option value="+82">+82 South Korea</option>
+                <option value="+46">+46 Sweden</option>
+                <option value="+47">+47 Norway</option>
+              </select>
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="1234567890"
+                value={formData.phone}
+                onChange={handlePhoneChange}
+                maxLength={10}
+                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33] flex-1"
+                required
+              />
+            </div>
+            {phoneError && <p className="text-red-600 text-sm">{phoneError}</p>}
 
             <input
               type="email"
