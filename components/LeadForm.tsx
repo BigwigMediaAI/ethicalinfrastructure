@@ -113,10 +113,12 @@ const LeadForm: React.FC = () => {
 
   return (
     <section className="w-full bg-[var(--white)] text-[var(--black)] overflow-hidden flex flex-col md:flex-row">
-      <div className="w-full p-6">
-        <h3 className="text-2xl font-bold mb-2">Get In Touch</h3>
-        <p className="text-gray-500 text-sm mb-6">
-          Fill out the form and our team will reach out shortly.
+      <div className="w-full">
+        <h3 className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
+          Get In Touch
+        </h3>
+        <p className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+          Reach us in a few clicks
         </p>
 
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
@@ -127,7 +129,7 @@ const LeadForm: React.FC = () => {
             placeholder="Full Name*"
             value={formData.name}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
@@ -137,7 +139,7 @@ const LeadForm: React.FC = () => {
               name="countryCode"
               value={formData.countryCode}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
             >
               <option value="+91">+91 India</option>
               <option value="+1">+1 USA</option>
@@ -163,11 +165,11 @@ const LeadForm: React.FC = () => {
             <input
               type="tel"
               name="phone"
-              placeholder="1234567890"
+              placeholder="Mobile Number"
               value={formData.phone}
               onChange={handlePhoneChange}
               maxLength={10}
-              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33] flex-1"
+              className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81] flex-1"
             />
           </div>
           {errors.phone && (
@@ -181,7 +183,7 @@ const LeadForm: React.FC = () => {
             placeholder="Email Address (optional)"
             value={formData.email}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email}</p>
@@ -192,7 +194,7 @@ const LeadForm: React.FC = () => {
             name="requirements"
             value={formData.requirements}
             onChange={handleChange}
-            className="border border-gray-300 bg-[var(--white)] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            className="border border-gray-300 bg-[var(--white)] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           >
             <option value="">Select Property Type*</option>
             <option value="Apartment">Apartment</option>
@@ -209,7 +211,7 @@ const LeadForm: React.FC = () => {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="border border-gray-300 bg-[var(--white)] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            className="border border-gray-300 bg-[var(--white)] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           >
             <option value="">Select Budget Range*</option>
             <option value="Under ₹1 Crore">Under ₹1 Crore</option>
@@ -228,7 +230,7 @@ const LeadForm: React.FC = () => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
+            className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           ></textarea>
 
           <ButtonFill
