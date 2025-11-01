@@ -59,7 +59,7 @@ const AboutHero = () => {
             >
               About{" "}
               <span className="text-[var(--primary-color)] ">
-                Ethical Infrastructure
+                Ethical Infrastructures
               </span>
             </h2>
             <p
@@ -131,7 +131,7 @@ const AboutHero = () => {
               home buying transparent, trustworthy, and fulfilling for every
               individual. After years of learning, understanding client needs,
               and witnessing the evolving landscape of real estate, I founded
-              <strong> Ethical Infrastructure Pvt. Ltd.</strong> in 2007. The
+              <strong> Ethical Infrastructures Pvt. Ltd.</strong> in 2007. The
               company was built on the strong foundation of integrity, quality,
               and customer satisfaction - values that continue to guide us in
               delivering homes that bring happiness, comfort, and trust

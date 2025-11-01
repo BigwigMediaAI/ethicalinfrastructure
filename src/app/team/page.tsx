@@ -106,7 +106,7 @@ export default function TeamPage() {
             {/* Founder Statement */}
             <div className="flex flex-col col-span-2 justify-center text-gray-800">
               <p className="text-xl  leading-relaxed italic font-light text-gray-800">
-                “At <strong>ETHICAL INFRASTRUCTURE Pvt. Ltd.</strong>, our
+                “At <strong>ETHICAL INFRASTRUCTURES Pvt. Ltd.</strong>, our
                 mission has always been to deliver homes that bring happiness,
                 security, and trust to every family. Since 1995, we’ve dedicated
                 ourselves to making real estate simple, transparent, and

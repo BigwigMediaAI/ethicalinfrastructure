@@ -45,7 +45,7 @@ const Footer = () => {
         {/* RERA Info */}
         <p className="text-[var(--text)] text-sm md:text-base font-medium tracking-wide">
           <span className="font-semibold text-[var(--primary-color)]">
-            Ethical Infrastructure
+            Ethical Infrastructures
           </span>{" "}
           — Verified RERA Consultant | Reg. No.{" "}
           <span className="font-semibold">GGM/503/2018/98/EXT1/2024/140</span>
@@ -91,7 +91,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-300 w-full" />
       <div className="max-w-7xl mx-auto px-4 py-6 text-xs text-[var(--text)] flex flex-col sm:flex-row justify-between items-center gap-4">
-        <span>Ethical Infrastructure ©2025 All Rights Reserved</span>
+        <span>Ethical Infrastructures ©2025 All Rights Reserved</span>
 
         <div className="flex gap-4">
           <Link
