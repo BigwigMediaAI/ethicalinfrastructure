@@ -100,7 +100,7 @@ const AboutHero = () => {
       </section>
       <section className="py-12 w-11/12 md:w-5/6 mx-auto">
         <h3
-          className="uppercase text-2xl md:text-3xl font-semibold text-[var(--primary-color)] mb-6 font-amatic border-l-4 border-[var(--primary-color)] pl-3"
+          className=" text-2xl md:text-3xl font-semibold text-[var(--primary-color)] mb-6 font-amatic border-l-4 border-[var(--primary-color)] pl-3"
           data-aos="fade-right"
           data-aos-delay="400"
         >
