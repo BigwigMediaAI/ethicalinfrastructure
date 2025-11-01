@@ -68,15 +68,15 @@ const Navbar = () => {
       {/* =========================
           TRANSPARENT FIXED HEADER
          ========================= */}
-      <header
-        className={`w-full fixed top-0 left-0 z-40 transition-all duration-500 ${
-          scrolled
-            ? "bg-[var(--white)]/40 backdrop-blur-md shadow-md"
-            : "bg-transparent"
-        }`}
-      >
+      <header className="w-full absolute top-0 left-0 z-40 transition-all duration-500 ">
         {/* ===== Top Bar ===== */}
-        <div className="hidden md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]">
+        <div
+          className={`hidden fixed top-0 left-0 w-full md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]${
+            scrolled
+              ? "bg-[var(--white)]/40 backdrop-blur-md shadow-md"
+              : "bg-transparent"
+          }`}
+        >
           <div className="flex items-center gap-4">
             <Link
               href="https://www.facebook.com/profile.php?id=61581857552733"
@@ -125,7 +125,7 @@ const Navbar = () => {
         </div>
 
         {/* ===== Main Navbar ===== */}
-        <nav className="flex items-center justify-between px-6 py-2 relative">
+        <nav className="flex items-center justify-between px-6 py-2 relative md:pt-10">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -139,7 +139,7 @@ const Navbar = () => {
           </Link>
 
           {/* ===== Desktop Menu ===== */}
-          <ul className="hidden md:flex gap-8 font-medium ">
+          <ul className="hidden md:flex gap-8 font-bold tracking-widest">
             {navItems.map((item) => (
               <li
                 key={item.name}
