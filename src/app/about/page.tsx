@@ -236,7 +236,7 @@ const AboutHero = () => {
           </div>
           <div className="md:w-1/2">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-4 tracking-widest text-[var(--title)]"
+              className="text-3xl md:text-4xl font-bold mb-4 tracking-widest text-[var(--primary-color)] border-l-4 border-[var(--primary-color)] pl-3"
               data-aos="fade-up"
               data-aos-delay="200"
             >
