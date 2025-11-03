@@ -1,4 +1,5 @@
 "use client";
+import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface ContactRequest {
@@ -6,7 +7,9 @@ interface ContactRequest {
   name: string;
   phone: string;
   email: string;
-  purpose: string;
+  requirements: string;
+  budget: string;
+  marked?: boolean;
   createdAt: string;
 }
 
@@ -19,6 +22,8 @@ const AdminLead = () => {
   );
   const [selectedDate, setSelectedDate] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`)
@@ -53,6 +58,37 @@ const AdminLead = () => {
     currentPage * ITEMS_PER_PAGE
   );
 
+  // ✅ Handle mark/unmark
+  const handleMark = async (id: string, marked: boolean) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/lead/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ marked }),
+      });
+      if (!res.ok) throw new Error("Failed to update lead");
+      setContacts((prev) =>
+        prev.map((lead) => (lead._id === id ? { ...lead, marked } : lead))
+      );
+    } catch (err) {
+      console.error("Error updating lead:", err);
+    }
+  };
+
+  // ✅ Handle delete
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this lead?")) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/lead/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete lead");
+      setContacts((prev) => prev.filter((lead) => lead._id !== id));
+    } catch (err) {
+      console.error("Error deleting lead:", err);
+    }
+  };
+
   return (
     <div className="h-screen bg-black text-white font-raleway flex flex-col p-0">
       <div className="sticky top-0 z-20 bg-black p-4 sm:p-6 border-b border-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -83,11 +119,13 @@ const AdminLead = () => {
                   <th className="px-4 py-3 border-b border-gray-700">Email</th>
                   <th className="px-4 py-3 border-b border-gray-700">Phone</th>
                   <th className="px-4 py-3 border-b border-gray-700">
-                    Purpose
+                    Requirements
                   </th>
+                  <th className="px-4 py-3 border-b border-gray-700">Budget</th>
                   <th className="px-4 py-3 border-b border-gray-700">
                     Requested At
                   </th>
+                  <th className="px-4 py-3 border-b border-gray-700">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -106,9 +144,26 @@ const AdminLead = () => {
                       </a>
                     </td>
                     <td className="px-4 py-3">{contact.phone}</td>
-                    <td className="px-4 py-3">{contact.purpose}</td>
+                    <td className="px-4 py-3">{contact.requirements}</td>
+                    <td className="px-4 py-3">{contact.budget}</td>
                     <td className="px-4 py-3">
                       {new Date(contact.createdAt).toLocaleString()}
+                    </td>
+                    <td className="px-4 py-3 flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        checked={contact.marked || false}
+                        onChange={(e) =>
+                          handleMark(contact._id, e.target.checked)
+                        }
+                        className="w-4 h-4 cursor-pointer"
+                      />
+                      <button
+                        onClick={() => handleDelete(contact._id)}
+                        className="px-2 py-1 text-red-600 rounded text-sm hover:text-red-700 cursor-pointer"
+                      >
+                        <Trash2 />
+                      </button>
                     </td>
                   </tr>
                 ))}
