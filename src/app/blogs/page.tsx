@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Nav from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Fuse from "fuse.js";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../components/ContactSidebar";
+import Navbar2 from "../../../components/Navbar2";
 
 interface BlogPost {
   _id: string;
@@ -71,7 +71,7 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen py-32">
-      <Nav />
+      <Navbar2 />
 
       <h2 className="text-4xl font-bold text-[var(--title)] pt-6 text-center">
         Latest Blogs

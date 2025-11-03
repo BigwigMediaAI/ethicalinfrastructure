@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import Navbar2 from "../../../components/Navbar2";
 
 export default function PrivacyPolicyPage() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-20 lg:px-40">
           <div className=" rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100 mt-28">

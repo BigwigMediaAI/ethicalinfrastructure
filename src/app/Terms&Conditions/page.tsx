@@ -2,13 +2,14 @@
 
 import { div } from "framer-motion/client";
 import React from "react";
-import Navbar from "../../../components/Navbar";
+
 import Footer from "../../../components/Footer";
+import Navbar2 from "../../../components/Navbar2";
 
 export default function TermsAndConditionsPage() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-24 lg:px-48">
           <div className=" rounded-3xl shadow-2xl p-8 md:p-16 border border-gray-100 mt-28">
@@ -81,7 +82,7 @@ export default function TermsAndConditionsPage() {
                 <h2 className="text-2xl font-semibold  mb-3">Contact Us</h2>
                 <p>
                   If you have any questions or concerns about these Terms,
-                  please contact us at
+                  please contact us at{" "}
                   <a
                     href="mailto:info@eiplin.com"
                     className="underline font-medium"

@@ -22,7 +22,7 @@ import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
 import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+const Navbar2 = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
@@ -71,7 +71,7 @@ const Navbar = () => {
       <header className="w-full absolute top-0 left-0  transition-all duration-500 ">
         {/* ===== Top Bar ===== */}
         <div
-          className={`hidden z-40 fixed top-0 left-0 w-full md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)] ${
+          className={`hidden z-40 fixed top-0 left-0 w-full md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]${
             scrolled
               ? "bg-[var(--white)]/40 backdrop-blur-md shadow-md"
               : "bg-transparent"
@@ -155,7 +155,7 @@ const Navbar = () => {
                     className={`flex items-center gap-1 transition-all ${
                       pathname === item.path
                         ? "text-[var(--hover-color)] font-semibold"
-                        : "text-white hover:text-[var(--hover-color)]"
+                        : "text-[var(--black)] hover:text-[var(--hover-color)]"
                     }`}
                   >
                     {item.name}
@@ -165,7 +165,7 @@ const Navbar = () => {
                     className={`cursor-pointer flex items-center gap-1 transition-all ${
                       dropdownOpen === "Property"
                         ? "text-[var(--hover-color)] font-semibold"
-                        : "text-white hover:text-[var(--hover-color)]"
+                        : "text-[var(--black)] hover:text-[var(--hover-color)]"
                     }`}
                   >
                     {item.name}
@@ -399,4 +399,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;

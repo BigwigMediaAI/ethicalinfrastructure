@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import Navbar from "../../../../components/Navbar";
+
 import Footer from "../../../../components/Footer";
 import Image from "next/image";
 import ContactInfo from "../../../../components/ContactInfo";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../../components/ContactSidebar";
+import Navbar2 from "../../../../components/Navbar2";
 
 interface BlogType {
   title: string;
@@ -85,7 +86,7 @@ export default async function BlogDetails({
           />
         ))}
 
-      <Navbar />
+      <Navbar2 />
 
       <section className="w-11/12 md:w-5/6 mx-auto text-left pt-24 md:pt-40">
         <h1 className="text-3xl md:text-4xl font-bold text-[var(--title)] leading-tight mb-3">
