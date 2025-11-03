@@ -39,6 +39,7 @@ export default function BuyPageContent() {
 
   const typeFromQuery = searchParams.get("type") || "all";
   const locationFromQuery = searchParams.get("location") || "all"; // ⚡ Added
+  const pageFromQuery = parseInt(searchParams.get("page") || "1", 10);
 
   const [selectedType, setSelectedType] = useState(typeFromQuery.toLowerCase());
   const [selectedLocation, setSelectedLocation] = useState(
@@ -49,7 +50,7 @@ export default function BuyPageContent() {
   const [locations, setLocations] = useState<string[]>([]); // ⚡ Added
 
   // Pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(pageFromQuery);
   const propertiesPerPage = 9;
 
   // Fetch properties
@@ -86,9 +87,11 @@ export default function BuyPageContent() {
   useEffect(() => {
     const queryType = searchParams.get("type") || "all";
     const queryLoc = searchParams.get("location") || "all";
+    const queryPage = parseInt(searchParams.get("page") || "1", 10);
+
     setSelectedType(queryType.toLowerCase());
     setSelectedLocation(queryLoc.toLowerCase());
-    setCurrentPage(1);
+    setCurrentPage(queryPage);
   }, [searchParams]);
 
   // ⚡ Combined Filter Logic
@@ -166,8 +169,10 @@ export default function BuyPageContent() {
               setSelectedType(opt.value);
               setCurrentPage(1);
               router.push(
-                `/buy?type=${opt.value}&location=${selectedLocation}`,
-                { scroll: false }
+                `/buy?type=${opt.value}&location=${selectedLocation}&page=1`,
+                {
+                  scroll: false,
+                }
               );
             }}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
@@ -187,7 +192,7 @@ export default function BuyPageContent() {
             const newLoc = e.target.value;
             setSelectedLocation(newLoc);
             setCurrentPage(1);
-            router.push(`/buy?type=${selectedType}&location=${newLoc}`, {
+            router.push(`/buy?type=${selectedType}&location=${newLoc}&page=1`, {
               scroll: false,
             });
           }}
@@ -288,8 +293,14 @@ export default function BuyPageContent() {
                 {/* Prev Button */}
                 <button
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
+                  onClick={() => {
+                    const newPage = currentPage - 1;
+                    setCurrentPage(newPage);
+                    router.push(
+                      `/buy?type=${selectedType}&location=${selectedLocation}&page=${newPage}`,
+                      { scroll: false }
+                    );
+                  }}
                 >
                   Prev
                 </button>
@@ -324,7 +335,13 @@ export default function BuyPageContent() {
                     ) : (
                       <button
                         key={idx}
-                        onClick={() => setCurrentPage(Number(num))}
+                        onClick={() => {
+                          setCurrentPage(Number(num));
+                          router.push(
+                            `/buy?type=${selectedType}&location=${selectedLocation}&page=${num}`,
+                            { scroll: false }
+                          );
+                        }}
                         className={`px-3 py-2 rounded border ${
                           currentPage === num
                             ? "bg-[var(--primary-color)] text-[var(--white)]"
@@ -340,8 +357,14 @@ export default function BuyPageContent() {
                 {/* Next Button */}
                 <button
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
+                  onClick={() => {
+                    const newPage = currentPage + 1;
+                    setCurrentPage(newPage);
+                    router.push(
+                      `/buy?type=${selectedType}&location=${selectedLocation}&page=${newPage}`,
+                      { scroll: false }
+                    );
+                  }}
                 >
                   Next
                 </button>

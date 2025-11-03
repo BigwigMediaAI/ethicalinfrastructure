@@ -132,7 +132,7 @@ const Blogs = () => {
                   </div>
 
                   <button
-                    className="mt-4 self-start text-[var(--primary-color)] font-semibold hover:underline transition"
+                    className="mt-4 self-start text-[var(--primary-color)] font-semibold hover:underline transition cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       router.push(`/blogs/${blog.slug}`);

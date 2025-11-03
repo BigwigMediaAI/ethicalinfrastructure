@@ -57,7 +57,7 @@ const Navbar = () => {
   // Detect scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // when user scrolls 50px
+      setScrolled(window.scrollY > 30); // when user scrolls 50px
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -68,10 +68,10 @@ const Navbar = () => {
       {/* =========================
           TRANSPARENT FIXED HEADER
          ========================= */}
-      <header className="w-full absolute top-0 left-0 z-40 transition-all duration-500 ">
+      <header className="w-full absolute top-0 left-0  transition-all duration-500 ">
         {/* ===== Top Bar ===== */}
         <div
-          className={`hidden fixed top-0 left-0 w-full md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]${
+          className={`hidden z-40 fixed top-0 left-0 w-full md:flex justify-between items-center px-6 py-2 border-b border-gray-600 text-sm text-[var(--black)]${
             scrolled
               ? "bg-[var(--white)]/40 backdrop-blur-md shadow-md"
               : "bg-transparent"
@@ -82,7 +82,7 @@ const Navbar = () => {
               href="https://www.facebook.com/profile.php?id=61581857552733"
               target="_blank"
             >
-              <FaFacebookF className="cursor-pointer hover:text-[var(--primary-color)] transition" />
+              <FaFacebookF className="cursor-pointer hover:text-blue-600 transition" />
             </Link>
             <Link
               href="https://www.linkedin.com/company/109224060/admin/dashboard/"
@@ -125,7 +125,7 @@ const Navbar = () => {
         </div>
 
         {/* ===== Main Navbar ===== */}
-        <nav className="flex items-center justify-between px-6 py-2 relative md:pt-10">
+        <nav className="flex z-20 items-center justify-between px-6 py-2 relative md:pt-10">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
