@@ -86,7 +86,7 @@ export default function BuyLeaseSection() {
                     activeTab === "buy" ? "w-32" : "w-6"
                   }`}
                 >
-                  <span className="absolute -right-2 md:-top-4 text-[var(--black)] text-xl">
+                  <span className="absolute -right-2 md:-top-3.5 text-[var(--black)] text-xl">
                     &gt;
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export default function BuyLeaseSection() {
                     activeTab === "sell" ? "w-32" : "w-6"
                   }`}
                 >
-                  <span className="absolute -right-2 md:-top-4 text-[var(--black)] text-xl">
+                  <span className="absolute -right-2 md:-top-3.5 text-[var(--black)] text-xl">
                     &gt;
                   </span>
                 </div>
@@ -134,7 +134,7 @@ export default function BuyLeaseSection() {
                     activeTab === "lease" ? "w-32" : "w-6"
                   }`}
                 >
-                  <span className="absolute -right-2 md:-top-4 text-[var(--black)] text-xl">
+                  <span className="absolute -right-2 md:-top-3.5 text-[var(--black)] text-xl">
                     &gt;
                   </span>
                 </div>
