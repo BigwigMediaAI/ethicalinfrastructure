@@ -209,7 +209,7 @@ export default function BuyDetails() {
             <div
               className="relative h-40 flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-xl text-2xl font-bold cursor-pointer"
               onClick={() => {
-                setPhotoIndex(10);
+                setPhotoIndex(8);
                 setIsOpen(true);
               }}
             >
