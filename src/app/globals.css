@@ -11,6 +11,7 @@
   --primary-color: #ce9c81;
   --hover-color: #e49970;
   --primary-bgColor: #0a2342;
+  --login: #f3f4f6;
 }
 .dark {
   --white: #000000;
@@ -23,6 +24,7 @@
   --primary-color: #ce9c81;
   --hover-color: #e49970;
   --primary-bgColor: #0a2342;
+  --login: #171717;
 }
 
 .logo-invert {

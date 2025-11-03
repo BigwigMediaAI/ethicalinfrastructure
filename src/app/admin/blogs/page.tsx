@@ -5,6 +5,7 @@ import { Edit, Trash2, Code, ImageIcon } from "lucide-react";
 import Fuse from "fuse.js";
 import dynamic from "next/dynamic";
 import { formatHtml } from "../../../../utils/formatHtml";
+import { useRouter } from "next/navigation";
 
 // Replace static import with dynamic:
 const AddBlog = dynamic(() => import("../../../../components/AddBlogs"), {
@@ -22,6 +23,7 @@ interface BlogPost {
 }
 
 export default function AdminBlogsPage() {
+  const router = useRouter();
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -56,6 +58,12 @@ export default function AdminBlogsPage() {
   };
 
   useEffect(() => {
+    // ✅ Check login status
+    const loggedIn = localStorage.getItem("isAdmin");
+    if (loggedIn !== "true") {
+      router.push("/login"); // redirect if not logged in
+      return;
+    }
     fetchBlogs();
   }, []);
 

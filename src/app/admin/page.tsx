@@ -1,8 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { JSX, useEffect, useState } from "react";
 import { FaBook, FaBuilding, FaUser } from "react-icons/fa";
 
 const Dashboard = () => {
+  const router = useRouter();
   const [counts, setCounts] = useState({
     leads: 0,
     blogs: 0,
@@ -10,6 +12,14 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
+    // ✅ Check login status
+    const loggedIn = localStorage.getItem("isAdmin");
+    if (loggedIn !== "true") {
+      router.push("/login"); // redirect if not logged in
+      return;
+    }
+
+    // ✅ Fetch data only if logged in
     Promise.all([
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`).then((r) =>
         r.json()
@@ -31,7 +41,7 @@ const Dashboard = () => {
       .catch((error) => {
         console.error("Error loading dashboard data:", error);
       });
-  }, []);
+  }, [router]);
 
   const cards = [
     { title: "Leads", icon: <FaUser />, count: counts.leads },

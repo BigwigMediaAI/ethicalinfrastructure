@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Eye, Trash2, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SellRequest {
   _id: string;
@@ -30,6 +31,7 @@ interface SellRequest {
 }
 
 export default function SellRequests() {
+  const router = useRouter();
   const [sellRequests, setSellRequests] = useState<SellRequest[]>([]);
   const [selectedRequest, setSelectedRequest] = useState<SellRequest | null>(
     null
@@ -38,6 +40,12 @@ export default function SellRequests() {
   const [isApproving, setIsApproving] = useState(false);
 
   useEffect(() => {
+    // ✅ Check login status
+    const loggedIn = localStorage.getItem("isAdmin");
+    if (loggedIn !== "true") {
+      router.push("/login"); // redirect if not logged in
+      return;
+    }
     fetchSellRequests();
   }, []);
 

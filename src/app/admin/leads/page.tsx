@@ -1,5 +1,6 @@
 "use client";
 import { Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface ContactRequest {
@@ -16,6 +17,7 @@ interface ContactRequest {
 const ITEMS_PER_PAGE = 20;
 
 const AdminLead = () => {
+  const router = useRouter();
   const [contacts, setContacts] = useState<ContactRequest[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<ContactRequest[]>(
     []
@@ -26,6 +28,13 @@ const AdminLead = () => {
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
   useEffect(() => {
+    // ✅ Check login status
+    const loggedIn = localStorage.getItem("isAdmin");
+    if (loggedIn !== "true") {
+      router.push("/login"); // redirect if not logged in
+      return;
+    }
+
     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`)
       .then((res) => res.json())
       .then((data) => {

@@ -1,7 +1,7 @@
 "use client";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import logo from "../assets/logo.png";
@@ -20,6 +20,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -38,6 +39,11 @@ export default function AdminLayout({
     },
     { icon: <Handshake />, label: "Sell Requests", to: "/admin/sell-requests" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    router.push("/login");
+  };
 
   return (
     <div className="h-screen flex flex-col lg:flex-row overflow-hidden bg-[#0b0b0b] text-white font-raleway relative">
@@ -102,6 +108,15 @@ export default function AdminLayout({
               <span>{label}</span>
             </Link>
           ))}
+
+          {/* Logout Button (Mobile) */}
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-3 px-6 py-3 mt-4 text-sm font-medium text-red-400 hover:text-red-500 border-t border-gray-700"
+          >
+            <FaSignOutAlt />
+            Logout
+          </button>
         </nav>
       </div>
 
@@ -117,7 +132,7 @@ export default function AdminLayout({
           />
         </div>
 
-        <nav className="flex flex-col gap-1 text-sm font-medium overflow-y-auto">
+        <nav className="flex flex-col gap-1 text-sm font-medium overflow-y-auto flex-1">
           {navItems.map(({ icon, label, to }) => (
             <Link
               key={to}
@@ -133,6 +148,15 @@ export default function AdminLayout({
             </Link>
           ))}
         </nav>
+
+        {/* Logout Button (Desktop) */}
+        <button
+          onClick={handleLogout}
+          className="cursor-pointer flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium text-red-400 hover:text-red-500 transition-all duration-200 border-t border-gray-800"
+        >
+          <FaSignOutAlt />
+          Logout
+        </button>
       </aside>
 
       {/* ===== MAIN CONTENT AREA ===== */}

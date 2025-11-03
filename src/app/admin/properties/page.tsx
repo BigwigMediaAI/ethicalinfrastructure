@@ -5,6 +5,7 @@ import axios from "axios";
 import { Plus, Pencil, Trash2, Eye, X } from "lucide-react";
 
 import PropertyForm from "../../../../components/PropertyForm";
+import { useRouter } from "next/navigation";
 
 interface Property {
   builder: string;
@@ -30,6 +31,7 @@ interface Property {
 }
 
 export default function AllProperties() {
+  const router = useRouter();
   const [properties, setProperties] = useState<Property[]>([]);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
     null
@@ -49,6 +51,12 @@ export default function AllProperties() {
   );
 
   useEffect(() => {
+    // ✅ Check login status
+    const loggedIn = localStorage.getItem("isAdmin");
+    if (loggedIn !== "true") {
+      router.push("/login"); // redirect if not logged in
+      return;
+    }
     fetchProperties();
   }, []);
 
