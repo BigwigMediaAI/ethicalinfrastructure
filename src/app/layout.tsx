@@ -3,6 +3,7 @@ import { Tinos } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../../components/theme-provider";
 import Script from "next/script"; // ✅ Import Script from Next.js
+import { PropertyProvider } from "@/context/PropertyContext";
 
 const tinos = Tinos({
   subsets: ["latin"],
@@ -53,7 +54,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <PropertyProvider> {children}</PropertyProvider>
         </ThemeProvider>
       </body>
     </html>

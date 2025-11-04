@@ -40,34 +40,41 @@ export default function AllProperties() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [editProperty, setEditProperty] = useState<Property | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const pageSize = 10;
+  const pageSize = 10; // Number of properties per page
 
-  // Pagination logic
-  const totalPages = Math.ceil(properties.length / pageSize);
-  const paginatedProperties = properties.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
-
+  // ✅ Check login and fetch properties
   useEffect(() => {
-    // ✅ Check login status
     const loggedIn = localStorage.getItem("isAdmin");
     if (loggedIn !== "true") {
-      router.push("/login"); // redirect if not logged in
+      router.push("/login");
       return;
     }
-    fetchProperties();
-  }, []);
+    fetchProperties(currentPage);
+  }, [currentPage]);
 
-  const fetchProperties = async () => {
+  const fetchProperties = async (page: number) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE}/property`
+        `${process.env.NEXT_PUBLIC_API_BASE}/property`,
+        {
+          params: { page, limit: pageSize },
+        }
       );
-      setProperties(res.data);
+
+      if (res.data?.success) {
+        setProperties(res.data.properties || []);
+        setTotalPages(res.data.totalPages || 1);
+        setCurrentPage(res.data.currentPage || 1);
+      } else {
+        setProperties([]);
+        setTotalPages(1);
+      }
     } catch (error) {
       console.error("Failed to fetch properties", error);
+      setProperties([]);
+      setTotalPages(1);
     }
   };
 
@@ -77,7 +84,7 @@ export default function AllProperties() {
       await axios.delete(
         `${process.env.NEXT_PUBLIC_API_BASE}/property/${slug}`
       );
-      setProperties(properties.filter((p) => p.slug !== slug));
+      fetchProperties(currentPage); // refetch after delete
     } catch (error) {
       console.error("Delete failed", error);
     }
@@ -109,10 +116,9 @@ export default function AllProperties() {
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-700 rounded-lg">
-          <thead className="bg-gray-900 text-white ">
+          <thead className="bg-gray-900 text-white">
             <tr>
               <th className="p-3">Title</th>
-
               <th className="p-3">Purpose</th>
               <th className="p-3">Type</th>
               <th className="p-3">Location</th>
@@ -120,12 +126,12 @@ export default function AllProperties() {
             </tr>
           </thead>
           <tbody>
-            {paginatedProperties.length > 0 ? (
-              paginatedProperties.map((property) => (
+            {properties.length > 0 ? (
+              properties.map((property) => (
                 <tr key={property._id} className="border-t border-gray-300">
                   <td className="p-3 text-center">{property.title}</td>
-                  <td className="p-3 text-center ">{property.purpose}</td>
-                  <td className="p-3 text-center ">{property.type}</td>
+                  <td className="p-3 text-center">{property.purpose}</td>
+                  <td className="p-3 text-center">{property.type}</td>
                   <td className="p-3 text-center">{property.location}</td>
                   <td className="p-3 flex gap-3 justify-center">
                     <button
@@ -174,13 +180,12 @@ export default function AllProperties() {
               <X size={20} />
             </button>
 
-            {/* Title & Description */}
             <h2 className="text-2xl font-bold mb-2">
               {selectedProperty.title}
             </h2>
             <p className="mb-4 text-gray-300">{selectedProperty.description}</p>
 
-            {/* Property Details in 2 columns */}
+            {/* Property Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
                 <p>
@@ -214,7 +219,7 @@ export default function AllProperties() {
               </div>
             </div>
 
-            {/* Lists Section */}
+            {/* Lists */}
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div>
@@ -243,7 +248,6 @@ export default function AllProperties() {
                     ))}
                   </ul>
                 </div>
-
                 <div>
                   <strong>Extra Highlights:</strong>
                   <ul className="list-disc ml-5 text-gray-300">
@@ -255,7 +259,7 @@ export default function AllProperties() {
               </div>
             </div>
 
-            {/* Images moved to the bottom */}
+            {/* Images */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-6">
               {selectedProperty.images?.map((img, idx) => (
                 <img
@@ -273,7 +277,6 @@ export default function AllProperties() {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 mt-10">
-          {/* Prev Button */}
           <button
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((p) => p - 1)}
@@ -282,47 +285,20 @@ export default function AllProperties() {
             Prev
           </button>
 
-          {/* Page Numbers */}
-          {(() => {
-            const pages = [];
-            const maxVisible = 5; // show 5 pages max at a time
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+            <button
+              key={num}
+              onClick={() => setCurrentPage(num)}
+              className={`px-3 py-2 rounded border ${
+                currentPage === num
+                  ? "bg-[var(--primary-color)] text-white"
+                  : "bg-black hover:bg-gray-800"
+              }`}
+            >
+              {num}
+            </button>
+          ))}
 
-            let startPage = Math.max(
-              1,
-              currentPage - Math.floor(maxVisible / 2)
-            );
-            const endPage = Math.min(totalPages, startPage + maxVisible - 1);
-
-            if (endPage - startPage + 1 < maxVisible) {
-              startPage = Math.max(1, endPage - maxVisible + 1);
-            }
-
-            if (startPage > 1) pages.push(1, "...");
-            for (let i = startPage; i <= endPage; i++) pages.push(i);
-            if (endPage < totalPages) pages.push("...", totalPages);
-
-            return pages.map((num, idx) =>
-              num === "..." ? (
-                <span key={idx} className="px-3 py-2 text-gray-500">
-                  ...
-                </span>
-              ) : (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentPage(Number(num))}
-                  className={`px-3 py-2 rounded border ${
-                    currentPage === num
-                      ? "bg-[var(--primary-color)] text-white"
-                      : "bg-black hover:bg-gray-800"
-                  }`}
-                >
-                  {num}
-                </button>
-              )
-            );
-          })()}
-
-          {/* Next Button */}
           <button
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage((p) => p + 1)}
@@ -333,7 +309,7 @@ export default function AllProperties() {
         </div>
       )}
 
-      {/* Form Modal (for Add / Update) */}
+      {/* Form Modal */}
       {isFormModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-gray-800 w-11/12 md:w-3/4 lg:w-2/3 max-h-[90vh] overflow-y-auto no-scrollbar rounded-lg shadow-lg p-6 relative">
@@ -362,7 +338,7 @@ export default function AllProperties() {
                   : undefined
               }
               onClose={() => setIsFormModalOpen(false)}
-              onSuccess={fetchProperties}
+              onSuccess={() => fetchProperties(currentPage)}
             />
           </div>
         </div>

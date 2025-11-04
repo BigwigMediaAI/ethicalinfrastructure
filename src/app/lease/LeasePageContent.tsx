@@ -6,12 +6,13 @@ import { MapPin, Home } from "lucide-react";
 import banner from "../../../assets/buy-banner.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import ContactInfo from "../../../components/ContactInfo";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../components/ContactSidebar";
 import ButtonFill from "../../../components/Button";
+import LeadFormModal from "../../../components/LeadPopup";
+import { useProperty } from "@/context/PropertyContext";
 
 interface Property {
   _id: string;
@@ -25,11 +26,10 @@ interface Property {
 }
 
 export default function LeasePageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const buyRef = useRef<HTMLDivElement | null>(null);
 
-  const filterOptions = [
+  // Static filters
+  const propertyTypes = [
     { name: "All", value: "all" },
     { name: "Builder Floors", value: "builder-floor" },
     { name: "Apartments", value: "apartment" },
@@ -37,54 +37,70 @@ export default function LeasePageContent() {
     { name: "Farmhouses", value: "farmhouse" },
   ];
 
-  const typeFromQuery = searchParams.get("type") || "all";
-  const [selectedType, setSelectedType] = useState(typeFromQuery.toLowerCase());
+  const staticLocations = [
+    "All",
+    "DLF Phase 1",
+    "DLF Phase 2",
+    "DLF Phase 3",
+    "DLF Phase 4",
+    "DLF Phase 5",
+    "Sushant Lok 1",
+    "Sushant Lok 2",
+    "Sushant Lok 3",
+    "Sushant Lok 4",
+    "Sushant Lok 5",
+    "MG Road",
+    "Golf Course Road",
+    "Golf Course Ext. Road",
+    "Sector 77 Gurugram Haryana",
+    "Sector 76 Gurugram Haryana",
+    "Sector 102 Gurugram Haryana",
+  ];
+
+  const { selectedType, setSelectedType } = useProperty();
+
+  const [selectedLocation, setSelectedLocation] = useState("All");
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [showLeadForm, setShowLeadForm] = useState(false);
   const propertiesPerPage = 9;
 
-  // Fetch properties
+  // Fetch data from backend (with filters + pagination)
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property`)
+    setLoading(true);
+
+    const params = new URLSearchParams({
+      purpose: "lease",
+      type: selectedType || "all", // fallback to 'all' if null
+      location: selectedLocation === "All" ? "all" : selectedLocation,
+      page: currentPage.toString(),
+      limit: propertiesPerPage.toString(),
+    });
+
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property?${params}`)
       .then((res) => res.json())
-      .then((data) => {
-        const buyProperties = data.filter(
-          (p: Property) => p.purpose?.toLowerCase() === "lease"
-        );
-        setProperties(buyProperties);
-        setLoading(false);
-      })
+      .then(
+        (data: {
+          success: boolean;
+          properties: Property[];
+          total?: number;
+          totalPages?: number;
+          currentPage?: number;
+        }) => {
+          if (data?.success) {
+            setProperties(data.properties);
+            setTotalPages(data.totalPages ?? 1);
+          }
+          setLoading(false);
+        }
+      )
       .catch((err) => {
         console.error(err);
         setLoading(false);
       });
-  }, []);
-
-  // Sync query param -> selectedType
-  useEffect(() => {
-    const queryType = searchParams.get("type") || "all";
-    setSelectedType(queryType.toLowerCase());
-    setCurrentPage(1);
-  }, [searchParams]);
-
-  // Filter properties
-  const filtered =
-    selectedType === "all"
-      ? properties
-      : properties.filter(
-          (p) => p.type?.replace(/\s+/g, "-").toLowerCase() === selectedType
-        );
-
-  // Pagination logic
-  const totalPages = Math.ceil(filtered.length / propertiesPerPage);
-  const startIdx = (currentPage - 1) * propertiesPerPage;
-  const paginatedProperties = filtered.slice(
-    startIdx,
-    startIdx + propertiesPerPage
-  );
+  }, [selectedType, selectedLocation, currentPage]);
 
   // Scroll to property section
   const scrollToNext = () => {
@@ -96,25 +112,6 @@ export default function LeasePageContent() {
     }
   };
 
-  // Generate page numbers
-  const getPageNumbers = () => {
-    const pages: (number | string)[] = [];
-    const maxVisible = 3;
-
-    if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
-    } else {
-      pages.push(1);
-      if (currentPage > maxVisible + 1) pages.push("...");
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
-      for (let i = start; i <= end; i++) pages.push(i);
-      if (currentPage < totalPages - maxVisible) pages.push("...");
-      pages.push(totalPages);
-    }
-    return pages;
-  };
-
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Navbar />
@@ -123,7 +120,7 @@ export default function LeasePageContent() {
       <div className="relative h-[70vh] bg-black text-white flex items-center justify-center">
         <Image
           src={banner}
-          alt="Dubai Homes"
+          alt="Lease Properties"
           fill
           className="object-cover opacity-70"
         />
@@ -148,37 +145,48 @@ export default function LeasePageContent() {
         </motion.div>
       </div>
 
-      {/* Filter Buttons */}
+      {/* Filter Section */}
       <motion.div
-        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-wrap justify-center gap-3 px-3 py-4 tracking-widest overflow-x-hidden"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-        }}
+        className=" bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-col md:flex-row md:justify-between items-center gap-4 px-4 py-4 tracking-widest"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
-        {filterOptions.map((opt) => (
-          <motion.button
-            key={opt.value}
-            onClick={() => {
-              setSelectedType(opt.value);
-              setCurrentPage(1);
-              router.push(`/lease?type=${opt.value}`, { scroll: false });
-            }}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
-              selectedType === opt.value
-                ? "bg-[var(--primary-color)] text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            {opt.name}
-          </motion.button>
-        ))}
+        <div></div>
+        {/* Property Type Filter */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {propertyTypes.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => {
+                setSelectedType(opt.value);
+                setCurrentPage(1);
+              }}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
+                selectedType === opt.value
+                  ? "bg-[var(--primary-color)] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {opt.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Static Location Dropdown */}
+        <select
+          value={selectedLocation}
+          onChange={(e) => {
+            setSelectedLocation(e.target.value);
+            setCurrentPage(1);
+          }}
+          className="px-4 py-2 rounded-full text-sm font-semibold border bg-gray-100 text-gray-700 hover:bg-gray-200 w-52"
+        >
+          {staticLocations.map((loc) => (
+            <option key={loc} value={loc}>
+              {loc === "All" ? "All Locations" : loc}
+            </option>
+          ))}
+        </select>
       </motion.div>
 
       {/* Property List */}
@@ -187,11 +195,24 @@ export default function LeasePageContent() {
           <p className="text-center py-20 text-gray-500">
             Loading properties...
           </p>
-        ) : paginatedProperties.length === 0 ? (
-          <div className="text-center py-20 text-gray-500 col-span-full tracking-widest">
-            <h2 className="text-2xl font-semibold mb-2">
-              No properties available
+        ) : properties.length === 0 ? (
+          <div className="text-center py-20 text-gray-600 tracking-widest flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-3">
+              Can’t find what you’re looking for?
             </h2>
+            <p className="mb-6">
+              Fill the form and our team will contact you soon with matching
+              options.
+            </p>
+            <ButtonFill
+              text="Get in Touch"
+              onClick={() => setShowLeadForm(true)}
+              className="font-semibold"
+            />
+            <LeadFormModal
+              isOpen={showLeadForm}
+              onClose={() => setShowLeadForm(false)}
+            />
           </div>
         ) : (
           <>
@@ -204,7 +225,7 @@ export default function LeasePageContent() {
                 visible: { transition: { staggerChildren: 0.2 } },
               }}
             >
-              {paginatedProperties.map((p) => (
+              {properties.map((p) => (
                 <motion.div
                   key={p._id}
                   className="overflow-hidden shadow-md hover:shadow-xl transition bg-[var(--desktop-sidebar)] rounded"
@@ -251,7 +272,7 @@ export default function LeasePageContent() {
                     )}
 
                     <ButtonFill
-                      onClick={() => router.push(`/buy/${p.slug}`)}
+                      onClick={() => window.location.assign(`/lease/${p.slug}`)}
                       text="View Details"
                       className="w-full mt-4"
                     />
@@ -263,63 +284,34 @@ export default function LeasePageContent() {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-10">
-                {/* Prev Button */}
                 <button
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className="px-3 py-2 rounded border bg-[var(--white)] hover:bg-[var(--pagination-button)]"
                 >
                   Prev
                 </button>
 
-                {/* Page Numbers */}
-                {(() => {
-                  const pages = [];
-                  const maxVisible = 5; // show 5 pages max at a time
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (num) => (
+                    <button
+                      key={num}
+                      onClick={() => setCurrentPage(num)}
+                      className={`px-3 py-2 rounded border ${
+                        currentPage === num
+                          ? "bg-[var(--primary-color)] text-white"
+                          : "bg-[var(--white)] hover:bg-[var(--pagination-button)]"
+                      }`}
+                    >
+                      {num}
+                    </button>
+                  )
+                )}
 
-                  let startPage = Math.max(
-                    1,
-                    currentPage - Math.floor(maxVisible / 2)
-                  );
-                  const endPage = Math.min(
-                    totalPages,
-                    startPage + maxVisible - 1
-                  );
-
-                  if (endPage - startPage + 1 < maxVisible) {
-                    startPage = Math.max(1, endPage - maxVisible + 1);
-                  }
-
-                  if (startPage > 1) pages.push(1, "...");
-                  for (let i = startPage; i <= endPage; i++) pages.push(i);
-                  if (endPage < totalPages) pages.push("...", totalPages);
-
-                  return pages.map((num, idx) =>
-                    num === "..." ? (
-                      <span key={idx} className="px-3 py-2 text-gray-500">
-                        ...
-                      </span>
-                    ) : (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentPage(Number(num))}
-                        className={`px-3 py-2 rounded border ${
-                          currentPage === num
-                            ? "bg-[var(--primary-color)] text-[var(--white)]"
-                            : "bg-[var(--white)] hover:bg-[var(--pagination-button)]"
-                        }`}
-                      >
-                        {num}
-                      </button>
-                    )
-                  );
-                })()}
-
-                {/* Next Button */}
                 <button
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-3 py-2 rounded border bg-[--white] hover:bg-[var(--pagination-button)] disabled:opacity-50"
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className="px-3 py-2 rounded border bg-[var(--white)] hover:bg-[var(--pagination-button)]"
                 >
                   Next
                 </button>

@@ -6,12 +6,14 @@ import { MapPin, Home } from "lucide-react";
 import banner from "../../../assets/buy-banner.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import ContactInfo from "../../../components/ContactInfo";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import ContactSidebar from "../../../components/ContactSidebar";
 import ButtonFill from "../../../components/Button";
+import LeadForm from "../../../components/LeadForm"; // ✅ your existing form
+import LeadFormModal from "../../../components/LeadPopup";
+import { useProperty } from "@/context/PropertyContext";
 
 interface Property {
   _id: string;
@@ -25,11 +27,10 @@ interface Property {
 }
 
 export default function BuyPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const buyRef = useRef<HTMLDivElement | null>(null);
 
-  const filterOptions = [
+  // Static filters
+  const propertyTypes = [
     { name: "All", value: "all" },
     { name: "Builder Floors", value: "builder-floor" },
     { name: "Apartments", value: "apartment" },
@@ -37,81 +38,70 @@ export default function BuyPageContent() {
     { name: "Farmhouses", value: "farmhouse" },
   ];
 
-  const typeFromQuery = searchParams.get("type") || "all";
-  const locationFromQuery = searchParams.get("location") || "all"; // ⚡ Added
-  const pageFromQuery = parseInt(searchParams.get("page") || "1", 10);
+  const staticLocations = [
+    "All",
+    "DLF Phase 1",
+    "DLF Phase 2",
+    "DLF Phase 3",
+    "DLF Phase 4",
+    "DLF Phase 5",
+    "Sushant Lok 1",
+    "Sushant Lok 2",
+    "Sushant Lok 3",
+    "Sushant Lok 4",
+    "Sushant Lok 5",
+    "MG Road",
+    "Golf Course Road",
+    "Golf Course Ext. Road",
+    "Sector 77 Gurugram Haryana",
+    "Sector 76 Gurugram Haryana",
+    "Sector 102 Gurugram Haryana",
+  ];
 
-  const [selectedType, setSelectedType] = useState(typeFromQuery.toLowerCase());
-  const [selectedLocation, setSelectedLocation] = useState(
-    locationFromQuery.toLowerCase()
-  ); // ⚡ Added
+  const { selectedType, setSelectedType } = useProperty();
+
+  const [selectedLocation, setSelectedLocation] = useState("All");
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-  const [locations, setLocations] = useState<string[]>([]); // ⚡ Added
-
-  // Pagination
-  const [currentPage, setCurrentPage] = useState(pageFromQuery);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [showLeadForm, setShowLeadForm] = useState(false);
   const propertiesPerPage = 9;
 
-  // Fetch properties
+  // Fetch data from backend (with filters + pagination)
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property`)
+    setLoading(true);
+
+    const params = new URLSearchParams({
+      purpose: "buy",
+      type: selectedType || "all", // fallback to 'all' if null
+      location: selectedLocation === "All" ? "all" : selectedLocation,
+      page: currentPage.toString(),
+      limit: propertiesPerPage.toString(),
+    });
+
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property?${params}`)
       .then((res) => res.json())
-      .then((data: Property[]) => {
-        const buyProperties = data.filter(
-          (p: Property) => p.purpose?.toLowerCase() === "buy"
-        );
-
-        setProperties(buyProperties);
-
-        // ✅ Get unique locations (type-safe)
-        const uniqueLocations = Array.from(
-          new Set(
-            buyProperties
-              .map((p) => p.location?.trim())
-              .filter((loc): loc is string => Boolean(loc))
-              .map((loc) => loc.toLowerCase())
-          )
-        ).sort();
-
-        setLocations(["all", ...uniqueLocations]);
-        setLoading(false);
-      })
+      .then(
+        (data: {
+          success: boolean;
+          properties: Property[];
+          total?: number;
+          totalPages?: number;
+          currentPage?: number;
+        }) => {
+          if (data?.success) {
+            setProperties(data.properties);
+            setTotalPages(data.totalPages ?? 1);
+          }
+          setLoading(false);
+        }
+      )
       .catch((err) => {
         console.error(err);
         setLoading(false);
       });
-  }, []);
-
-  // Sync query params
-  useEffect(() => {
-    const queryType = searchParams.get("type") || "all";
-    const queryLoc = searchParams.get("location") || "all";
-    const queryPage = parseInt(searchParams.get("page") || "1", 10);
-
-    setSelectedType(queryType.toLowerCase());
-    setSelectedLocation(queryLoc.toLowerCase());
-    setCurrentPage(queryPage);
-  }, [searchParams]);
-
-  // ⚡ Combined Filter Logic
-  const filtered = properties.filter((p) => {
-    const typeMatch =
-      selectedType === "all" ||
-      p.type?.replace(/\s+/g, "-").toLowerCase() === selectedType;
-    const locationMatch =
-      selectedLocation === "all" ||
-      p.location?.toLowerCase() === selectedLocation;
-    return typeMatch && locationMatch;
-  });
-
-  // Pagination logic
-  const totalPages = Math.ceil(filtered.length / propertiesPerPage);
-  const startIdx = (currentPage - 1) * propertiesPerPage;
-  const paginatedProperties = filtered.slice(
-    startIdx,
-    startIdx + propertiesPerPage
-  );
+  }, [selectedType, selectedLocation, currentPage]);
 
   // Scroll to property section
   const scrollToNext = () => {
@@ -131,7 +121,7 @@ export default function BuyPageContent() {
       <div className="relative h-[70vh] bg-black text-white flex items-center justify-center">
         <Image
           src={banner}
-          alt="Dubai Homes"
+          alt="Buy Properties"
           fill
           className="object-cover opacity-70"
         />
@@ -156,53 +146,45 @@ export default function BuyPageContent() {
         </motion.div>
       </div>
 
+      {/* Filter Section */}
       <motion.div
-        className="sticky top-0 bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-wrap justify-center gap-3 px-3 py-4 tracking-widest overflow-x-hidden"
+        className=" bg-[var(--desktop-sidebar)] shadow-md z-20 flex flex-col md:flex-row md:justify-between items-center gap-4 px-4 py-4 tracking-widest"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        {/* Type Buttons */}
-        {filterOptions.map((opt) => (
-          <button
-            key={opt.value}
-            onClick={() => {
-              setSelectedType(opt.value);
-              setCurrentPage(1);
-              router.push(
-                `/buy?type=${opt.value}&location=${selectedLocation}&page=1`,
-                {
-                  scroll: false,
-                }
-              );
-            }}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
-              selectedType === opt.value
-                ? "bg-[var(--primary-color)] text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
-          >
-            {opt.name}
-          </button>
-        ))}
+        <div></div>
+        {/* Property Type Filter */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {propertyTypes.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => {
+                setSelectedType(opt.value);
+                setCurrentPage(1);
+              }}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${
+                selectedType === opt.value
+                  ? "bg-[var(--primary-color)] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {opt.name}
+            </button>
+          ))}
+        </div>
 
-        {/* ⚡ Location Dropdown */}
+        {/* Static Location Dropdown */}
         <select
           value={selectedLocation}
           onChange={(e) => {
-            const newLoc = e.target.value;
-            setSelectedLocation(newLoc);
+            setSelectedLocation(e.target.value);
             setCurrentPage(1);
-            router.push(`/buy?type=${selectedType}&location=${newLoc}&page=1`, {
-              scroll: false,
-            });
           }}
-          className="px-4 py-2 rounded-full text-sm font-semibold border bg-gray-100 text-gray-700 hover:bg-gray-200"
+          className="px-4 py-2 rounded-full text-sm font-semibold border bg-gray-100 text-gray-700 hover:bg-gray-200 w-52"
         >
-          {locations.map((loc) => (
+          {staticLocations.map((loc) => (
             <option key={loc} value={loc}>
-              {loc === "all"
-                ? "All Locations"
-                : loc.charAt(0).toUpperCase() + loc.slice(1)}
+              {loc === "All" ? "All Locations" : loc}
             </option>
           ))}
         </select>
@@ -214,11 +196,24 @@ export default function BuyPageContent() {
           <p className="text-center py-20 text-gray-500">
             Loading properties...
           </p>
-        ) : paginatedProperties.length === 0 ? (
-          <div className="text-center py-20 text-gray-500 col-span-full tracking-widest">
-            <h2 className="text-2xl font-semibold mb-2">
-              No properties available
+        ) : properties.length === 0 ? (
+          <div className="text-center py-20 text-gray-600 tracking-widest flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-3">
+              Can’t find what you’re looking for?
             </h2>
+            <p className="mb-6">
+              Fill the form and our team will contact you soon with matching
+              options.
+            </p>
+            <ButtonFill
+              text="Get in Touch"
+              onClick={() => setShowLeadForm(true)}
+              className="font-semibold"
+            />
+            <LeadFormModal
+              isOpen={showLeadForm}
+              onClose={() => setShowLeadForm(false)}
+            />
           </div>
         ) : (
           <>
@@ -231,7 +226,7 @@ export default function BuyPageContent() {
                 visible: { transition: { staggerChildren: 0.2 } },
               }}
             >
-              {paginatedProperties.map((p) => (
+              {properties.map((p) => (
                 <motion.div
                   key={p._id}
                   className="overflow-hidden shadow-md hover:shadow-xl transition bg-[var(--desktop-sidebar)] rounded"
@@ -278,7 +273,7 @@ export default function BuyPageContent() {
                     )}
 
                     <ButtonFill
-                      onClick={() => router.push(`/buy/${p.slug}`)}
+                      onClick={() => window.location.assign(`/buy/${p.slug}`)}
                       text="View Details"
                       className="w-full mt-4"
                     />
@@ -290,81 +285,34 @@ export default function BuyPageContent() {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-10">
-                {/* Prev Button */}
                 <button
                   disabled={currentPage === 1}
-                  onClick={() => {
-                    const newPage = currentPage - 1;
-                    setCurrentPage(newPage);
-                    router.push(
-                      `/buy?type=${selectedType}&location=${selectedLocation}&page=${newPage}`,
-                      { scroll: false }
-                    );
-                  }}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className="px-3 py-2 rounded border bg-[var(--white)] hover:bg-[var(--pagination-button)]"
                 >
                   Prev
                 </button>
 
-                {/* Page Numbers */}
-                {(() => {
-                  const pages = [];
-                  const maxVisible = 5; // show 5 pages max at a time
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (num) => (
+                    <button
+                      key={num}
+                      onClick={() => setCurrentPage(num)}
+                      className={`px-3 py-2 rounded border ${
+                        currentPage === num
+                          ? "bg-[var(--primary-color)] text-white"
+                          : "bg-[var(--white)] hover:bg-[var(--pagination-button)]"
+                      }`}
+                    >
+                      {num}
+                    </button>
+                  )
+                )}
 
-                  let startPage = Math.max(
-                    1,
-                    currentPage - Math.floor(maxVisible / 2)
-                  );
-                  const endPage = Math.min(
-                    totalPages,
-                    startPage + maxVisible - 1
-                  );
-
-                  if (endPage - startPage + 1 < maxVisible) {
-                    startPage = Math.max(1, endPage - maxVisible + 1);
-                  }
-
-                  if (startPage > 1) pages.push(1, "...");
-                  for (let i = startPage; i <= endPage; i++) pages.push(i);
-                  if (endPage < totalPages) pages.push("...", totalPages);
-
-                  return pages.map((num, idx) =>
-                    num === "..." ? (
-                      <span key={idx} className="px-3 py-2 text-gray-500">
-                        ...
-                      </span>
-                    ) : (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setCurrentPage(Number(num));
-                          router.push(
-                            `/buy?type=${selectedType}&location=${selectedLocation}&page=${num}`,
-                            { scroll: false }
-                          );
-                        }}
-                        className={`px-3 py-2 rounded border ${
-                          currentPage === num
-                            ? "bg-[var(--primary-color)] text-[var(--white)]"
-                            : "bg-[var(--white)] hover:bg-[var(--pagination-button)]"
-                        }`}
-                      >
-                        {num}
-                      </button>
-                    )
-                  );
-                })()}
-
-                {/* Next Button */}
                 <button
                   disabled={currentPage === totalPages}
-                  onClick={() => {
-                    const newPage = currentPage + 1;
-                    setCurrentPage(newPage);
-                    router.push(
-                      `/buy?type=${selectedType}&location=${selectedLocation}&page=${newPage}`,
-                      { scroll: false }
-                    );
-                  }}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className="px-3 py-2 rounded border bg-[var(--white)] hover:bg-[var(--pagination-button)]"
                 >
                   Next
                 </button>

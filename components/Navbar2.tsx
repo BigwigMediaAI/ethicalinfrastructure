@@ -21,6 +21,7 @@ import { BiMenu, BiX, BiChevronDown, BiChevronRight } from "react-icons/bi";
 import logo from "../assets/logo.png";
 import ThemeToggle from "./Theme-toggle";
 import { usePathname } from "next/navigation";
+import { useProperty } from "@/context/PropertyContext";
 
 const Navbar2 = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,6 +29,8 @@ const Navbar2 = () => {
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const { setSelectedType } = useProperty();
 
   const navItems = [
     { name: "Home", path: "/", icon: <FaHome /> },
@@ -39,10 +42,10 @@ const Navbar2 = () => {
           name: "Buy",
           path: "/buy",
           subDropdown: [
-            { name: "Builder Floor", path: "/buy?type=builder-floor" },
-            { name: "Apartment", path: "/buy?type=apartment" },
-            { name: "Villa", path: "/buy?type=villa" },
-            { name: "Farmhouse", path: "/buy?type=farmhouse" },
+            { name: "Builder-Floor" },
+            { name: "Apartment" },
+            { name: "Villa" },
+            { name: "Farmhouse" },
           ],
         },
         { name: "Sell", path: "/sell" },
@@ -183,6 +186,7 @@ const Navbar2 = () => {
                       >
                         <Link
                           href={drop.path}
+                          onClick={() => setSelectedType("all")}
                           className="flex justify-between items-center px-4 py-2 text-sm text-[var(--text)] hover:text-[var(--hover-color)] w-full"
                         >
                           <span>{drop.name}</span>
@@ -196,7 +200,10 @@ const Navbar2 = () => {
                             {drop.subDropdown.map((sub) => (
                               <li key={sub.name}>
                                 <Link
-                                  href={sub.path}
+                                  href="/buy" // always go to /buy
+                                  onClick={() =>
+                                    setSelectedType(sub.name.toLowerCase())
+                                  } // update context
                                   className="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--featured)] hover:text-[var(--hover-color)] border-b-[0.5px] border-[var(--primary-color)]"
                                 >
                                   {sub.name}
