@@ -99,7 +99,7 @@ export default async function BlogDetails({
       </section>
 
       {blog.coverImage && (
-        <div className="relative w-11/12 md:w-5/6 mx-auto h-[300px] md:h-[500px] overflow-hidden rounded-xl">
+        <div className="relative w-11/12 md:w-5/6 mx-auto h-[300px] md:h-[600px] overflow-hidden rounded-xl">
           <Image
             src={blog.coverImage}
             alt={blog.title}
@@ -110,13 +110,13 @@ export default async function BlogDetails({
         </div>
       )}
 
-      <div className="w-11/12 md:w-5/6 mx-auto my-10">
+      <div className="w-11/12 md:w-5/6 mx-auto mb-10">
         <div
           className="blog-content"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
 
-        {relatedBlogs.length > 0 && (
+        {/* {relatedBlogs.length > 0 && (
           <aside className="lg:col-span-1 bg-[var(--desktop-sidebar)] p-5 rounded-2xl shadow-sm h-fit mt-10">
             <h2 className="text-2xl font-semibold mb-4 text-[var(--title)] border-b border-gray-200 pb-2">
               Related Blogs
@@ -131,7 +131,7 @@ export default async function BlogDetails({
               ))}
             </div>
           </aside>
-        )}
+        )} */}
       </div>
 
       <ContactInfo />
