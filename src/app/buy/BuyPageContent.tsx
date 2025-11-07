@@ -243,7 +243,9 @@ export default function BuyPageContent() {
                         alt={p.title}
                         fill
                         className="object-cover rounded"
-                        unoptimized
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        placeholder="blur"
+                        blurDataURL="/blur-placeholder.jpg" // a tiny base64 or small image
                       />
                     ) : (
                       <div className="h-64 flex items-center justify-center bg-gray-100 text-gray-400">
