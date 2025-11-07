@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { MapPin, Home } from "lucide-react";
-import banner from "../../../assets/buy-banner.jpg";
+import banner from "../../../assets/property (1).jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { motion } from "framer-motion";
