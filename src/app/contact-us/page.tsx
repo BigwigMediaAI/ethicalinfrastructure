@@ -4,7 +4,7 @@ import { Mail, Phone } from "lucide-react";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-import banner from "../../../assets/contact.webp";
+import banner from "../../../assets/contact.jpg";
 import Image from "next/image";
 import ContactSidebar from "../../../components/ContactSidebar";
 import Link from "next/link";
@@ -24,7 +24,7 @@ export default function ContactPage() {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
 
         {/* Content */}
         <div className="relative text-white z-20">

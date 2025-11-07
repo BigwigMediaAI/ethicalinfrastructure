@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import bgImage from "../../../assets/aboutus.jpg";
+import bgImage from "../../../assets/about.jpg";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { Building2, Armchair, Ruler } from "lucide-react";
@@ -33,7 +33,7 @@ const AboutHero = () => {
           alt="About Us Background"
           fill
           priority
-          className="object-cover brightness-50"
+          className="object-cover brightness-75"
         />
         <div className="relative text-center text-white px-4">
           <h1 className="text-4xl md:text-5xl mt-20 font-bold mb-4 tracking-widest">
