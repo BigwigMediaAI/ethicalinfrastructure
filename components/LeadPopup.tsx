@@ -216,6 +216,7 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
               <option value="Builder Floor">Builder Floor</option>
               <option value="Villa">Villa</option>
               <option value="Farmhouse">Farmhouse</option>
+              <option value="Plot">Plot</option>
             </select>
 
             <select
@@ -224,9 +225,9 @@ const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
               onChange={handleChange}
               className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#021A33]"
             >
-              <option value="Below ₹1Cr">Below ₹1Cr</option>
-              <option value="₹1Cr - ₹2Cr">₹1Cr - ₹2Cr</option>
-              <option value="₹2Cr - ₹5Cr">₹2Cr - ₹5Cr</option>
+              <option value="₹2Cr - ₹3Cr">₹2Cr - ₹3Cr</option>
+              <option value="₹3Cr - ₹4Cr">₹3Cr - ₹4Cr</option>
+              <option value="₹4Cr - ₹5Cr">₹4Cr - ₹5Cr</option>
               <option value="Above ₹5Cr">Above ₹5Cr</option>
             </select>
 

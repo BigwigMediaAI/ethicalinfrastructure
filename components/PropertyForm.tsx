@@ -1,6 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+
+const reorder = <T,>(list: T[], startIndex: number, endIndex: number): T[] => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+  return result;
+};
 
 interface PropertyFormProps {
   property?: PropertyData;
@@ -283,27 +291,67 @@ export default function PropertyForm({
 
       {/* Images */}
       <div>
+        {/* Existing Images */}
         {existingImages.length > 0 && (
           <>
             <label className="block font-medium mb-2">Existing Images</label>
-            <div className="grid grid-cols-4 gap-3">
-              {existingImages.map((url, idx) => (
-                <div key={idx} className="relative group">
-                  <img
-                    src={url}
-                    alt="existing"
-                    className="w-full h-24 object-cover rounded-lg shadow"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveExistingImage(url)}
-                    className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+
+            <DragDropContext
+              onDragEnd={(result) => {
+                if (!result.destination) return;
+                const reordered = reorder(
+                  existingImages,
+                  result.source.index,
+                  result.destination.index
+                );
+                setExistingImages(reordered);
+              }}
+            >
+              <Droppable droppableId="existing-images">
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
                   >
-                    ✕
-                  </button>
-                </div>
-              ))}
-            </div>
+                    {existingImages.map((url, idx) => (
+                      <Draggable key={url} draggableId={url} index={idx}>
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className={`relative group cursor-grab rounded-lg overflow-hidden border ${
+                              snapshot.isDragging
+                                ? "border-blue-500 scale-105"
+                                : ""
+                            } transition-transform duration-150`}
+                          >
+                            <img
+                              src={url}
+                              alt={`existing-${idx}`}
+                              className="w-full h-32 object-cover rounded-lg"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveExistingImage(url)}
+                              className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                              ✕
+                            </button>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+
+            <p className="text-sm text-gray-400 mt-2">
+              💡 Drag images to reorder — changes will be saved when you update.
+            </p>
           </>
         )}
 

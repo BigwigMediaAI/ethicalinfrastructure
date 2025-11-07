@@ -46,6 +46,7 @@ const Navbar2 = () => {
             { name: "Apartment" },
             { name: "Villa" },
             { name: "Farmhouse" },
+            { name: "Plot" },
           ],
         },
         { name: "Sell", path: "/sell" },

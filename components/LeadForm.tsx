@@ -114,12 +114,12 @@ const LeadForm: React.FC = () => {
   return (
     <section className="w-full bg-[var(--white)] text-[var(--black)] overflow-hidden flex flex-col md:flex-row">
       <div className="w-full">
-        <h3 className="text-[var(--primary-color)] text-sm uppercase tracking-widest">
+        <h3 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--primary-color)]">
           Get In Touch
         </h3>
-        <p className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
+        {/* <p className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
           Reach us in a few clicks
-        </p>
+        </p> */}
 
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           {/* Name */}
@@ -201,6 +201,7 @@ const LeadForm: React.FC = () => {
             <option value="Builder Floor">Builder Floor</option>
             <option value="Villa">Villa</option>
             <option value="Farmhouse">Farmhouse</option>
+            <option value="Plot">Plot</option>
           </select>
           {errors.requirements && (
             <p className="text-red-500 text-sm">{errors.requirements}</p>
@@ -214,10 +215,10 @@ const LeadForm: React.FC = () => {
             className="border border-gray-300 bg-[var(--white)] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#CE9C81]"
           >
             <option value="">Select Budget Range*</option>
-            <option value="Under ₹1 Crore">Under ₹1 Crore</option>
-            <option value="₹1 Crore - ₹2 Crore">₹1 Crore - ₹2 Crore</option>
-            <option value="₹2 Crore - ₹5 Crore">₹2 Crore - ₹5 Crore</option>
-            <option value="Above ₹5 Crore">Above ₹5 Crore</option>
+            <option value="₹2Cr - ₹3Cr">₹2Cr - ₹3Cr</option>
+            <option value="₹3Cr - ₹4Cr">₹3Cr - ₹4Cr</option>
+            <option value="₹4Cr - ₹5Cr">₹4Cr - ₹5Cr</option>
+            <option value="Above ₹5Cr">Above ₹5Cr</option>
           </select>
           {errors.budget && (
             <p className="text-red-500 text-sm">{errors.budget}</p>

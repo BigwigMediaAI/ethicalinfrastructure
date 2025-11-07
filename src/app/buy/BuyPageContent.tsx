@@ -36,6 +36,7 @@ export default function BuyPageContent() {
     { name: "Apartments", value: "apartment" },
     { name: "Villas", value: "villa" },
     { name: "Farmhouses", value: "farmhouse" },
+    { name: "Plots", value: "plot" },
   ];
 
   const staticLocations = [
@@ -135,7 +136,7 @@ export default function BuyPageContent() {
             Find Your Dream Home
           </h1>
           <p className="mt-4 text-lg tracking-widest">
-            Builder Floors • Apartments • Villas • Farmhouses
+            Builder Floors • Apartments • Villas • Farmhouses • Plots
           </p>
           <button
             onClick={scrollToNext}
@@ -202,8 +203,7 @@ export default function BuyPageContent() {
               Can’t find what you’re looking for?
             </h2>
             <p className="mb-6">
-              Fill the form and our team will contact you soon with matching
-              options.
+              Fill the form, and our team will contact with relevant options.
             </p>
             <ButtonFill
               text="Get in Touch"
