@@ -39,7 +39,7 @@ export default function PropertyGrid() {
         const res = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE}/property`
         );
-        setProperties(res.data);
+        setProperties(res.data.properties);
       } catch (err) {
         console.error("Failed to fetch properties:", err);
       } finally {
