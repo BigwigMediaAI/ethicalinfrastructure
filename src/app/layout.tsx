@@ -26,6 +26,26 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* <!-- Open Graph Meta Tags --> */}
+        <meta
+          property="og:title"
+          content="Ethical Infrastructures Pvt Ltd | Real Estate in Gurugram"
+        />
+        <meta
+          property="og:site_name"
+          content="Ethical Infrastructures Pvt Ltd"
+        />
+        <meta property="og:url" content="https://www.eipl.co/" />
+        <meta
+          property="og:description"
+          content="Discover trusted real estate solutions in Gurugram with Ethical Infrastructures. Expert guidance for residential, commercial, and industrial properties."
+        />
+        <meta
+          property="og:image"
+          content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75&dpl=dpl_GFYV9DHiQvmLtnjCNteqBUbAgF9L"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
         {/* ✅ Google Site Verification */}
         <meta
           name="google-site-verification"
