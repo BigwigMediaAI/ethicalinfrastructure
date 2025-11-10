@@ -339,14 +339,14 @@ export default function BuyDetails() {
           <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Features & Amenities
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <div className="flex flex-wrap gap-3">
             {property.featuresAmenities.map((f, idx) => (
               <div
                 key={idx}
-                className="flex flex-row items-center justify-evenly text-center bg-[var(--featured)] rounded-lg shadow text-[var(--text)] p-4 min-h-[100px]"
+                className="px-4 py-2 bg-[var(--featured)] rounded-full shadow text-sm text-[var(--text)] text-center"
               >
-                <span className="text-lg mb-2">⭐</span>
-                <p className="text-sm md:text-sm leading-snug">{f}</p>
+                {/* <span className="text-lg mb-2">⭐</span> */}
+                <p className="text-sm md:text-base leading-snug">{f}</p>
               </div>
             ))}
           </div>

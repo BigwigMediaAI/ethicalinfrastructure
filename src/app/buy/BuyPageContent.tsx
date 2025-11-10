@@ -57,6 +57,7 @@ export default function BuyPageContent() {
     "Sector 77 Gurugram Haryana",
     "Sector 76 Gurugram Haryana",
     "Sector 102 Gurugram Haryana",
+    "Sector 59 Gurugram Haryana",
   ];
 
   const { selectedType, setSelectedType } = useProperty();
