@@ -35,6 +35,8 @@ interface PropertyData {
   videoLink: string;
   images: string[];
   builder: string;
+  metatitle?: string; // ✅ new field
+  metadescription?: string;
 }
 
 type ArrayFields =
@@ -69,6 +71,8 @@ export default function PropertyForm({
     googleMapUrl: "",
     videoLink: "",
     builder: "",
+    metatitle: "", // ✅ initialize
+    metadescription: "",
   });
 
   const [arrayInputs, setArrayInputs] = useState<Record<ArrayFields, string>>({
@@ -98,6 +102,8 @@ export default function PropertyForm({
         googleMapUrl: property.googleMapUrl,
         videoLink: property.videoLink,
         builder: property.builder,
+        metatitle: property.metatitle || "", // ✅ prefill
+        metadescription: property.metadescription || "",
       });
 
       setArrayInputs({
@@ -219,6 +225,26 @@ export default function PropertyForm({
             required
           />
         </div>
+      </div>
+      {/* ✅ Meta SEO fields */}
+
+      <InputField
+        label="Meta Title"
+        name="metatitle"
+        value={formData.metatitle || ""}
+        onChange={handleChange}
+        placeholder="Enter Meta Title"
+      />
+      <div>
+        <label className="block font-medium mb-1">Meta Description</label>
+        <textarea
+          name="metadescription"
+          value={formData.metadescription || ""}
+          onChange={handleChange}
+          className="w-full rounded-lg p-3 border border-gray-300 focus:ring text-white"
+          rows={3}
+          placeholder="Enter Meta Description"
+        />
       </div>
 
       {/* Basic Info */}

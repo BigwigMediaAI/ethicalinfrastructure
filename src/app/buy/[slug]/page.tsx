@@ -45,6 +45,8 @@ interface Property {
   description: string;
   googleMapUrl?: string;
   brochure?: string;
+  metatitle: string;
+  metadescription: string;
 }
 
 export default function BuyDetails() {
@@ -156,6 +158,8 @@ export default function BuyDetails() {
 
   return (
     <div className="   transition-colors duration-300">
+      <title>{property.metatitle}</title>
+      <meta name="description" content={property.metadescription} />
       <Navbar />
 
       {/* Hero with overlay */}
