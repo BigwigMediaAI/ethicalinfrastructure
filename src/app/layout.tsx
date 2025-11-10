@@ -31,6 +31,50 @@ export default function RootLayout({
           name="google-site-verification"
           content="Q1CXFjS4LoeATJZZmDq3iUY5hpOgG2_16oPF_DVp_h0"
         />
+        <Script
+          id="realestate-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "@id": "https://www.eipl.co/#localbusiness",
+            name: "Ethical Infrastructures Pvt. Ltd.",
+            image:
+              "https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75&dpl=dpl_5X1AyLqsAPQrT6GF5v8wvfvB2bvX",
+            url: "https://www.eipl.co",
+            telephone: ["+91-9999000183", "+91-9810010922"],
+            priceRange: "₹₹₹",
+            description:
+              "The Real Estate market in India is complex in terms of distinctive demand and supply propellers, restrictive legislation, land use patterns and regional variations in property markets, which makes it indispensable to use specialized real estate services. With a team of experienced professionals, Ethical Infrastructures Pvt. Ltd. provides reliable and transparent property consulting services in Gurugram.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "A-26/12B, A Block, DLF Phase 1",
+              addressLocality: "Gurugram",
+              addressRegion: "Haryana",
+              postalCode: "122001",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 28.4667,
+              longitude: 77.0837,
+            },
+            openingHours: "Mo-Sa 10:00-19:00",
+            sameAs: [
+              "https://www.facebook.com/profile.php?id=61581857552733",
+              "https://www.linkedin.com/company/109224060/admin/dashboard/",
+              "https://www.instagram.com/ethical.infrastructure?igsh=MXh4NWVpbmw5eTg0eQ%3D%3D&utm_source=qr",
+              "https://www.youtube.com/channel/UC_PoUpH4pZvbWr7oTE8-BqQ",
+            ],
+            foundingDate: "2007",
+            founder: {
+              "@type": "Person",
+              name: "Mr. Sorabh Chopra",
+            },
+          })}
+        </Script>
       </head>
 
       <body className={`${tinos.className} antialiased`}>
