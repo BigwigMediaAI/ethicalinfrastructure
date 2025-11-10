@@ -47,7 +47,7 @@ export async function generateMetadata({
     title: blog.title,
     description: blog.excerpt,
     alternates: {
-      canonical: `https://www.stellarbinge.com/blogs/${blog.slug}`,
+      canonical: `https://www.eipl.co/blogs/${blog.slug}`,
     },
   };
 }
