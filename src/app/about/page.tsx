@@ -24,6 +24,11 @@ const AboutHero = () => {
   }, []);
   return (
     <>
+      <title>About Ethical Infrastructures – Trusted Realtors in Gurgaon</title>
+      <meta
+        name="description"
+        content="Ethical Infrastructures delivers transparent, ethical, and premium property solutions across Gurgaon’s luxury real estate market."
+      />
       <Navbar />
 
       {/* HERO SECTION */}

@@ -12,6 +12,13 @@ import Link from "next/link";
 export default function ContactPage() {
   return (
     <div className="  min-h-screen ">
+      <title>
+        Contact Ethical Infrastructures – Gurgaon Real Estate Experts
+      </title>
+      <meta
+        name="description"
+        content="Get in touch with Ethical Infrastructures for buying, selling, or leasing premium properties in Gurgaon."
+      />
       <Navbar />
 
       {/* Hero Section */}

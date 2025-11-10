@@ -117,6 +117,11 @@ export default function BuyPageContent() {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
+      <title>Buy Property in Gurgaon – Luxury Homes & Builder Floors</title>
+      <meta
+        name="description"
+        content="Explore luxury builder floors, villas, and apartments for sale in Gurgaon’s prime locations with Ethical Infrastructures."
+      />
       <Navbar />
 
       {/* Hero Section */}

@@ -33,6 +33,13 @@ export default function Home() {
   }, []);
   return (
     <>
+      <title>
+        Ethical Infrastructures – Best Real Estate Company in Gurgaon
+      </title>
+      <meta
+        name="description"
+        content="Buy, sell, or lease premium properties in Gurgaon with Ethical Infrastructures – trusted, transparent, and expert real estate services."
+      />
       <Navbar />
       <Hero />
       <OurSegments />

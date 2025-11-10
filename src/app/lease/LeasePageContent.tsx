@@ -114,6 +114,11 @@ export default function LeasePageContent() {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
+      <title>Lease Property in Gurgaon – Verified Homes & Offices</title>
+      <meta
+        name="description"
+        content="Find verified residential and commercial leasing options in Gurgaon with Ethical Infrastructures’ trusted services."
+      />
       <Navbar />
 
       {/* Hero Section */}

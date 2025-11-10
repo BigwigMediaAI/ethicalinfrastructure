@@ -71,6 +71,11 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen py-32">
+      <title>Real Estate Blogs & Market Insights – Gurgaon</title>
+      <meta
+        name="description"
+        content="Read expert blogs on Gurgaon real estate, property trends, and investment insights from Ethical Infrastructures."
+      />
       <Navbar2 />
 
       <h2 className="text-4xl font-bold text-[var(--title)] pt-6 text-center">

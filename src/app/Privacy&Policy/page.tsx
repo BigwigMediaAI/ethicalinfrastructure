@@ -7,6 +7,11 @@ import Navbar2 from "../../../components/Navbar2";
 export default function PrivacyPolicyPage() {
   return (
     <div>
+      <title>Privacy Policy – Ethical Infrastructures</title>
+      <meta
+        name="description"
+        content="Learn how Ethical Infrastructures protects your data and ensures secure real estate transactions in Gurgaon."
+      />
       <Navbar2 />
       <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-20 lg:px-40">

@@ -46,6 +46,11 @@ function Sell() {
 
   return (
     <div>
+      <title>Sell Property in Gurgaon – Get Best Market Value</title>
+      <meta
+        name="description"
+        content="Sell your residential or commercial property in Gurgaon with expert guidance, transparency, and maximum returns."
+      />
       <Navbar />
 
       {/* Hero Section */}

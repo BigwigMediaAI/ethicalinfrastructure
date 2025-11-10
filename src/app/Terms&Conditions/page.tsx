@@ -9,6 +9,11 @@ import Navbar2 from "../../../components/Navbar2";
 export default function TermsAndConditionsPage() {
   return (
     <div>
+      <title>Terms & Conditions – Ethical Infrastructures</title>
+      <meta
+        name="description"
+        content="Review the terms and conditions for Ethical Infrastructures’ trusted real estate services in Gurgaon."
+      />
       <Navbar2 />
       <main className="min-h-screen bg-[var(--white)] text-[var(--text)]">
         <section className="w-full py-16 px-6 md:px-24 lg:px-48">
