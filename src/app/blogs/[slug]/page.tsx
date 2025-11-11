@@ -76,6 +76,18 @@ export default async function BlogDetails({
 
   return (
     <div className=" min-h-screen">
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta property="og:title" content={blog.title} />
+      <meta property="og:description" content={blog.excerpt} />
+      <meta property="og:type" content="article" />
+      <meta
+        property="og:url"
+        content={`https://www.eipl.co/blogs/${blog.slug}`}
+      />
+      <meta property="og:image" content={blog.coverImage} />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:locale" content="en_US" />
+
       {/* Schema Markup */}
       {Array.isArray(blog.schemaMarkup) &&
         blog.schemaMarkup.map((markup, idx) => (
