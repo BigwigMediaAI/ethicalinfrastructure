@@ -29,7 +29,7 @@ export default function ContactPage() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
-
+      <link rel="canonical" href="https://www.eipl.co/contact-us" />
       <title>
         Contact Ethical Infrastructures – Gurgaon Real Estate Experts
       </title>

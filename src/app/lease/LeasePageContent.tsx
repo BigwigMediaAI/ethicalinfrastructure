@@ -131,7 +131,7 @@ export default function LeasePageContent() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
-
+      <link rel="canonical" href="https://www.eipl.co/lease" />
       <title>Lease Property in Gurgaon – Verified Homes & Offices</title>
       <meta
         name="description"

@@ -172,7 +172,7 @@ export default function BuyDetails() {
       />
       <meta property="og:type" content="product" />
       <meta property="og:locale" content="en_IN" />
-
+      <link rel="canonical" href={`https://www.eipl.co/buy/${property.slug}`} />
       <title>{property.metatitle}</title>
       <meta name="description" content={property.metadescription} />
       <Navbar />

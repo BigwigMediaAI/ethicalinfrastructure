@@ -63,7 +63,7 @@ function Sell() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
-
+      <link rel="canonical" href="https://www.eipl.co/sell" />
       <title>Sell Property in Gurgaon – Get Best Market Value</title>
       <meta
         name="description"

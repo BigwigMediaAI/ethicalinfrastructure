@@ -134,7 +134,7 @@ export default function BuyPageContent() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
-
+      <link rel="canonical" href="https://www.eipl.co/buy" />
       <title>Buy Property in Gurgaon – Luxury Homes & Builder Floors</title>
       <meta
         name="description"

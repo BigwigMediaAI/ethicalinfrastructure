@@ -50,6 +50,7 @@ export default function Home() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
+      <link rel="canonical" href="https://www.eipl.co/" />
       <title>
         Ethical Infrastructures – Best Real Estate Company in Gurgaon
       </title>
