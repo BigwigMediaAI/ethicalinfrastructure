@@ -31,7 +31,7 @@ export async function generateMetadata({
       description: property.metadescription || property.description,
       url: `https://www.eipl.co/buy/${property.slug}`,
       siteName: "Ethical Infrastructures Pvt Ltd",
-      type: "website",
+      type: "website", // ✅ Use "website" instead of "product"
       locale: "en_IN",
       images: [
         {
@@ -62,5 +62,5 @@ export default async function BuyDetailsPage({
   params: { slug: string };
 }) {
   const property = await getProperty(params.slug);
-  return <BuyDetailsClient />;
+  return <BuyDetailsClient propertyData={property} />;
 }

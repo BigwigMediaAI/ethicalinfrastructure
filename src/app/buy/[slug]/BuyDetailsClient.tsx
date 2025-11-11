@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import "swiper/css";
@@ -11,18 +10,17 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 
-import { MapPin, BedDouble, Home, Phone } from "lucide-react";
+import { MapPin, BedDouble, Phone } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
-// import HelpSection from "../../../../components/HelpSection";
-import "aos/dist/aos.css"; // CSS is fine at the top
+import "aos/dist/aos.css";
 import ContactInfo from "../../../../components/ContactInfo";
-import Link from "next/link";
 import ContactSidebar from "../../../../components/ContactSidebar";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 import ButtonFill from "../../../../components/Button";
 
@@ -49,10 +47,12 @@ interface Property {
   metadescription: string;
 }
 
-export default function BuyDetails() {
-  const { slug } = useParams();
-  const [property, setProperty] = useState<Property | null>(null);
-  const [loading, setLoading] = useState(true);
+interface BuyDetailsProps {
+  propertyData: Property;
+}
+
+export default function BuyDetails({ propertyData }: BuyDetailsProps) {
+  const [property] = useState<Property>(propertyData);
 
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [leadData, setLeadData] = useState({
@@ -61,8 +61,10 @@ export default function BuyDetails() {
     countryCode: "+91",
   });
   const [loadingLead, setLoadingLead] = useState(false);
-  const [showLeadForm, setShowLeadForm] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
   useEffect(() => {
     const submitted = sessionStorage.getItem("brochureLeadSubmitted");
@@ -73,30 +75,9 @@ export default function BuyDetails() {
       const AOS = await import("aos");
       AOS.init({ duration: 1000, once: true, offset: 100 });
     })();
-  }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    if (!slug) return;
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property/${slug}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProperty(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [slug]);
-
-  if (loading)
-    return <p className="text-center mt-20 text-xl">Loading property...</p>;
-  if (!property)
-    return <p className="text-center mt-20 text-xl">Property not found</p>;
 
   const displayedImages = property?.images?.slice(0, 7) || [];
   const extraCount = (property?.images?.length || 0) - displayedImages.length;
@@ -105,7 +86,6 @@ export default function BuyDetails() {
     setLeadData({ ...leadData, [e.target.name]: e.target.value });
   };
 
-  // Lead submission handler
   const handleSubmitLead = async () => {
     if (!leadData.name || !/^\d{10}$/.test(leadData.phone)) {
       alert("Please enter a valid name and 10-digit phone number.");
@@ -125,11 +105,8 @@ export default function BuyDetails() {
 
       if (!res.ok) throw new Error("Failed to submit lead");
 
-      // Mark as submitted in sessionStorage globally for the session
       sessionStorage.setItem("brochureLeadSubmitted", "true");
       setLeadSubmitted(true);
-
-      // Close modal & open brochure
       setIsLeadModalOpen(false);
       window.open(property.brochure, "_blank");
     } catch (err) {
@@ -140,27 +117,25 @@ export default function BuyDetails() {
     }
   };
 
-  function getYouTubeEmbedUrl(url: string) {
+  const getYouTubeEmbedUrl = (url: string) => {
     try {
       const parsedUrl = new URL(url);
       if (parsedUrl.hostname.includes("youtu.be")) {
         return `https://www.youtube.com/embed/${parsedUrl.pathname.slice(1)}`;
       } else if (parsedUrl.hostname.includes("youtube.com")) {
-        return `https://www.youtube.com/embed/${parsedUrl.searchParams.get(
-          "v"
-        )}`;
+        return `https://www.youtube.com/embed/${parsedUrl.searchParams.get("v")}`;
       }
       return null;
     } catch {
       return null;
     }
-  }
+  };
 
   return (
-    <div className="   transition-colors duration-300">
+    <div className="transition-colors duration-300">
       <Navbar />
 
-      {/* Hero with overlay */}
+      {/* Hero Slider */}
       <section className="relative h-[50vh] md:h-[80vh]">
         <Swiper
           modules={[Navigation, Autoplay]}
@@ -169,7 +144,7 @@ export default function BuyDetails() {
           loop
           className="h-full"
         >
-          {property?.images?.map((img, idx) => (
+          {property.images.map((img, idx) => (
             <SwiperSlide key={idx}>
               <div className="relative w-full h-full">
                 <Image
@@ -187,7 +162,7 @@ export default function BuyDetails() {
 
       {/* Split Layout */}
       <section className="grid md:grid-cols-2 gap-10 w-11/12 md:w-5/6 mx-auto py-16">
-        {/* Gallery - Left Side */}
+        {/* Gallery */}
         <div className="columns-2 gap-4 space-y-4">
           {displayedImages.map((img, idx) => (
             <div
@@ -196,14 +171,14 @@ export default function BuyDetails() {
                 setPhotoIndex(idx);
                 setIsOpen(true);
               }}
-              className="relative overflow-hidden  shadow cursor-pointer"
+              className="relative overflow-hidden shadow cursor-pointer"
             >
               <Image
                 src={img}
                 alt={`Gallery ${idx}`}
                 width={600}
                 height={400}
-                className=" hover:scale-105 transition"
+                className="hover:scale-105 transition"
               />
             </div>
           ))}
@@ -220,9 +195,8 @@ export default function BuyDetails() {
           )}
         </div>
 
-        {/* Info + Description - Right Side */}
+        {/* Info + Description */}
         <div className="sticky top-24 self-start space-y-6">
-          {/* Title + Location + Price */}
           <h1 className="text-3xl font-bold text-[var(--title)]">
             {property.title}
           </h1>
@@ -237,38 +211,30 @@ export default function BuyDetails() {
             </p>
           )}
 
-          {/* Badges */}
           <div className="flex flex-wrap gap-3">
-            {/* {property.purpose && (
-              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
-                <Home size={18} /> {property.purpose}
-              </span>
-            )} */}
             {property.bedrooms && (
-              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
+              <span className="px-4 py-2 bg-gray-100 rounded-lg shadow flex items-center gap-2 text-gray-800">
                 <BedDouble size={18} /> {property.bedrooms} Beds
               </span>
             )}
             {property.bathrooms && (
-              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
+              <span className="px-4 py-2 bg-gray-100 rounded-lg shadow flex items-center gap-2 text-gray-800">
                 🛁 {property.bathrooms} Baths
               </span>
             )}
             {property.areaSqft && (
-              <span className="px-4 py-2 bg-gray-100  rounded-lg shadow flex items-center gap-2 text-gray-800">
+              <span className="px-4 py-2 bg-gray-100 rounded-lg shadow flex items-center gap-2 text-gray-800">
                 📐 {property.areaSqft} Sqft
               </span>
             )}
           </div>
 
-          {/* Description */}
           <h2 className="text-xl font-semibold mt-6">About this Property</h2>
           <p className="text-lg text-[var(--text)] leading-relaxed">
             {property.description}
           </p>
 
-          {/* Highlights */}
-          {property?.highlights?.length > 0 && (
+          {property.highlights.length > 0 && (
             <>
               <h3 className="text-lg font-semibold mt-6">Highlights</h3>
               <div className="flex flex-wrap gap-3">
@@ -284,24 +250,17 @@ export default function BuyDetails() {
             </>
           )}
 
-          {/* Brochure Section */}
-          {/* Brochure Section */}
           {property.brochure && (
             <section className="mt-6">
               <h2 className="text-xl font-semibold text-[var(--title)] mb-4">
                 Brochure
               </h2>
-
               <ButtonFill
-                onClick={() => {
-                  if (leadSubmitted) {
-                    // If already submitted in this session, open brochure directly
-                    window.open(property.brochure, "_blank");
-                  } else {
-                    // Open modal to submit lead
-                    setIsLeadModalOpen(true);
-                  }
-                }}
+                onClick={() =>
+                  leadSubmitted
+                    ? window.open(property.brochure, "_blank")
+                    : setIsLeadModalOpen(true)
+                }
                 text="📄 View Brochure"
               />
             </section>
@@ -335,8 +294,8 @@ export default function BuyDetails() {
         </section>
       )}
 
-      {/* Features */}
-      {property?.featuresAmenities?.length > 0 && (
+      {/* Features & Nearby */}
+      {property.featuresAmenities.length > 0 && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
           <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Features & Amenities
@@ -347,7 +306,6 @@ export default function BuyDetails() {
                 key={idx}
                 className="px-4 py-2 bg-[var(--featured)] rounded-full shadow text-sm text-[var(--text)] text-center"
               >
-                {/* <span className="text-lg mb-2">⭐</span> */}
                 <p className="text-sm md:text-base leading-snug">{f}</p>
               </div>
             ))}
@@ -355,8 +313,7 @@ export default function BuyDetails() {
         </section>
       )}
 
-      {/* Nearby */}
-      {property?.nearby?.length > 0 && (
+      {property.nearby.length > 0 && (
         <section className="w-11/12 md:w-5/6 mx-auto py-12">
           <h2 className="text-3xl font-semibold mb-6 text-[var(--title)]">
             Nearby Places
@@ -390,12 +347,13 @@ export default function BuyDetails() {
         </section>
       )}
 
-      {/* Floating Contact Widget */}
+      {/* Floating Contact */}
       <Link href="tel:919999000183">
         <div className="fixed bottom-6 right-6 bg-[var(--primary-color)] text-black p-4 rounded-full shadow-xl flex items-center gap-2 cursor-pointer hover:scale-105 transition">
           <Phone />
         </div>
       </Link>
+
       <ContactInfo />
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
         <div className="w-1/2 bg-[var(--primary-color)] text-white text-center py-3">
@@ -423,7 +381,7 @@ export default function BuyDetails() {
       <div className="hidden md:block">
         <ContactSidebar />
       </div>
-      {/* <HelpSection /> */}
+
       <Footer />
 
       {/* Lightbox */}
@@ -489,6 +447,7 @@ export default function BuyDetails() {
                   title="Please enter a valid 10-digit phone number"
                 />
               </div>
+
               <ButtonFill
                 onClick={handleSubmitLead}
                 text={loadingLead ? "Submitting..." : "Submit & View Brochure"}
