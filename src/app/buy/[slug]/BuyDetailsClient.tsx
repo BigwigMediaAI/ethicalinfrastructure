@@ -145,23 +145,6 @@ export default function BuyDetailsClient({ property }: { property: Property }) {
 
   return (
     <div className="   transition-colors duration-300">
-      {/* <!-- Open Graph Meta Tags --> */}
-      <meta property="og:title" content={property.metatitle} />
-      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
-      <meta
-        property="og:url"
-        content={`https://www.eipl.co/buy/${property.slug}`}
-      />
-      <meta property="og:description" content={property.metadescription} />
-      <meta
-        property="og:image"
-        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
-      />
-      <meta property="og:type" content="product" />
-      <meta property="og:locale" content="en_IN" />
-      <link rel="canonical" href={`https://www.eipl.co/buy/${property.slug}`} />
-      <title>{property.metatitle}</title>
-      <meta name="description" content={property.metadescription} />
       <Navbar />
 
       {/* Hero with overlay */}

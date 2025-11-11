@@ -22,14 +22,14 @@ export async function generateMetadata({
   const property = await getProperty(slug);
 
   return {
-    title: property.metatitle || property.title,
-    description: property.metadescription || property.description,
+    title: property.metatitle,
+    description: property.metadescription,
     alternates: {
       canonical: `https://www.eipl.co/buy/${property.slug}`,
     },
     openGraph: {
-      title: property.metatitle || property.title,
-      description: property.metadescription || property.description,
+      title: property.metatitle,
+      description: property.metadescription,
       url: `https://www.eipl.co/buy/${property.slug}`,
       siteName: "Ethical Infrastructures Pvt Ltd",
       images: [
@@ -45,11 +45,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: property.metatitle || property.title,
-      description: property.metadescription || property.description,
+      title: property.metatitle,
+      description: property.metadescription,
       images: [
-        property.images?.[0] ||
-          "https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75",
+        "https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75",
       ],
     },
   };
