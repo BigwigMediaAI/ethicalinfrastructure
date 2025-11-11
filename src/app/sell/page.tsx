@@ -46,6 +46,24 @@ function Sell() {
 
   return (
     <div>
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Sell Property in Gurgaon – Get Best Market Value"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/sell" />
+      <meta
+        property="og:description"
+        content="Sell your residential or commercial property in Gurgaon with expert guidance, transparency, and maximum returns."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>Sell Property in Gurgaon – Get Best Market Value</title>
       <meta
         name="description"

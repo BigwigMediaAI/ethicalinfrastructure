@@ -12,6 +12,24 @@ import Link from "next/link";
 export default function ContactPage() {
   return (
     <div className="  min-h-screen ">
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Contact Ethical Infrastructures – Gurgaon Real Estate Experts"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/contact-us" />
+      <meta
+        property="og:description"
+        content="Get in touch with Ethical Infrastructures for buying, selling, or leasing premium properties in Gurgaon."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>
         Contact Ethical Infrastructures – Gurgaon Real Estate Experts
       </title>

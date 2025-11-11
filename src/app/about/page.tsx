@@ -24,6 +24,24 @@ const AboutHero = () => {
   }, []);
   return (
     <>
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="About Ethical Infrastructures – Trusted Realtors in Gurgaon"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/about" />
+      <meta
+        property="og:description"
+        content="Ethical Infrastructures delivers transparent, ethical, and premium property solutions across Gurgaon’s luxury real estate market."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="profile" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>About Ethical Infrastructures – Trusted Realtors in Gurgaon</title>
       <meta
         name="description"

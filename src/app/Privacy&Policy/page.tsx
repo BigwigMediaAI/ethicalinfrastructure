@@ -7,6 +7,24 @@ import Navbar2 from "../../../components/Navbar2";
 export default function PrivacyPolicyPage() {
   return (
     <div>
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Privacy Policy – Ethical Infrastructures"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/Privacy&Policy" />
+      <meta
+        property="og:description"
+        content="Learn how Ethical Infrastructures protects your data and ensures secure real estate transactions in Gurgaon."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>Privacy Policy – Ethical Infrastructures</title>
       <meta
         name="description"

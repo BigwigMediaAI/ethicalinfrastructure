@@ -114,6 +114,24 @@ export default function LeasePageContent() {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Lease Property in Gurgaon – Verified Homes & Offices"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/lease" />
+      <meta
+        property="og:description"
+        content="Find verified residential and commercial leasing options in Gurgaon with Ethical Infrastructures’ trusted services."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>Lease Property in Gurgaon – Verified Homes & Offices</title>
       <meta
         name="description"

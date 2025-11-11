@@ -9,6 +9,24 @@ import Navbar2 from "../../../components/Navbar2";
 export default function TermsAndConditionsPage() {
   return (
     <div>
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Terms & Conditions – Ethical Infrastructures"
+      />
+      <meta property="og:site_name" content="Ethical Infrastructures Pvt Ltd" />
+      <meta property="og:url" content="https://www.eipl.co/Terms&Conditions" />
+      <meta
+        property="og:description"
+        content="Review the terms and conditions for Ethical Infrastructures’ trusted real estate services in Gurgaon."
+      />
+      <meta
+        property="og:image"
+        content="https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_IN" />
+
       <title>Terms & Conditions – Ethical Infrastructures</title>
       <meta
         name="description"
