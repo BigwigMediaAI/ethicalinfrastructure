@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import BuyDetailsClient from "./BuyDetailsClient";
 
+interface Props {
+  params: { slug: string };
+}
+
 async function getProperty(slug: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE}/property/${slug}`,
@@ -12,11 +16,8 @@ async function getProperty(slug: string) {
   return res.json();
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+// Metadata generation
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const property = await getProperty(params.slug);
 
   return {
@@ -31,7 +32,7 @@ export async function generateMetadata({
       description: property.metadescription || property.description,
       url: `https://www.eipl.co/buy/${property.slug}`,
       siteName: "Ethical Infrastructures Pvt Ltd",
-      type: "website", // ✅ Use "website" instead of "product"
+      type: "website",
       locale: "en_IN",
       images: [
         {
@@ -56,11 +57,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function BuyDetailsPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+// Page component
+const BuyDetailsPage = async ({ params }: Props) => {
   const property = await getProperty(params.slug);
   return <BuyDetailsClient propertyData={property} />;
-}
+};
+
+export default BuyDetailsPage;
