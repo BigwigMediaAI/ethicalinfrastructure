@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import BuyDetailsClient from "./BuyDetailsClient";
 
-interface Props {
-  params: { slug: string };
-}
+type PageProps = {
+  params: { [key: string]: string }; // <-- Use an index signature
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
 async function getProperty(slug: string) {
   const res = await fetch(
@@ -16,17 +17,16 @@ async function getProperty(slug: string) {
   return res.json();
 }
 
-// Metadata generation
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const property = await getProperty(params.slug);
 
   return {
     title: property.metatitle || property.title,
     description:
       property.metadescription || property.description?.slice(0, 150),
-    alternates: {
-      canonical: `https://www.eipl.co/buy/${property.slug}`,
-    },
+    alternates: { canonical: `https://www.eipl.co/buy/${property.slug}` },
     openGraph: {
       title: property.metatitle || property.title,
       description: property.metadescription || property.description,
@@ -57,8 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Page component
-const BuyDetailsPage = async ({ params }: Props) => {
+const BuyDetailsPage = async ({ params }: PageProps) => {
   const property = await getProperty(params.slug);
   return <BuyDetailsClient propertyData={property} />;
 };

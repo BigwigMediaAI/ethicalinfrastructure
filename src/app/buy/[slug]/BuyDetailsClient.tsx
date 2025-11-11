@@ -52,7 +52,8 @@ interface BuyDetailsProps {
 }
 
 export default function BuyDetails({ propertyData }: BuyDetailsProps) {
-  const [property] = useState<Property>(propertyData);
+  //   const [property] = useState<Property>(propertyData);
+  const property = propertyData;
 
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [leadData, setLeadData] = useState({
