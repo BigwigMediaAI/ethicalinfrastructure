@@ -49,10 +49,10 @@ interface Property {
   metadescription: string;
 }
 
-export default function BuyDetailsClient({ property }: { property: any }) {
+export default function BuyDetailsClient({ property }: { property: Property }) {
   //   const { slug } = useParams();
   //   const [property, setProperty] = useState<Property | null>(null);
-  const [loading, setLoading] = useState(true);
+  //   const [loading, setLoading] = useState(true);
 
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [leadData, setLeadData] = useState({
