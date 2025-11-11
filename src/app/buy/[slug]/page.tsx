@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import BuyDetailsClient from "./BuyDetailsClient";
 
-type PageProps = {
-  params: { [key: string]: string }; // <-- Use an index signature
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
 async function getProperty(slug: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE}/property/${slug}`,
@@ -17,33 +12,36 @@ async function getProperty(slug: string) {
   return res.json();
 }
 
+// ✅ FIX 1: await params here
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const property = await getProperty(params.slug);
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params; // ✅ must await params
+  const property = await getProperty(slug);
 
   return {
     title: property.metatitle || property.title,
-    description:
-      property.metadescription || property.description?.slice(0, 150),
-    alternates: { canonical: `https://www.eipl.co/buy/${property.slug}` },
+    description: property.metadescription || property.description,
+    alternates: {
+      canonical: `https://www.eipl.co/buy/${property.slug}`,
+    },
     openGraph: {
       title: property.metatitle || property.title,
       description: property.metadescription || property.description,
       url: `https://www.eipl.co/buy/${property.slug}`,
       siteName: "Ethical Infrastructures Pvt Ltd",
-      type: "website",
-      locale: "en_IN",
       images: [
         {
-          url:
-            property.images?.[0] ||
-            "https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75",
+          url: "https://www.eipl.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.634a2fe3.png&w=256&q=75",
           width: 1200,
           height: 630,
           alt: property.title,
         },
       ],
+      locale: "en_IN",
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
@@ -57,9 +55,14 @@ export async function generateMetadata({
   };
 }
 
-const BuyDetailsPage = async ({ params }: PageProps) => {
-  const property = await getProperty(params.slug);
-  return <BuyDetailsClient propertyData={property} />;
-};
+// ✅ FIX 2: await params here as well
+export default async function BuyDetailsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params; // ✅ must await params
+  const property = await getProperty(slug);
 
-export default BuyDetailsPage;
+  return <BuyDetailsClient property={property} />;
+}
