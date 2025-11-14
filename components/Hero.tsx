@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LeadFormModal from "./LeadPopup";
 import ButtonFill from "./Button"; // ✅ using your custom animated button
 import { Tinos } from "next/font/google";
+import { Typewriter } from "react-simple-typewriter";
 
 const tinos = Tinos({
   subsets: ["latin"],
@@ -34,7 +35,15 @@ const Hero = () => {
           <h1
             className={`${tinos.className} text-xl md:text-5xl font-bold mb-2 text-[var(--primary-color)] uppercase leading-tight`}
           >
-            Ethical Infrastructures Pvt. Ltd.
+            <Typewriter
+              words={["Ethical Infrastructures Pvt. Ltd."]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={2000}
+            />
           </h1>
 
           <p className="text-lg md:text-2xl text-white/80 font-medium mb-6">
