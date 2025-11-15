@@ -2,9 +2,8 @@
 
 import React, { useState } from "react";
 import LeadFormModal from "./LeadPopup";
-import ButtonFill from "./Button"; // ✅ using your custom animated button
+import ButtonFill from "./Button";
 import { Tinos } from "next/font/google";
-import { Typewriter } from "react-simple-typewriter";
 
 const tinos = Tinos({
   subsets: ["latin"],
@@ -31,31 +30,27 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Centered Content */}
-        <div className="relative z-10 text-center max-w-5xl">
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+          {/* First Line - slide from top */}
           <h1
-            className={`${tinos.className} text-xl md:text-5xl font-bold mb-2 text-[var(--primary-color)] uppercase leading-tight`}
+            className={`${tinos.className} text-4xl md:text-6xl font-bold text-[var(--primary-color)] uppercase mb-4 animate-slideFromTop`}
           >
-            <Typewriter
-              words={["Ethical Infrastructures Pvt. Ltd."]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={2000}
-            />
+            Ethical Infrastructures Pvt. Ltd.
           </h1>
 
-          <p className="text-lg md:text-2xl text-white/80 font-medium mb-6">
+          {/* Second Line - slide from bottom */}
+          <p className="text-lg md:text-2xl text-white/80 font-medium mb-8 animate-slideFromBottom">
             Your Vision, Our Ethical Commitment
           </p>
 
-          {/* ✨ Use ButtonFill */}
-          <ButtonFill
-            text="Get in Touch"
-            onClick={() => setIsModalOpen(true)}
-            className="font-semibold"
-          />
+          {/* Floating Button */}
+          <div className="animate-float">
+            <ButtonFill
+              text="Get in Touch"
+              onClick={() => setIsModalOpen(true)}
+              className="font-semibold"
+            />
+          </div>
         </div>
       </section>
 
@@ -64,6 +59,53 @@ const Hero = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Animations */}
+      <style jsx>{`
+        @keyframes slideFromTop {
+          0% {
+            transform: translateY(-150px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideFromBottom {
+          0% {
+            transform: translateY(150px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-12px);
+          }
+        }
+
+        .animate-slideFromTop {
+          animation: slideFromTop 3.5s ease-out forwards; /* slow and smooth */
+        }
+
+        .animate-slideFromBottom {
+          animation: slideFromBottom 3.5s ease-out forwards; /* slow and smooth */
+        }
+
+        .animate-float {
+          animation: float 2.5s ease-in-out infinite;
+        }
+      `}</style>
     </>
   );
 };
