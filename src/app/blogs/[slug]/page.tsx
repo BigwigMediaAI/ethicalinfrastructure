@@ -111,7 +111,7 @@ export default async function BlogDetails({
       </section>
 
       {blog.coverImage && (
-        <div className="relative w-11/12 md:w-5/6 mx-auto h-[300px] md:h-[600px] overflow-hidden rounded-xl">
+        <div className="relative w-11/12 md:w-5/6 mx-auto h-[60vh] md:h-[100vh] overflow-hidden rounded-xl">
           <Image
             src={blog.coverImage}
             alt={blog.title}
