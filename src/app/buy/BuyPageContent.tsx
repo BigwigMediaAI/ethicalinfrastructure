@@ -14,6 +14,7 @@ import ButtonFill from "../../../components/Button";
 import LeadForm from "../../../components/LeadForm"; // ✅ your existing form
 import LeadFormModal from "../../../components/LeadPopup";
 import { useProperty } from "@/context/PropertyContext";
+import Select from "react-select";
 
 interface Property {
   _id: string;
@@ -28,6 +29,7 @@ interface Property {
 
 export default function BuyPageContent() {
   const buyRef = useRef<HTMLDivElement | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
 
   // Static filters
   const propertyTypes = [
@@ -60,9 +62,13 @@ export default function BuyPageContent() {
     "Sector 59 Gurugram Haryana",
   ];
 
+  const locationOptions = staticLocations
+    .filter((l) => l !== "All")
+    .map((loc) => ({ label: loc, value: loc }));
+
   const { selectedType, setSelectedType } = useProperty();
 
-  const [selectedLocation, setSelectedLocation] = useState("All");
+  // const [selectedLocation, setSelectedLocation] = useState("All");
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,7 +83,8 @@ export default function BuyPageContent() {
     const params = new URLSearchParams({
       purpose: "buy",
       type: selectedType || "all", // fallback to 'all' if null
-      location: selectedLocation === "All" ? "all" : selectedLocation,
+      location:
+        selectedLocation.length === 0 ? "all" : selectedLocation.join(","),
       page: currentPage.toString(),
       limit: propertiesPerPage.toString(),
     });
@@ -199,20 +206,21 @@ export default function BuyPageContent() {
         </div>
 
         {/* Static Location Dropdown */}
-        <select
-          value={selectedLocation}
-          onChange={(e) => {
-            setSelectedLocation(e.target.value);
-            setCurrentPage(1);
-          }}
-          className="px-4 py-2 rounded-full text-sm font-semibold border bg-gray-100 text-gray-700 hover:bg-gray-200 w-52"
-        >
-          {staticLocations.map((loc) => (
-            <option key={loc} value={loc}>
-              {loc === "All" ? "All Locations" : loc}
-            </option>
-          ))}
-        </select>
+        <div className="w-72">
+          <Select
+            isMulti
+            options={locationOptions}
+            value={locationOptions.filter((opt) =>
+              selectedLocation.includes(opt.value)
+            )}
+            onChange={(selected) => {
+              setSelectedLocation(selected.map((s) => s.value));
+              setCurrentPage(1);
+            }}
+            placeholder="Select Locations..."
+            className="text-sm font-semibold"
+          />
+        </div>
       </motion.div>
 
       {/* Property List */}

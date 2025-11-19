@@ -13,7 +13,7 @@ import PropertyGrid from "../../components/Properties";
 import BlogGrid from "../../components/Blogs";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
 import ContactSidebar from "../../components/ContactSidebar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
@@ -21,8 +21,20 @@ import RealEstateExperts from "../../components/expert";
 import BuyLeaseSection from "../../components/BuyLease";
 import ScrollingIcons from "../../components/ScrollingIcons";
 import OurSegments from "../../components/OurSegments";
+import LeadFormWithoutImage from "../../components/LeadPopupwithoutImage";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Auto-open popup after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   // Initialize AOS
   useEffect(() => {
     AOS.init({
@@ -115,6 +127,11 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      <LeadFormWithoutImage
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
       <div className="hidden md:block">
         <ContactSidebar />
