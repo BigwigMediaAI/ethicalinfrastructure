@@ -23,11 +23,11 @@ export default function PlotPage() {
         <div className="absolute inset-0 bg-black/30 z-10"></div>
 
         {/* Content */}
-        <div className="relative text-white z-10">
+        <div className="relative text-white z-10 mt-32">
           <h1 className="text-4xl md:text-5xl font-bold tracking-widest">
             Find Your Ideal Plot
           </h1>
-          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-justify">
             Share your requirements and our expert team will help you discover
             the perfect residential or commercial plot in premium locations.
           </p>
