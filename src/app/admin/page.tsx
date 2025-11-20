@@ -1,14 +1,18 @@
 "use client";
+import { EarthIcon, Handshake } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { JSX, useEffect, useState } from "react";
-import { FaBook, FaBuilding, FaUser } from "react-icons/fa";
+import { FaBook, FaBuilding, FaUser, FaUsers } from "react-icons/fa";
 
 const Dashboard = () => {
   const router = useRouter();
   const [counts, setCounts] = useState({
     leads: 0,
+    brochureLead: 0,
     blogs: 0,
     properties: 0,
+    plots: 0,
+    sellPropertiesRequests: 0,
   });
 
   useEffect(() => {
@@ -24,29 +28,62 @@ const Dashboard = () => {
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`).then((r) =>
         r.json()
       ),
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/brochure-leads`).then((r) =>
+        r.json()
+      ),
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/blog/viewblog`).then((r) =>
         r.json()
       ),
-      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/property`).then((r) =>
+      fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/property?page=1&limit=10000`
+      ).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/plot/all`).then((r) =>
         r.json()
       ),
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/sellproperty/viewsell`).then(
+        (r) => r.json()
+      ),
     ])
-      .then(([leads, blogs, properties]) => {
-        setCounts({
-          leads: Array.isArray(leads) ? leads.length : 0,
-          blogs: Array.isArray(blogs) ? blogs.length : 0,
-          properties: Array.isArray(properties) ? properties.length : 0,
-        });
-      })
+      .then(
+        ([
+          leads,
+          brochureLead,
+          blogs,
+          properties,
+          plots,
+          sellPropertiesRequests,
+        ]) => {
+          setCounts({
+            leads: Array.isArray(leads) ? leads.length : 0,
+            brochureLead: Array.isArray(brochureLead) ? brochureLead.length : 0,
+            blogs: Array.isArray(blogs) ? blogs.length : 0,
+            properties: Array.isArray(properties.properties)
+              ? properties.properties.length
+              : 0,
+            plots: Array.isArray(plots.data) ? plots.data.length : 0,
+            sellPropertiesRequests: Array.isArray(sellPropertiesRequests)
+              ? sellPropertiesRequests.length
+              : 0,
+          });
+        }
+      )
+
       .catch((error) => {
         console.error("Error loading dashboard data:", error);
       });
   }, [router]);
 
   const cards = [
-    { title: "Leads", icon: <FaUser />, count: counts.leads },
     { title: "Blogs", icon: <FaBook />, count: counts.blogs },
     { title: "Properties", icon: <FaBuilding />, count: counts.properties },
+    { title: "Leads", icon: <FaUsers />, count: counts.leads },
+    { title: "Brochure Leads", icon: <FaUser />, count: counts.brochureLead },
+    { title: "Plots", icon: <EarthIcon />, count: counts.plots },
+    {
+      title: "Sell Property Requests",
+      icon: <Handshake />,
+      count: counts.sellPropertiesRequests,
+    },
   ];
 
   return (

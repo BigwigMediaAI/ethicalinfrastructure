@@ -7,6 +7,7 @@ import Image from "next/image";
 import logo from "../assets/logo.png";
 import {
   Building,
+  Earth,
   Gauge,
   Handshake,
   NotebookPen,
@@ -38,6 +39,7 @@ export default function AdminLayout({
       to: "/admin/properties",
     },
     { icon: <Handshake />, label: "Sell Requests", to: "/admin/sell-requests" },
+    { icon: <Earth />, label: "Plots", to: "/admin/plots" },
   ];
 
   const handleLogout = () => {
