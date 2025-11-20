@@ -84,7 +84,7 @@ function Sell() {
         <div className="absolute inset-0 bg-black/50 z-10"></div>
 
         {/* Content */}
-        <div className="relative text-white z-20">
+        <div className="relative text-white z-10">
           <h1 className="text-4xl md:text-5xl font-bold tracking-widest">
             Get the Best Value for Your Property
           </h1>

@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "../../components/theme-provider";
 import Script from "next/script"; // ✅ Import Script from Next.js
 import { PropertyProvider } from "@/context/PropertyContext";
+import { Toaster } from "react-hot-toast";
 
 const tinos = Tinos({
   subsets: ["latin"],
@@ -199,7 +200,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PropertyProvider> {children}</PropertyProvider>
+          <PropertyProvider>
+            <Toaster position="top-center" /> {children}
+          </PropertyProvider>
         </ThemeProvider>
       </body>
     </html>

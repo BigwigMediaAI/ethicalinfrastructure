@@ -191,7 +191,12 @@ export default function BuyPageContent() {
             <button
               key={opt.value}
               onClick={() => {
-                setSelectedType(opt.value);
+                if (opt.value === "plot") {
+                  window.location.href = "/plots"; // redirect only plots
+                  return;
+                }
+
+                setSelectedType(opt.value); // normal filter for all others
                 setCurrentPage(1);
               }}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition cursor-pointer ${

@@ -45,7 +45,7 @@ const Navbar = () => {
             { name: "Apartment" },
             { name: "Villa" },
             { name: "Farmhouse" },
-            { name: "Plot" },
+            { name: "Plots", path: "/plots" },
           ],
         },
         { name: "Sell", path: "/sell" },
@@ -200,7 +200,7 @@ const Navbar = () => {
                             {drop.subDropdown.map((sub) => (
                               <li key={sub.name}>
                                 <Link
-                                  href="/buy" // always go to /buy
+                                  href={sub.path ? sub.path : "/buy"} // always go to /buy
                                   onClick={() =>
                                     setSelectedType(sub.name.toLowerCase())
                                   } // update context
