@@ -175,7 +175,7 @@ const AboutHero = () => {
               Bricks And Clicks
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 tracking-widest text-[var(--title)]">
-              Why Choose <br /> Ethical?
+              Why Choose <br /> Ethical Infrastructures?
             </h2>
           </div>
 
@@ -287,11 +287,11 @@ const AboutHero = () => {
             >
               Over the years, we have grown into a trusted name in real estate
               by offering need-based, cost-effective, and client-centric
-              solutions. Our dedicated team goes beyond conventional
-              brokerage—conducting detailed site visits, market surveys, and
-              providing up-to-date insights on property trends. This commitment
-              to personalized guidance and long-term value has shaped our
-              journey and continues to drive our success.
+              solutions. Our dedicated team goes beyond conventional brokerage,
+              conducting detailed site visits, market surveys, and providing
+              up-to-date insights on property trends. This commitment to
+              personalized guidance and long-term value has shaped our journey
+              and continues to drive our success.
             </p>
           </div>
         </div>

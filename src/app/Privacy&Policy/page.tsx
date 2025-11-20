@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-600">Last updated: October 13, 2025</p>
             </header>
 
-            <article className="prose prose-sm md:prose-base max-w-none text-justify">
+            <article className="text-lg max-w-none text-justify">
               <p>
                 This Privacy Policy describes Our policies and procedures on the
                 collection, use and disclosure of Your information when You use
@@ -64,9 +64,13 @@ export default function PrivacyPolicyPage() {
                 .
               </p>
 
-              <h2>Interpretation and Definitions</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Interpretation and Definitions
+              </h2>
 
-              <h3>Interpretation</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Interpretation
+              </h3>
               <p>
                 The words whose initial letters are capitalized have meanings
                 defined under the following conditions. The following
@@ -74,9 +78,11 @@ export default function PrivacyPolicyPage() {
                 they appear in singular or in plural.
               </p>
 
-              <h3>Definitions</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Definitions
+              </h3>
               <p>For the purposes of this Privacy Policy:</p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>
                   <strong>Account</strong> means a unique account created for
                   You to access our Service or parts of our Service.
@@ -147,11 +153,15 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h2>Collecting and Using Your Personal Data</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Collecting and Using Your Personal Data
+              </h2>
 
-              <h3>Types of Data Collected</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Types of Data Collected
+              </h3>
 
-              <h4>Personal Data</h4>
+              <h4 className="text-xl font-bold">Personal Data</h4>
               <p>
                 While using Our Service, We may ask You to provide Us with
                 certain personally identifiable information that can be used to
@@ -159,7 +169,7 @@ export default function PrivacyPolicyPage() {
                 include, but is not limited to: Usage Data.
               </p>
 
-              <h4>Usage Data</h4>
+              <h4 className="text-xl font-bold py-2">Usage Data</h4>
               <p>
                 Usage Data is collected automatically when using the Service.
               </p>
@@ -185,7 +195,9 @@ export default function PrivacyPolicyPage() {
                 through a mobile device.
               </p>
 
-              <h4>Tracking Technologies and Cookies</h4>
+              <h4 className="text-xl font-bold py-2">
+                Tracking Technologies and Cookies
+              </h4>
               <p>
                 We use Cookies and similar tracking technologies to track the
                 activity on Our Service and store certain information. Tracking
@@ -193,7 +205,7 @@ export default function PrivacyPolicyPage() {
                 collect and track information and to improve and analyze Our
                 Service. The technologies We use may include:
               </p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>
                   <strong>Cookies or Browser Cookies.</strong> A cookie is a
                   small file placed on Your Device. You can instruct Your
@@ -232,7 +244,7 @@ export default function PrivacyPolicyPage() {
                 We use both Session and Persistent Cookies for the purposes set
                 out below:
               </p>
-              <ul>
+              <ul className="space-y-2">
                 <li>
                   <strong>Necessary / Essential Cookies</strong>
                   <p className="mt-1">
@@ -277,11 +289,13 @@ export default function PrivacyPolicyPage() {
                 Cookies section of our Privacy Policy.
               </p>
 
-              <h3>Use of Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Use of Your Personal Data
+              </h3>
               <p>
                 The Company may use Personal Data for the following purposes:
               </p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>
                   <strong>To provide and maintain our Service</strong>,
                   including to monitor the usage of our Service.
@@ -327,12 +341,14 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h3>Sharing Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Sharing Your Personal Data
+              </h3>
               <p>
                 We may share Your personal information in the following
                 situations:
               </p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>
                   <strong>With Service Providers:</strong> We may share Your
                   personal information with Service Providers to monitor and
@@ -367,7 +383,9 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h3>Retention of Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Retention of Your Personal Data
+              </h3>
               <p>
                 The Company will retain Your Personal Data only for as long as
                 is necessary for the purposes set out in this Privacy Policy. We
@@ -382,7 +400,9 @@ export default function PrivacyPolicyPage() {
                 security or to improve the functionality of Our Service.
               </p>
 
-              <h3>Transfer of Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Transfer of Your Personal Data
+              </h3>
               <p>
                 Your information, including Personal Data, is processed at the
                 Company&#39;s operating offices and in any other places where
@@ -397,7 +417,9 @@ export default function PrivacyPolicyPage() {
                 of such information represents Your agreement to that transfer.
               </p>
 
-              <h3>Delete Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Delete Your Personal Data
+              </h3>
               <p>
                 You have the right to delete or request that We assist in
                 deleting the Personal Data that We have collected about You.
@@ -416,27 +438,29 @@ export default function PrivacyPolicyPage() {
                 when we have a legal obligation or lawful basis to do so.
               </p>
 
-              <h3>Disclosure of Your Personal Data</h3>
-              <h4>Business Transactions</h4>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Disclosure of Your Personal Data
+              </h3>
+              <h4 className="text-xl font-bold">Business Transactions</h4>
               <p>
                 If the Company is involved in a merger, acquisition or asset
                 sale, Your Personal Data may be transferred. We will provide
                 notice before Your Personal Data is transferred and becomes
                 subject to a different Privacy Policy.
               </p>
-              <h4>Law enforcement</h4>
+              <h4 className="text-xl font-bold">Law enforcement</h4>
               <p>
                 Under certain circumstances, the Company may be required to
                 disclose Your Personal Data if required to do so by law or in
                 response to valid requests by public authorities (e.g. a court
                 or a government agency).
               </p>
-              <h4>Other legal requirements</h4>
+              <h4 className="text-xl font-bold">Other legal requirements</h4>
               <p>
                 The Company may disclose Your Personal Data in the good faith
                 belief that such action is necessary to:
               </p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>Comply with a legal obligation</li>
                 <li>
                   Protect and defend the rights or property of the Company
@@ -452,7 +476,9 @@ export default function PrivacyPolicyPage() {
                 <li>Protect against legal liability</li>
               </ul>
 
-              <h3>Security of Your Personal Data</h3>
+              <h3 className="text-2xl text-[var(--primary-color)] py-2">
+                Security of Your Personal Data
+              </h3>
               <p>
                 The security of Your Personal Data is important to Us, but
                 remember that no method of transmission over the Internet, or
@@ -461,7 +487,9 @@ export default function PrivacyPolicyPage() {
                 We cannot guarantee its absolute security.
               </p>
 
-              <h2>Children&#39;s Privacy</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Children&#39;s Privacy
+              </h2>
               <p>
                 Our Service does not address anyone under the age of 13. We do
                 not knowingly collect personally identifiable information from
@@ -473,7 +501,9 @@ export default function PrivacyPolicyPage() {
                 information from Our servers.
               </p>
 
-              <h2>Links to Other Websites</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Links to Other Websites
+              </h2>
               <p>
                 Our Service may contain links to other websites that are not
                 operated by Us. If You click on a third party link, You will be
@@ -486,7 +516,9 @@ export default function PrivacyPolicyPage() {
                 or services.
               </p>
 
-              <h2>Changes to this Privacy Policy</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Changes to this Privacy Policy
+              </h2>
               <p>
                 We may update Our Privacy Policy from time to time. We will
                 notify You of any changes by posting the new Privacy Policy on
@@ -503,19 +535,21 @@ export default function PrivacyPolicyPage() {
                 they are posted on this page.
               </p>
 
-              <h2>Contact Us</h2>
+              <h2 className="text-3xl text-[var(--primary-color)] py-5">
+                Contact Us
+              </h2>
               <p>
                 If you have any questions about this Privacy Policy, You can
                 contact us:
               </p>
-              <ul>
+              <ul className="space-y-2 list-disc">
                 <li>
                   By email:{" "}
                   <a
                     href="mailto:shubham@bigwigmedia.in"
                     className="text-indigo-600 underline"
                   >
-                    shubham@bigwigmedia.in
+                    info@eipl.co
                   </a>
                 </li>
               </ul>

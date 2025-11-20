@@ -110,7 +110,7 @@ export default function TermsAndConditionsPage() {
                     href="mailto:info@eiplin.com"
                     className="underline font-medium"
                   >
-                    info@eiplin.com
+                    info@eipl.co
                   </a>
                   .
                 </p>
