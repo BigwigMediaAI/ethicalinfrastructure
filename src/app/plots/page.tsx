@@ -1,7 +1,7 @@
 import "react-phone-number-input/style.css";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
-import banner from "../../../assets/plotsBanner.jpg";
+import banner from "../../../assets/plot.webp";
 import Image from "next/image";
 import ContactSidebar from "../../../components/ContactSidebar";
 import Plotform from "../../../components/Plotform";
@@ -20,7 +20,7 @@ export default function PlotPage() {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
 
         {/* Content */}
         <div className="relative text-white z-10">
