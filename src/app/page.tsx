@@ -50,7 +50,7 @@ export default function Home() {
   // ⭐ Close popup on scroll
   // ⭐ Close popup if user scrolls more than 100px
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+    const lastScrollY = window.scrollY;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
